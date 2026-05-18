@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.options import Options
 def generate_and_post():
     # 1. Geminiで記事を生成
     genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     
     prompt = "noteに投稿する、クリエイター向けのタメになる面白い記事をタイトル付きで1つ執筆してください。親しみやすく知的なトーンで。"
     response = model.generate_content(prompt)
