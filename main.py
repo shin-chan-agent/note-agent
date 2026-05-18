@@ -19,32 +19,64 @@ def generate_and_post():
     title = lines[0].replace("# ", "").replace("**", "")
     body = "\n".join(lines[1:])
 
-    # 2. Seleniumでnoteに自動投稿（ログイン処理を強化）
+    # 2. Seleniumでnoteに自動投稿（ロボット検知回避を最大化）
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--window-size=1200,800')
-    chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
     
+    # 【超重要】普通の人間用のブラウザだと偽装する設定
+    chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36')
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled') # 「自動操作されてます」のフラグを隠す
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option('useAutomationExtension', False)
+
     driver = webdriver.Chrome(options=chrome_options)
-    wait = WebDriverWait(driver, 20)
+    
+    # 完全にロボットの痕跡を消す呪文を実行
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    })
+    
+    wait = WebDriverWait(driver, 25) # 待ち時間をさらに伸ばして25秒に
     
     try:
-        # ログイン画面を開く
-        driver.get("https://note.com/login")
+        # まずは一度普通のトップページを踏んでからログインに向かう（怪しまれない足跡をつける）
+        driver.get("https://note.com/")
+        time.sleep(5)
         
-        # メールアドレスとパスワードを入力
-        email_field = wait.until(EC.presence_of_element_located((By.NAME, "email")))
+        # 直接ログイン画面へ
+        driver.get("https://note.com/login/v2")
+        time.sleep(5)
+        
+        # メールアドレス入力欄を色々な方法で必死に探す
+        email_field = None
+        for element_identifier in [
+            (By.NAME, "email"),
+            (By.XPATH, "//input[@type='email']"),
+            (By.XPATH, "//input[contains(@placeholder, 'メールアドレス')]")
+        ]:
+            try:
+                email_field = wait.until(EC.presence_of_element_located(element_identifier))
+                if email_field:
+                    break
+            except:
+                continue
+                
+        if not email_field:
+            raise Exception("Note login page could not be loaded or was blocked by bot detection.")
+            
+        # 入力処理
         email_field.send_keys(os.environ["NOTE_EMAIL"])
         driver.find_element(By.NAME, "password").send_keys(os.environ["NOTE_PASS"])
+        time.sleep(2)
         
-        # 【修正ポイント】確実な方法でログインボタンを探して押す
-        # フォームの送信機能を使ってログインを実行させるよ
+        # フォーム送信でログイン実行
         email_field.submit()
         
-        # ログイン後のマイページ移動をしっかり待つ
-        time.sleep(10)
+        # ログイン後の読み込みをじっくり待つ
+        time.sleep(12)
         
         # 投稿画面へ移動
         driver.get("https://note.com/intent/post")
@@ -58,7 +90,7 @@ def generate_and_post():
         body_field.send_keys(body)
         time.sleep(5)
         
-        # 下書き保存ボタンをいくつかのパターンで探してクリックする
+        # 下書き保存ボタンを探してクリック
         save_btn = None
         for xpath in [
             "//button[contains(., '下書き保存')]",
@@ -81,7 +113,6 @@ def generate_and_post():
         
     except Exception as e:
         print(f"Error: {e}")
-        # エラーが起きたら何が原因か強制的にエラーを出して記録する
         raise e
     finally:
         driver.quit()
