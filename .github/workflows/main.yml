@@ -1,0 +1,31 @@
+name: Note AI Agent
+
+on:
+  workflow_dispatch: # スマホからいつでも手動で動かせるボタンを作る設定
+  schedule:
+    - cron: '0 0 * * *' # 毎日、日本時間の朝9:00に自動で動かす設定（UTC 0:00）
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install google-generativeai selenium webdriver-manager
+
+    - name: Run script
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        NOTE_EMAIL: ${{ secrets.NOTE_EMAIL }}
+        NOTE_PASS: ${{ secrets.NOTE_PASS }}
+      run: python main.py
