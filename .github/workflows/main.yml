@@ -11,11 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 💡 2026年最新の v4 にアップグレード！
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
+      # 💡 2026年最新の v5 にアップグレード！
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
+
         with:
           python-version: '3.11' # 将来のサポート終了に備えて3.11にアップグレード！
 
