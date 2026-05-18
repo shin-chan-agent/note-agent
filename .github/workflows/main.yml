@@ -3,7 +3,7 @@ name: Note AI Agent
 on:
   workflow_dispatch: # スマホからいつでも手動で動かせるボタンを作る設定
   schedule:
-    - cron: '0 0 * * *' # 毎日、日本時間の朝9:00に自動で動かす設定（UTC 0:00）
+    - cron: '0 9,21 * * *' # 毎日、日本時間の朝6 :00と18:00に自動で動かす設定（UTC 0:00）
 
 jobs:
   run-agent:
