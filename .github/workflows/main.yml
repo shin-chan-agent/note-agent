@@ -1,31 +1,33 @@
 name: Note AI Agent
 
 on:
-  workflow_dispatch: # スマホからいつでも手動で動かせるボタンを作る設定
+  workflow_dispatch: # 手動実行用
   schedule:
-    - cron: '0 9,21 * * *' # 毎日、日本時間の朝6 :00と18:00に自動で動かす設定（UTC 0:00）
+    - cron: '0 21 * * *'  # 日本時間の朝6時
+    - cron: '0 9 * * *'   # 日本時間の夕方18時
 
 jobs:
-  run-agent:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' # 将来のサポート終了に備えて3.11にアップグレード！
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install google-generativeai selenium webdriver-manager
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests google-genai # 最新のGeminiライブラリに切り替え
 
-    - name: Run script
-      env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        NOTE_EMAIL: ${{ secrets.NOTE_EMAIL }}
-        NOTE_PASS: ${{ secrets.NOTE_PASS }}
-      run: python main.py
+      - name: Run Python script
+        env:
+          # 💡 ここでGitHubのSecretsをPythonのプログラムに引き渡しているよ！
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python main.py
