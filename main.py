@@ -1,14 +1,17 @@
 import os
 import requests
-import google.generativeai as genai
+from google import genai
 
 def generate_and_send_line():
-    # 1. Geminiで記事を生成
-    genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-    model = genai.GenerativeModel('gemini-2.5-flash')
+    # 1. 最新のライブラリでGeminiで記事を生成
+    # 💡 環境変数から自動でAPIキーを読み込む仕様になりました
+    client = genai.Client()
     
     prompt = "noteに投稿する、クリエイター向けのタメになる面白い記事をタイトル付きで1つ執筆してください。親しみやすく知的なトーンで。LINEに送るので読みやすいように適度に改行を入れてください。"
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model='gemini-2.5-flash',
+        contents=prompt,
+    )
     
     # 2. LINE公式アカウント（Messaging API）を使ってメッセージを送信
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
