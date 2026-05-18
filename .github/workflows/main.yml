@@ -3,8 +3,8 @@ name: Note AI Agent
 on:
   workflow_dispatch: # 手動実行用
   schedule:
-    - cron: '0 21 * * *'  # 日本時間の朝6時
-    - cron: '0 9 * * *'   # 日本時間の夕方18時
+    - cron: '15 20 * * *'  # 日本時間 朝5:15（みんなが寝ている間にズラして確実に）
+    - cron: '15 8 * * *'   # 日本時間 夕方17:15（激混みの18:00を避けて確実に！）
 
 jobs:
   build:
