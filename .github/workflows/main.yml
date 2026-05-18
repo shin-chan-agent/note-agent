@@ -6,6 +6,10 @@ on:
     - cron: '15 20 * * *'  # 日本時間 朝5:15（みんなが寝ている間にズラして確実に）
     - cron: '15 8 * * *'   # 日本時間 夕方17:15（激混みの18:00を避けて確実に！）
 
+# 💡 ここに「警告を消す魔法の呪文」を2行追加したよ！
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 jobs:
   build:
     runs-on: ubuntu-latest
