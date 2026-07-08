@@ -1,4 +1,9 @@
+import json
+from pathlib import Path
+
 import random
+
+HISTORY_FILE = Path("theme_history.json")
 
 # 記事テーマ一覧
 THEMES = [
@@ -17,3 +22,11 @@ THEMES = [
 def get_random_theme():
     """テーマをランダムに1つ返す"""
     return random.choice(THEMES)
+
+def load_theme_history():
+    """テーマ履歴を読み込む"""
+    try:
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
