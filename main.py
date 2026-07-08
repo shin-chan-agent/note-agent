@@ -1,33 +1,18 @@
 import os
 import requests
 from google import genai
+from theme_manager import get_random_theme
 
 def generate_and_send_line():
     # 最新のライブラリでGeminiで記事を生成
     # 環境変数から自動でAPIキーを読み込む仕様になりました
+
     client = genai.Client()
 
-
-import random
-
-    themes = [
-        "AI×ショート動画の実践・検証",
-        "ショート動画AIツール解説",
-        "初心者向けAI副業",
-        "ChatGPT活用術",
-        "Gemini活用術",
-        "CapCut活用術",
-        "Canva活用術",
-        "AI副業ロードマップ",
-        "AIで収益化する方法",
-        "AI活用による時間短縮術"
-    ]
-
-    theme = random.choice(themes)
-
+    theme = get_random_theme()
     
     prompt = (
-       f"今回の記事テーマは『{theme}』です。\n"
+        f"今回の記事テーマは『{theme}』です。\n"
         "noteに投稿する記事を1つ執筆してください。\n"
 
         "確信の持てる情報のみを掲載してください。"
