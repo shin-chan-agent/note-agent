@@ -147,9 +147,10 @@ def get_theme_and_angle():
             "angle": angle
         }
 
-    if combination not in combination_history:
+        if combination not in combination_history:
 
-        combination_history.append(combination) save_combination_history(combination_history)
+        combination_history.append(combination)
+         save_combination_history(combination_history)
 
         theme_history = load_theme_history()
         theme_history.append(theme)
@@ -161,6 +162,6 @@ def get_theme_and_angle():
 
         print(f"今回の組み合わせ：{theme} × {angle}")
 
-        return theme, angle
+            return theme, angle
 
         print("組み合わせが重複したため再抽選します。")
