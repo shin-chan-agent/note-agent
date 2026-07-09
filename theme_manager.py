@@ -20,8 +20,14 @@ THEMES = [
 ]
 
 def get_random_theme():
-    """テーマをランダムに1つ返す"""
+    """履歴を読み込み、テーマをランダムに1つ返す"""
+
+    history = load_theme_history()
+
+    print(f"テーマ履歴：{history}")
+
     return random.choice(THEMES)
+    """テーマをランダムに1つ返す"""
 
 def load_theme_history():
     """テーマ履歴を読み込む"""
