@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '21 16 * * *'  # 日本時間 朝1:21
 
+permissions:
+  contents: write
+
 # 💡 「警告を消す魔法の呪文」！
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
