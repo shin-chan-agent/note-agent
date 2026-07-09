@@ -11,8 +11,7 @@ def generate_and_send_line():
 
     client = genai.Client()
 
-    theme = get_random_theme()
-    angle = get_random_angle()
+    theme, angle = get_theme_and_angle()
     
 
     prompt = (
