@@ -21,14 +21,26 @@ THEMES = [
 
 
 def get_random_theme():
-    """テーマをランダムに選び、履歴へ保存する"""
+    """未使用テーマを優先してランダムに選び、履歴へ保存する"""
 
     history = load_theme_history()
 
     print(f"テーマ履歴（保存前）：{history}")
 
-    theme = random.choice(THEMES)
+    # 未使用テーマだけ抽出
+    unused_themes = [theme for theme in THEMES if theme not in history]
 
+    # 全テーマ使い切ったら履歴リセット
+    if not unused_themes:
+        print("全テーマを使用したため履歴をリセットします。")
+
+        history = []
+        unused_themes = THEMES.copy()
+
+    # 未使用テーマからランダム選択
+    theme = random.choice(unused_themes)
+
+    # 履歴へ追加
     history.append(theme)
 
     save_theme_history(history)
