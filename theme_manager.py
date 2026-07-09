@@ -6,6 +6,7 @@ import random
 
 THEME_HISTORY_FILE = Path("theme_history.json")
 ANGLE_HISTORY_FILE = Path("angle_history.json")
+COMBINATION_HISTORY_FILE = Path("combination_history.json")
 
 
 # 記事テーマ一覧
