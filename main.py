@@ -14,9 +14,11 @@ def generate_and_send_line():
     theme = get_random_theme()
     angle = get_random_angle()
     
+
     prompt = (
         f"今回の記事テーマは『{theme}』です。\n"
         f"記事の切り口は『{angle}』です。\n"
+        f"記事全体を『{angle}』という視点で構成してください。\n"
         "noteに投稿する記事を1つ執筆してください。\n\n"
 
         "確信の持てる情報のみを掲載してください。\n"
