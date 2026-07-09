@@ -48,11 +48,11 @@ def generate_and_send_line():
 
     for attempt in range(MAX_RETRY):
         try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-        )
-        break
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+            )
+            break
 
         except Exception as e:
             print(f"Geminiエラー（{attempt + 1}回目）：{e}")
