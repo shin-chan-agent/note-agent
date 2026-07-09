@@ -12,6 +12,7 @@ def generate_and_send_line():
     client = genai.Client()
 
     theme = get_random_theme()
+    angle = get_random_angle()
     
     prompt = (
         f"今回の記事テーマは『{theme}』です。\n"
