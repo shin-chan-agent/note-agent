@@ -141,3 +141,28 @@ def save_combination_history(history):
     """組み合わせ履歴を保存する"""
     with open(COMBINATION_HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
+
+
+def get_theme_and_angle():
+    """未使用のテーマ×切り口の組み合わせを返す"""
+
+    combination_history = load_combination_history()
+
+    while True:
+        theme = get_random_theme()
+        angle = get_random_angle()
+
+        combination = {
+            "theme": theme,
+            "angle": angle
+        }
+
+        if combination not in combination_history:
+            combination_history.append(combination)
+            save_combination_history(combination_history)
+
+            print(f"今回の組み合わせ：{theme} × {angle}")
+
+            return theme, angle
+
+        print("組み合わせが重複したため再抽選します。")
