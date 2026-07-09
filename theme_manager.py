@@ -68,9 +68,29 @@ def get_random_theme():
 
 
 def get_random_angle():
-    """記事の切り口をランダムに選ぶ"""
+    """未使用の切り口を優先してランダムに選び、履歴へ保存する"""
 
-    angle = random.choice(ANGLES)
+    history = load_angle_history()
+
+    print(f"切り口履歴（保存前）：{history}")
+
+    # 未使用の切り口だけ抽出
+    unused_angles = [angle for angle in ANGLES if angle not in history]
+
+    # 全切り口を使い切ったらリセット
+    if not unused_angles:
+        print("全切り口を使用したため履歴をリセットします。")
+
+        history = []
+        unused_angles = ANGLES.copy()
+
+    # 未使用からランダム選択
+    angle = random.choice(unused_angles)
+
+    # 履歴へ追加
+    history.append(angle)
+
+    save_angle_history(history)
 
     print(f"今回の切り口：{angle}")
 
@@ -90,3 +110,4 @@ def save_theme_history(history):
     """テーマ履歴を保存する"""
     with open(THEME_HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
+
