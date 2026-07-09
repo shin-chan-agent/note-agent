@@ -80,7 +80,7 @@ def get_random_angle():
 def load_theme_history():
     """テーマ履歴を読み込む"""
     try:
-        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+        with open(THEME_HISTORY_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
         return []
@@ -88,5 +88,5 @@ def load_theme_history():
 
 def save_theme_history(history):
     """テーマ履歴を保存する"""
-    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+    with open(THEME_HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
