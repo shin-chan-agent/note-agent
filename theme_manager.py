@@ -45,3 +45,9 @@ def load_theme_history():
             return json.load(f)
     except FileNotFoundError:
         return []
+
+
+def save_theme_history(history):
+    """テーマ履歴を保存する"""
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
