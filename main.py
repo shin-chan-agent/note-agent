@@ -1,4 +1,5 @@
 import os
+import time
 import requests
 from google import genai
 from theme_manager import get_random_theme
