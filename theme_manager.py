@@ -58,11 +58,6 @@ def get_random_theme():
     # 未使用テーマからランダム選択
     theme = random.choice(unused_themes)
 
-    # 履歴へ追加
-    history.append(theme)
-
-    save_theme_history(history)
-
     print(f"今回のテーマ：{theme}")
 
     return theme
@@ -87,11 +82,6 @@ def get_random_angle():
 
     # 未使用からランダム選択
     angle = random.choice(unused_angles)
-
-    # 履歴へ追加
-    history.append(angle)
-
-    save_angle_history(history)
 
     print(f"今回の切り口：{angle}")
 
@@ -157,12 +147,20 @@ def get_theme_and_angle():
             "angle": angle
         }
 
-        if combination not in combination_history:
-            combination_history.append(combination)
-            save_combination_history(combination_history)
+    if combination not in combination_history:
 
-            print(f"今回の組み合わせ：{theme} × {angle}")
+        combination_history.append(combination) save_combination_history(combination_history)
 
-            return theme, angle
+        theme_history = load_theme_history()
+        theme_history.append(theme)
+        save_theme_history(theme_history)
+
+        angle_history = load_angle_history()
+        angle_history.append(angle)
+        save_angle_history(angle_history)
+
+        print(f"今回の組み合わせ：{theme} × {angle}")
+
+        return theme, angle
 
         print("組み合わせが重複したため再抽選します。")
