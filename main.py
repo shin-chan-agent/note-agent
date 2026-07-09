@@ -2,7 +2,8 @@ import os
 import time
 import requests
 from google import genai
-from theme_manager import get_random_theme
+from theme_manager import get_random_theme, get_random_angle
+
 
 def generate_and_send_line():
     # 最新のライブラリでGeminiで記事を生成
