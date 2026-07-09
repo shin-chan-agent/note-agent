@@ -3,7 +3,9 @@ from pathlib import Path
 
 import random
 
-HISTORY_FILE = Path("theme_history.json")
+
+THEME_HISTORY_FILE = Path("theme_history.json")
+ANGLE_HISTORY_FILE = Path("angle_history.json")
 
 
 # 記事テーマ一覧
