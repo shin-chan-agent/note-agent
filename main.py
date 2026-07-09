@@ -44,25 +44,24 @@ def generate_and_send_line():
     )
 
 
-MAX_RETRY = 3
+    MAX_RETRY = 3
 
-for attempt in range(MAX_RETRY):
-    try:
+    for attempt in range(MAX_RETRY):
+        try:
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt,
         )
         break
 
-    except Exception as e:
-        print(f"Geminiエラー（{attempt + 1}回目）：{e}")
+        except Exception as e:
+            print(f"Geminiエラー（{attempt + 1}回目）：{e}")
 
-        if attempt == MAX_RETRY - 1:
-            raise
+            if attempt == MAX_RETRY - 1:
+                raise
 
-        print("30秒後に再試行します...")
-        time.sleep(30)
-    )
+            print("30秒後に再試行します...")
+            time.sleep(30)
 
     
     # LINE公式アカウント（Messaging API）を使ってメッセージを送信
