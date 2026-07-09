@@ -88,12 +88,3 @@ def save_theme_history(history):
     """テーマ履歴を保存する"""
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
-
-def get_random_angle():
-    """記事の切り口をランダムに選ぶ"""
-
-    angle = random.choice(ANGLES)
-
-    print(f"今回の切り口：{angle}")
-
-    return angle
