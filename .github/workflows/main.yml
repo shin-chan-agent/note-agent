@@ -49,6 +49,6 @@ jobs:
 
           git add theme_history.json  angle_history.json
 
-          git diff --cached --quiet || git commit -m "Update theme history"
+          git diff --cached --quiet || git commit -m "Update theme and angle history"
 
           git push
