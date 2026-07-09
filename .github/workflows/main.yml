@@ -40,14 +40,15 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         run: python main.py
+     
 
-
-      - name: Commit theme history
+      - name: Commit history
         run: |
           git config --global user.name "github-actions[bot]"
+
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add theme_history.json  angle_history.json
+          git add theme_history.json angle_history.json
 
           git diff --cached --quiet || git commit -m "Update theme and angle history"
 
