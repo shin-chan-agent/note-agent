@@ -151,7 +151,7 @@ def generate_and_send_line():
             score = extract_score(evaluation)
 
             if score == 0:
-                print("評価結果からスコア取得失敗")
+                raise ValueError("評価結果からスコアを取得できませんでした")
 
             print(f"記事スコア：{score}")
 
