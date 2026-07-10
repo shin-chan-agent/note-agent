@@ -190,6 +190,10 @@ def generate_and_send_line():
 
                 print(f"リライト後スコア：{score}")
 
+                if score >= MIN_SCORE:
+                    print("品質基準をクリアしました。")
+                    break
+
             break
 
         except Exception as e:
