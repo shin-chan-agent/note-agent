@@ -217,7 +217,7 @@ def generate_and_send_line():
     status = (
         "✅ 品質基準クリア"
         if score >= MIN_SCORE
-        else "⚠️ 品質基準未達（3回リライト済み）"
+        else "⚠️ 品質基準未達"
     )
     
     # LINE公式アカウント（Messaging API）を使ってメッセージを送信
