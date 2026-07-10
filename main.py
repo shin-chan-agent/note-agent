@@ -196,6 +196,9 @@ def generate_and_send_line():
                     print("品質基準をクリアしました。")
                     break
 
+            if score < MIN_SCORE:
+                print("最大回数リライトしましたが品質基準に届きませんでした。")
+
             break
 
         except Exception as e:
