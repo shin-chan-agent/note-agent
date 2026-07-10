@@ -1,8 +1,49 @@
 import os
+import re
 import time
 import requests
 from google import genai
 from theme_manager import get_theme_and_angle
+
+
+def evaluate_article(client, article):
+    prompt = f"""
+以下の記事を100点満点で評価してください。
+
+{article}
+
+評価項目
+・SEO
+・読みやすさ
+・初心者への分かりやすさ
+・具体性
+・オリジナリティ
+・最後まで読みたくなる構成
+
+最初の1行は必ず
+
+SCORE:○○
+
+という形式だけで出力してください。
+
+その後に改善点を3つ以内で書いてください。
+"""
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+    )
+
+    return response.text
+
+
+def extract_score(text):
+    m = re.search(r"SCORE:(\d+)", text)
+
+    if m:
+        return int(m.group(1))
+
+    return 0
 
 
 def generate_and_send_line():
