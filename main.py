@@ -55,7 +55,7 @@ def generate_and_send_line():
     theme, angle = get_theme_and_angle()
     
 
-        prompt = (
+    prompt = (
         f"今回の記事テーマは『{theme}』です。\n"
         f"記事の切り口は『{angle}』です。\n"
         f"記事全体を『{angle}』という視点で構成してください。\n\n"
