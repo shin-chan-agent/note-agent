@@ -139,6 +139,17 @@ def generate_and_send_line():
                 model="gemini-2.5-flash",
                 contents=prompt,
             )
+
+            article = response.text
+
+            evaluation = evaluate_article(client, article)
+
+            print(evaluation)
+
+            score = extract_score(evaluation)
+
+            print(f"記事スコア：{score}")
+
             break
 
         except Exception as e:
