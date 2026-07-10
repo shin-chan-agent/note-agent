@@ -198,7 +198,7 @@ def generate_and_send_line():
 
                 print(f"リライト後スコア：{score}")
 
-                if re.search(r"改善点\s*なし", evaluation):
+                if re.search(r"改善点\s*[:：]?\s*なし", evaluation):
                     print("改善点がないためリライトを終了します。")
                     break
 
