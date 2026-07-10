@@ -215,7 +215,21 @@ def generate_and_send_line():
     line_api_url = "https://api.line.me/v2/bot/message/push"
     
     # 送信するメッセージの組み立て
-    message_text = f"🤖【Gemini生成のnote原稿】🤖\n\n{article}"
+    message_text = f"""🤖【Gemini生成のnote原稿】🤖
+
+最終スコア：{score}点
+
+--------------------
+
+{article}
+
+--------------------
+
+【AI評価】
+
+{evaluation}
+"""
+
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}"
