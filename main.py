@@ -207,8 +207,7 @@ for rewrite in range(MAX_REWRITE):
     line_api_url = "https://api.line.me/v2/bot/message/push"
     
     # 送信するメッセージの組み立て
-    message_text = f"🤖【Gemini生成のnote原稿】🤖\n\n{response.text}"
-    
+    message_text = f"🤖【Gemini生成のnote原稿】🤖\n\n{article}"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}"
