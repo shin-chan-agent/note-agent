@@ -192,6 +192,10 @@ def generate_and_send_line():
 
                 print(f"リライト後スコア：{score}")
 
+                if "改善点なし" in evaluation:
+                    print("改善点がないためリライトを終了します。")
+                    break
+
                 if score >= MIN_SCORE:
                     print("品質基準をクリアしました。")
                     break
