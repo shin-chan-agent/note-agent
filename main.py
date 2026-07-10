@@ -210,6 +210,11 @@ def generate_and_send_line():
             print("30秒後に再試行します...")
             time.sleep(30)
 
+    status = (
+        "✅ 品質基準クリア"
+        if score >= MIN_SCORE
+        else "⚠️ 品質基準未達（3回リライト済み）"
+    )
     
     # LINE公式アカウント（Messaging API）を使ってメッセージを送信
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
@@ -219,6 +224,8 @@ def generate_and_send_line():
     
     # 送信するメッセージの組み立て
     message_text = f"""🤖【Gemini生成のnote原稿】🤖
+
+{status}
 
 最終スコア：{score}点
 
