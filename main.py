@@ -150,6 +150,9 @@ def generate_and_send_line():
 
             score = extract_score(evaluation)
 
+            if score == 0:
+                print("評価結果からスコア取得失敗")
+
             print(f"記事スコア：{score}")
 
             for rewrite in range(MAX_REWRITE):
