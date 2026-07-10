@@ -150,6 +150,44 @@ def generate_and_send_line():
 
             print(f"記事スコア：{score}")
 
+for rewrite in range(MAX_REWRITE):
+
+    if score >= MIN_SCORE:
+        print("品質基準をクリアしました。")
+        break
+
+    print(f"{rewrite + 1}回目のリライトを実施します。")
+
+    rewrite_prompt = f"""
+以下の記事を改善してください。
+
+【記事】
+{article}
+
+【改善点】
+{evaluation}
+
+改善点を反映しながら、
+記事全体を書き直してください。
+
+記事の構成・文字数・固定記事への案内・ハッシュタグは維持してください。
+"""
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=rewrite_prompt,
+    )
+
+    article = response.text
+
+    evaluation = evaluate_article(client, article)
+
+    print(evaluation)
+
+    score = extract_score(evaluation)
+
+    print(f"リライト後スコア：{score}")
+
             break
 
         except Exception as e:
