@@ -40,7 +40,7 @@ SCORE:○○
 
 
 def extract_score(text):
-    m = re.search(r"SCORE:(\d+)", text)
+    m = re.search(r"SCORE\s*:\s*(\d+)", text, re.IGNORECASE)
 
     if m:
         return int(m.group(1))
