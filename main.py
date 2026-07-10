@@ -87,6 +87,9 @@ def generate_and_send_line():
     )
 
 
+    MIN_SCORE = 90
+    MAX_REWRITE = 3
+
     MAX_RETRY = 3
 
     for attempt in range(MAX_RETRY):
