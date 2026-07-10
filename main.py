@@ -247,13 +247,18 @@ def generate_and_send_line():
     
     try:
         response_line = requests.post(line_api_url, headers=headers, json=payload)
+
         if response_line.status_code == 200:
             print("Success: Message sent to LINE safely!")
+
         else:
             print(f"Error: LINE API returned status code {response_line.status_code}")
+
             print(response_line.text)
     except Exception as e:
+
         print(f"Error: {e}")
+
         raise e
 
 if __name__ == "__main__":
