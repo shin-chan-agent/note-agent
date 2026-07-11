@@ -48,6 +48,38 @@ def extract_score(text):
     return 0
 
 
+from google.genai import types
+
+def get_latest_info(client, theme):
+    prompt = f"""
+以下のテーマについて最新情報を調査してください。
+
+テーマ：
+{theme}
+
+以下を優先してください。
+
+・最新の料金プラン
+・利用できるモデル
+・新機能
+・仕様変更
+・注意点
+
+記事執筆で使えるように、
+箇条書きで500〜1000文字程度にまとめてください。
+"""
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            tools=[types.Tool(google_search=types.GoogleSearch())]
+        )
+    )
+
+    return response.text
+
+
 def split_text(text, max_length=4800):
     return [
         text[i:i + max_length]
@@ -62,9 +94,19 @@ def generate_and_send_line():
     client = genai.Client()
 
     theme, angle = get_theme_and_angle()
+
+    latest_info = get_latest_info(client, theme)
+
+    print("===== 最新情報 =====")
+    print(latest_info)
     
 
     prompt = (
+        "【最新情報】\n"
+        f"{latest_info}\n\n"
+        "上記はGoogle検索で取得した最新情報です。\n"
+        "記事では必ずこの情報を優先してください。\n\n"
+
         f"今回の記事テーマは『{theme}』です。\n"
         f"記事の切り口は『{angle}』です。\n"
         f"記事全体を『{angle}』という視点で構成してください。\n\n"
