@@ -144,11 +144,16 @@ def generate_and_send_line():
 
             article = response.text
 
-            evaluation = evaluate_article(client, article)
+            # 評価だけリトライ
+            for _ in range(3):
+                evaluation = evaluate_article(client, article)
+                score = extract_score(evaluation)
 
-            print(evaluation)
+                if score != 0:
+                    break
 
-            score = extract_score(evaluation)
+                print("評価のみ再実行します...")
+                time.sleep(5)
 
             if score == 0:
                 raise ValueError("評価結果からスコアを取得できませんでした")
@@ -187,11 +192,16 @@ def generate_and_send_line():
 
                 article = response.text
 
-                evaluation = evaluate_article(client, article)
+                # 評価だけリトライ
+                for _ in range(3):
+                    evaluation = evaluate_article(client, article)
+                    score = extract_score(evaluation)
 
-                print(evaluation)
+                    if score != 0:
+                        break
 
-                score = extract_score(evaluation)
+                    print("評価のみ再実行します...")
+                    time.sleep(5)
 
                 if score == 0:
                     raise ValueError("評価結果からスコアを取得できませんでした")
