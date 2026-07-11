@@ -3,6 +3,8 @@ import re
 import time
 import requests
 from google import genai
+from google.genai import types
+
 from theme_manager import get_theme_and_angle
 
 
@@ -46,9 +48,6 @@ def extract_score(text):
         return int(m.group(1))
 
     return 0
-
-
-from google.genai import types
 
 
 def get_search_query(theme):
