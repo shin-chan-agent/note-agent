@@ -48,6 +48,13 @@ def extract_score(text):
     return 0
 
 
+def split_text(text, max_length=4800):
+    return [
+        text[i:i + max_length]
+        for i in range(0, len(text), max_length)
+    ]
+
+
 def generate_and_send_line():
     # 最新のライブラリでGeminiで記事を生成
     # 環境変数から自動でAPIキーを読み込む仕様になりました
@@ -243,7 +250,7 @@ def generate_and_send_line():
     line_api_url = "https://api.line.me/v2/bot/message/push"
     
     # 送信するメッセージの組み立て
-    message_text = f"""🤖【Gemini生成のnote原稿】🤖
+    article_message = f"""🤖【Gemini生成のnote原稿】🤖
 
 {status}
 
@@ -252,10 +259,9 @@ def generate_and_send_line():
 --------------------
 
 {article}
+"""
 
---------------------
-
-【AI評価】
+evaluation_message = f"""📊【AI評価】
 
 {evaluation}
 """
@@ -265,16 +271,26 @@ def generate_and_send_line():
         "Authorization": f"Bearer {token}"
     }
     
+   
+    messages = []
+
+    for part in split_text(article_message):
+        messages.append({
+            "type": "text",
+            "text": part
+        })
+
+    messages.append({
+        "type": "text",
+        "text": evaluation_message
+    })
+
     payload = {
         "to": user_id,
-        "messages": [
-            {
-                "type": "text",
-                "text": message_text
-            }
-        ]
+        "messages": messages
     }
-    
+
+
     try:
         response_line = requests.post(line_api_url, headers=headers, json=payload)
 
@@ -290,6 +306,7 @@ def generate_and_send_line():
         print(f"Error: {e}")
 
         raise e
+
 
 if __name__ == "__main__":
     generate_and_send_line()
