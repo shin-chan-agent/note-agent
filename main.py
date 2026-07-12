@@ -271,6 +271,13 @@ def generate_and_send_line():
                 rewrite_prompt = f"""
 以下の記事を改善してください。
 
+【最新情報】
+
+{latest_info}
+
+上記の最新情報は維持してください。
+古い情報へ戻さないでください。
+
 【記事】
 {article}
 
