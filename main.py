@@ -361,16 +361,16 @@ def generate_and_send_line():
                 print("最大回数リライトしましたが品質基準に届きませんでした。")
 
 
-                latest_check = check_latest_info(client, latest_info, article)
+            latest_check = check_latest_info(client, latest_info, article)
 
-                print(latest_check)
+            print(latest_check)
 
-                if "NG" in latest_check:
-                    print("最新情報との矛盾を修正します。")
+            if "NG" in latest_check:
+                print("最新情報との矛盾を修正します。")
 
-                    response = client.models.generate_content(
-                        model="gemini-2.5-flash",
-                        contents=f"""
+                response = client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=f"""
 以下はGoogle Searchで取得した最新情報です。
 
 【最新情報】
@@ -389,7 +389,7 @@ Google Searchで取得した最新情報を最優先してください。
 """
     )
 
-                    article = response.text
+                article = response.text
 
             break
 
