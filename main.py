@@ -360,6 +360,37 @@ def generate_and_send_line():
             if score < MIN_SCORE:
                 print("最大回数リライトしましたが品質基準に届きませんでした。")
 
+
+                latest_check = check_latest_info(client, latest_info, article)
+
+                print(latest_check)
+
+                if "NG" in latest_check:
+                    print("最新情報との矛盾を修正します。")
+
+                    response = client.models.generate_content(
+                        model="gemini-2.5-flash",
+                        contents=f"""
+以下はGoogle Searchで取得した最新情報です。
+
+【最新情報】
+{latest_info}
+
+以下の記事を修正してください。
+
+【記事】
+{article}
+
+【修正内容】
+{latest_check}
+
+Google Searchで取得した最新情報を最優先してください。
+記事全体を書き直してください。
+"""
+    )
+
+                    article = response.text
+
             break
 
         except Exception as e:
