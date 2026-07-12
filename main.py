@@ -2,6 +2,7 @@ import os
 import re
 import time
 import requests
+
 from google import genai
 from google.genai import types
 from theme_manager import get_theme_and_angle
