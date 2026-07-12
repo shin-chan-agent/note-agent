@@ -296,7 +296,7 @@ def generate_and_send_line():
             article = response.text
 
             # タイトル欠落は再生成
-            if not article.startswith("タイトル"):
+            if not re.search(r"^#?\s*タイトル", article):
                 print("タイトル欠落。再生成します。")
                 continue
 
