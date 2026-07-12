@@ -285,7 +285,7 @@ def generate_and_send_line():
     )
 
 
-    MIN_SCORE = 90
+    MIN_SCORE = 92
     MAX_REWRITE = 3
 
     MAX_RETRY = 3
