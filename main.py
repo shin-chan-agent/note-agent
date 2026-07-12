@@ -295,9 +295,14 @@ def generate_and_send_line():
 
             article = response.text
 
-            # タイトル欠落は再生成
+            # タイトル欠落チェック
             if not re.search(r"^#?\s*タイトル", article):
                 print("タイトル欠落。再生成します。")
+                continue
+
+            # 固定記事案内チェック
+            if "AI×ショート動画で最速でマネタイズ" not in article:
+                print("固定記事案内欠落。再生成します。")
                 continue
 
             # 評価だけリトライ
