@@ -295,6 +295,7 @@ def generate_and_send_line():
 
             article = response.text
 
+            # タイトル欠落は再生成
             if not article.startswith("タイトル"):
                 print("タイトル欠落。再生成します。")
                 continue
