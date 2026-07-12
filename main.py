@@ -4,8 +4,9 @@ import time
 import requests
 from google import genai
 from google.genai import types
-
 from theme_manager import get_theme_and_angle
+from quality_checker import quality_check
+from rewrite import rewrite_article
 
 
 def evaluate_article(client, article):
