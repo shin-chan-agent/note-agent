@@ -391,6 +391,11 @@ Google Searchで取得した最新情報を最優先してください。
 
                 article = response.text
 
+                evaluation = evaluate_article(client, article)
+                score = extract_score(evaluation)
+
+                print(f"最終スコア：{score}")
+
             break
 
         except Exception as e:
