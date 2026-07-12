@@ -1,18 +1,31 @@
 from google import genai
 
-def rewrite_article(client, article, latest_info, evaluation):
-
+def quality_check(client, article):
     prompt = f"""
-以下の記事を改善してください。
+以下の記事を100点満点で評価してください。
 
-【最新情報】
-{latest_info}
-
-【記事】
 {article}
 
-【改善点】
-{evaluation}
+評価項目
+
+各項目を20点満点で採点してください。
+
+・SEO
+・読みやすさ
+・初心者への分かりやすさ
+・具体性
+・独自性
+
+合計100点で評価してください。
+
+最初の1行は必ず
+
+SCORE:○○
+
+という形式だけで出力してください。
+
+改善点は重要なものだけを最大3つ挙げてください。
+改善不要な場合は「改善点なし」と出力してください。
 """
 
     response = client.models.generate_content(
