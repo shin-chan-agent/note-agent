@@ -300,7 +300,7 @@ def generate_and_send_line():
             article = response.text
 
             # タイトル欠落チェック
-            if not re.search(r"^#?\s*タイトル", article):
+            if not re.search(r"^タイトル[:：]", article):
                 print("タイトル欠落。再生成します。")
                 continue
 
