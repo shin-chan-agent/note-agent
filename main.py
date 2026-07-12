@@ -328,7 +328,7 @@ def generate_and_send_line():
 
             # 評価だけリトライ
             for _ in range(3):
-                evaluation = evaluate_article(client, article)
+                evaluation = quality_check(client, article)
                 score = extract_score(evaluation)
 
                 if score != 0:
@@ -383,7 +383,7 @@ def generate_and_send_line():
 
                 # 評価だけリトライ
                 for _ in range(3):
-                    evaluation = evaluate_article(client, article)
+                    evaluation = quality_check(client, article)
                     score = extract_score(evaluation)
 
                     if score != 0:
@@ -440,7 +440,7 @@ Google Searchで取得した最新情報を最優先してください。
                 article = response.text
 
                 for _ in range(3):
-                    evaluation = evaluate_article(client, article)
+                    evaluation = quality_check(client, article)
                     score = extract_score(evaluation)
 
                     if score != 0:
