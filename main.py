@@ -391,8 +391,15 @@ Google Searchで取得した最新情報を最優先してください。
 
                 article = response.text
 
-                evaluation = evaluate_article(client, article)
-                score = extract_score(evaluation)
+                for _ in range(3):
+                    evaluation = evaluate_article(client, article)
+                    score = extract_score(evaluation)
+
+                    if score != 0:
+                        break
+
+                    print("最終評価を再実行します...")
+                    time.sleep(5)
 
                 print(f"最終スコア：{score}")
 
