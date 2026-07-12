@@ -132,11 +132,18 @@ def generate_and_send_line():
 
     theme, angle = get_theme_and_angle()
 
-    latest_info = get_latest_info(client, theme)
+    for _ in range(3):
+        try:
+            latest_info = get_latest_info(client, theme)
+            break
+        except Exception as e:
+            print(f"Google Searchを再試行します... {e}")
+            time.sleep(5)
+    else:
+        raise ValueError("最新情報を取得できませんでした")
 
     print("===== 最新情報 =====")
-    print(latest_info)
-    
+    print(latest_info)  
 
     prompt = (
         "noteに投稿する記事を1本執筆してください。\n"
