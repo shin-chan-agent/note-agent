@@ -365,7 +365,7 @@ def generate_and_send_line():
 
             print(latest_check)
 
-            if "NG" in latest_check:
+            if latest_check.strip().startswith("NG"):
                 print("最新情報との矛盾を修正します。")
 
                 response = client.models.generate_content(
