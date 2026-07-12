@@ -309,6 +309,13 @@ def generate_and_send_line():
                 print("固定記事案内欠落。再生成します。")
                 continue
 
+article_length = len(article)
+
+            # 文字数不足チェック
+            if article_length < 2000:
+                print("記事文字数不足。再生成します。")
+                continue
+
             # 評価だけリトライ
             for _ in range(3):
                 evaluation = evaluate_article(client, article)
