@@ -295,6 +295,10 @@ def generate_and_send_line():
 
             article = response.text
 
+            if not article.startswith("タイトル"):
+                print("タイトル欠落。再生成します。")
+                continue
+
             # 評価だけリトライ
             for _ in range(3):
                 evaluation = evaluate_article(client, article)
