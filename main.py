@@ -305,11 +305,14 @@ def generate_and_send_line():
                 continue
 
             # 固定記事案内チェック
-            if "AI×ショート動画で最速でマネタイズ" not in article:
+            if (
+                "AI×ショート動画で最速でマネタイズ" not in article
+                or "https://note.com/shin_chan_ai/n/n7bec364e6cd2" not in article
+            ):
                 print("固定記事案内欠落。再生成します。")
                 continue
 
-article_length = len(article)
+            article_length = len(article)
 
             # 文字数不足チェック
             if article_length < 2000:
