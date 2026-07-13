@@ -404,6 +404,32 @@ def generate_and_send_line():
                     duplicate_result
                 )
 
+                # リライト後の品質チェック
+                for _ in range(3):
+                    evaluation = quality_check(client, article)
+                    score = extract_score(evaluation)
+
+                    if score != 0:
+                        break
+
+                    print("評価のみ再実行します...")
+                    time.sleep(5)
+
+                 if score == 0:
+                     raise ValueError("評価結果からスコアを取得できませんでした")
+
+                print(f"重複リライト後スコア：{score}")
+
+
+                if score < MIN_SCORE:
+                    print("品質が低下したため品質リライトを実施します。")
+
+                    article = rewrite_article(
+                        client,
+                        article,
+                        latest_info,
+                        evaluation
+                    )
             else:
                 print("最大回数リライトしましたが、重複が解消されませんでした。")
 
