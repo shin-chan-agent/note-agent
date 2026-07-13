@@ -9,6 +9,9 @@ from theme_manager import get_theme_and_angle
 from quality_checker import quality_check
 from rewrite import rewrite_article
 from rewrite_latest_info import rewrite_latest_info
+from article_history import load_articles, save_article
+from duplicate_checker import check_duplicate
+
 
 def check_latest_info(client, latest_info, article):
     prompt = f"""
@@ -145,6 +148,8 @@ def generate_and_send_line():
     client = genai.Client()
 
     theme, angle = get_theme_and_angle()
+
+    past_articles = load_articles()
 
     for _ in range(3):
         try:
