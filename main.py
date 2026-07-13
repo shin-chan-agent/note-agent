@@ -379,6 +379,34 @@ def generate_and_send_line():
 
                 print(f"最終スコア：{score}")
 
+            MAX_DUPLICATE_REWRITE = 3
+
+            for i in range(MAX_DUPLICATE_REWRITE):
+
+                duplicate_result = check_duplicate(
+                    client,
+                    past_articles,
+                    article
+                )
+
+                print(duplicate_result)
+
+                if duplicate_result.strip().startswith("OK"):
+                    print("過去記事との重複はありません。")
+                    break
+
+                print(f"重複を検出しました。{i + 1}回目のリライトを実施します。")
+
+                article = rewrite_article(
+                    client,
+                    article,
+                    latest_info,
+                    duplicate_result
+                )
+
+            else:
+                print("最大回数リライトしましたが、重複が解消されませんでした。")
+
             break
 
         except Exception as e:
