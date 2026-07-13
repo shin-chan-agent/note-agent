@@ -519,7 +519,9 @@ def generate_and_send_line():
         response_line = requests.post(line_api_url, headers=headers, json=payload)
 
         if response_line.status_code == 200:
-            save_article(article.split("\n")[0], article)
+            title = article.split("\n")[0].replace("タイトル：", "").replace("タイトル:", "").strip()
+            save_article(title, article)
+
             print("記事履歴を保存しました。")
             print("Success: Message sent to LINE safely!")
 
