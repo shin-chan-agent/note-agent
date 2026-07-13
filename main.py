@@ -415,7 +415,7 @@ def generate_and_send_line():
                     print("評価のみ再実行します...")
                     time.sleep(5)
 
-                 if score == 0:
+                if score == 0:
                      raise ValueError("評価結果からスコアを取得できませんでした")
 
                 print(f"重複リライト後スコア：{score}")
