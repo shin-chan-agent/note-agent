@@ -430,6 +430,23 @@ def generate_and_send_line():
                         latest_info,
                         evaluation
                     )
+
+                # ←ここでもう一度評価
+                for _ in range(3):
+                    evaluation = quality_check(client, article)
+                    score = extract_score(evaluation)
+
+                    if score != 0:
+                        break
+
+                    print("評価のみ再実行します...")
+                    time.sleep(5)
+
+                if score == 0:
+                    raise ValueError("評価結果からスコアを取得できませんでした")
+
+                print(f"品質リライト後スコア：{score}")
+
             else:
                 print("最大回数リライトしましたが、重複が解消されませんでした。")
 
@@ -502,6 +519,8 @@ def generate_and_send_line():
         response_line = requests.post(line_api_url, headers=headers, json=payload)
 
         if response_line.status_code == 200:
+            save_article(article.split("\n")[0], article)
+            print("記事履歴を保存しました。")
             print("Success: Message sent to LINE safely!")
 
         else:
