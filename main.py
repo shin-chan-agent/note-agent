@@ -164,12 +164,23 @@ def generate_and_send_line():
     print("===== 最新情報 =====")
     print(latest_info)  
 
+    past_articles_text = "\n\n".join(
+        article["title"] for article in past_articles[-20:]
+)
+
     prompt = (
         "noteに投稿する記事を1本執筆してください。\n"
         "記事はMarkdown形式で出力してください。\n\n"
 
+        "【過去記事タイトル】\n"
+        f"{past_articles_text}\n\n"
+
+        "上記の過去記事とはタイトル・切り口・構成・具体例・まとめが似ない記事を作成してください。\n"
+        "同じ内容を言い換えただけの記事は禁止です。\n\n"
+
         "【最新情報】\n"
         f"{latest_info}\n\n"
+
         "上記はGoogle検索で取得した最新情報です。\n"
         "記事では必ずこの情報を優先してください。\n\n"
 
