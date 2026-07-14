@@ -6,11 +6,15 @@ import requests
 from google import genai
 from google.genai import types
 from theme_manager import get_theme_and_angle
+
 from quality_checker import quality_check
 from rewrite import rewrite_article
 from rewrite_latest_info import rewrite_latest_info
+
 from article_history import load_articles, save_article
 from duplicate_checker import check_duplicate
+
+from seo_checker import seo_check
 
 
 def check_latest_info(client, latest_info, article):
