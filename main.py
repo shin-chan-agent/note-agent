@@ -400,6 +400,9 @@ def generate_and_send_line():
             if score < MIN_SCORE:
                 print("最大回数リライトしましたが品質基準に届きませんでした。")
 
+            if seo_score < MIN_SEO_SCORE:
+                print("最大回数リライトしましたがSEO基準に届きませんでした。")
+
 
             latest_check = check_latest_info(client, latest_info, article)
 
@@ -426,6 +429,22 @@ def generate_and_send_line():
                     time.sleep(5)
 
                 print(f"最終スコア：{score}")
+
+                for _ in range(3):
+                    seo_result = seo_check(client, article)
+                    seo_score = extract_score(seo_result)
+
+                    if seo_score != 0:
+                        break
+
+                    print("SEO評価のみ再実行します...")
+                    time.sleep(5)
+
+                if seo_score == 0:
+                    raise ValueError("SEOスコアを取得できませんでした")
+
+                print(seo_result)
+                print(f"最終SEOスコア：{seo_score}")
 
             MAX_DUPLICATE_REWRITE = 3
 
@@ -510,9 +529,9 @@ def generate_and_send_line():
             time.sleep(30)
 
     status = (
-        "✅ 品質基準クリア"
-        if score >= MIN_SCORE
-        else "⚠️ 品質基準未達"
+        "✅ 品質・SEO基準クリア"
+        if score >= MIN_SCORE and seo_score >= MIN_SEO_SCORE
+        else "⚠️ 品質またはSEO基準未達"
     )
     
     # LINE公式アカウント（Messaging API）を使ってメッセージを送信
