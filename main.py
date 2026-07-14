@@ -487,8 +487,7 @@ def generate_and_send_line():
 
                 print(f"重複リライト後スコア：{score}")
 
-
-                if score < MIN_SCORE:
+                if score < MIN_SCORE or seo_score < MIN_SEO_SCORE:
                     print("品質が低下したため品質リライトを実施します。")
 
                     article = rewrite_article(
