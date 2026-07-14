@@ -514,6 +514,22 @@ def generate_and_send_line():
 
                 print(f"品質リライト後スコア：{score}")
 
+                for _ in range(3):
+                    seo_result = seo_check(client, article)
+                    seo_score = extract_score(seo_result)
+
+                    if seo_score != 0:
+                        break
+
+                    print("SEO評価のみ再実行します...")
+                    time.sleep(5)
+
+                if seo_score == 0:
+                    raise ValueError("SEOスコアを取得できませんでした")
+
+                print(seo_result)
+                print(f"SEOスコア：{seo_score}")
+
             else:
                 print("最大回数リライトしましたが、重複が解消されませんでした。")
 
