@@ -539,6 +539,53 @@ def generate_and_send_line():
             else:
                 print("最大回数リライトしましたが、重複が解消されませんでした。")
 
+            # 重複リライト後の最終最新情報チェック
+            latest_check = check_latest_info(client, latest_info, article)
+
+            print(latest_check)
+
+            if latest_check.strip().startswith("NG"):
+                print("重複リライト後に最新情報との矛盾を検出しました。修正します。")
+
+                article = rewrite_latest_info(
+                    client,
+                    article,
+                    latest_info,
+                    latest_check,
+                )
+
+                # 修正後に品質・SEOを再評価
+                for _ in range(3):
+                    evaluation = quality_check(client, article)
+                    score = extract_score(evaluation)
+
+                    if score != 0:
+                        break
+
+                    print("最終評価を再実行します...")
+                    time.sleep(5)
+
+                if score == 0:
+                    raise ValueError("評価結果からスコアを取得できませんでした")
+
+                print(f"最終スコア：{score}")
+
+            for _ in range(3):
+                seo_result = seo_check(client, article)
+                seo_score = extract_score(seo_result)
+
+                if seo_score != 0:
+                    break
+
+                print("SEO評価のみ再実行します...")
+                time.sleep(5)
+
+            if seo_score == 0:
+                raise ValueError("SEOスコアを取得できませんでした")
+
+            print(seo_result)
+            print(f"最終SEOスコア：{seo_score}")
+
             break
 
         except Exception as e:
