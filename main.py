@@ -271,6 +271,7 @@ def generate_and_send_line():
 
 
     MIN_SCORE = 92
+    MIN_SEO_SCORE = 90
     MAX_REWRITE = 3
 
     MAX_RETRY = 3
@@ -325,10 +326,16 @@ def generate_and_send_line():
 
             print(f"記事スコア：{score}")
 
+            seo_result = seo_check(client, article)
+            print(seo_result)
+
+            seo_score = extract_score(seo_result)
+            print(f"SEOスコア：{seo_score}")
+
             for rewrite in range(MAX_REWRITE):
 
-                if score >= MIN_SCORE:
-                    print("品質基準をクリアしました。")
+                if score >= MIN_SCORE and seo_score >= MIN_SEO_SCORE:
+                    print("品質・SEOともに基準をクリアしました。")
                     break
 
                 print(f"{rewrite + 1}回目のリライトを実施します。")
@@ -356,12 +363,18 @@ def generate_and_send_line():
 
                 print(f"リライト後スコア：{score}")
 
+                seo_result = seo_check(client, article)
+                print(seo_result)
+
+                seo_score = extract_score(seo_result)
+                print(f"SEOスコア：{seo_score}")
+
                 if re.search(r"改善点\s*[:：]?\s*なし", evaluation):
                     print("改善点がないためリライトを終了します。")
                     break
 
-                if score >= MIN_SCORE:
-                    print("品質基準をクリアしました。")
+                if score >= MIN_SCORE and seo_score >= MIN_SEO_SCORE:
+                    print("品質・SEOともに基準をクリアしました。")
                     break
 
             if score < MIN_SCORE:
