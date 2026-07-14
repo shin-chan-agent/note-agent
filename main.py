@@ -487,19 +487,22 @@ def generate_and_send_line():
 
                 print(f"重複リライト後スコア：{score}")
 
+
                 rewrite_prompt = evaluation
 
                 if seo_score < MIN_SEO_SCORE:
                     rewrite_prompt += "\n\n" + seo_result
 
-                    print("品質が低下したため品質リライトを実施します。")
+                if score < MIN_SCORE or seo_score < MIN_SEO_SCORE:
+                    print("品質またはSEOが低下したためリライトを実施します。")
 
                     article = rewrite_article(
-                        client,
-                        article,
-                        latest_info,
-                        evaluation
+                            client,
+                            article,
+                            latest_info,
+                            rewrite_prompt
                     )
+
 
                 # ←ここでもう一度評価
                 for _ in range(3):
