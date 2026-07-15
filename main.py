@@ -445,17 +445,14 @@ def generate_and_send_line():
 
                 rewrite_prompt = evaluation
 
-                if seo_score < MIN_SEO_SCORE:
-                    rewrite_prompt += "\n\n" + seo_result
-
                 if score < MIN_SCORE or seo_score < MIN_SEO_SCORE:
                     print("品質またはSEOが低下したためリライトを実施します。")
 
                     article = rewrite_article(
-                            client,
-                            article,
-                            latest_info,
-                            rewrite_prompt
+                        client,
+                        article,
+                        latest_info,
+                        rewrite_prompt
                     )
 
 
