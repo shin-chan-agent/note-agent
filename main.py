@@ -14,8 +14,6 @@ from rewrite_latest_info import rewrite_latest_info
 from article_history import load_articles, save_article
 from duplicate_checker import check_duplicate
 
-from seo_checker import seo_check
-
 
 def extract_score(text):
     m = re.search(r"SCORE\s*:\s*(\d+)", text, re.IGNORECASE)
