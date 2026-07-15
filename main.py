@@ -343,6 +343,8 @@ def generate_and_send_line():
             for _ in range(3):
                 evaluation = quality_check(client, article)
                 score = extract_score(evaluation)
+                seo_score = extract_seo_score(evaluation)
+                latest_result = extract_latest_result(evaluation)
 
                 if score != 0:
                     break
@@ -390,6 +392,8 @@ def generate_and_send_line():
                 for _ in range(3):
                     evaluation = quality_check(client, article)
                     score = extract_score(evaluation)
+                    seo_score = extract_seo_score(evaluation)
+                    latest_result = extract_latest_result(evaluation)
 
                     if score != 0:
                         break
@@ -450,6 +454,8 @@ def generate_and_send_line():
                 for _ in range(3):
                     evaluation = quality_check(client, article)
                     score = extract_score(evaluation)
+                    seo_score = extract_seo_score(evaluation)
+                    latest_result = extract_latest_result(evaluation)
 
                     if score != 0:
                         break
@@ -504,6 +510,8 @@ def generate_and_send_line():
                 for _ in range(3):
                     evaluation = quality_check(client, article)
                     score = extract_score(evaluation)
+                    seo_score = extract_seo_score(evaluation)
+                    latest_result = extract_latest_result(evaluation)
 
                     if score != 0:
                         break
@@ -537,6 +545,8 @@ def generate_and_send_line():
                 for _ in range(3):
                     evaluation = quality_check(client, article)
                     score = extract_score(evaluation)
+                    seo_score = extract_seo_score(evaluation)
+                    latest_result = extract_latest_result(evaluation)
 
                     if score != 0:
                         break
@@ -587,6 +597,8 @@ def generate_and_send_line():
                 for _ in range(3):
                     evaluation = quality_check(client, article)
                     score = extract_score(evaluation)
+                    seo_score = extract_seo_score(evaluation)
+                    latest_result = extract_latest_result(evaluation)
 
                     if score != 0:
                         break
