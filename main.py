@@ -357,21 +357,10 @@ def generate_and_send_line():
 
             print(f"記事スコア：{score}")
 
-            for _ in range(3):
-                seo_result = seo_check(client, article)
-                seo_score = extract_score(seo_result)
-
-                if seo_score != 0:
-                    break
-
-                print("SEO評価のみ再実行します...")
-                time.sleep(5)
-
-            if seo_score == 0:
-                raise ValueError("SEOスコアを取得できませんでした")
-
-            print(seo_result)
+            print(evaluation)
+            print(f"品質スコア：{score}")
             print(f"SEOスコア：{seo_score}")
+            print(f"最新情報：{latest_result}")
 
             for rewrite in range(MAX_REWRITE):
 
@@ -406,21 +395,10 @@ def generate_and_send_line():
 
                 print(f"リライト後スコア：{score}")
 
-                for _ in range(3):
-                    seo_result = seo_check(client, article)
-                    seo_score = extract_score(seo_result)
-
-                    if seo_score != 0:
-                        break
-
-                    print("SEO評価のみ再実行します...")
-                    time.sleep(5)
-
-                if seo_score == 0:
-                    raise ValueError("SEOスコアを取得できませんでした")
-
-                print(seo_result)
+                print(evaluation)
+                print(f"品質スコア：{score}")
                 print(f"SEOスコア：{seo_score}")
+                print(f"最新情報：{latest_result}")
 
                 if re.search(r"改善点\s*[:：]?\s*なし", evaluation):
                     print("改善点がないためリライトを終了します。")
@@ -465,21 +443,10 @@ def generate_and_send_line():
 
                 print(f"最終スコア：{score}")
 
-                for _ in range(3):
-                    seo_result = seo_check(client, article)
-                    seo_score = extract_score(seo_result)
-
-                    if seo_score != 0:
-                        break
-
-                    print("SEO評価のみ再実行します...")
-                    time.sleep(5)
-
-                if seo_score == 0:
-                    raise ValueError("SEOスコアを取得できませんでした")
-
-                print(seo_result)
-                print(f"最終SEOスコア：{seo_score}")
+                print(evaluation)
+                print(f"品質スコア：{score}")
+                print(f"SEOスコア：{seo_score}")
+                print(f"最新情報：{latest_result}")
 
             MAX_DUPLICATE_REWRITE = 3
 
@@ -559,21 +526,10 @@ def generate_and_send_line():
 
                 print(f"品質リライト後スコア：{score}")
 
-                for _ in range(3):
-                    seo_result = seo_check(client, article)
-                    seo_score = extract_score(seo_result)
-
-                    if seo_score != 0:
-                        break
-
-                    print("SEO評価のみ再実行します...")
-                    time.sleep(5)
-
-                if seo_score == 0:
-                    raise ValueError("SEOスコアを取得できませんでした")
-
-                print(seo_result)
+                print(evaluation)
+                print(f"品質スコア：{score}")
                 print(f"SEOスコア：{seo_score}")
+                print(f"最新情報：{latest_result}")
 
             else:
                 print("最大回数リライトしましたが、重複が解消されませんでした。")
@@ -611,21 +567,10 @@ def generate_and_send_line():
 
                 print(f"最終スコア：{score}")
 
-            for _ in range(3):
-                seo_result = seo_check(client, article)
-                seo_score = extract_score(seo_result)
-
-                if seo_score != 0:
-                    break
-
-                print("SEO評価のみ再実行します...")
-                time.sleep(5)
-
-            if seo_score == 0:
-                raise ValueError("SEOスコアを取得できませんでした")
-
-            print(seo_result)
-            print(f"最終SEOスコア：{seo_score}")
+                print(evaluation)
+                print(f"品質スコア：{score}")
+                print(f"SEOスコア：{seo_score}")
+                print(f"最新情報：{latest_result}")
 
             break
 
