@@ -1,4 +1,5 @@
 from google import genai
+from google.genai import types
 
 def quality_check(client, article):
     prompt = f"""
@@ -31,6 +32,9 @@ SCORE:○○
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,
+        config=types.GenerateContentConfig(
+        tools=[types.Tool(google_search=types.GoogleSearch())]
+        )
     )
 
     return response.text
