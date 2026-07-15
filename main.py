@@ -506,7 +506,7 @@ def generate_and_send_line():
                     )
 
 
-                # ←ここでもう一度評価
+                # ここでもう一度評価
                 for _ in range(3):
                     evaluation = quality_check(client, article)
                     score = extract_score(evaluation)
@@ -533,18 +533,16 @@ def generate_and_send_line():
                 print("最大回数リライトしましたが、重複が解消されませんでした。")
 
             # 重複リライト後の最終最新情報チェック
-            latest_check = check_latest_info(client, latest_info, article)
+            print(f"最新情報：{latest_result}")
 
-            print(latest_check)
-
-            if latest_check.strip().startswith("NG"):
+            if latest_result == "NG":
                 print("重複リライト後に最新情報との矛盾を検出しました。修正します。")
 
                 article = rewrite_latest_info(
                     client,
                     article,
                     latest_info,
-                    latest_check,
+                    evaluation,
                 )
 
                 # 修正後に品質・SEOを再評価
