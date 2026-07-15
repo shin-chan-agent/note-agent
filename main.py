@@ -415,18 +415,16 @@ def generate_and_send_line():
                 print("最大回数リライトしましたがSEO基準に届きませんでした。")
 
 
-            latest_check = check_latest_info(client, latest_info, article)
+            print(f"最新情報：{latest_result}")
 
-            print(latest_check)
-
-            if latest_check.strip().startswith("NG"):
+            if latest_result == "NG":
                 print("最新情報との矛盾を修正します。")
 
                 article = rewrite_latest_info(
                     client,
                     article,
                     latest_info,
-                    latest_check,
+                    evaluation,
                 )
 
                 for _ in range(3):
