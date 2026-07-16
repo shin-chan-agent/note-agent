@@ -299,7 +299,11 @@ def generate_and_send_line():
 
             # 評価だけリトライ
             for _ in range(3):
-                evaluation = quality_check(client, article)
+                evaluation = quality_check(
+                    client,
+                    article,
+                    past_articles_text,
+                )
                 score = extract_score(evaluation)
                 seo_score = extract_seo_score(evaluation)
                 latest_result = extract_latest_result(evaluation)
@@ -337,7 +341,11 @@ def generate_and_send_line():
 
                 # 評価だけリトライ
                 for _ in range(3):
-                    evaluation = quality_check(client, article)
+                    evaluation = quality_check(
+                        client,
+                        article,
+                        past_articles_text,
+                    )
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
@@ -386,7 +394,11 @@ def generate_and_send_line():
                 )
 
                 for _ in range(3):
-                    evaluation = quality_check(client, article)
+                    evaluation = quality_check(
+                        client,
+                        article,
+                        past_articles_text,
+                    )
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
@@ -431,7 +443,11 @@ def generate_and_send_line():
 
                 # リライト後の品質チェック
                 for _ in range(3):
-                    evaluation = quality_check(client, article)
+                    evaluation = quality_check(
+                        client,
+                        article,
+                        past_articles_text,
+                    )
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
@@ -463,7 +479,11 @@ def generate_and_send_line():
 
                 # ここでもう一度評価
                 for _ in range(3):
-                    evaluation = quality_check(client, article)
+                    evaluation = quality_check(
+                        client,
+                        article,
+                        past_articles_text,
+                    )
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
@@ -503,6 +523,11 @@ def generate_and_send_line():
                 # 修正後に品質・SEOを再評価
                 for _ in range(3):
                     evaluation = quality_check(client, article)
+                    evaluation = quality_check(
+                        client,
+                        article,
+                        past_articles_text,
+                    )
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
