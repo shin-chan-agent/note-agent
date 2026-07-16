@@ -420,11 +420,7 @@ def generate_and_send_line():
 
             for i in range(MAX_DUPLICATE_REWRITE):
 
-                duplicate_result = check_duplicate(
-                    client,
-                    past_articles,
-                    article
-                )
+                duplicate_result = extract_duplicate_result(evaluation)
 
                 print(duplicate_result)
 
