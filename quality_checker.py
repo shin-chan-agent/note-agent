@@ -15,7 +15,7 @@ def quality_check(client, article, past_articles):
 
 ---
 
-【過去記事タイトル】
+【過去記事】
 
 {past_articles}
 
@@ -23,11 +23,12 @@ def quality_check(client, article, past_articles):
 
 【重複チェック】
 
-上記の過去記事タイトルと比較し、
+上記の過去記事と比較し、
 
 ・テーマ
 ・切り口
 ・構成
+・タイトル
 ・見出し
 ・具体例
 ・まとめ
@@ -96,8 +97,9 @@ Google Searchで最新情報を確認し、
 必ず以下の形式で出力してください。
 
 SCORE:95
-SEO:93
+SEO:92
 LATEST:OK
+DUPLICATE:OK
 
 改善点
 ・○○
