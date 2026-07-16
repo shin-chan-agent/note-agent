@@ -522,7 +522,6 @@ def generate_and_send_line():
 
                 # 修正後に品質・SEOを再評価
                 for _ in range(3):
-                    evaluation = quality_check(client, article)
                     evaluation = quality_check(
                         client,
                         article,
