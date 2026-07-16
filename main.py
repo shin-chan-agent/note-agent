@@ -34,6 +34,11 @@ def extract_latest_result(text):
     return m.group(1).upper() if m else "NG"
 
 
+def extract_duplicate_result(text):
+    m = re.search(r"DUPLICATE\s*:\s*(OK|NG)", text, re.IGNORECASE)
+    return m.group(1).upper() if m else "NG"
+
+
 def get_search_query(theme):
     if "ChatGPT" in theme:
         return "ChatGPT 最新 GPT-5 無料版 Plus Pro Teams Enterprise 料金 機能"
