@@ -307,6 +307,7 @@ def generate_and_send_line():
                 score = extract_score(evaluation)
                 seo_score = extract_seo_score(evaluation)
                 latest_result = extract_latest_result(evaluation)
+                duplicate_result = extract_duplicate_result(evaluation)
 
                 if score != 0:
                     break
@@ -349,6 +350,7 @@ def generate_and_send_line():
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
+                    duplicate_result = extract_duplicate_result(evaluation)
 
                     if score != 0:
                         break
@@ -402,6 +404,7 @@ def generate_and_send_line():
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
+                    duplicate_result = extract_duplicate_result(evaluation)
 
                     if score != 0:
                         break
@@ -447,6 +450,7 @@ def generate_and_send_line():
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
+                    duplicate_result = extract_duplicate_result(evaluation)
 
                     if score != 0:
                         break
@@ -483,6 +487,7 @@ def generate_and_send_line():
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
+                    duplicate_result = extract_duplicate_result(evaluation)
 
                     if score != 0:
                         break
@@ -526,6 +531,7 @@ def generate_and_send_line():
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
                     latest_result = extract_latest_result(evaluation)
+                    duplicate_result = extract_duplicate_result(evaluation)
 
                     if score != 0:
                         break
