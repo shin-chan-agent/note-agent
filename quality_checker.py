@@ -96,10 +96,10 @@ Google Searchで最新情報を確認し、
 
 必ず以下の形式で出力してください。
 
-SCORE:95
-SEO:92
-LATEST:OK
-DUPLICATE:OK
+SCORE:◯◯
+SEO:◯◯
+LATEST:OK または NG
+DUPLICATE:OK  または　NG
 
 改善点
 ・○○
