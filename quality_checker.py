@@ -118,6 +118,11 @@ LATEST:NG
 改善点なし
 
 とだけ書いてください。
+
+DUPLICATE:NG の場合は、
+
+どの記事と、どこが重複しているのかを
+改善点へ具体的に記載してください。
 """
 
     response = client.models.generate_content(
