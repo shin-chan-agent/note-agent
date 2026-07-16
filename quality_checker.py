@@ -1,6 +1,6 @@
 from google.genai import types
 
-def quality_check(client, article):
+def quality_check(client, article, past_articles):
     prompt = f"""
 以下の記事を総合評価してください。
 
