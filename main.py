@@ -696,6 +696,16 @@ def generate_and_send_line():
 {evaluation}
 """
 
+    x_message = f"""🐦【X投稿】
+
+{x_post}
+"""
+
+    instagram_message = f"""📸【Instagram投稿】
+
+{instagram_post}
+"""
+
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}"
@@ -703,6 +713,7 @@ def generate_and_send_line():
     
    
     messages = []
+
 
     for part in split_text(article_message):
         messages.append({
@@ -713,6 +724,16 @@ def generate_and_send_line():
     messages.append({
         "type": "text",
         "text": evaluation_message
+    })
+
+    messages.append({
+        "type": "text",
+        "text": x_message
+    })
+
+    messages.append({
+        "type": "text",
+        "text": instagram_message
     })
 
     payload = {
