@@ -15,6 +15,7 @@ from article_history import load_articles, save_article
 from duplicate_checker import check_duplicate
 
 from content.sns.prompt import get_x_prompt, get_instagram_prompt
+from content.sns.generator import (generate_x_post,generate_instagram_post,)
 
 
 def extract_score(text):
