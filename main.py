@@ -378,13 +378,10 @@ def generate_and_send_line():
             # 固定記事案内チェック
             fixed_text = (
                 "AI×ショート動画で最速でマネタイズ（収益化）する具体的な手順と、"
-                "豪華40大特典の受け取り方は、下記の固定記事で詳しく解説しています。"
+                "豪華40大特典の受け取り方を下記の固定記事で詳しく解説しています。"
             )
 
-            if (
-                fixed_text not in article
-                or "https://note.com/shin_chan_ai/n/n7bec364e6cd2" not in article
-):
+            if fixed_text not in article:
                 print("固定記事案内欠落。再生成します。")
                 continue
 
