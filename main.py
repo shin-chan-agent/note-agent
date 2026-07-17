@@ -619,6 +619,9 @@ def generate_and_send_line():
                     evaluation,
                 )
 
+                x_post = generate_x_post(client, article)
+                instagram_post = generate_instagram_post(client, article)
+
                 # 修正後に品質・SEOを再評価
                 for _ in range(3):
                     evaluation = quality_check(
