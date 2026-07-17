@@ -107,9 +107,105 @@ def get_latest_info(client, theme):
 
 
 def split_text(text, max_length=4800):
+    # タイトル・導入文を取得
+    match = re.search(r"(.*?)(?=\n### |\n## |\Z)", text, re.DOTALL)
+
+    if match:
+        header = match.group(1).strip()
+        body = text[len(match.group(1)):].strip()
+    else:
+        header = ""
+        body = text
+
+    # H3単位で分割
+    sections = re.split(r"(?=\n### )", body)
+
+    parts = []
+    current = header
+
+    for section in sections:
+
+        section = section.strip()
+
+        if not section:
+            continue
+
+        # 入るなら追加
+        if len(current) + len(section) + 2 <= max_length:
+
+            if current:
+                current += "\n\n"
+
+            current += section
+            continue
+
+        # 一旦保存
+        if current:
+            parts.append(current)
+
+        # H3単体が長すぎる場合
+        if len(section) > max_length:
+
+            current = ""
+
+            paragraphs = section.split("\n\n")
+
+            for paragraph in paragraphs:
+
+                if len(current) + len(paragraph) + 2 <= max_length:
+
+                    if current:
+                        current += "\n\n"
+
+                    current += paragraph
+
+                else:
+
+                    if current:
+                        parts.append(current)
+
+                    # 段落でも長い場合
+                    if len(paragraph) > max_length:
+
+                        current = ""
+
+                        lines = paragraph.split("\n")
+
+                        for line in lines:
+
+                            if len(current) + len(line) + 1 <= max_length:
+
+                                if current:
+                                    current += "\n"
+
+                                current += line
+
+                            else:
+
+                                if current:
+                                    parts.append(current)
+
+                                while len(line) > max_length:
+                                    parts.append(line[:max_length])
+                                    line = line[max_length:]
+
+                                current = line
+
+                    else:
+                        current = paragraph
+
+        else:
+            current = section
+
+    if current:
+        parts.append(current)
+
+    # 【1/○】を付与
+    total = len(parts)
+
     return [
-        text[i:i + max_length]
-        for i in range(0, len(text), max_length)
+        f"【{i + 1}/{total}】\n\n{part}"
+        for i, part in enumerate(parts)
     ]
 
 
