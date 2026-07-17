@@ -622,6 +622,12 @@ def generate_and_send_line():
                 x_post = generate_x_post(client, article)
                 instagram_post = generate_instagram_post(client, article)
 
+                print("===== X投稿 =====")
+                print(x_post)
+
+                print("===== Instagram投稿 =====")
+                print(instagram_post)
+
                 # 修正後に品質・SEOを再評価
                 for _ in range(3):
                     evaluation = quality_check(
