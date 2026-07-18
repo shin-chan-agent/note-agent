@@ -1,8 +1,15 @@
-def get_x_prompt(article):
+def get_sns_prompt(article):
     return f"""
-以下の記事をもとに、X（旧Twitter）の投稿文を作成してください。
+以下の記事をもとに、X（旧Twitter）投稿とInstagram投稿を作成してください。
 
-【ルール】
+【出力形式】
+【X】
+（ここにX投稿）
+
+【Instagram】
+（ここにInstagram投稿）
+
+【Xのルール】
 ・140文字以内
 ・1投稿で完結
 ・最初の1文で興味を引く
@@ -11,20 +18,10 @@ def get_x_prompt(article):
 ・絵文字は0〜2個まで
 ・ハッシュタグは2個以内
 ・過度に煽らない
-・「続きはこちら」「詳しくは記事で」のような自然なCTAを最後に入れる
+・最後に自然なCTAを入れる
 ・URLは入れない
 
-記事
-
-{article}
-"""
-
-
-def get_instagram_prompt(article):
-    return f"""
-以下の記事をもとに、Instagram投稿文を作成してください。
-
-【ルール】
+【Instagramのルール】
 ・読みやすく改行する
 ・最初の1〜2行で興味を引く
 ・記事の内容を要約する
@@ -32,7 +29,7 @@ def get_instagram_prompt(article):
 ・ハッシュタグは5〜10個
 ・URLは入れない
 
-記事
+【記事】
 
 {article}
 """
