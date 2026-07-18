@@ -574,20 +574,22 @@ def generate_and_send_line():
 {article}
 """
 
-    evaluation_message = f"""📊【AI評価】
+    summary_message = f"""📊【AI評価】
 
-{evaluation}
-"""
+    {evaluation}
 
-    x_message = f"""🐦【X投稿】
+    --------------------
 
-{x_post}
-"""
+    🐦【X投稿】
 
-    instagram_message = f"""📸【Instagram投稿】
+    {x_post}
 
-{instagram_post}
-"""
+    --------------------
+
+    📸【Instagram投稿】
+
+    {instagram_post}
+    """
 
     headers = {
         "Content-Type": "application/json",
