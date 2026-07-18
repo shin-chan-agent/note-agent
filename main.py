@@ -422,8 +422,13 @@ def generate_and_send_line():
 
             for rewrite in range(MAX_REWRITE):
 
-                if score >= MIN_SCORE and seo_score >= MIN_SEO_SCORE:
-                    print("品質・SEOともに基準をクリアしました。")
+                if (
+                    score >= MIN_SCORE
+                    and seo_score >= MIN_SEO_SCORE
+                    and latest_result == "OK"
+                    and duplicate_result == "OK"
+                ):
+                    print("すべての品質基準をクリアしました。")
                     break
 
                 print(f"{rewrite + 1}回目のリライトを実施します。")
@@ -467,8 +472,13 @@ def generate_and_send_line():
                     print("改善点がないためリライトを終了します。")
                     break
 
-                if score >= MIN_SCORE and seo_score >= MIN_SEO_SCORE:
-                    print("品質・SEOともに基準をクリアしました。")
+                if (
+                    score >= MIN_SCORE
+                    and seo_score >= MIN_SEO_SCORE
+                    and latest_result == "OK"
+                    and duplicate_result == "OK"
+                ):
+                    print("すべての品質基準をクリアしました。")
                     break
 
             if score < MIN_SCORE:
@@ -477,42 +487,7 @@ def generate_and_send_line():
             if seo_score < MIN_SEO_SCORE:
                 print("最大回数リライトしましたがSEO基準に届きませんでした。")
 
-
             print(f"最新情報：{latest_result}")
-
-            if latest_result == "NG":
-                print("最新情報との矛盾を修正します。")
-
-                article = rewrite_latest_info(
-                    client,
-                    article,
-                    latest_info,
-                    evaluation,
-                )
-
-                for _ in range(3):
-                    evaluation = quality_check(
-                        client,
-                        article,
-                        past_articles_text,
-                    )
-                    score = extract_score(evaluation)
-                    seo_score = extract_seo_score(evaluation)
-                    latest_result = extract_latest_result(evaluation)
-                    duplicate_result = extract_duplicate_result(evaluation)
-
-                    if score != 0:
-                        break
-
-                    print("最終評価を再実行します...")
-                    time.sleep(5)
-
-                print(f"最終スコア：{score}")
-
-                print(evaluation)
-                print(f"品質スコア：{score}")
-                print(f"SEOスコア：{seo_score}")
-                print(f"最新情報：{latest_result}")
 
             MAX_DUPLICATE_REWRITE = 3
 
