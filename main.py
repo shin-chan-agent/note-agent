@@ -608,17 +608,7 @@ def generate_and_send_line():
 
     messages.append({
         "type": "text",
-        "text": evaluation_message
-    })
-
-    messages.append({
-        "type": "text",
-        "text": x_message
-    })
-
-    messages.append({
-        "type": "text",
-        "text": instagram_message
+        "text": summary_message
     })
 
     payload = {
