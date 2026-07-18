@@ -1,26 +1,23 @@
-from content.sns.prompt import (
-    get_x_prompt,
-    get_instagram_prompt,
-)
+from content.sns.prompt import get_sns_prompt
 
 
-def generate_x_post(client, article):
-    prompt = get_x_prompt(article)
+def generate_sns_posts(client, article):
+    prompt = get_sns_prompt(article)
 
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,
     )
 
-    return response.text.strip()
+    text = response.text.strip()
 
+    x_post = ""
+    instagram_post = ""
 
-def generate_instagram_post(client, article):
-    prompt = get_instagram_prompt(article)
+    if "【Instagram】" in text:
+        x_part, instagram_part = text.split("【Instagram】", 1)
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-    )
+        x_post = x_part.replace("【X】", "").strip()
+        instagram_post = instagram_part.strip()
 
-    return response.text.strip()
+    return x_post, instagram_post
