@@ -530,8 +530,10 @@ def generate_and_send_line():
                 print(f"SEOスコア：{seo_score}")
                 print(f"最新情報：{latest_result}")
 
-            x_post = generate_x_post(client, article)
-            instagram_post = generate_instagram_post(client, article)
+            x_post, instagram_post = generate_sns_posts(
+                client,
+                article,
+            )
 
             print("===== X投稿 =====")
             print(x_post)
