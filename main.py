@@ -481,105 +481,16 @@ def generate_and_send_line():
                     print("すべての品質基準をクリアしました。")
                     break
 
+
             if score < MIN_SCORE:
                 print("最大回数リライトしましたが品質基準に届きませんでした。")
+
 
             if seo_score < MIN_SEO_SCORE:
                 print("最大回数リライトしましたがSEO基準に届きませんでした。")
 
             print(f"最新情報：{latest_result}")
 
-            MAX_DUPLICATE_REWRITE = 3
-
-            for i in range(MAX_DUPLICATE_REWRITE):
-
-                duplicate_result = extract_duplicate_result(evaluation)
-
-                print(duplicate_result)
-
-                if duplicate_result.strip().startswith("OK"):
-                    print("過去記事との重複はありません。")
-                    break
-
-                print(f"重複を検出しました。{i + 1}回目のリライトを実施します。")
-
-                article = rewrite_article(
-                    client,
-                    article,
-                    latest_info,
-                    duplicate_result
-                )
-
-                # リライト後の品質チェック
-                for _ in range(3):
-                    evaluation = quality_check(
-                        client,
-                        article,
-                        past_articles_text,
-                    )
-                    score = extract_score(evaluation)
-                    seo_score = extract_seo_score(evaluation)
-                    latest_result = extract_latest_result(evaluation)
-                    duplicate_result = extract_duplicate_result(evaluation)
-
-                    if score != 0:
-                        break
-
-                    print("評価のみ再実行します...")
-                    time.sleep(5)
-
-                if score == 0:
-                     raise ValueError("評価結果からスコアを取得できませんでした")
-
-                print(f"重複リライト後スコア：{score}")
-
-
-                rewrite_prompt = evaluation
-
-                if score < MIN_SCORE or seo_score < MIN_SEO_SCORE:
-                    print("品質またはSEOが低下したためリライトを実施します。")
-
-                    article = rewrite_article(
-                        client,
-                        article,
-                        latest_info,
-                        rewrite_prompt
-                    )
-
-
-                # ここでもう一度評価
-                for _ in range(3):
-                    evaluation = quality_check(
-                        client,
-                        article,
-                        past_articles_text,
-                    )
-                    score = extract_score(evaluation)
-                    seo_score = extract_seo_score(evaluation)
-                    latest_result = extract_latest_result(evaluation)
-                    duplicate_result = extract_duplicate_result(evaluation)
-
-                    if score != 0:
-                        break
-
-                    print("評価のみ再実行します...")
-                    time.sleep(5)
-
-                if score == 0:
-                    raise ValueError("評価結果からスコアを取得できませんでした")
-
-                print(f"品質リライト後スコア：{score}")
-
-                print(evaluation)
-                print(f"品質スコア：{score}")
-                print(f"SEOスコア：{seo_score}")
-                print(f"最新情報：{latest_result}")
-
-            else:
-                print("最大回数リライトしましたが、重複が解消されませんでした。")
-
-            # 重複リライト後の最終最新情報チェック
-            print(f"最新情報：{latest_result}")
 
             if latest_result == "NG":
                 print("重複リライト後に最新情報との矛盾を検出しました。修正します。")
