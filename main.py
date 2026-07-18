@@ -8,6 +8,8 @@ from google.genai import types
 from theme_manager import get_theme_and_angle
 
 from quality_checker import quality_check
+from latest_checker import latest_check
+
 from rewrite import rewrite_article
 from rewrite_latest_info import rewrite_latest_info
 
