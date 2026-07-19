@@ -11,7 +11,6 @@ from quality_checker import quality_check
 from latest_checker import latest_check
 
 from rewrite import rewrite_article
-from rewrite_latest_info import rewrite_latest_info
 
 from article_history import load_articles, save_article
 
