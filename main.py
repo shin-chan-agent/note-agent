@@ -507,55 +507,6 @@ def generate_and_send_line():
             if seo_score < MIN_SEO_SCORE:
                 print("最大回数リライトしましたがSEO基準に届きませんでした。")
 
-            print(f"最新情報：{latest_result}")
-
-
-            if latest_result == "NG":
-                print("重複リライト後に最新情報との矛盾を検出しました。修正します。")
-
-                article = rewrite_latest_info(
-                    client,
-                    article,
-                    latest_info,
-                    evaluation,
-                )
-
-                # 修正後に品質・SEOを再評価
-                for _ in range(3):
-
-                    evaluation = quality_check(
-                        client,
-                        article,
-                        past_articles_text,
-                    )
-
-                    latest_evaluation = latest_check(
-                        client,
-                        article,
-                    )
-
-                    score = extract_score(evaluation)
-                    seo_score = extract_seo_score(evaluation)
-                    duplicate_result = extract_duplicate_result(evaluation)
-
-                    latest_result = extract_latest_result(latest_evaluation)
-
-                    if score != 0:
-                        break
-
-                    print("最終評価を再実行します...")
-                    time.sleep(5)
-
-                if score == 0:
-                    raise ValueError("評価結果からスコアを取得できませんでした")
-
-                print(f"最終スコア：{score}")
-
-                print(evaluation)
-                print(f"品質スコア：{score}")
-                print(f"SEOスコア：{seo_score}")
-                print(f"最新情報：{latest_result}")
-
             x_post, instagram_post = generate_sns_posts(
                 client,
                 article,
