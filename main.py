@@ -441,11 +441,16 @@ def generate_and_send_line():
 
                 print(f"{rewrite + 1}回目のリライトを実施します。")
 
+                rewrite_prompt = evaluation
+
+                if latest_result == "NG":
+                    rewrite_prompt += "\n\n" + latest_evaluation
+
                 article = rewrite_article(
                     client,
                     article,
                     latest_info,
-                    evaluation,
+                    rewrite_prompt,
                 )
 
                 # 評価だけリトライ
