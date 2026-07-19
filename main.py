@@ -521,15 +521,23 @@ latest_result = extract_latest_result(latest_evaluation)         client,
 
                 # 修正後に品質・SEOを再評価
                 for _ in range(3):
+
                     evaluation = quality_check(
                         client,
                         article,
                         past_articles_text,
                     )
+
+                    latest_evaluation = latest_check(
+                        client,
+                        article,
+                    )
+
                     score = extract_score(evaluation)
                     seo_score = extract_seo_score(evaluation)
-                    latest_result = extract_latest_result(evaluation)
                     duplicate_result = extract_duplicate_result(evaluation)
+
+                    latest_result = extract_latest_result(latest_evaluation)
 
                     if score != 0:
                         break
