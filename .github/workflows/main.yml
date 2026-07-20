@@ -24,7 +24,7 @@ jobs:
       - name: Debug files
         run: |
           pwd
-          ls -la
+          ls -lb
 
       # 💡 2026年最新の v5 にアップグレード！
       - name: Set up Python
