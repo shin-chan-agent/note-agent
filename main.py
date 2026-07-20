@@ -41,6 +41,19 @@ def extract_duplicate_result(text):
     return m.group(1).upper() if m else "NG"
 
 
+def extract_improvements(text):
+    m = re.search(
+        r"改善点\s*[:：]?\s*(.*)",
+        text,
+        re.DOTALL,
+    )
+
+    if m:
+        return m.group(1).strip()
+
+    return ""
+
+
 def get_search_query(theme):
     if "ChatGPT" in theme:
         return "ChatGPT 最新 GPT-5 無料版 Plus Pro Teams Enterprise 料金 機能"
