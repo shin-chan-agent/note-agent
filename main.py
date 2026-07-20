@@ -452,10 +452,13 @@ def generate_and_send_line():
 
                 print(f"{rewrite + 1}回目のリライトを実施します。")
 
-                rewrite_prompt = evaluation
+                rewrite_prompt = extract_improvements(evaluation)
 
                 if latest_result == "NG":
-                    rewrite_prompt += "\n\n" + latest_evaluation
+                    latest_improvements =  extract_improvements(latest_evaluation)
+
+                    if latest_improvements:
+                        rewrite_prompt += "\n\n" + latest_improvements
 
                 article = rewrite_article(
                     client,
