@@ -23,7 +23,7 @@ def quality_check(client, article, past_articles):
 ・独自性
 ・初心者への分かりやすさ
 ・具体性
-・情報の正確性
+・論理性
 
 合計100点満点で評価してください。
 
