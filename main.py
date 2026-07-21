@@ -452,7 +452,9 @@ def generate_and_send_line():
 
                 print(f"{rewrite + 1}回目のリライトを実施します。")
 
-                rewrite_prompt = extract_improvements(evaluation)
+                if not rewrite_prompt.strip():
+                    print("改善指示がないためリライトを終了します。")
+                    break
 
                 if latest_result == "NG":
                     latest_improvements =  extract_improvements(latest_evaluation)
@@ -502,7 +504,11 @@ def generate_and_send_line():
                 print(f"SEOスコア：{seo_score}")
                 print(f"最新情報：{latest_result}")
 
-                if re.search(r"改善点\s*[:：]?\s*なし", evaluation):
+                if (
+                    re.search(r"改善点\s*[:：]?\s*なし", evaluation)
+                    and latest_result == "OK"
+                    and duplicate_result == "OK"
+                ):
                     print("改善点がないためリライトを終了します。")
                     break
 
@@ -546,9 +552,14 @@ def generate_and_send_line():
             time.sleep(30)
 
     status = (
-        "✅ 品質・SEO基準クリア"
-        if score >= MIN_SCORE and seo_score >= MIN_SEO_SCORE
-        else "⚠️ 品質またはSEO基準未達"
+        "✅ 全品質基準クリア"
+        if (
+            score >= MIN_SCORE
+            and seo_score >= MIN_SEO_SCORE
+            and latest_result == "OK"
+            and duplicate_result == "OK"
+        )
+        else "⚠️ 品質基準未達"
     )
     
     # LINE公式アカウント（Messaging API）を使ってメッセージを送信
