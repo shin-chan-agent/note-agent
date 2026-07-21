@@ -7,10 +7,11 @@ def quality_check(client, article, past_articles):
 【記事】
 {article}
 
-以下の2項目を評価してください。
+以下の3項目を評価してください。
 
-①品質（100点満点）
-②SEO（100点満点）
+①品質
+②SEO
+③過去記事との重複
 
 ---
 
