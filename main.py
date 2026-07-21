@@ -473,12 +473,6 @@ def generate_and_send_line():
                     rewrite_prompt,
                 )
 
-                if latest_result == "NG":
-                    latest_improvements =  extract_improvements(latest_evaluation)
-
-                    if latest_improvements:
-                        rewrite_prompt += "\n\n" + latest_improvements
-
 
                 # 評価だけリトライ
                 for _ in range(3):
