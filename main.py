@@ -450,11 +450,28 @@ def generate_and_send_line():
                     print("すべての品質基準をクリアしました。")
                     break
 
+
                 print(f"{rewrite + 1}回目のリライトを実施します。")
 
+                rewrite_prompt = extract_improvements(evaluation)
+
+                if latest_result == "NG":
+                    latest_improvements = extract_improvements(latest_evaluation)
+
+                    if latest_improvements:
+                        if rewrite_prompt:
+                        rewrite_prompt += "\n\n"
+                    rewrite_prompt += latest_improvements
                 if not rewrite_prompt.strip():
                     print("改善指示がないためリライトを終了します。")
                     break
+
+                article = rewrite_article(
+                    client,
+                    article,
+                    latest_info,
+                    rewrite_prompt,
+                )
 
                 if latest_result == "NG":
                     latest_improvements =  extract_improvements(latest_evaluation)
