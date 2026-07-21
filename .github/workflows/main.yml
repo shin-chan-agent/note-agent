@@ -23,8 +23,6 @@ jobs:
 
       - name: Debug files
         run: |
-          pwd
-          ls -lb
 
       # 💡 2026年最新の v5 にアップグレード！
       - name: Set up Python
@@ -44,9 +42,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
-        run: |
-          python -c "import os; print(os.getcwd()); print(os.listdir())"
-          python main.py
+        run: python main.py
      
 
       - name: Commit history
