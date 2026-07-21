@@ -461,7 +461,7 @@ def generate_and_send_line():
                     if latest_improvements:
                         if rewrite_prompt:
                             rewrite_prompt += "\n\n"
-                    rewrite_prompt += latest_improvements
+                        rewrite_prompt += latest_improvements
                 if not rewrite_prompt.strip():
                     print("改善指示がないためリライトを終了します。")
                     break
