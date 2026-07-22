@@ -28,3 +28,10 @@ def send_line_messages(messages):
         )
 
     return response
+
+
+def create_text_message(text):
+    return {
+        "type": "text",
+        "text": text,
+    }
