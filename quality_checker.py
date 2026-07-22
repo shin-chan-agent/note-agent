@@ -3,7 +3,13 @@ from google.genai import types
 from utils.gemini_client import call_gemini
 
 
-def quality_check(client, article, past_articles):
+def quality_check(
+    client,
+    article,
+    past_articles,
+    latest_info,
+):
+
     prompt = f"""
 以下の記事を総合評価してください。
 
