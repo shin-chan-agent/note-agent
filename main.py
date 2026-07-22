@@ -16,6 +16,8 @@ from article_history import load_articles, save_article
 
 from content.sns.generator import generate_sns_posts
 
+from utils.gemini_client import call_gemini
+
 
 def extract_score(text):
     m = re.search(r"SCORE\s*:\s*(\d+)", text, re.IGNORECASE)
@@ -110,12 +112,13 @@ def get_latest_info(client, theme):
 箇条書きで500〜1000文字程度にまとめてください。
 """
 
-    response = client.models.generate_content(
+    response = call_gemini(
+        client,
         model="gemini-2.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
-            tools=[types.Tool(google_search=types.GoogleSearch())]
-        )
+        tools=[types.Tool(google_search=types.GoogleSearch())]
+        ),
     )
 
     return response.text
