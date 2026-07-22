@@ -1,5 +1,7 @@
 from google.genai import types
 
+from utils.gemini_client import call_gemini
+
 
 def latest_check(client, article):
     prompt = f"""
