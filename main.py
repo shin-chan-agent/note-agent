@@ -9,7 +9,6 @@ from theme_manager import get_theme_and_angle
 
 from quality_checker import quality_check
 from latest_checker import latest_check
-
 from rewrite import rewrite_article
 
 from article_history import load_articles, save_article
@@ -17,6 +16,7 @@ from article_history import load_articles, save_article
 from content.sns.generator import generate_sns_posts
 
 from utils.gemini_client import call_gemini
+from utils.line_sender import send_line_messages
 
 
 def extract_score(text):
