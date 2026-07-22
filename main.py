@@ -16,7 +16,10 @@ from article_history import load_articles, save_article
 from content.sns.generator import generate_sns_posts
 
 from utils.gemini_client import call_gemini
-from utils.line_sender import send_line_messages
+from utils.line_sender import (
+    send_line_messages,
+    create_text_message,
+)
 
 
 def extract_score(text):
