@@ -378,7 +378,8 @@ def generate_and_send_line():
 
     for attempt in range(MAX_RETRY):
         try:
-            response = client.models.generate_content(
+            response = call_gemini(
+                client,
                 model="gemini-2.5-flash",
                 contents=prompt,
             )
