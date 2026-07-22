@@ -43,16 +43,17 @@ LATEST:NG
 ・○○
 """
 
-    response = client.models.generate_content(
+    response = call_gemini(
+        client,
         model="gemini-2.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[
                 types.Tool(
-                    google_search=types.GoogleSearch()
+                google_search=types.GoogleSearch()
                 )
             ]
-        )
+        ),
     )
 
     return response.text
