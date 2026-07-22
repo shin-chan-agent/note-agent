@@ -1,5 +1,8 @@
 from google import genai
 
+from utils.gemini_client import call_gemini
+
+
 def rewrite_article(client, article, latest_info, evaluation):
 
     prompt = f"""
@@ -44,7 +47,8 @@ def rewrite_article(client, article, latest_info, evaluation):
 修正箇所に伴って前後の文章を自然につなげるための最小限の変更のみ許可します。
 """
 
-    response = client.models.generate_content(
+    response = call_gemini(
+        client,
         model="gemini-2.5-flash",
         contents=prompt,
     )
