@@ -16,7 +16,7 @@ def call_gemini(
     contents,
     config=None,
     max_retry=3,
-    wait=30,
+    wait=60,
 ):
     """
     Gemini API共通呼び出し
