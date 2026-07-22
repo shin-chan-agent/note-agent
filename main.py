@@ -626,15 +626,9 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
 
 
     for part in split_text(article_message):
-        messages.append({
-            "type": "text",
-            "text": part
-        })
+        messages.append(create_text_message(part))
 
-    messages.append({
-        "type": "text",
-        "text": summary_message
-    })
+    messages.append(create_text_message(summary_message))
 
     payload = {
         "to": user_id,
