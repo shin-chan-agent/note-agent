@@ -424,6 +424,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                     client,
                     article,
                     past_articles_text,
+                    latest_info,
                 )
 
                 latest_evaluation = latest_check(
@@ -494,6 +495,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                         client,
                         article,
                         past_articles_text,
+                        latest_info,
                     )
 
                     latest_evaluation = latest_check(
