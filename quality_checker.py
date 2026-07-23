@@ -65,7 +65,8 @@ def quality_check(
 
 ---
 
-【過去記事】
+
+【過去記事（タイトル・テーマ・切り口）】
 
 {past_articles}
 
