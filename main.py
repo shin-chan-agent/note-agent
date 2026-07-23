@@ -252,8 +252,13 @@ def generate_and_send_line():
     print(latest_info)  
 
     past_articles_text = "\n\n".join(
-        article["title"] for article in past_articles[-20:]
-)
+        (
+            f"タイトル: {article['title']}\n"
+            f"テーマ: {article['theme']}\n"
+            f"切り口: {article['angle']}"
+        )
+        for article in past_articles[-20:]
+    )
 
     prompt = f"""
 
