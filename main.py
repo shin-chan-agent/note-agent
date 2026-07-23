@@ -427,11 +427,6 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                     latest_info,
                 )
 
-                latest_evaluation = latest_check(
-                    client,
-                    article,
-                )
-
                 score = extract_score(evaluation)
                 seo_score = extract_seo_score(evaluation)
                 duplicate_result = extract_duplicate_result(evaluation)
@@ -496,11 +491,6 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                         article,
                         past_articles_text,
                         latest_info,
-                    )
-
-                    latest_evaluation = latest_check(
-                        client,
-                        article,
                     )
 
                     score = extract_score(evaluation)
