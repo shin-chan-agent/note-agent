@@ -12,12 +12,13 @@ def load_articles():
         return json.load(f)
 
 
-def save_article(title, article):
+def save_article(title, theme, angle):
     articles = load_articles()
 
     articles.append({
         "title": title,
-        "article": article
+        "theme": theme,
+        "angle": angle,
     })
 
     with open(FILE_NAME, "w", encoding="utf-8") as f:
