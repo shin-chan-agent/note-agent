@@ -1,7 +1,6 @@
 import os
 import re
 import time
-import requests
 
 from google import genai
 from google.genai import types
