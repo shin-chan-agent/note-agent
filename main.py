@@ -46,15 +46,20 @@ def extract_duplicate_result(text):
 
 def extract_improvements(text):
     m = re.search(
-        r"改善点\s*[:：]?\s*(.*)",
+        r"【必須】\s*(.*?)(?:【推奨】|$)",
         text,
         re.DOTALL,
     )
 
-    if m:
-        return m.group(1).strip()
+    if not m:
+        return ""
 
-    return ""
+    improvements = m.group(1).strip()
+
+    if improvements == "なし":
+        return ""
+
+    return improvements
 
 
 def get_search_query(theme):
