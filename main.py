@@ -404,6 +404,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                 score = result["score"]
                 seo_score = result["seo_score"]
                 duplicate_result = result["duplicate"]
+                latest_result = result["latest"]
 
                 if score != 0:
                     break
@@ -461,6 +462,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                     score = result["score"]
                     seo_score = result["seo_score"]
                     duplicate_result = result["duplicate"]
+                    latest_result = result["latest"]
 
                     if score != 0:
                         break
