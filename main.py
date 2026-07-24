@@ -393,9 +393,11 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                     latest_info,
                 )
 
-                score = extract_score(evaluation)
-                seo_score = extract_seo_score(evaluation)
-                duplicate_result = extract_duplicate_result(evaluation)
+                result = parse_evaluation(evaluation)
+
+                score = result["score"]
+                seo_score = result["seo_score"]
+                duplicate_result = result["duplicate"]
 
                 if score != 0:
                     break
@@ -448,9 +450,11 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                         latest_info,
                     )
 
-                    score = extract_score(evaluation)
-                    seo_score = extract_seo_score(evaluation)
-                    duplicate_result = extract_duplicate_result(evaluation)
+                    result = parse_evaluation(evaluation)
+
+                    score = result["score"]
+                    seo_score = result["seo_score"]
+                    duplicate_result = result["duplicate"]
 
                     if score != 0:
                         break
