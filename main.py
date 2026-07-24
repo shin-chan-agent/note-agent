@@ -18,11 +18,13 @@ from utils.line_sender import (
     send_line_messages,
     create_text_message,
 )
+from utils.evaluation_parser import parse_evaluation
 from utils.logger import (
     log_info,
     log_warning,
     log_error,
 )
+
 
 
 def get_search_query(theme):
