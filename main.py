@@ -25,6 +25,15 @@ from utils.logger import (
     log_error,
 )
 
+from config import (
+    MIN_SCORE,
+    MIN_SEO_SCORE,
+    MAX_REWRITE,
+    MAX_RETRY,
+    GOOGLE_SEARCH_RETRY_WAIT,
+    GEMINI_RETRY_WAIT,
+    EVALUATION_RETRY_WAIT,
+)
 
 
 def get_search_query(theme):
