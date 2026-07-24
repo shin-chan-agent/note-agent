@@ -361,12 +361,6 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
     """
 
 
-    MIN_SCORE = 90
-    MIN_SEO_SCORE = 90
-    MAX_REWRITE = 3
-
-    MAX_RETRY = 3
-
     for attempt in range(MAX_RETRY):
         try:
             response = call_gemini(
