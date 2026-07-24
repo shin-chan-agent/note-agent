@@ -20,29 +20,6 @@ from utils.line_sender import (
 )
 
 
-def extract_duplicate_result(text):
-    m = re.search(r"DUPLICATE\s*:\s*(OK|NG)", text, re.IGNORECASE)
-    return m.group(1).upper() if m else "NG"
-
-
-def extract_improvements(text):
-    m = re.search(
-        r"【必須】\s*(.*?)(?:【推奨】|$)",
-        text,
-        re.DOTALL,
-    )
-
-    if not m:
-        return ""
-
-    improvements = m.group(1).strip()
-
-    if improvements == "なし":
-        return ""
-
-    return improvements
-
-
 def get_search_query(theme):
     if "ChatGPT" in theme:
         return "ChatGPT 最新 GPT-5 無料版 Plus Pro Teams Enterprise 料金 機能"
