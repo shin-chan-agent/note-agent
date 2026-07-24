@@ -20,6 +20,11 @@ def extract_duplicate_result(text):
     return m.group(1).upper() if m else "NG"
 
 
+def extract_latest_result(text):
+    m = re.search(r"LATEST\s*:\s*(OK|NG)", text, re.IGNORECASE)
+    return m.group(1).upper() if m else "NG"
+
+
 def extract_improvements(text):
     m = re.search(
         r"【必須】\s*(.*?)(?:【推奨】|$)",
