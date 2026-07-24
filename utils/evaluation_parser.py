@@ -44,3 +44,12 @@ def extract_improvements(text):
         return ""
 
     return improvements
+
+
+def parse_evaluation(text):
+    return {
+        "score": extract_score(text),
+        "seo_score": extract_seo_score(text),
+        "duplicate": extract_duplicate_result(text),
+        "improvements": extract_improvements(text),
+    }
