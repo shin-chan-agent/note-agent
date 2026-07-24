@@ -43,5 +43,6 @@ def parse_evaluation(text):
         "score": extract_score(text),
         "seo_score": extract_seo_score(text),
         "duplicate": extract_duplicate_result(text),
+        "latest": extract_latest_result(text),
         "improvements": extract_improvements(text),
     }
