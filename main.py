@@ -425,6 +425,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                     score >= MIN_SCORE
                     and seo_score >= MIN_SEO_SCORE
                     and duplicate_result == "OK"
+                    and latest_result == "OK"
                 ):
                     log_info("すべての品質基準をクリアしました。")
                     break
@@ -488,6 +489,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                     score >= MIN_SCORE
                     and seo_score >= MIN_SEO_SCORE
                     and duplicate_result == "OK"
+                    and latest_result == "OK"
                 ):
                     log_info("すべての品質基準をクリアしました。")
                     break
@@ -526,6 +528,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
             score >= MIN_SCORE
             and seo_score >= MIN_SEO_SCORE
             and duplicate_result == "OK"
+            and latest_result == "OK"
         )
         else "⚠️ 品質基準未達"
     )
