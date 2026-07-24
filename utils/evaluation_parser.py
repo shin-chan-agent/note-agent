@@ -1,13 +1,5 @@
 import re
 
-from utils.evaluation_parser import (
-    parse_evaluation,
-    extract_score,
-    extract_seo_score,
-    extract_duplicate_result,
-    extract_improvements,
-)
-
 
 def extract_score(text):
     m = re.search(r"SCORE\s*:\s*(\d+)", text, re.IGNORECASE)
