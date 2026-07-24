@@ -15,3 +15,24 @@ def extract_seo_score(text):
     return int(m.group(1)) if m else 0
 
 
+def extract_duplicate_result(text):
+    m = re.search(r"DUPLICATE\s*:\s*(OK|NG)", text, re.IGNORECASE)
+    return m.group(1).upper() if m else "NG"
+
+
+def extract_improvements(text):
+    m = re.search(
+        r"【必須】\s*(.*?)(?:【推奨】|$)",
+        text,
+        re.DOTALL,
+    )
+
+    if not m:
+        return ""
+
+    improvements = m.group(1).strip()
+
+    if improvements == "なし":
+        return ""
+
+    return improvements
