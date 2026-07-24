@@ -4,8 +4,8 @@ import time
 
 from google import genai
 from google.genai import types
-from theme_manager import get_theme_and_angle
 
+from theme_manager import get_theme_and_angle
 from quality_checker import quality_check
 from rewrite import rewrite_article
 
@@ -17,6 +17,11 @@ from utils.gemini_client import call_gemini
 from utils.line_sender import (
     send_line_messages,
     create_text_message,
+)
+from utils.logger import (
+    log_info,
+    log_warning,
+    log_error,
 )
 
 
