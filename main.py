@@ -522,8 +522,8 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
             if attempt == MAX_RETRY - 1:
                 raise
 
-            log_warning("30秒後に再試行します...")
-            time.sleep(30)
+            log_warning(f"{GEMINI_RETRY_WAIT}秒後に再試行します...")
+            time.sleep(GEMINI_RETRY_WAIT)
 
     status = (
         "✅ 全品質基準クリア"
