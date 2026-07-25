@@ -237,6 +237,29 @@ def generate_and_send_line():
     )
 
 
+    result = generate_article(
+        client,
+        prompt,
+        latest_info,
+        past_articles_text,
+    )
+
+    article = result["article"]
+    evaluation = result["evaluation"]
+    score = result["score"]
+    seo_score = result["seo_score"]
+    duplicate_result = result["duplicate_result"]
+    latest_result = result["latest_result"]
+
+    x_post, instagram_post = generate_sns_posts(
+        client,
+        article,
+    )
+
+    log_info(f"===== X投稿 =====\n{x_post}")
+    log_info(f"===== Instagram投稿 =====\n{instagram_post}")
+
+
     status = (
         "✅ 全品質基準クリア"
         if (
