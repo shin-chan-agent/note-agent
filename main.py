@@ -223,7 +223,7 @@ def generate_and_send_line():
             break
         except Exception as e:
             log_warning(f"Google Searchを再試行します... {e}")
-            time.sleep(5)
+            time.sleep(GOOGLE_SEARCH_RETRY_WAIT)
     else:
         raise ValueError("最新情報を取得できませんでした")
 
@@ -413,7 +413,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                     break
 
                 log_warning("評価のみ再実行します...")
-                time.sleep(5)
+                time.sleep(EVALUATION_RETRY_WAIT)
 
             if score == 0:
                 raise ValueError("評価結果からスコアを取得できませんでした")
@@ -472,7 +472,7 @@ AI×ショート動画で最速でマネタイズ（収益化）する具体的�
                         break
 
                     log_warning("評価のみ再実行します...")
-                    time.sleep(5)
+                    time.sleep(EVALUATION_RETRY_WAIT)
 
                 if score == 0:
                     raise ValueError("評価結果からスコアを取得できませんでした")
