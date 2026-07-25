@@ -11,6 +11,7 @@ from rewrite import rewrite_article
 
 from article_history import load_articles, save_article
 
+from content.article.prompt import get_article_prompt
 from content.sns.generator import generate_sns_posts
 
 from utils.gemini_client import call_gemini
