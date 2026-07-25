@@ -1,8 +1,6 @@
 import re
 import time
 
-from google.genai import types
-
 from quality_checker import quality_check
 from rewrite import rewrite_article
 
