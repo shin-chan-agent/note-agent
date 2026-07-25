@@ -36,6 +36,8 @@ from config import (
     EVALUATION_RETRY_WAIT,
 )
 
+from content.article.generator import generate_article
+
 
 SEARCH_QUERIES = {
     "ChatGPT": "ChatGPT 最新 GPT-5 無料版 Plus Pro Teams Enterprise 料金 機能",
