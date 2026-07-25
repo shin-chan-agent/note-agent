@@ -1,4 +1,26 @@
+import re
+import time
 
+from google.genai import types
+
+from quality_checker import quality_check
+from rewrite import rewrite_article
+
+from utils.gemini_client import call_gemini
+from utils.evaluation_parser import parse_evaluation
+from utils.logger import (
+    log_info,
+    log_warning,
+    log_error,
+)
+
+from config import (
+    MIN_SCORE,
+    MIN_SEO_SCORE,
+    MAX_REWRITE,
+    MAX_RETRY,
+    EVALUATION_RETRY_WAIT,
+)
 
 
 def generate_article(
@@ -9,7 +31,6 @@ def generate_article(
     past_articles_text,
 ):
     pass
-
 
 
     for attempt in range(MAX_RETRY):
@@ -175,3 +196,13 @@ def generate_article(
 
             log_warning(f"{GEMINI_RETRY_WAIT}秒後に再試行します...")
             time.sleep(GEMINI_RETRY_WAIT)
+
+
+        return {
+            "article": article,
+            "evaluation": evaluation,
+            "score": score,
+            "seo_score": seo_score,
+            "duplicate_result": duplicate_result,
+            "latest_result": latest_result,
+        }
