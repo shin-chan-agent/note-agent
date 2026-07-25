@@ -1,5 +1,10 @@
 import time
 
+from config import MAX_RETRY
+from config import GEMINI_RETRY_WAIT
+
+from utils.logger import log_warning
+
 
 RETRY_ERRORS = (
     "429",
@@ -15,8 +20,8 @@ def call_gemini(
     model,
     contents,
     config=None,
-    max_retry=3,
-    wait=60,
+    max_retry=MAX_RETRY,
+    wait=GEMINI_RETRY_WAIT,
 ):
     """
     Gemini API共通呼び出し
@@ -42,7 +47,7 @@ def call_gemini(
             if not retry:
                 raise
 
-            print(
+            log_warning(
                 f"Gemini APIリトライ "
                 f"({attempt + 1}/{max_retry}) : {error}"
             )
@@ -50,5 +55,6 @@ def call_gemini(
             if attempt == max_retry - 1:
                 raise
 
-            print(f"{wait}秒待機します...")
+            log_warning(f"{wait}秒待機します...")
+
             time.sleep(wait)
