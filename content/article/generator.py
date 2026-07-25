@@ -25,12 +25,10 @@ from config import (
 
 def generate_article(
     client,
-    theme,
-    angle,
+    prompt,
     latest_info,
     past_articles_text,
 ):
-    pass
 
 
     for attempt in range(MAX_RETRY):
@@ -198,11 +196,11 @@ def generate_article(
             time.sleep(GEMINI_RETRY_WAIT)
 
 
-        return {
-            "article": article,
-            "evaluation": evaluation,
-            "score": score,
-            "seo_score": seo_score,
-            "duplicate_result": duplicate_result,
-            "latest_result": latest_result,
-        }
+    return {
+        "article": article,
+        "evaluation": evaluation,
+        "score": score,
+        "seo_score": seo_score,
+        "duplicate_result": duplicate_result,
+        "latest_result": latest_result,
+    }
