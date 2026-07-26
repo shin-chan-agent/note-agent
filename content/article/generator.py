@@ -61,7 +61,7 @@ def generate_article(
                 continue
 
             # 評価だけリトライ
-            for _ in range(3):
+            for _ in range(MAX_RETRY):
                 evaluation = quality_check(
                     client,
                     article,
@@ -120,7 +120,7 @@ def generate_article(
 
 
                 # 評価だけリトライ
-                for _ in range(3):
+                for _ in range(MAX_RETRY):
                     evaluation = quality_check(
                         client,
                         article,
