@@ -6,20 +6,19 @@ from google import genai
 from google.genai import types
 
 from theme_manager import get_theme_and_angle
-from quality_checker import quality_check
-from rewrite import rewrite_article
 
 from article_history import load_articles, save_article
 
 from content.article.prompt import get_article_prompt
+from content.article.generator import generate_article
 from content.sns.generator import generate_sns_posts
+
 
 from utils.gemini_client import call_gemini
 from utils.line_sender import (
     send_line_messages,
     create_text_message,
 )
-from utils.evaluation_parser import parse_evaluation
 from utils.logger import (
     log_info,
     log_warning,
@@ -32,25 +31,7 @@ from config import (
     MAX_REWRITE,
     MAX_RETRY,
     GOOGLE_SEARCH_RETRY_WAIT,
-    GEMINI_RETRY_WAIT,
-    EVALUATION_RETRY_WAIT,
 )
-
-from content.article.generator import generate_article
-
-
-SEARCH_QUERIES = {
-    "ChatGPT": "ChatGPT 最新 GPT-5 無料版 Plus Pro Teams Enterprise 料金 機能",
-    "Gemini": "Google Gemini 最新 Gemini 2.5 Flash Pro 料金 AI Studio 機能",
-    "Claude": "Claude 最新 Sonnet Opus 料金 機能",
-    "Canva": "Canva 最新 AI機能 Magic Studio Visual Suite 料金",
-    "CapCut": "CapCut 最新 AI機能 料金 商用利用",
-    "note": "note 最新 アルゴリズム SEO 仕様変更",
-    "Instagram": "Instagram 最新 リール アルゴリズム",
-    "X": "X 最新 アルゴリズム 収益化",
-    "AI副業": "AI副業 最新 トレンド AIツール",
-    "ショート動画": "ショート動画 最新 トレンド YouTube Shorts Instagram Reels TikTok",
-}
 
 
 def get_search_query(theme):
