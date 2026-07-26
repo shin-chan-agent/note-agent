@@ -55,10 +55,8 @@ def generate_article(
                 log_warning("固定記事案内欠落。再生成します。")
                 continue
 
-            article_length = len(article)
-
             # 文字数不足チェック
-            if article_length < 2000:
+            if len(article) < 2000:
                 log_warning("記事文字数不足。再生成します。")
                 continue
 
