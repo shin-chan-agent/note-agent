@@ -18,6 +18,7 @@ from config import (
     MAX_REWRITE,
     MAX_RETRY,
     EVALUATION_RETRY_WAIT,
+    GEMINI_RETRY_WAIT,
 )
 
 
