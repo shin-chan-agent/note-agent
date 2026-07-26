@@ -207,7 +207,7 @@ def generate_and_send_line():
 
     past_articles = load_articles()
 
-    for _ in range(3):
+    for _ in range(MAX_RETRY):
         try:
             latest_info = get_latest_info(client, theme)
             break
