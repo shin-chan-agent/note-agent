@@ -173,15 +173,6 @@ def generate_article(
             if seo_score < MIN_SEO_SCORE:
                 log_warning("最大回数リライトしましたがSEO基準に届きませんでした。")
 
-            x_post, instagram_post = generate_sns_posts(
-                client,
-                article,
-            )
-
-            log_info(f"===== X投稿 =====\n{x_post}")
-
-            log_info(f"===== Instagram投稿 =====\n{instagram_post}")
-
             break
 
         except Exception as e:
