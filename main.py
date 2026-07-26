@@ -253,12 +253,6 @@ def generate_and_send_line():
         else "⚠️ 品質基準未達"
     )
     
-    # LINE公式アカウント（Messaging API）を使ってメッセージを送信
-    token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
-    user_id = os.environ["LINE_USER_ID"]
-    
-    line_api_url = "https://api.line.me/v2/bot/message/push"
-    
     # 送信するメッセージの組み立て
     article_message = f"""🤖【Gemini生成のnote原稿】🤖
 
