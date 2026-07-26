@@ -31,6 +31,7 @@ from config import (
     MAX_REWRITE,
     MAX_RETRY,
     GOOGLE_SEARCH_RETRY_WAIT,
+    SEARCH_QUERIES,
 )
 
 
