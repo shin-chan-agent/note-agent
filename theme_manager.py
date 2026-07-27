@@ -6,11 +6,11 @@ COMBINATION_HISTORY_FILE = Path("combination_history.json")
 
 # 記事テーマ一覧
 THEMES = [
-    "AI×ショート動画の実践・検証",
+    "AI×ショート動画",
     "ショート動画作成に役立つAIツール",
-    "初心者向けAI副業",
     "ChatGPT活用術",
     "Gemini活用術",
+    "Claude活用術",
     "CapCut活用術",
     "Canva活用術",
     "AI副業ロードマップ",
@@ -26,7 +26,6 @@ ANGLES = [
     "時短テクニック",
     "おすすめ設定",
     "メリット・デメリット",
-    "よくある質問",
     "チェックリスト",
     "成功するコツ",
     "比較・レビュー"
