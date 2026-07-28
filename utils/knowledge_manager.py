@@ -1,7 +1,10 @@
-import json
 import os
 
-KNOWLEDGE_FILE = "ai_knowledge.json"
+from pathlib import Path
+import json
+
+
+KNOWLEDGE_FILE = Path(__file__).parent / "ai_knowledge.json"
 
 
 def load_knowledge():
