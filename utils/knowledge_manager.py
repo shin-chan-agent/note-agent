@@ -13,11 +13,13 @@ def create_default_knowledge():
     """
 
     return {
+        "version": 1,
         "services": {
             service_id: {
                 "name": service["name"],
+                "last_verified": None,
                 "updated_at": None,
-                "source": [],
+                "sources": [],
                 "models": [],
                 "plans": [],
                 "features": [],
