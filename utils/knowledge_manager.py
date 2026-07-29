@@ -6,6 +6,14 @@ from config import AI_SERVICES
 
 KNOWLEDGE_FILE = Path(__file__).parent / "ai_knowledge.json"
 
+LIST_FIELDS = [
+    "models",
+    "plans",
+    "features",
+    "limitations",
+    "notes",
+]
+
 
 def create_default_knowledge():
     """
@@ -111,9 +119,17 @@ def merge_service(service_id, new_data):
 
     for key, value in new_data.items():
 
-        if isinstance(value, dict):
+        if key in LIST_FIELDS:
+            current[key] = merge_list_items(
+                current.get(key, []),
+                value,
+            )
+
+        elif isinstance(value, dict):
+
             if key not in current:
                 current[key] = value
+
             else:
                 current[key].update(value)
 
