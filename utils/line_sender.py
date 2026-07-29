@@ -3,6 +3,9 @@ import requests
 
 
 def send_line_messages(messages):
+
+    print(f"LINE送信メッセージ数: {len(messages)}")
+
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
     user_id = os.environ["LINE_USER_ID"]
 
@@ -31,6 +34,7 @@ def send_line_messages(messages):
 
 
 def create_text_message(text):
+
     return {
         "type": "text",
         "text": text,
