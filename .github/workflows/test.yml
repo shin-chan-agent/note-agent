@@ -3,6 +3,9 @@ name: Test Knowledge Manager
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
