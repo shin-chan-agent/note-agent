@@ -3,7 +3,7 @@
         "chatgpt": {
             "name": "ChatGPT",
             "updated_at": null,
-            "source": [],
+            "sources": [],
             "models": [],
             "plans": [],
             "features": [],
@@ -13,7 +13,7 @@
         "gemini": {
             "name": "Gemini",
             "updated_at": "2026-07-29",
-            "source": [],
+            "sources": [],
             "models": [
                 {
                     "id": "gemini-2-5-flash",
@@ -44,7 +44,7 @@
         "claude": {
             "name": "Claude",
             "updated_at": null,
-            "source": [],
+            "sources": [],
             "models": [],
             "plans": [],
             "features": [],
@@ -54,7 +54,7 @@
         "canva": {
             "name": "Canva",
             "updated_at": null,
-            "source": [],
+            "sources": [],
             "models": [],
             "plans": [],
             "features": [],
@@ -64,7 +64,7 @@
         "capcut": {
             "name": "CapCut",
             "updated_at": null,
-            "source": [],
+            "sources": [],
             "models": [],
             "plans": [],
             "features": [],
