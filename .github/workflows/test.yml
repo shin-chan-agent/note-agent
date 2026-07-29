@@ -15,3 +15,11 @@ jobs:
           python-version: "3.11"
 
       - run: python test_knowledge.py
+
+      - name: Save ai_knowledge.json
+        run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add utils/ai_knowledge.json
+      o  git commit -m "Create ai knowledge json" || exit 0
+        git push
