@@ -1,0 +1,54 @@
+{
+    "services": {
+        "chatgpt": {
+            "name": "ChatGPT",
+            "updated_at": null,
+            "source": [],
+            "models": [],
+            "plans": [],
+            "features": [],
+            "limitations": [],
+            "notes": []
+        },
+        "gemini": {
+            "name": "Gemini",
+            "updated_at": null,
+            "source": [],
+            "models": [],
+            "plans": [],
+            "features": [],
+            "limitations": [],
+            "notes": []
+        },
+        "claude": {
+            "name": "Claude",
+            "updated_at": null,
+            "source": [],
+            "models": [],
+            "plans": [],
+            "features": [],
+            "limitations": [],
+            "notes": []
+        },
+        "canva": {
+            "name": "Canva",
+            "updated_at": null,
+            "source": [],
+            "models": [],
+            "plans": [],
+            "features": [],
+            "limitations": [],
+            "notes": []
+        },
+        "capcut": {
+            "name": "CapCut",
+            "updated_at": null,
+            "source": [],
+            "models": [],
+            "plans": [],
+            "features": [],
+            "limitations": [],
+            "notes": []
+        }
+    }
+}
