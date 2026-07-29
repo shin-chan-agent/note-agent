@@ -123,3 +123,38 @@ def merge_service(service_id, new_data):
     save_knowledge(data)
 
     return current
+
+
+def merge_list_items(current_list, new_list):
+    """
+    リスト型データを差分更新する。
+
+    ルール:
+    - 同じidがある場合 → 更新
+    - 新しいidの場合 → 追加
+    - 新しい情報に存在しない項目 → 維持
+    """
+
+    if not new_list:
+        return current_list
+
+    current_map = {
+        item["id"]: item
+        for item in current_list
+        if "id" in item
+    }
+
+    for new_item in new_list:
+
+        item_id = new_item.get("id")
+
+        if not item_id:
+            continue
+
+        if item_id in current_map:
+            current_map[item_id].update(new_item)
+
+        else:
+            current_list.append(new_item)
+
+    return current_list
