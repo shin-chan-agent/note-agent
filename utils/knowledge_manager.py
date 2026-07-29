@@ -88,3 +88,38 @@ def update_service(service_id, service_data):
     data["services"][service_id] = service_data
 
     save_knowledge(data)
+
+
+def merge_service(service_id, new_data):
+    """
+    指定サービスの情報を差分更新する。
+
+    新しい情報:
+    - 新規項目 → 追加
+    - 既存項目 → 更新
+    - 存在しない項目 → 維持
+    """
+
+    data = load_knowledge()
+
+    if service_id not in data["services"]:
+        data["services"][service_id] = new_data
+        save_knowledge(data)
+        return data["services"][service_id]
+
+    current = data["services"][service_id]
+
+    for key, value in new_data.items():
+
+        if isinstance(value, dict):
+            if key not in current:
+                current[key] = value
+            else:
+                current[key].update(value)
+
+        else:
+            current[key] = value
+
+    save_knowledge(data)
+
+    return current
