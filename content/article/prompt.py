@@ -1,9 +1,19 @@
+import json
+
+
 def get_article_prompt(
     theme,
     angle,
-    latest_info,
+    knowledge,
     past_articles_text,
 ):
+
+    knowledge_text = json.dumps(
+        knowledge,
+        ensure_ascii=False,
+        indent=2,
+    )
+
     return f"""
 
 noteに投稿する記事を1本執筆してください。
@@ -15,8 +25,8 @@ noteに投稿する記事を1本執筆してください。
 上記の過去記事とはタイトル・切り口・構成・具体例・まとめが似ない記事を作成してください。
 同じ内容を言い換えただけの記事は禁止です。
 
-【最新情報】
-{latest_info}
+【最新情報（AI知識DB）】
+{knowledge_text}
 
 上記はGoogle検索で取得した最新情報です。
 記事では必ずこの情報を優先してください。
