@@ -1,5 +1,4 @@
-import json
-
+from utils.json_parser import parse_json
 
 from config import AI_SERVICES
 
@@ -159,4 +158,4 @@ def fetch_service_info(client, service):
         ),
     )
 
-    return json.loads(response.text)
+    return parse_json(response.text)
