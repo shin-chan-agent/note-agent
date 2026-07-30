@@ -181,18 +181,6 @@ def generate_and_send_line():
 
     past_articles = load_articles()
 
-    for _ in range(MAX_RETRY):
-        try:
-            latest_info = get_latest_info(client, theme)
-            break
-        except Exception as e:
-            log_warning(f"Google Searchを再試行します... {e}")
-            time.sleep(GOOGLE_SEARCH_RETRY_WAIT)
-    else:
-        raise ValueError("最新情報を取得できませんでした")
-
-    log_info(f"===== 最新情報 =====\n{latest_info}")
-
     past_articles_text = "\n\n".join(
         (
             f"タイトル: {article['title']}\n"
