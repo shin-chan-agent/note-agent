@@ -216,6 +216,14 @@ def generate_and_send_line():
 
     theme, angle = get_theme_and_angle()
 
+    services = get_target_services(theme)
+
+    if services:
+        fetch_latest_info(
+            client,
+            services,
+        )
+
     past_articles = load_articles()
 
     for _ in range(MAX_RETRY):
