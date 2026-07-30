@@ -7,7 +7,7 @@ def quality_check(
     client,
     article,
     past_articles,
-    latest_info,
+    knowledge,
 ):
 
     prompt = f"""
@@ -100,15 +100,15 @@ def quality_check(
 
 ---
 
-【最新情報】
+【AI知識DB】
 
-{latest_info}
+{knowledge}
 
 ---
 
-【最新情報チェック】
+【AI知識DBチェック】
 
-上記の最新情報と記事を比較してください。
+上記のAI知識DBと記事を比較してください。
 
 ・料金
 ・プラン
