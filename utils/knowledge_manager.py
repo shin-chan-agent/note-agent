@@ -174,3 +174,23 @@ def merge_list_items(current_list, new_list):
             current_list.append(new_item)
 
     return current_list
+
+
+def merge_list_by_id(old_list, new_list):
+    """
+    IDをキーにリストをマージする。
+
+    ・新しいIDは追加
+    ・同じIDは上書き
+    ・古いデータは削除しない
+    """
+
+    merged = {
+        item["id"]: item
+        for item in old_list
+    }
+
+    for item in new_list:
+        merged[item["id"]] = item
+
+    return list(merged.values())
