@@ -1,6 +1,11 @@
 import json
 
+
 from config import AI_SERVICES
+
+from google.genai import types
+
+from utils.gemini_client import call_gemini
 
 
 def create_prompt(service):
@@ -132,3 +137,26 @@ Google Searchを利用し、
   ]
 }}
 """
+
+
+def fetch_service_info(client, service):
+    """
+    1サービス分の最新情報を取得する。
+    """
+
+    prompt = create_prompt(service)
+
+    response = call_gemini(
+        client,
+        model="gemini-2.5-flash",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            tools=[
+                types.Tool(
+                    google_search=types.GoogleSearch()
+                )
+            ]
+        ),
+    )
+
+    return json.loads(response.text)
