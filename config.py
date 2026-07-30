@@ -27,6 +27,11 @@ AI_SERVICES = {
     "chatgpt": {
         "name": "ChatGPT",
         "enabled": True,
+        "official_domains": [
+            "openai.com",
+            "platform.openai.com",
+            "help.openai.com",
+        ],
         "search_prompt": """
 ChatGPTについて最新情報を調査してください。
 
@@ -46,6 +51,12 @@ ChatGPTについて最新情報を調査してください。
     "gemini": {
         "name": "Gemini",
         "enabled": True,
+        "official_domains": [
+            "ai.google.dev",
+            "cloud.google.com",
+            "deepmind.google",
+            "developers.googleblog.com",
+        ],
         "search_prompt": """
 Geminiについて最新情報を調査してください。
 
@@ -65,6 +76,10 @@ Geminiについて最新情報を調査してください。
     "claude": {
         "name": "Claude",
         "enabled": True,
+        "official_domains": [
+            "anthropic.com",
+            "docs.anthropic.com",
+        ],
         "search_prompt": """
 Claudeについて最新情報を調査してください。
 
@@ -83,6 +98,10 @@ Claudeについて最新情報を調査してください。
     "canva": {
         "name": "Canva",
         "enabled": True,
+        "official_domains": [
+            "canva.com",
+            "canva.dev",
+        ],
         "search_prompt": """
 Canvaについて最新情報を調査してください。
 
@@ -101,6 +120,10 @@ Canvaについて最新情報を調査してください。
     "capcut": {
         "name": "CapCut",
         "enabled": True,
+        "official_domains": [
+            "capcut.com",
+            "support.capcut.com",
+        ],
         "search_prompt": """
 CapCutについて最新情報を調査してください。
 
