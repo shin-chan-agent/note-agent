@@ -30,17 +30,8 @@ from config import (
     MAX_REWRITE,
     MAX_RETRY,
     GOOGLE_SEARCH_RETRY_WAIT,
-    SEARCH_QUERIES,
     AI_SERVICES,
 )
-
-
-def get_search_query(theme):
-    for keyword, query in SEARCH_QUERIES.items():
-        if keyword in theme:
-            return query
-
-    return f"{theme} 最新"
 
 
 def get_target_services(theme):
