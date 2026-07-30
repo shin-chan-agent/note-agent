@@ -3,7 +3,6 @@ import re
 import time
 
 from google import genai
-from google.genai import types
 
 from theme_manager import get_theme_and_angle
 
@@ -13,8 +12,6 @@ from content.article.prompt import get_article_prompt
 from content.article.generator import generate_article
 from content.sns.generator import generate_sns_posts
 
-
-from utils.gemini_client import call_gemini
 from utils.latest_info import fetch_latest_info
 from utils.line_sender import (
     send_line_messages,
