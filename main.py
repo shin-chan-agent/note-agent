@@ -177,6 +177,8 @@ def generate_and_send_line():
             services,
         )
 
+    knowledge = get_services(services)
+
     past_articles = load_articles()
 
     for _ in range(MAX_RETRY):
