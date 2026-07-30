@@ -1,3 +1,8 @@
+import json
+
+from config import AI_SERVICES
+
+
 def create_prompt(service):
     """
     最新情報取得用プロンプトを作成する。
