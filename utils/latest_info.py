@@ -163,3 +163,22 @@ def fetch_service_info(client, service_id):
     )
 
     return parse_json(response.text)
+
+
+def fetch_latest_info(client, services):
+    """
+    指定したサービスの最新情報を取得し、
+    AI知識DBへ反映する。
+    """
+
+    for service_id in services:
+
+        service_data = fetch_service_info(
+            client,
+            service_id,
+        )
+
+        merge_service(
+            service_id,
+            service_data,
+        )
