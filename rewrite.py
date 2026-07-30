@@ -3,7 +3,12 @@ from google import genai
 from utils.gemini_client import call_gemini
 
 
-def rewrite_article(client, article, latest_info, evaluation):
+def rewrite_article(
+    client,
+    article,
+    knowledge,
+    evaluation,
+):
 
     prompt = f"""
 以下の記事は全体として品質の高い記事です。
@@ -11,10 +16,10 @@ def rewrite_article(client, article, latest_info, evaluation):
 記事全体を書き直すことは禁止です。
 必要最小限の修正だけを行ってください。
 
-【最新情報】
-{latest_info}
+【AI知識DB】
+{knowledge}
 
-上記の最新情報は維持してください。
+上記のAI知識DBの情報を維持してください。
 古い情報へ戻さないでください。
 
 【記事】
