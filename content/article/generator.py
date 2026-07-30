@@ -25,7 +25,7 @@ from config import (
 def generate_article(
     client,
     prompt,
-    latest_info,
+    knowledge,
     past_articles_text,
 ):
 
@@ -66,7 +66,7 @@ def generate_article(
                     client,
                     article,
                     past_articles_text,
-                    latest_info,
+                    knowledge,
                 )
 
                 result = parse_evaluation(evaluation)
@@ -114,7 +114,7 @@ def generate_article(
                 article = rewrite_article(
                     client,
                     article,
-                    latest_info,
+                    knowledge,
                     rewrite_prompt,
                 )
 
@@ -125,7 +125,7 @@ def generate_article(
                         client,
                         article,
                         past_articles_text,
-                        latest_info,
+                        knowledge,
                     )
 
                     result = parse_evaluation(evaluation)
