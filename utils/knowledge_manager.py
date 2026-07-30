@@ -86,6 +86,20 @@ def get_service(service_id):
     return data["services"].get(service_id)
 
 
+def get_services(service_ids):
+    """
+    指定したサービス情報を取得する。
+    """
+
+    data = load_knowledge()
+
+    return {
+        service_id: data["services"][service_id]
+        for service_id in service_ids
+        if service_id in data["services"]
+    }
+
+
 def update_service(service_id, service_data):
     """
     指定サービスの情報を更新する。
