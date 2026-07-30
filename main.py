@@ -60,51 +60,6 @@ def get_target_services(theme):
     return services
 
 
-def get_latest_info(client, theme):
-    query = get_search_query(theme)
-
-    prompt = f"""
-以下の検索キーワードについて最新情報を調査してください。
-
-検索キーワード
-{query}
-
-記事執筆用の最新情報として整理してください。
-
-必ず確認する項目：
-
-・現在利用可能なモデル名
-・最新の料金プラン
-・新しく追加された機能
-・仕様変更
-・提供終了した機能やモデル
-・注意点や制限事項
-
-特に、モデル名・料金・提供状況は古い情報を混ぜないようにしてください。
-
-調査結果は記事生成に利用するため、
-重要度の高い順に箇条書きで1500〜2000文字程度にまとめてください。
-
-各情報には可能な限り、
-「対象サービス名」
-「現在の状態」
-「変更点」
-「確認時期」
-を含めてください。
-"""
-
-    response = call_gemini(
-        client,
-        model="gemini-2.5-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-        tools=[types.Tool(google_search=types.GoogleSearch())]
-        ),
-    )
-
-    return response.text
-
-
 def split_text(text, max_length=4800):
     # タイトル・導入文を取得
     match = re.search(r"(.*?)(?=\n### |\n## |\Z)", text, re.DOTALL)
