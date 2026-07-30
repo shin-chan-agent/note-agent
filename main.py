@@ -206,7 +206,7 @@ def generate_and_send_line():
     prompt = get_article_prompt(
         theme,
         angle,
-        latest_info,
+        knowledge,
         past_articles_text,
     )
 
