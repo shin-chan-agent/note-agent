@@ -19,4 +19,10 @@ def parse_json(text):
 
     text = text.strip()
 
-    return json.loads(text)
+    try:
+        return json.loads(text)
+
+    except json.JSONDecodeError as e:
+        raise ValueError(
+            f"JSONの解析に失敗しました。\n\n{text}"
+        ) from e
