@@ -202,7 +202,7 @@ def generate_and_send_line():
     result = generate_article(
         client,
         prompt,
-        latest_info,
+        knowledge,
         past_articles_text,
     )
 
