@@ -1,10 +1,12 @@
-from utils.json_parser import parse_json
-
 from config import AI_SERVICES
 
 from google.genai import types
 
+from utils.json_parser import parse_json
+
 from utils.gemini_client import call_gemini
+
+from utils.knowledge_manager import merge_service
 
 
 def create_prompt(service):
