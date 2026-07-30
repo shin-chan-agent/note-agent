@@ -14,11 +14,25 @@ def create_prompt(service):
     最新情報取得用プロンプトを作成する。
     """
 
+    official_domains = "\n".join(
+        f"- {domain}"
+        for domain in service["official_domains"]
+    )
+
     return f"""
 あなたはAIサービスの公式情報を整理する専門家です。
 
 Google Searchを利用し、
 「{service["name"]}」の最新情報を取得してください。
+
+【情報取得ルール】
+
+以下の公式ドメインを最優先してください。
+
+{official_domains}
+
+これらのドメインに情報が存在しない場合のみ、
+信頼できる第三者サイトを利用してください。
 
 【重要】
 
