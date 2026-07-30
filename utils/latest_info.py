@@ -140,10 +140,12 @@ Google Searchを利用し、
 """
 
 
-def fetch_service_info(client, service):
+def fetch_service_info(client, service_id):
     """
     1サービス分の最新情報を取得する。
     """
+
+    service = AI_SERVICES[service_id]
 
     prompt = create_prompt(service)
 
