@@ -98,6 +98,48 @@ def update_service(service_id, service_data):
     save_knowledge(data)
 
 
+def merge_service(service_id, latest_data):
+    """
+    指定サービスの情報をマージする。
+    """
+
+    data = load_knowledge()
+
+    service = data["services"][service_id]
+
+    service["name"] = latest_data["name"]
+    service["last_verified"] = latest_data["last_verified"]
+    service["updated_at"] = latest_data["updated_at"]
+    service["sources"] = latest_data["sources"]
+
+    service["models"] = merge_list_by_id(
+        service["models"],
+        latest_data["models"],
+    )
+
+    service["plans"] = merge_list_by_id(
+        service["plans"],
+        latest_data["plans"],
+    )
+
+    service["features"] = merge_list_by_id(
+        service["features"],
+        latest_data["features"],
+    )
+
+    service["limitations"] = merge_list_by_id(
+        service["limitations"],
+        latest_data["limitations"],
+    )
+
+    service["notes"] = merge_list_by_id(
+        service["notes"],
+        latest_data["notes"],
+    )
+
+    save_knowledge(data)
+
+
 def merge_service(service_id, new_data):
     """
     指定サービスの情報を差分更新する。
