@@ -43,6 +43,21 @@ def get_search_query(theme):
     return f"{theme} 最新"
 
 
+def get_target_services(theme):
+    """
+    テーマから最新情報取得対象のサービスを判定する。
+    """
+
+    services = []
+
+    for service_id, service in AI_SERVICES.items():
+
+        if service["name"] in theme:
+            services.append(service_id)
+
+    return services
+
+
 def get_latest_info(client, theme):
     query = get_search_query(theme)
 
