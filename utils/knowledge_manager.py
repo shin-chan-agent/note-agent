@@ -122,11 +122,16 @@ def merge_service(service_id, new_data):
     - 存在しない項目 → 維持
     """
 
+    print(f"[INFO] merge開始: {service_id}")
+
     data = load_knowledge()
+
+    print("[INFO] AI知識DB読み込み完了")
 
     if service_id not in data["services"]:
         data["services"][service_id] = new_data
         save_knowledge(data)
+        print("[INFO] 新規サービス保存")
         return data["services"][service_id]
 
     current = data["services"][service_id]
@@ -151,6 +156,8 @@ def merge_service(service_id, new_data):
             current[key] = value
 
     save_knowledge(data)
+
+    print("[INFO] AI知識DB保存完了")
 
     return current
 
