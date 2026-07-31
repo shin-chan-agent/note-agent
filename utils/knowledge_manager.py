@@ -162,6 +162,8 @@ def merge_service(service_id, new_data):
 
     save_knowledge(data)
 
+    print(json.dumps(data["services"][service_id], indent=2, ensure_ascii=False))
+
     print("[INFO] AI知識DB保存完了")
 
     return current
