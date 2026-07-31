@@ -125,3 +125,64 @@ CapCutについて最新情報を調査してください。
 """
     },
 }
+
+
+THEME_SERVICES = {
+    "AI×ショート動画の実践・検証": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "ショート動画作成に役立つAIツール": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "初心者向けAI副業": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "ChatGPT活用術": [
+        "chatgpt",
+    ],
+
+    "Gemini活用術": [
+        "gemini",
+    ],
+
+    "Canva活用術": [
+        "canva",
+    ],
+
+    "CapCut活用術": [
+        "capcut",
+    ],
+
+    "AI副業ロードマップ": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "AIで収益化する方法": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "AI活用による時間短縮術": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+}
