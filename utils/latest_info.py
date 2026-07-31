@@ -176,6 +176,12 @@ def fetch_service_info(client, service_id):
         ),
     )
 
+    service_data = parse_json(response.text)
+
+    print(service_data)
+
+    return service_data
+
     return parse_json(response.text)
 
 
