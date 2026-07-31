@@ -1,3 +1,5 @@
+from utils.logger import log_info
+
 from google.genai import types
 
 from config import AI_SERVICES
@@ -178,7 +180,7 @@ def fetch_service_info(client, service_id):
 
     service_data = parse_json(response.text)
 
-    print(service_data)
+    log_info(f"取得データ: {service_data}")
 
     return service_data
 
