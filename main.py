@@ -155,6 +155,8 @@ def generate_and_send_line():
 
     services = get_target_services(theme)
 
+    log_info(f"対象サービス: {services}")
+
     if services:
         fetch_latest_info(
             client,
