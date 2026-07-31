@@ -30,7 +30,7 @@ from config import (
     MAX_REWRITE,
     MAX_RETRY,
     GOOGLE_SEARCH_RETRY_WAIT,
-    AI_SERVICES,
+    THEME_SERVICES,
 )
 
 
