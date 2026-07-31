@@ -36,17 +36,10 @@ from config import (
 
 def get_target_services(theme):
     """
-    テーマから最新情報取得対象のサービスを判定する。
+    テーマから最新情報取得対象のサービスを取得する。
     """
 
-    services = []
-
-    for service_id, service in AI_SERVICES.items():
-
-        if service["name"] in theme:
-            services.append(service_id)
-
-    return services
+    return THEME_SERVICES.get(theme, [])
 
 
 def split_text(text, max_length=4800):
