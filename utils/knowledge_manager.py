@@ -155,6 +155,9 @@ def merge_service(service_id, new_data):
         else:
             current[key] = value
 
+    print(current["updated_at"])
+    print(len(current["models"]))
+
     save_knowledge(data)
 
     print("[INFO] AI知識DB保存完了")
