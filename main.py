@@ -39,6 +39,11 @@ def get_target_services(theme):
     テーマから最新情報取得対象のサービスを取得する。
     """
 
+    print(f"[DEBUG] theme='{theme}'")
+    print(f"[DEBUG] available={list(THEME_SERVICES.keys())}")
+
+    return THEME_SERVICES.get(theme, [])
+
     return THEME_SERVICES.get(theme, [])
 
 
