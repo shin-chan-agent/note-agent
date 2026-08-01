@@ -1,8 +1,6 @@
 from pathlib import Path
 import json
 
-import traceback
-
 from config import AI_SERVICES
 
 
