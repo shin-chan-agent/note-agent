@@ -63,13 +63,6 @@ def save_knowledge(data):
     AI知識DBを保存する。
     """
 
-    print("[INFO] save_knowledge 呼び出し")
-
-    traceback.print_stack(limit=5)
-
-
-    print(f"[INFO] 保存先: {KNOWLEDGE_FILE.resolve()}")
-
     with open(
         KNOWLEDGE_FILE,
         "w",
