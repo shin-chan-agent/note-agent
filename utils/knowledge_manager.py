@@ -122,11 +122,7 @@ def merge_service(service_id, new_data):
     - 存在しない項目 → 維持
     """
 
-    print(f"[INFO] merge開始: {service_id}")
-
     data = load_knowledge()
-
-    print("[INFO] AI知識DB読み込み完了")
 
     if service_id not in data["services"]:
         data["services"][service_id] = new_data
@@ -155,14 +151,7 @@ def merge_service(service_id, new_data):
         else:
             current[key] = value
 
-    print(current["updated_at"])
-    print(len(current["models"]))
-
     save_knowledge(data)
-
-    print(json.dumps(data["services"][service_id], indent=2, ensure_ascii=False))
-
-    print("[INFO] AI知識DB保存完了")
 
     return current
 
