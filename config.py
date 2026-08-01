@@ -157,6 +157,10 @@ THEME_SERVICES = {
         "gemini",
     ],
 
+    "Claude活用術": [
+        "claude",
+    ],
+
     "Canva活用術": [
         "canva",
     ],
