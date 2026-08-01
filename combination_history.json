@@ -118,5 +118,9 @@
   {
     "theme": "Claude活用術",
     "angle": "比較・レビュー"
+  },
+  {
+    "theme": "ChatGPT活用術",
+    "angle": "実践・検証"
   }
 ]
