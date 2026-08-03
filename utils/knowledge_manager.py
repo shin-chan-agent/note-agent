@@ -77,7 +77,7 @@ def save_knowledge(data):
 
         print("[INFO] AI知識DB保存")
 
-         print(KNOWLEDGE_FILE.read_text(encoding="utf-8")[:1000])
+        print(KNOWLEDGE_FILE.read_text(encoding="utf-8")[:1000])
 
 
 def get_service(service_id):
