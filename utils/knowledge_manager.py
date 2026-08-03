@@ -75,8 +75,6 @@ def save_knowledge(data):
             indent=4,
         )
 
-    print(f"[INFO] AI知識DB更新: {service_id}")
-
 
 def get_service(service_id):
     """
