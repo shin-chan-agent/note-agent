@@ -14,21 +14,22 @@ def send_line_messages(messages):
         "Authorization": f"Bearer {token}",
     }
 
-    payload = {
-        "to": user_id,
-        "messages": messages,
-    }
+    for i in range(0, len(messages), 5):
+        payload = {
+            "to": user_id,
+            "messages": messages[i:i+5]
+        }
 
-    response = requests.post(
-        "https://api.line.me/v2/bot/message/push",
-        headers=headers,
-        json=payload,
-    )
-
-    if response.status_code != 200:
-        raise RuntimeError(
-            f"LINE API Error {response.status_code}\n{response.text}"
+        response = requests.post(
+            url,
+            headers=headers,
+            json=payload
         )
+
+        if response.status_code != 200:
+            raise RuntimeError(
+                f"LINE API Error {response.status_code}\n{response.text}"
+            )
 
     return response
 
