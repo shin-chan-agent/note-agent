@@ -2,13 +2,12 @@ import os
 import requests
 
 
-print(f"記事文字数: {len(article)}")
-print(f"messages数: {len(messages)}")
-
-
 def send_line_messages(messages):
 
     print(f"LINE送信メッセージ数: {len(messages)}")
+
+    for i, message in enumerate(messages, 1):
+        print(f"LINE送信{i}文字数: {len(message['text'])}")
 
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
     user_id = os.environ["LINE_USER_ID"]
