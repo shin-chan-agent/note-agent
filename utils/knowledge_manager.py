@@ -75,6 +75,8 @@ def save_knowledge(data):
             indent=4,
         )
 
+    print("[INFO] AI知識DB保存")
+
 
 def get_service(service_id):
     """
