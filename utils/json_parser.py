@@ -24,5 +24,15 @@ def parse_json(text):
 
     except json.JSONDecodeError as e:
         raise ValueError(
-            f"JSONの解析に失敗しました。\n\n{text}"
+            f"""
+JSONの解析に失敗しました。
+
+位置: line={e.lineno}, column={e.colno}, pos={e.pos}
+
+エラー:
+{e}
+
+対象:
+{text[max(0, e.pos-200):e.pos+200]}
+"""
         ) from e
