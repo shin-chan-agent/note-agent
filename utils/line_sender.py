@@ -2,6 +2,10 @@ import os
 import requests
 
 
+print(f"記事文字数: {len(article)}")
+print(f"messages数: {len(messages)}")
+
+
 def send_line_messages(messages):
 
     print(f"LINE送信メッセージ数: {len(messages)}")
