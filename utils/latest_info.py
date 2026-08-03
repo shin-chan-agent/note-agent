@@ -178,6 +178,8 @@ def fetch_service_info(client, service_id):
         ),
     )
 
+    print(response.text)
+
     service_data = parse_json(response.text)
 
     log_info(f"取得サービス: {service_id}")
