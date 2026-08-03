@@ -185,8 +185,6 @@ def fetch_service_info(client, service_id):
 
     return service_data
 
-    return parse_json(response.text)
-
 
 def fetch_latest_info(client, services):
     """
