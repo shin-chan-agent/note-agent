@@ -43,6 +43,14 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         run: python main.py
+
+
+      - name: Upload Gemini response
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-response
+          path: gemini_response.txt
      
 
       - name: Commit history
