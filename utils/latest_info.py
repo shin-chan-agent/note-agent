@@ -178,7 +178,8 @@ def fetch_service_info(client, service_id):
         ),
     )
 
-    print(response.text)
+    with open("gemini_response.txt", "w", encoding="utf-8") as f:
+        f.write(response.text)
 
     service_data = parse_json(response.text)
 
