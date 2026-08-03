@@ -183,6 +183,39 @@ def fetch_service_info(client, service_id):
 
     service_data = parse_json(response.text)
 
+
+    # ==========================
+    # AI知識DBデータ軽量化
+    # ==========================
+
+    # ① sourcesを最大5件
+    if "sources" in service_data:
+        service_data["sources"] = service_data["sources"][:5]
+
+
+    # ② descriptionを200文字まで
+    for section in [
+        "models",
+        "features",
+        "limitations",
+        "notes",
+    ]:
+        for item in service_data.get(section, []):
+            if "description" in item:
+                item["description"] = item["description"][:200]
+
+
+    # ③ aliasesを最大3件
+    for section in [
+        "models",
+        "plans",
+        "features",
+    ]:
+        for item in service_data.get(section, []):
+            if "aliases" in item:
+                item["aliases"] = item["aliases"][:3]
+
+
     log_info(f"取得サービス: {service_id}")
     log_info(f"取得データ: {service_data}")
 
