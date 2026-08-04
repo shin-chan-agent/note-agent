@@ -178,11 +178,19 @@ def fetch_service_info(client, service_id):
         ),
     )
 
-    with open("gemini_response.txt", "w", encoding="utf-8") as f:
+    if not response.text:
+        raise Exception(
+            f"Gemini response is empty: {service_id}"
+        )
+
+    with open(
+        "gemini_response.txt",
+        "w",
+        encoding="utf-8"
+    ) as f:
         f.write(response.text)
 
     service_data = parse_json(response.text)
-
 
     # ==========================
     # AI知識DBデータ軽量化
