@@ -178,6 +178,8 @@ def fetch_service_info(client, service_id):
         ),
     )
 
+    print(response)
+
     if not response.text:
         raise Exception(
             f"Gemini response is empty: {service_id}"
