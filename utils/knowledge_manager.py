@@ -76,7 +76,7 @@ def save_knowledge(data):
         )
 
     print("[INFO] AI知識DB保存")
-        print(KNOWLEDGE_FILE.read_text(encoding="utf-8"))
+    print(KNOWLEDGE_FILE.read_text(encoding="utf-8"))
 
     print(f"[DEBUG] 保存パス: {KNOWLEDGE_FILE}")
     print(f"[DEBUG] 更新日時: {KNOWLEDGE_FILE.stat().st_mtime}")
