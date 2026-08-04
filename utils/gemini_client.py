@@ -68,4 +68,4 @@ def call_gemini(
 
             log_warning(f"{wait}秒待機します...")
 
-            time.sleep(wait)time.sleep(wait)
+            time.sleep(wait)
