@@ -196,6 +196,7 @@ def fetch_service_info(client, service_id):
 
     service_data = parse_json(response.text)
 
+
     # ==========================
     # AI知識DBデータ軽量化
     # ==========================
@@ -246,6 +247,9 @@ def fetch_latest_info(client, services):
             client,
             service_id,
         )
+
+        if service_data is None:
+            continue
 
         merge_service(
             service_id,
