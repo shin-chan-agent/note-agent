@@ -11,6 +11,7 @@ RETRY_ERRORS = (
     "RESOURCE_EXHAUSTED",
     "503",
     "UNAVAILABLE",
+    "Gemini returned empty response",
 )
 
 
