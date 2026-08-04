@@ -75,9 +75,11 @@ def save_knowledge(data):
             indent=4,
         )
 
-        print("[INFO] AI知識DB保存")
-
+    print("[INFO] AI知識DB保存")
         print(KNOWLEDGE_FILE.read_text(encoding="utf-8"))
+
+    print(f"[DEBUG] 保存パス: {KNOWLEDGE_FILE}")
+    print(f"[DEBUG] 更新日時: {KNOWLEDGE_FILE.stat().st_mtime}")
 
 
 def get_service(service_id):
