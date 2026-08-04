@@ -33,16 +33,26 @@ def call_gemini(
 
     for attempt in range(max_retry):
         try:
-            return client.models.generate_content(
+            response = client.models.generate_content(
                 model=model,
                 contents=contents,
                 config=config,
             )
 
+            if not response.text:
+                raise Exception(
+                    "Gemini returned empty response"
+                )
+
+            return response
+
         except Exception as e:
             error = str(e)
 
-            retry = any(keyword in error for keyword in RETRY_ERRORS)
+            retry = any(
+                keyword in error
+                for keyword in RETRY_ERRORS
+            )
 
             if not retry:
                 raise
@@ -57,4 +67,4 @@ def call_gemini(
 
             log_warning(f"{wait}秒待機します...")
 
-            time.sleep(wait)
+            time.sleep(wait)time.sleep(wait)
