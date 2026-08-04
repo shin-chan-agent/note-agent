@@ -51,6 +51,12 @@ jobs:
         with:
           name: gemini-response
           path: gemini_response.txt
+
+
+      - name: Check knowledge file
+        run: |
+          ls -l utils/
+          cat utils/ai_knowledge.json
      
 
       - name: Commit history
