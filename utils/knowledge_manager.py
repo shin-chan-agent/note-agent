@@ -1,7 +1,8 @@
 from pathlib import Path
 import json
+from datetime import datetime, timezone
 
-from config import AI_SERVICES
+from config import AI_SERVICES, KNOWLEDGE_UPDATE_INTERVAL_DAYS
 
 
 KNOWLEDGE_FILE = Path(__file__).parent / "ai_knowledge.json"
@@ -80,6 +81,51 @@ def save_knowledge(data):
 
     print(f"[DEBUG] 保存パス: {KNOWLEDGE_FILE}")
     print(f"[DEBUG] 更新日時: {KNOWLEDGE_FILE.stat().st_mtime}")
+
+
+def needs_update(service_id):
+    """
+    指定サービスのAI知識DB更新が必要か判定する。
+
+    True:
+        更新必要
+
+    False:
+        更新不要
+    """
+
+    data = load_knowledge()
+
+    service = data["services"].get(service_id)
+
+    if not service:
+        return True
+
+    updated_at = service.get("updated_at")
+
+    if not updated_at:
+        return True
+
+    try:
+        updated_time = datetime.fromisoformat(
+            updated_at.replace("Z", "+00:00")
+        )
+
+    except ValueError:
+        return True
+
+
+    now = datetime.now(timezone.utc)
+
+    elapsed_days = (
+        now - updated_time
+    ).days
+
+
+    if elapsed_days >= KNOWLEDGE_UPDATE_INTERVAL_DAYS:
+        return True
+
+    return False
 
 
 def get_service(service_id):
