@@ -166,11 +166,24 @@ def generate_and_send_line():
 
     log_info(f"対象サービス: {services}")
 
-    if services:
+
+    update_services = [
+        service_id
+        for service_id in services
+        if needs_update(service_id)
+    ]
+
+
+    log_info(f"DB更新対象: {update_services}")
+
+
+    if update_services:
         fetch_latest_info(
             client,
-            services,
+            update_services,
         )
+    else:
+        log_info("AI知識DBは最新のため更新スキップ")
 
     knowledge = get_services(services)
 
