@@ -64,13 +64,17 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          git pull --rebase origin main
+
+          git status
+
           git add \
             combination_history.json \
             article_history.json \
             utils/ai_knowledge.json
 
-          git diff --cached --quiet || git commit -m "Update history"
+          git status
 
-          git pull --rebase origin main || true
+          git diff --cached --quiet || git commit -m "Update history"
 
           git push
