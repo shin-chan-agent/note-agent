@@ -12,7 +12,10 @@ from content.article.prompt import get_article_prompt
 from content.article.generator import generate_article
 from content.sns.generator import generate_sns_posts
 
-from utils.knowledge_manager import get_services
+from utils.knowledge_manager import (
+    get_services,
+    needs_update,
+)
 from utils.latest_info import fetch_latest_info
 from utils.line_sender import (
     send_line_messages,
