@@ -37,6 +37,14 @@ from config import (
     THEME_SERVICES,
 )
 
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+
+current_date = datetime.now(
+    ZoneInfo("Asia/Tokyo")
+).strftime("%Y年%m月%d日")
+
 
 def get_target_services(theme):
     """
