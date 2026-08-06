@@ -6,6 +6,7 @@ def get_article_prompt(
     angle,
     knowledge,
     past_articles_text,
+    current_date,
 ):
 
     knowledge_text = json.dumps(
