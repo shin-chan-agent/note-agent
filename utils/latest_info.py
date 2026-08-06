@@ -8,7 +8,10 @@ from utils.gemini_client import call_gemini
 
 from utils.json_parser import parse_json
 
-from utils.knowledge_manager import merge_service
+from utils.knowledge_manager import (
+    merge_service,
+    needs_update,
+)
 
 
 def create_prompt(service):
