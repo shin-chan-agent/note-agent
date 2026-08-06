@@ -236,8 +236,6 @@ def merge_service(service_id, new_data):
         else:
             current[key] = value
 
-    save_knowledge(data)
-
     for section in [
         "models",
         "plans",
@@ -247,8 +245,10 @@ def merge_service(service_id, new_data):
     ]:
         mark_missing_items(
             current.get(section, []),
-            service_data.get(section, []),
+            new_data.get(section, []),
         )
+
+    save_knowledge(data)
 
     return current
 
