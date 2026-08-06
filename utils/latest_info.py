@@ -148,6 +148,7 @@ Google Searchを利用し、
       "id": "",
       "title": "",
       "category": "",
+      "status": "",
       "description": "",
       "last_updated": ""
     }}
