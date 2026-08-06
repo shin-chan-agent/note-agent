@@ -152,6 +152,28 @@ def get_services(service_ids):
     }
 
 
+def filter_active_items(items):
+    """
+    利用可能な情報だけ抽出する。
+
+    deprecated:
+    非推奨のため除外
+
+    discontinued:
+    提供終了のため除外
+    """
+
+    return [
+        item
+        for item in items
+        if item.get("status", "available")
+        not in [
+            "deprecated",
+            "discontinued",
+        ]
+    ]
+
+
 def update_service(service_id, service_data):
     """
     指定サービスの情報を更新する。
