@@ -319,6 +319,7 @@ def merge_list_items(current_list, new_list):
             current_map[item_id].update(new_item)
 
         else:
+            new_item.setdefault("missing_count", 0)
             current_list.append(new_item)
 
     return current_list
