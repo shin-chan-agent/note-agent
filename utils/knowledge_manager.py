@@ -4,6 +4,8 @@ from datetime import datetime, timezone
 
 from config import AI_SERVICES, KNOWLEDGE_UPDATE_INTERVAL_DAYS
 
+from config import MISSING_LIMIT
+
 
 KNOWLEDGE_FILE = Path(__file__).parent / "ai_knowledge.json"
 
