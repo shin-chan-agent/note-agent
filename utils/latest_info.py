@@ -67,6 +67,20 @@ Google Searchを利用し、
 　　"deprecated" または "discontinued"
 　としてください。
 
+【statusルール】
+
+各項目には必ず status を含めてください。
+使用できる値は次の3つのみです。
+
+　・available
+　　　現在利用可能
+　・deprecated
+　　　非推奨だが利用可能
+　・discontinued
+　　　提供終了・新規利用不可
+
+statusが判断できない場合は推測せず、availableを使用してください。
+
 【出力】
 
 ・JSONのみ返してください。
