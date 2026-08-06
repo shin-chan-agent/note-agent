@@ -41,11 +41,6 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 
-current_date = datetime.now(
-    ZoneInfo("Asia/Tokyo")
-).strftime("%Y年%m月%d日")
-
-
 def get_target_services(theme):
     """
     テーマから最新情報取得対象のサービスを取得する。
@@ -165,6 +160,12 @@ def split_text(text, max_length=4800):
 def generate_and_send_line():
     # 最新のライブラリでGeminiで記事を生成
     # 環境変数から自動でAPIキーを読み込む仕様になりました
+
+
+    current_date = datetime.now(
+        ZoneInfo("Asia/Tokyo")
+    ).strftime("%Y年%m月%d日")
+
 
     client = genai.Client()
 
