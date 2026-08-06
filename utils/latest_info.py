@@ -263,6 +263,12 @@ def fetch_latest_info(client, services):
 
     for service_id in services:
 
+        if not needs_update(service_id):
+            log_info(f"{service_id} は更新不要のためスキップ")
+            continue
+
+        log_info(f"{service_id} の最新情報を取得します")
+
         service_data = fetch_service_info(
             client,
             service_id,
