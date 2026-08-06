@@ -238,7 +238,55 @@ def merge_service(service_id, new_data):
 
     save_knowledge(data)
 
+    for section in [
+        "models",
+        "plans",
+        "features",
+        "limitations",
+        "notes",
+    ]:
+        mark_missing_items(
+            current.get(section, []),
+            service_data.get(section, []),
+        )
+
     return current
+
+
+def mark_missing_items(old_items, new_items):
+    """
+    取得できなかった項目を管理する。
+    """
+
+    new_map = {
+        item["id"]: item
+        for item in new_items
+        if "id" in item
+    }
+
+    for old_item in old_items:
+
+        item_id = old_item.get("id")
+
+        if not item_id:
+            continue
+
+        if item_id in new_map:
+
+            # 再取得できたので復活
+            old_item["missing_count"] = 0
+
+            if "status" in new_map[item_id]:
+                old_item["status"] = new_map[item_id]["status"]
+
+        else:
+
+            old_item["missing_count"] = (
+                old_item.get("missing_count", 0) + 1
+            )
+
+            if old_item["missing_count"] >= MISSING_LIMIT:
+                old_item["status"] = "discontinued"
 
 
 def merge_list_items(current_list, new_list):
