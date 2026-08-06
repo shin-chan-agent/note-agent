@@ -210,6 +210,17 @@ def merge_service(service_id, new_data):
     data = load_knowledge()
 
     if service_id not in data["services"]:
+
+        for section in [
+            "models",
+            "plans",
+            "features",
+            "limitations",
+            "notes",
+        ]:
+            for item in new_data.get(section, []):
+                item.setdefault("missing_count", 0)
+
         data["services"][service_id] = new_data
         save_knowledge(data)
         print("[INFO] 新規サービス保存")
