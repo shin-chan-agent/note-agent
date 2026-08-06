@@ -213,6 +213,7 @@ def generate_and_send_line():
         angle,
         knowledge,
         past_articles_text,
+        current_date,
     )
 
 
