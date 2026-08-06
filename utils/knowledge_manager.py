@@ -114,13 +114,11 @@ def needs_update(service_id):
     except ValueError:
         return True
 
-
     now = datetime.now(timezone.utc)
 
     elapsed_days = (
         now - updated_time
     ).days
-
 
     if elapsed_days >= KNOWLEDGE_UPDATE_INTERVAL_DAYS:
         return True
@@ -145,11 +143,22 @@ def get_services(service_ids):
 
     data = load_knowledge()
 
-    return {
+    services = {
         service_id: data["services"][service_id]
         for service_id in service_ids
         if service_id in data["services"]
     }
+
+    for service in services.values():
+
+        for field in LIST_FIELDS:
+
+            if field in service:
+                service[field] = filter_active_items(
+                    service[field]
+                )
+
+    return services
 
 
 def filter_active_items(items):
