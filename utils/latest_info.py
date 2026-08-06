@@ -216,6 +216,14 @@ def fetch_service_info(client, service_id):
 
     service_data = parse_json(response.text)
 
+    try:
+        service_data = parse_json(response.text)
+
+    except Exception as e:
+        log_error(f"JSON解析失敗: {service_id}")
+        log_error(str(e))
+        return None
+
 
     # ==========================
     # AI知識DBデータ軽量化
