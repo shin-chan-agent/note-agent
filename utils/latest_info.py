@@ -93,6 +93,7 @@ statusが判断できない場合は推測せず、availableを使用してく�
 
 {{
   "name": "",
+  "status": "",
   "last_verified": "",
   "updated_at": "",
   "sources": [
