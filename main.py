@@ -16,6 +16,7 @@ from utils.knowledge_manager import (
     get_services,
     get_article_knowledge,
     needs_update,
+    needs_retry,
     get_background_update_service,
 )
 from utils.latest_info import fetch_latest_info
