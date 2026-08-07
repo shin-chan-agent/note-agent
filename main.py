@@ -179,12 +179,30 @@ def generate_and_send_line():
     log_info(f"対象サービス: {services}")
 
 
+    # テーマ関連サービスの更新対象
     update_services = [
         service_id
         for service_id in services
         if needs_update(service_id)
         or needs_retry(service_id)
     ]
+
+
+    # バックグラウンド更新対象を1件追加
+    background_service = get_background_update_service(
+        update_services
+    )
+
+    if background_service:
+        update_services.append(
+            background_service
+        )
+
+
+    # 重複除去
+    update_services = list(
+        dict.fromkeys(update_services)
+    )
 
 
     log_info(f"DB更新対象: {update_services}")
@@ -195,6 +213,7 @@ def generate_and_send_line():
             client,
             update_services,
         )
+
     else:
         log_info("AI知識DBは最新のため更新スキップ")
 
