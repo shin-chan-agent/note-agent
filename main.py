@@ -14,6 +14,7 @@ from content.sns.generator import generate_sns_posts
 
 from utils.knowledge_manager import (
     get_services,
+    get_article_knowledge,
     needs_update,
 )
 from utils.latest_info import fetch_latest_info
