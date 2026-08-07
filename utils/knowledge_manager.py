@@ -199,12 +199,11 @@ def needs_update(service_id):
     if not updated_at:
         return True
 
-    try:
-        updated_time = datetime.fromisoformat(
-            updated_at.replace("Z", "+00:00")
-        )
+    updated_time = parse_datetime(
+        updated_at
+    )
 
-    except ValueError:
+    if updated_time is None:
         return True
 
     now = datetime.now(timezone.utc)
