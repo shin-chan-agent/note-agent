@@ -190,7 +190,7 @@ def generate_and_send_line():
 
     # バックグラウンド更新対象を1件追加
     background_service = get_background_update_service(
-        update_services
+        services
     )
 
     if background_service:
