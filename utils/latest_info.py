@@ -283,9 +283,12 @@ def fetch_latest_info(client, services):
         )
 
         if service_data is None:
+            mark_update_failed(service_id)
             continue
+
+        service_data["update_failed"] = False
 
         merge_service(
             service_id,
-            service_data,
+           service_data,
         )
