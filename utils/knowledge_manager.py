@@ -61,6 +61,80 @@ def load_knowledge():
         return json.load(f)
 
 
+def get_article_knowledge(service_ids):
+    """
+    記事生成用に必要な情報だけを返す。
+    """
+
+    data = load_knowledge()
+
+    result = {}
+
+    for service_id in service_ids:
+
+        service = data["services"].get(service_id)
+
+        if not service:
+            continue
+
+        result[service_id] = {
+            "name": service.get("name"),
+            "updated_at": service.get("updated_at"),
+
+            "models": [
+                {
+                    "id": item.get("id"),
+                    "name": item.get("name"),
+                    "status": item.get("status"),
+                    "description": item.get("description", "")[:80],
+                }
+                for item in service.get("models", [])
+            ],
+
+            "plans": [
+                {
+                    "id": item.get("id"),
+                    "name": item.get("name"),
+                    "status": item.get("status"),
+                    "description": item.get("description", "")[:80],
+                    "pricing": item.get("pricing", []),
+                }
+                for item in service.get("plans", [])
+            ],
+
+            "features": [
+                {
+                    "id": item.get("id"),
+                    "name": item.get("name"),
+                    "status": item.get("status"),
+                    "description": item.get("description", "")[:80],
+                }
+                for item in service.get("features", [])
+            ],
+
+            "limitations": [
+                {
+                    "id": item.get("id"),
+                    "name": item.get("name"),
+                    "status": item.get("status"),
+                    "description": item.get("description", "")[:80],
+                }
+                for item in service.get("limitations", [])
+            ],
+
+            "notes": [
+                {
+                    "title": item.get("title"),
+                    "status": item.get("status"),
+                    "description": item.get("description", "")[:80],
+                }
+                for item in service.get("notes", [])
+            ],
+        }
+
+    return result
+
+
 def save_knowledge(data):
     """
     AI知識DBを保存する。
