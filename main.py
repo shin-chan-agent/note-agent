@@ -181,6 +181,7 @@ def generate_and_send_line():
         service_id
         for service_id in services
         if needs_update(service_id)
+        or needs_retry(service_id)
     ]
 
 
