@@ -217,6 +217,23 @@ def needs_retry(service_id):
     return service.get("update_failed", False)
 
 
+def mark_update_failed(service_id):
+    """
+    最新情報取得失敗を記録する。
+    """
+
+    data = load_knowledge()
+
+    service = data["services"].get(service_id)
+
+    if service is None:
+        return
+
+    service["update_failed"] = True
+
+    save_knowledge(data)
+
+
 def get_service(service_id):
     """
     指定サービスの情報を取得する。
