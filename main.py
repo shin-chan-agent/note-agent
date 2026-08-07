@@ -195,7 +195,7 @@ def generate_and_send_line():
     else:
         log_info("AI知識DBは最新のため更新スキップ")
 
-    knowledge = get_services(services)
+    knowledge = get_article_knowledge(services)
 
     past_articles = load_articles()
 
