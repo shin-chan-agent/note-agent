@@ -6,6 +6,8 @@ from config import AI_SERVICES, KNOWLEDGE_UPDATE_INTERVAL_DAYS
 
 from config import MISSING_LIMIT
 
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 KNOWLEDGE_FILE = Path(__file__).parent / "ai_knowledge.json"
 
@@ -16,6 +18,21 @@ LIST_FIELDS = [
     "limitations",
     "notes",
 ]
+
+
+def parse_datetime(date_text):
+    """
+    DBの日付文字列を東京時間のdatetimeへ変換する。
+    """
+
+    dt = datetime.fromisoformat(date_text)
+
+    if dt.tzinfo is None:
+        dt = dt.replace(
+            tzinfo=ZoneInfo("Asia/Tokyo")
+        )
+
+    return dt
 
 
 def create_default_knowledge():
