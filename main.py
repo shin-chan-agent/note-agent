@@ -30,6 +30,8 @@ from utils.logger import (
     log_error,
 )
 
+from utils.eyecatch_generator import create_eyecatch_background
+
 from config import (
     MIN_SCORE,
     MIN_SEO_SCORE,
@@ -259,9 +261,6 @@ def generate_and_send_line():
         article,
     )
 
-    log_info(f"===== X投稿 =====\n{x_post}")
-    log_info(f"===== Instagram投稿 =====\n{instagram_post}")
-
 
     status = (
         "✅ 全品質基準クリア"
@@ -272,6 +271,11 @@ def generate_and_send_line():
             and latest_result == "OK"
         )
         else "⚠️ 品質基準未達"
+    )
+
+    create_eyecatch_background(
+        "test_eyecatch.png",
+        "AI画像・デザイン",
     )
     
     # 送信するメッセージの組み立て
