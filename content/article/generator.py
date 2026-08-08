@@ -47,6 +47,9 @@ def generate_article(
             image_category = metadata["image_category"]
             highlight_keywords = metadata["highlight_keywords"]
 
+            log_info(f"画像カテゴリ：{image_category}")
+            log_info(f"強調キーワード：{highlight_keywords}")
+
             # タイトル欠落チェック
             if not re.search(r"^タイトル[:：]", article):
                 log_warning("タイトル欠落。再生成します。")
