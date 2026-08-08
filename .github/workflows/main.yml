@@ -45,6 +45,14 @@ jobs:
         run: python main.py
 
 
+      - name: Upload eyecatch image
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-eyecatch
+          path: test_eyecatch.png
+
+
       - name: Upload Gemini response
         if: always()
         uses: actions/upload-artifact@v4
