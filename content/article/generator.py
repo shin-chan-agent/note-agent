@@ -193,6 +193,8 @@ def generate_article(
 
     return {
         "article": article,
+        "image_category": image_category,
+        "highlight_keywords": highlight_keywords,
         "evaluation": evaluation,
         "score": score,
         "seo_score": seo_score,
