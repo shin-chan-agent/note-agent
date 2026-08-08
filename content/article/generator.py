@@ -11,6 +11,7 @@ from utils.logger import (
     log_warning,
     log_error,
 )
+from utils.image_metadata_parser import parse_image_metadata
 
 from config import (
     MIN_SCORE,
@@ -38,7 +39,13 @@ def generate_article(
                 contents=prompt,
             )
 
-            article = response.text
+            generated_text = response.text
+
+            metadata = parse_image_metadata(generated_text)
+
+            article = metadata["article"]
+            image_category = metadata["image_category"]
+            highlight_keywords = metadata["highlight_keywords"]
 
             # タイトル欠落チェック
             if not re.search(r"^タイトル[:：]", article):
