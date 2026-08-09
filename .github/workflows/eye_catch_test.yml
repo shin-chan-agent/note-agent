@@ -1,4 +1,17 @@
-  test-eyecatch:
+name: test-eyecatch
+
+on:
+  workflow_dispatch: # 手動実行用
+
+permissions:
+  contents: write
+
+# 💡 「警告を消す魔法の呪文」！
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+jobs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
