@@ -6,7 +6,6 @@ on:
 permissions:
   contents: write
 
-# 💡 「警告を消す魔法の呪文」！
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
@@ -29,6 +28,14 @@ jobs:
       - name: Generate test eyecatch
         run: |
           python -c "from utils.eyecatch_generator import create_eyecatch_background; create_eyecatch_background('test_eyecatch.png', 'AI画像・デザイン')"
+
+      - name: Save test eyecatch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add test_eyecatch.png
+          git commit -m "Add test eyecatch" || echo "No changes to commit"
+          git push
 
       - name: Upload test eyecatch
         uses: actions/upload-artifact@v4
