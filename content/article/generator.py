@@ -4,7 +4,10 @@ import time
 from quality_checker import quality_check
 from rewrite import rewrite_article
 
-from utils.gemini_client import call_gemini
+from utils.gemini_client import (
+    call_gemini,
+    GeminiDailyQuotaExceeded,
+)
 from utils.evaluation_parser import parse_evaluation
 from utils.logger import (
     log_info,
