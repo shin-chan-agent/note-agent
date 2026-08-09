@@ -29,6 +29,7 @@ from utils.logger import (
     log_warning,
     log_error,
 )
+from utils.gemini_client import GeminiDailyQuotaExceeded
 
 from utils.eyecatch_generator import create_eyecatch_background
 
