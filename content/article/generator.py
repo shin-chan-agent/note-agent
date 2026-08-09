@@ -187,13 +187,18 @@ def generate_article(
 
             break
 
+        except GeminiDailyQuotaExceeded:
+            raise
+
         except Exception as e:
             log_error(f"Geminiエラー（{attempt + 1}回目）：{e}")
 
             if attempt == MAX_RETRY - 1:
                 raise
 
-            log_warning(f"{GEMINI_RETRY_WAIT}秒後に再試行します...")
+            log_warning(
+                f"{GEMINI_RETRY_WAIT}秒後に再試行します..."
+            )
             time.sleep(GEMINI_RETRY_WAIT)
 
 
