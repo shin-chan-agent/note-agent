@@ -243,12 +243,24 @@ def generate_and_send_line():
     )
 
 
-    result = generate_article(
-        client,
-        prompt,
-        knowledge,
-        past_articles_text,
-    )
+    try:
+        result = generate_article(
+            client,
+            prompt,
+            knowledge,
+            past_articles_text,
+        )
+
+    except GeminiDailyQuotaExceeded:
+        log_warning(
+            "Gemini APIの日次クォータ超過のため、"
+            "記事生成を中止します。"
+        )
+        log_warning(
+            "記事が完成していないため、"
+            "SNS生成・LINE送信・記事履歴保存は行いません。"
+        )
+        return
 
     article = result["article"]
     evaluation = result["evaluation"]
