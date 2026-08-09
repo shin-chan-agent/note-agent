@@ -269,8 +269,15 @@ def generate_and_send_line():
             "SNS投稿生成をスキップします。"
         )
 
-        x_post = "※Gemini APIの日次クォータ超過のため生成できませんでした。"
-        instagram_post = "※Gemini APIの日次クォータ超過のため生成できませんでした。"
+        x_post = (
+            "※Gemini APIの日次クォータ超過のため、"
+            "X投稿は生成できませんでした。"
+        )
+
+        instagram_post = (
+            "※Gemini APIの日次クォータ超過のため、"
+            "Instagram投稿は生成できませんでした。"
+        )
 
 
     status = (
