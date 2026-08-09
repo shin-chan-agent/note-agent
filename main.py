@@ -257,10 +257,20 @@ def generate_and_send_line():
     duplicate_result = result["duplicate_result"]
     latest_result = result["latest_result"]
 
-    x_post, instagram_post = generate_sns_posts(
-        client,
-        article,
-    )
+    try:
+        x_post, instagram_post = generate_sns_posts(
+            client,
+            article,
+        )
+
+    except GeminiDailyQuotaExceeded:
+        log_warning(
+            "Gemini APIの日次クォータ超過のため、"
+            "SNS投稿生成をスキップします。"
+        )
+
+        x_post = "※Gemini APIの日次クォータ超過のため生成できませんでした。"
+        instagram_post = "※Gemini APIの日次クォータ超過のため生成できませんでした。"
 
 
     status = (
