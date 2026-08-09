@@ -6,6 +6,11 @@ from config import GEMINI_RETRY_WAIT
 from utils.logger import log_warning
 
 
+class GeminiDailyQuotaExceeded(Exception):
+    """Gemini APIの日次クォータ超過"""
+    pass
+
+
 RETRY_ERRORS = (
     "429",
     "RESOURCE_EXHAUSTED",
@@ -14,7 +19,7 @@ RETRY_ERRORS = (
     "Gemini returned empty response",
 )
 
-# 日次クォータ超過を示すエラー
+
 DAILY_QUOTA_ERRORS = (
     "GenerateRequestsPerDayPerProject-FreeTier",
     "generate_content_free_tier_requests",
@@ -39,7 +44,7 @@ def call_gemini(
     空レスポンスを自動リトライする。
 
     ただし、日次クォータ超過の場合は
-    リトライせず即座に例外を発生させる。
+    リトライせず専用例外を発生させる。
     """
 
     for attempt in range(max_retry):
@@ -73,7 +78,7 @@ def call_gemini(
                     "Gemini APIの日次クォータを超過しました。"
                     "リトライせず処理を終了します。"
                 )
-                raise
+                raise GeminiDailyQuotaExceeded(error)
 
             # --------------------------------
             # リトライ対象か判定
