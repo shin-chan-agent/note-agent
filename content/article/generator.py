@@ -23,6 +23,7 @@ from config import (
     MAX_RETRY,
     EVALUATION_RETRY_WAIT,
     GEMINI_RETRY_WAIT,
+    MAX_ARTICLE_LENGTH,
 )
 
 
