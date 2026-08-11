@@ -201,12 +201,15 @@ def generate_article(
             if seo_score < MIN_SEO_SCORE:
                 log_warning("最大回数リライトしましたがSEO基準に届きませんでした。")
 
-            break
 
             if len(article) > MAX_ARTICLE_LENGTH:
                 raise ValueError(
                     f"最終記事が最大文字数を超えています: {len(article)}文字"
                 )
+
+
+            break
+
 
         except GeminiDailyQuotaExceeded:
             raise
