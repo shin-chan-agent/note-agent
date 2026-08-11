@@ -60,99 +60,44 @@ def get_target_services(theme):
     return THEME_SERVICES.get(theme, [])
 
 
-def split_text(text, max_length=4800):
-    # タイトル・導入文を取得
-    match = re.search(r"(.*?)(?=\n### |\n## |\Z)", text, re.DOTALL)
+def split_text(text, max_length=4990):
+    """
+    LINE送信用に文章を分割する。
 
-    if match:
-        header = match.group(1).strip()
-        body = text[len(match.group(1)):].strip()
-    else:
-        header = ""
-        body = text
-
-    # H3単位で分割
-    sections = re.split(r"(?=\n### )", body)
+    ・1メッセージ最大4990文字
+    ・4900文字以内で最後に出てくる「。」で分割
+    ・「。」がなければ改行で分割
+    ・それもなければ文字数で分割
+    """
 
     parts = []
-    current = header
 
-    for section in sections:
+    while len(text) > max_length:
 
-        section = section.strip()
+        # max_length以内で最後の「。」を探す
+        split_pos = text.rfind("。", 0, max_length)
 
-        if not section:
-            continue
+        # 「。」がなければ最後の改行を探す
+        if split_pos == -1:
+            split_pos = text.rfind("\n", 0, max_length)
 
-        # 入るなら追加
-        if len(current) + len(section) + 2 <= max_length:
-
-            if current:
-                current += "\n\n"
-
-            current += section
-            continue
-
-        # 一旦保存
-        if current:
-            parts.append(current)
-
-        # H3単体が長すぎる場合
-        if len(section) > max_length:
-
-            current = ""
-
-            paragraphs = section.split("\n\n")
-
-            for paragraph in paragraphs:
-
-                if len(current) + len(paragraph) + 2 <= max_length:
-
-                    if current:
-                        current += "\n\n"
-
-                    current += paragraph
-
-                else:
-
-                    if current:
-                        parts.append(current)
-
-                    # 段落でも長い場合
-                    if len(paragraph) > max_length:
-
-                        current = ""
-
-                        lines = paragraph.split("\n")
-
-                        for line in lines:
-
-                            if len(current) + len(line) + 1 <= max_length:
-
-                                if current:
-                                    current += "\n"
-
-                                current += line
-
-                            else:
-
-                                if current:
-                                    parts.append(current)
-
-                                while len(line) > max_length:
-                                    parts.append(line[:max_length])
-                                    line = line[max_length:]
-
-                                current = line
-
-                    else:
-                        current = paragraph
-
+        # それでもなければ文字数で強制分割
+        if split_pos == -1:
+            split_pos = max_length
         else:
-            current = section
+            # 「。」または改行を含める
+            split_pos += 1
 
-    if current:
-        parts.append(current)
+        part = text[:split_pos].strip()
+
+        if part:
+            parts.append(part)
+
+        text = text[split_pos:].strip()
+
+    # 最後に残った部分
+    if text:
+        parts.append(text)
 
     # 【1/○】を付与
     total = len(parts)
