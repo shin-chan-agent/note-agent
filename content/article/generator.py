@@ -74,6 +74,17 @@ def generate_article(
                 log_warning("記事文字数不足。再生成します。")
                 continue
 
+            # 文字数チェック
+            if len(article) < 2000:
+                log_warning("記事文字数不足。再生成します。")
+                continue
+
+            if len(article) > MAX_ARTICLE_LENGTH:
+                log_warning(
+        f"記事文字数超過（{len(article)}文字）。再生成します。"
+    )
+                continue
+
             # 評価だけリトライ
             for _ in range(MAX_RETRY):
                 evaluation = quality_check(
