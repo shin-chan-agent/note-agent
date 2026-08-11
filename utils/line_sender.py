@@ -7,7 +7,15 @@ def send_line_messages(messages):
     print(f"LINE送信メッセージ数: {len(messages)}")
 
     for i, message in enumerate(messages, 1):
-        print(f"LINE送信{i}文字数: {len(message['text'])}")
+        text_length = len(message["text"])
+
+        print(f"LINE送信{i}文字数: {text_length}")
+
+        if text_length > 5000:
+            raise ValueError(
+                f"LINE送信{i}が5000文字を超えています: "
+                f"{text_length}文字"
+            )
 
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
     user_id = os.environ["LINE_USER_ID"]
