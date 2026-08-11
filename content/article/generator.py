@@ -69,11 +69,6 @@ def generate_article(
                 log_warning("固定記事案内欠落。再生成します。")
                 continue
 
-            # 文字数不足チェック
-            if len(article) < 2000:
-                log_warning("記事文字数不足。再生成します。")
-                continue
-
             # 文字数チェック
             if len(article) < 2000:
                 log_warning("記事文字数不足。再生成します。")
@@ -146,9 +141,11 @@ def generate_article(
                 if len(article) > MAX_ARTICLE_LENGTH:
                     log_warning(
                         f"リライト後の記事が長すぎます（{len(article)}文字）。"
-                        "リライトを終了します。"
+                        "記事生成をやり直します。"
                     )
-                    break
+                    raise ValueError(
+                        f"リライト後の記事が最大文字数を超えています: {len(article)}文字"
+                    )
 
 
                 # 評価だけリトライ
