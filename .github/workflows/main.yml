@@ -1,5 +1,9 @@
 name: Note AI Agent
 
+concurrency:
+  group: note-agent
+  cancel-in-progress: false
+
 on:
   workflow_dispatch: # 手動実行用
   schedule:
