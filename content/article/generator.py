@@ -203,6 +203,11 @@ def generate_article(
 
             break
 
+            if len(article) > MAX_ARTICLE_LENGTH:
+                raise ValueError(
+                    f"最終記事が最大文字数を超えています: {len(article)}文字"
+                )
+
         except GeminiDailyQuotaExceeded:
             raise
 
