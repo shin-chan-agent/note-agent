@@ -81,8 +81,8 @@ def generate_article(
 
             if len(article) > MAX_ARTICLE_LENGTH:
                 log_warning(
-        f"記事文字数超過（{len(article)}文字）。再生成します。"
-    )
+                    f"記事文字数超過（{len(article)}文字）。再生成します。"
+                )
                 continue
 
             # 評価だけリトライ
@@ -142,6 +142,13 @@ def generate_article(
                     knowledge,
                     rewrite_prompt,
                 )
+
+                if len(article) > MAX_ARTICLE_LENGTH:
+                    log_warning(
+                        f"リライト後の記事が長すぎます（{len(article)}文字）。"
+                        "リライトを終了します。"
+                    )
+                    break
 
 
                 # 評価だけリトライ
