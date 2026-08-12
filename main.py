@@ -278,6 +278,18 @@ def generate_and_send_line():
 
 --------------------
 
+🖼️【画像カテゴリ】
+
+{image_category}
+
+--------------------
+
+🔑【強調キーワード】
+
+{", ".join(highlight_keywords)}
+
+--------------------
+
 🐦【X投稿】
 
 {x_post}
