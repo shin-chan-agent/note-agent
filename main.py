@@ -33,6 +33,8 @@ from utils.gemini_client import GeminiDailyQuotaExceeded
 
 from utils.eyecatch_generator import create_eyecatch_background
 
+from utils.image_metadata_parser import parse_image_metadata
+
 from config import (
     MIN_SCORE,
     MIN_SEO_SCORE,
@@ -42,8 +44,6 @@ from config import (
     KNOWLEDGE_UPDATE_INTERVAL_DAYS,
     THEME_SERVICES,
 )
-
-from image_metadata_parser import parse_image_metadata
 
 from datetime import datetime
 from zoneinfo import ZoneInfo
