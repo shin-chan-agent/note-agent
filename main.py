@@ -43,6 +43,8 @@ from config import (
     THEME_SERVICES,
 )
 
+from image_metadata_parser import parse_image_metadata
+
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
