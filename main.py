@@ -268,6 +268,11 @@ def generate_and_send_line():
 """
 
 
+    metadata = parse_image_metadata(article)
+
+    image_category = metadata["image_category"]
+    highlight_keywords = metadata["highlight_keywords"]
+
     evaluation = evaluation.strip()
     x_post = x_post.strip()
     instagram_post = instagram_post.strip()
