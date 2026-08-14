@@ -33,8 +33,6 @@ from utils.gemini_client import GeminiDailyQuotaExceeded
 
 from utils.eyecatch_generator import create_eyecatch_background
 
-from utils.image_metadata_parser import parse_image_metadata
-
 from config import (
     MIN_SCORE,
     MIN_SEO_SCORE,
@@ -239,14 +237,6 @@ def generate_and_send_line():
             "※Gemini APIの日次クォータ超過のため、"
             "Instagram投稿は生成できませんでした。"
         )
-
-
-    # 画像用メタデータを抽出
-    metadata = parse_image_metadata(article)
-
-    article = metadata["article"]
-    image_category = metadata["image_category"]
-    highlight_keywords = metadata["highlight_keywords"]
 
 
     status = (
