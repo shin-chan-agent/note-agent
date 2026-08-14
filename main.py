@@ -272,10 +272,6 @@ def generate_and_send_line():
     instagram_post = instagram_post.strip()
 
 
-    log_info(f"LINE画像カテゴリ：{image_category}")
-    log_info(f"LINE強調キーワード：{highlight_keywords}")
-
-
     summary_message = f"""
 📊【AI評価】
 
