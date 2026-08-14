@@ -45,14 +45,7 @@ def generate_article(
 
             generated_text = response.text
 
-            metadata = parse_image_metadata(generated_text)
-
-            article = metadata["article"]
-            image_category = metadata["image_category"]
-            highlight_keywords = metadata["highlight_keywords"]
-
-            log_info(f"画像カテゴリ：{image_category}")
-            log_info(f"強調キーワード：{highlight_keywords}")
+            article = generated_text
 
             # タイトル欠落チェック
             if not re.search(r"^タイトル[:：]", article):
@@ -231,6 +224,9 @@ def generate_article(
     article = metadata["article"]
     image_category = metadata["image_category"]
     highlight_keywords = metadata["highlight_keywords"]
+
+    log_info(f"画像カテゴリ：{image_category}")
+    log_info(f"強調キーワード：{highlight_keywords}")
 
 
     return {
