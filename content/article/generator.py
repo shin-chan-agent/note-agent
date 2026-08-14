@@ -226,13 +226,20 @@ def generate_article(
             time.sleep(GEMINI_RETRY_WAIT)
 
 
+    metadata = parse_image_metadata(article)
+
+    article = metadata["article"]
+    image_category = metadata["image_category"]
+    highlight_keywords = metadata["highlight_keywords"]
+
+
     return {
         "article": article,
-        "image_category": image_category,
-        "highlight_keywords": highlight_keywords,
         "evaluation": evaluation,
         "score": score,
         "seo_score": seo_score,
         "duplicate_result": duplicate_result,
         "latest_result": latest_result,
+        "image_category": image_category,
+        "highlight_keywords": highlight_keywords,
     }
