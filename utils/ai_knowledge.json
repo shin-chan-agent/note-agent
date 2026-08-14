@@ -2,32 +2,32 @@
     "services": {
         "chatgpt": {
             "name": "ChatGPT",
-            "updated_at": "2026-08-07T17:12:00Z",
+            "updated_at": null,
             "sources": [
                 {
-                    "name": "OpenAI pricing: Features and plans explained - Orb",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGXS345cAMlxT1oUcfef88660fGfINbwGXREbMvWLX6KtjI_MPYWcAcVD0vIyfzy-D2qv2U9dqNEtdE4xzvER2ZLYo8G-Ia5X1cYS1HpSdExXzMCS8Snr8YhDw_8hTolVoMzVTqUDk=",
-                    "verified_at": "2026-08-07T17:12:00Z"
+                    "name": "OpenAI API Pricing",
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8nOpqrSFuSXKX4S5RDXSY525Od4iIzcUvFZKSF2OIsd0uBhJXARll5ecomVi2Pd3WwqULVIsRd8gtfISIinHw-y3MscPmLNjiyDa6cz-CT9G_ck7jnnpxOg==",
+                    "verified_at": "2026-08-14"
+                },
+                {
+                    "name": "OpenAI pricing: Features and plans explained - Orb Billing",
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQP0cpZO8MWPa96IUMldklUK7FVo1oRENfPS3Ne2tr97zkoIl2iCoxEjtnCdhhbARSAXXewobvwYITxyNqSE_Hy8Frp5Wn_7jkPqh2iZweVk4vkOwptgZfJQME6XFHf6wrTEYDtwE=",
+                    "verified_at": "2026-08-14"
                 },
                 {
                     "name": "OpenAI API Pricing In 2026: Every Model Compared - CloudZero",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELYvlzjRIbvRmdxvY71Crl64FFM2MR3V2PJ1FxbyQFHpdk6WdKYewHRntBj69GO2cLUOfwko-LvjpowKOEwTFqJBqS2Of5NLX2qxZAmvDXGSEkMeg3izu3EhXj4PsP63krfF12veRHjSQ=",
-                    "verified_at": "2026-08-07T17:12:00Z"
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjtlKZOMrm49RkDqSZxHkTy6BckxAGbgUEF_vj2GbcZQKIXQCbiKH4Nnd_CcWguCxo9sTMgriEizC8BmLXI3oXnkjSt9iEUH4ZzkDb7IF52ADmQVSdi2Z4cAj5OjBIExw_oM8b9CQVnKE=",
+                    "verified_at": "2026-08-14"
                 },
                 {
-                    "name": "Introducing ChatGPT Plus - OpenAI",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEH1zxrdTNnpOyLuktYqYwR_4cWRVOFgN7ieF3oO0iSbpHMBpo1RQRUkc50bxBGaNz_KXVNGUraOJWsv39VOKhkiz-BZExhuyBqDqUJPoV84piM84e6fh0tjr3cCp29LgX4=",
-                    "verified_at": "2026-08-07T17:12:00Z"
+                    "name": "ChatGPT Pricing 2026: Plans, API Costs & Tiers - MetaCTO",
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPeUysmS_Ccp9Kn1vKwKOimYlYVXZ0HjF476NDUWAY-0CHWFGDT6E7q-jal2hKzhovyslR0W9DsDfAR_jmlw8IYU5nfxkJ0EIeanmGm7dbd7KeduMYyerrBYFrhowvgyDpYZLoqDhKSbvJXtqLNxktTy3OYM8qvfF9yYNLoDzztrezGMOvC-IBPcLhIxsJJcF8lS8u3jikMtjgay4=",
+                    "verified_at": "2026-08-14"
                 },
                 {
                     "name": "Business Pricing | OpenAI",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEl7B36oeK19nkLJ6Oj06pnoKAEEsUehfy2dI4JiTiKlSh1D12t0ZCILjQN6lWFoTk0PucHnkErHgzEFsRglAz_tFRP7IBXxY332j1meHeEq08xg8HMsWNrL9q-ndHIWA==",
-                    "verified_at": "2026-08-07T17:12:00Z"
-                },
-                {
-                    "name": "ChatGPT Capabilities Overview - OpenAI Help Center",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHSfkLE1l_nKaNMFLMEtGYRqrGD8MwSl-TjfzAU595l99NyIwfFnza4EpNcSHaliYmUiAdei4ikXWVjIPZZn49tOV8LOBzlYE1MD4Su7QJBy2ykRk0Ef0J20JqEgpcxYNFxp2Mc-QyUaGBcz2tTCfSK88LN4egdiJKqTMykag7Y7kokrLM=",
-                    "verified_at": "2026-08-07T17:12:00Z"
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEyrrhB08vKQCw6KlKSB89L1UhOTX1FLoUKnQpd57ilL2ouACzu2UFDmAAA2lO6bapJXWf33tgjDkvDk4xOjWe6ZEgYDkqMNN_4PRf6ieTRdysHrH49cCZrKHvSR0GkFg==",
+                    "verified_at": "2026-08-14"
                 }
             ],
             "models": [
@@ -35,7 +35,7 @@
                     "id": "gpt-5-6-sol",
                     "name": "GPT-5.6 Sol",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-07-09",
                     "last_updated": null,
                     "description": "複雑な専門業務やコーディング向けのフロンティアモデル。ChatGPT、ChatGPT Work、Codex、APIで利用可能。",
@@ -44,13 +44,13 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-6-terra",
                     "name": "GPT-5.6 Terra",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-07-09",
                     "last_updated": "2026-07-30",
                     "description": "知能とコストのバランスがとれたGPT-5.6モデル。ChatGPT、ChatGPT Work、Codex、APIで利用可能。",
@@ -59,13 +59,13 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-6-luna",
                     "name": "GPT-5.6 Luna",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-07-09",
                     "last_updated": "2026-07-30",
                     "description": "コスト重視で大量のワークロード向けに最適化されたGPT-5.6モデル。ChatGPT、ChatGPT Work、Codex、APIで利用可能。",
@@ -74,13 +74,13 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-5-instant",
                     "name": "GPT-5.5 Instant",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-05-05",
                     "last_updated": "2026-06-24",
                     "description": "ChatGPTで最もよく使用されるモデル。会話品質が向上し、特に意思決定、アドバイス、計画、調査、ショッピングの際に役立ちます。Enterpriseプランでは無制限のアクセスが可能です。Freeプランでも制限付きで利用可能です。",
@@ -88,13 +88,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-5-pro",
                     "name": "GPT-5.5 Pro",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-04-24",
                     "last_updated": null,
                     "description": "よりスマートで正確な応答を生成するGPT-5.5のバージョン。",
@@ -102,13 +102,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-5",
                     "name": "GPT-5.5",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-04-23",
                     "last_updated": null,
                     "description": "コーディングや専門業務向けの新しいクラスの知能。エージェントタスクで大きな飛躍を遂げました。すべての有料ChatGPTティアとAPIで利用可能。",
@@ -116,13 +116,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-4-pro",
                     "name": "GPT-5.4 Pro",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "よりスマートで正確な応答を生成するGPT-5.4のバージョン。",
@@ -130,13 +130,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-4-mini",
                     "name": "GPT-5.4 Mini",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "コーディング、コンピューターの使用、サブエージェント向けの最も強力なミニモデル。",
@@ -144,13 +144,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-4-nano",
                     "name": "GPT-5.4 Nano",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "シンプルで大量のタスク向けの最も安価なGPT-5.4クラスのモデル。",
@@ -158,13 +158,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-4",
                     "name": "GPT-5.4",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "コーディングや専門業務向けのより手頃なモデル。",
@@ -172,7 +172,7 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "o4-mini",
@@ -181,23 +181,21 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "コンパクトで効率的かつ費用対効果の高いOpenAIのoシリーズ推論モデルです。数学、コーディング、視覚タスクに優れています。API料金は、入力トークン100万あたり$0.55、出力トークン100万あたり$2.20です。200Kトークンのコンテキストウィンドウと2024年6月の知識カットオフがあります。",
+                    "description": "Designed for tasks requiring multi-step reasoning, like math, complex code debugging, and scientific analysis. Best value for budget reasoning workloads.",
                     "modalities": [
-                        "text",
-                        "code",
-                        "vision"
+                        "text"
                     ],
                     "api_available": true,
                     "missing_count": 0
                 },
                 {
                     "id": "o3-pro",
-                    "name": "o3 Pro",
+                    "name": "o3-pro",
                     "aliases": [],
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "複雑な複数ステップの推論タスク向けに設計された推論モデルです。API料金は、入力トークン100万あたり$2-$20です。",
+                    "description": "For complex multi-step reasoning.",
                     "modalities": [
                         "text"
                     ],
@@ -208,7 +206,7 @@
                     "id": "openai-o3",
                     "name": "OpenAI o3",
                     "aliases": [],
-                    "status": "deprecated",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": "2026-08-26",
                     "description": "ChatGPTから2026年8月26日に廃止予定。",
@@ -216,27 +214,27 @@
                         "text"
                     ],
                     "api_available": false,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-image-2",
-                    "name": "GPT Image 2",
+                    "name": "GPT-Image-2",
                     "aliases": [],
-                    "status": "active",
+                    "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "最先端の画像生成モデル。",
+                    "description": "State-of-the-art image generation model.",
                     "modalities": [
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 0
                 },
                 {
                     "id": "gpt-image-1-5",
                     "name": "GPT Image 1.5",
                     "aliases": [],
-                    "status": "deprecated",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "以前の画像生成モデル。",
@@ -244,13 +242,13 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "chatgpt-image-latest",
                     "name": "chatgpt-image-latest",
                     "aliases": [],
-                    "status": "deprecated",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ChatGPTで使用されていた以前の画像モデル。",
@@ -258,13 +256,13 @@
                         "image"
                     ],
                     "api_available": false,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-image-1",
                     "name": "GPT Image 1",
                     "aliases": [],
-                    "status": "deprecated",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "以前の画像生成モデル。",
@@ -272,13 +270,13 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-image-1-mini",
                     "name": "GPT Image 1 mini",
                     "aliases": [],
-                    "status": "deprecated",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "GPT Image 1の費用対効果の高いバージョン。",
@@ -286,13 +284,13 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-realtime-2-1",
                     "name": "GPT-Realtime-2.1",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ツール使用が可能な推論モデル。",
@@ -301,13 +299,13 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-realtime-2-1-mini",
                     "name": "GPT-Realtime-2.1 mini",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ツール使用が可能な推論モデル。",
@@ -316,13 +314,13 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-realtime-2",
                     "name": "GPT-Realtime-2",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ツール使用が可能な推論モデル。",
@@ -331,41 +329,41 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-realtime-translate",
                     "name": "GPT-Realtime-Translate",
                     "aliases": [],
-                    "status": "active",
+                    "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "リアルタイム音声翻訳モデル。",
+                    "description": "A model that translates speech in real time and keeps pace with the speaker.",
                     "modalities": [
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 0
                 },
                 {
                     "id": "gpt-live-transcribe",
-                    "name": "GPT Live Transcribe",
+                    "name": "GPT-Live-Transcribe",
                     "aliases": [],
-                    "status": "active",
+                    "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "リアルタイム転写向けの低遅延音声認識モデル。",
+                    "description": "A streaming speech-to-text model that transcribes speech live as the speaker talks.",
                     "modalities": [
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 0
                 },
                 {
                     "id": "gpt-realtime-whisper",
                     "name": "GPT-Realtime-Whisper",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "リアルタイム転写向けのストリーミング音声認識モデル。",
@@ -373,13 +371,13 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-realtime-1-5",
                     "name": "GPT-Realtime-1.5",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "音声入力、音声出力に最適な音声モデル。",
@@ -387,13 +385,13 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-4o-transcribe",
                     "name": "GPT-4o Transcribe",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "GPT-4oを搭載した音声認識モデル。",
@@ -401,13 +399,13 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-4o-mini-transcribe",
                     "name": "GPT-4o mini Transcribe",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "GPT-4o miniを搭載した音声認識モデル。",
@@ -415,13 +413,13 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "codex",
                     "name": "Codex",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "自然言語からコードへの変換モデル。ProおよびBusinessプランで利用可能。デスクトップアプリにも含まれます。",
@@ -429,13 +427,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-4-1",
                     "name": "GPT-4.1",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "フロンティアモデルの一つで、ファインチューニングに利用可能。",
@@ -443,13 +441,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-4-1-nano",
                     "name": "GPT-4.1 Nano",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "より低コストなモデル。",
@@ -457,13 +455,13 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-4-1-mini",
                     "name": "GPT-4.1 Mini",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "より低コストなモデル。",
@@ -471,7 +469,7 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-4o",
@@ -480,35 +478,36 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "ChatGPT Eduを強化するフラッグシップモデルで、テキストとビジョン全体で推論し、高度なツールを使用できます。",
+                    "description": "Capable multi-modal model.",
                     "modalities": [
                         "text",
+                        "audio",
                         "vision"
                     ],
-                    "api_available": false,
+                    "api_available": true,
                     "missing_count": 0
                 },
                 {
                     "id": "gpt-4o-mini",
                     "name": "GPT-4o mini",
                     "aliases": [],
-                    "status": "active",
+                    "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "GPT-4oのミニバージョン。",
+                    "description": "Capable multi-modal mini model. Converts images into tokens differently.",
                     "modalities": [
                         "text",
-                        "image",
-                        "audio"
+                        "audio",
+                        "vision"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 0
                 },
                 {
                     "id": "gpt-4o-audio",
                     "name": "GPT-4o Audio",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "音声処理と音声インタラクションに最適化された専用オーディオモデル。",
@@ -516,13 +515,13 @@
                         "audio"
                     ],
                     "api_available": false,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-3-codex",
                     "name": "GPT-5.3-Codex",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-02",
                     "last_updated": null,
                     "description": "コーディング用のモデル。",
@@ -530,13 +529,13 @@
                         "text"
                     ],
                     "api_available": false,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5-mini",
                     "name": "GPT-5 mini",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ChatGPT Freeプランで無制限に利用可能。",
@@ -544,13 +543,13 @@
                         "text"
                     ],
                     "api_available": false,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-4-5",
                     "name": "GPT-4.5",
                     "aliases": [],
-                    "status": "deprecated",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": "2026-06-26",
                     "description": "ChatGPTから2026年6月26日に廃止されました。",
@@ -558,19 +557,23 @@
                         "text"
                     ],
                     "api_available": false,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gpt-5.6-sol",
                     "name": "GPT-5.6 Sol",
-                    "aliases": [],
+                    "aliases": [
+                        "gpt-5.6"
+                    ],
                     "status": "available",
-                    "effective_date": null,
+                    "effective_date": "2026-07-09",
                     "last_updated": null,
-                    "description": "複雑な専門業務向けのフロンティアモデルです。API料金は、入力トークン100万あたり$5.00、出力トークン100万あたり$30.00です。キャッシュされた入力は$0.50です。コンテキストウィンドウは1,050,000トークンです。長文コンテキストの料金は、入力トークン100万あたり$10.00、出力トークン100万あたり$45.00です。ChatGPT PlusおよびProユーザー向けに日常会",
+                    "description": "Flagship model for complex reasoning and coding. Frontier model for complex professional work.",
                     "modalities": [
                         "text",
-                        "code"
+                        "image",
+                        "multilingual",
+                        "vision"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -580,12 +583,14 @@
                     "name": "GPT-5.6 Terra",
                     "aliases": [],
                     "status": "available",
-                    "effective_date": null,
-                    "last_updated": null,
-                    "description": "インテリジェンスとコストのバランスが取れたGPT-5.6モデルです。API料金は、入力トークン100万あたり$2.00、出力トークン100万あたり$12.00です。キャッシュされた入力は$0.20です。コンテキストウィンドウは1,050,000トークンです。長文コンテキストの料金は、入力トークン100万あたり$4.00、出力トークン100万あたり$18.00です。",
+                    "effective_date": "2026-07-09",
+                    "last_updated": "2026-07-30",
+                    "description": "Balanced model for efficient, high-volume work. Balances intelligence and cost.",
                     "modalities": [
                         "text",
-                        "code"
+                        "image",
+                        "multilingual",
+                        "vision"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -595,11 +600,14 @@
                     "name": "GPT-5.6 Luna",
                     "aliases": [],
                     "status": "available",
-                    "effective_date": null,
-                    "last_updated": null,
-                    "description": "コスト重視のワークロード向けに最適化されたGPT-5.6モデルです。API料金は、入力トークン100万あたり$0.20、出力トークン100万あたり$1.20です。キャッシュされた入力は$0.02です。長文コンテキストの料金は、入力トークン100万あたり$0.40、出力トークン100万あたり$1.80です。ChatGPTの無料およびGoアカウントのテキストチャットの新しいデフォルトモデルです。",
+                    "effective_date": "2026-07-09",
+                    "last_updated": "2026-07-30",
+                    "description": "Fast, affordable model for everyday work. Optimized for cost-sensitive workloads.",
                     "modalities": [
-                        "text"
+                        "text",
+                        "image",
+                        "multilingual",
+                        "vision"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -610,11 +618,10 @@
                     "aliases": [],
                     "status": "available",
                     "effective_date": null,
-                    "last_updated": "2026-04-23",
-                    "description": "OpenAIの最新かつ最も有能なモデルファミリーです。複雑な推論、コーディング、創造的なタスクに優れています。API料金は、入力トークン100万あたり$5.00、出力トークン100万あたり$30.00です。コンテキストウィンドウは100万トークンです。Batch APIまたはFlex Pricingでは50%割引が適用され、入力トークン100万あたり$2.50、出力トークン100万あたり$15.0",
+                    "last_updated": null,
+                    "description": "Most capable model (as of Feb 2026 for API). Excels at complex reasoning, coding, and creative tasks.",
                     "modalities": [
-                        "text",
-                        "code"
+                        "text"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -625,11 +632,10 @@
                     "aliases": [],
                     "status": "available",
                     "effective_date": null,
-                    "last_updated": "2026-04-24",
-                    "description": "研究グレードの問題に最大の能力を提供します。API料金は、入力トークン100万あたり$30.00、出力トークン100万あたり$180.00です。コンテキストウィンドウは100万トークンです。",
+                    "last_updated": null,
+                    "description": "Offers maximum capability for research-grade problems.",
                     "modalities": [
-                        "text",
-                        "code"
+                        "text"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -641,7 +647,7 @@
                     "status": "available",
                     "effective_date": "2026-05-05",
                     "last_updated": null,
-                    "description": "ChatGPTの新しいデフォルトモデルとして展開されました。医学、法律、金融における高リスクのプロンプトで、GPT-5.3 Instantよりも52.5%少ない幻覚を生成します。",
+                    "description": "New default model in ChatGPT; produces fewer hallucinated claims than GPT-5.3 Instant.",
                     "modalities": [
                         "text"
                     ],
@@ -655,10 +661,9 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "生産ワークホースとして推奨されるモデルで、コストと能力の優れたバランスを提供します。API料金は、入力トークン100万あたり$2.50、出力トークン100万あたり$15.00です。コンテキストウィンドウは100万トークンです。長文コンテキストの料金は、入力トークン100万あたり$5.00、出力トークン100万あたり$22.50です。",
+                    "description": "More affordable and offers an excellent balance of cost and capability.",
                     "modalities": [
-                        "text",
-                        "code"
+                        "text"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -670,7 +675,7 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "API料金は、入力トークン100万あたり$0.75、出力トークン100万あたり$4.50です。標準的なチャットボットの会話やコンテンツタスクに適しています。",
+                    "description": "Strongest small model for standard chatbot conversations and content tasks.",
                     "modalities": [
                         "text"
                     ],
@@ -684,7 +689,7 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "最も安価なプロダクションモデルです。API料金は、入力トークン100万あたり$0.20、出力トークン100万あたり$1.25です。",
+                    "description": "Lower-cost option for classification, intent detection, and routing.",
                     "modalities": [
                         "text"
                     ],
@@ -698,7 +703,7 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "ファインチューニングに利用可能なモデルです。トレーニング料金は、トークン100万あたり約$3.00です。ファインチューニング後の推論料金は、入力トークン100万あたり約$3.00、出力トークン100万あたり約$12.00です。",
+                    "description": "Available for fine-tuning.",
                     "modalities": [
                         "text"
                     ],
@@ -712,9 +717,10 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "低コストのファインチューニングオプションです。トレーニング料金は、トークン100万あたり約$0.80です。推論料金は、入力トークン100万あたり約$0.80、出力トークン100万あたり約$3.20です。",
+                    "description": "Lower-cost option. Converts images into tokens differently.",
                     "modalities": [
-                        "text"
+                        "text",
+                        "image"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -726,9 +732,10 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "最も手頃な価格の長文コンテキストタスク向けモデルです。API料金は、入力トークン100万あたり$0.10です。分類、意図検出、ルーティングに効果的です。",
+                    "description": "For classification, intent detection, and routing. Converts images into tokens differently.",
                     "modalities": [
-                        "text"
+                        "text",
+                        "image"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -740,7 +747,7 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "複数ステップの推論を必要とするタスク向けに特別に構築された推論モデルです。API料金は、入力トークン100万あたり$2-$20、出力トークン100万あたり$8です。",
+                    "description": "For complex multi-step reasoning.",
                     "modalities": [
                         "text"
                     ],
@@ -759,7 +766,7 @@
                         "text"
                     ],
                     "api_available": false,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gpt-5.3-codex-spark",
@@ -774,7 +781,7 @@
                         "code"
                     ],
                     "api_available": false,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gpt-5",
@@ -784,6 +791,122 @@
                     "effective_date": null,
                     "last_updated": null,
                     "description": "無料プランで限定的にアクセスできるモデルです。",
+                    "modalities": [
+                        "text"
+                    ],
+                    "api_available": false,
+                    "missing_count": 1
+                },
+                {
+                    "id": "gpt-5.6-cyber",
+                    "name": "GPT-5.6 Cyber",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Controlled-access model for authorized vulnerability research, exploit validation, and security testing.",
+                    "modalities": [
+                        "text",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gpt-5.5-cyber",
+                    "name": "GPT-5.5 Cyber",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Controlled-access model.",
+                    "modalities": [
+                        "text",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gpt-5.4-pro",
+                    "name": "GPT-5.4 Pro",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "High-capability model.",
+                    "modalities": [
+                        "text"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gpt-transcribe",
+                    "name": "GPT-Transcribe",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "A speech-to-text model for asynchronous and batch workloads.",
+                    "modalities": [
+                        "audio"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gpt-realtime-2.1",
+                    "name": "GPT-Realtime-2.1",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Most capable model for realtime voice interactions with advanced reasoning built in.",
+                    "modalities": [
+                        "audio",
+                        "text"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gpt-realtime-2.1-mini",
+                    "name": "GPT-Realtime-2.1 mini",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Strongest mini model yet for realtime voice interactions with advanced reasoning built in.",
+                    "modalities": [
+                        "audio",
+                        "text"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "chat-latest",
+                    "name": "chat-latest",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Latest Instant model used in ChatGPT, not recommended for API use.",
+                    "modalities": [
+                        "text"
+                    ],
+                    "api_available": false,
+                    "missing_count": 0
+                },
+                {
+                    "id": "chat-instant",
+                    "name": "chat-instant",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Instant model used in ChatGPT, not recommended for API use.",
                     "modalities": [
                         "text"
                     ],
@@ -804,7 +927,7 @@
                     "billing": "無料",
                     "description": "AIを無料で探索したい初心者および個人向けです。テキストチャットに無制限にアクセスできますが、ファイルアップロード、画像、画像生成、音声モードの使用には制限があります。リアルタイムのWeb検索、ファイルアップロード、音声および画像ツール、他のユーザーが作成したGPTsを利用できます。米国では広告が表示されます。",
                     "pricing": [],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "go",
@@ -825,7 +948,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "plus",
@@ -846,7 +969,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "pro-100",
@@ -854,7 +977,7 @@
                     "aliases": [
                         "Pro (Tier 1)"
                     ],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-04",
                     "last_updated": null,
                     "billing": "月額",
@@ -867,7 +990,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "pro-200",
@@ -875,7 +998,7 @@
                     "aliases": [
                         "Pro (Tier 2)"
                     ],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2024-12",
                     "last_updated": null,
                     "billing": "月額",
@@ -888,7 +1011,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "business",
@@ -917,7 +1040,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "enterprise",
@@ -931,13 +1054,13 @@
                     "billing": "カスタム（見積もり）",
                     "description": "エンタープライズグレードのセキュリティとプライバシー、一元化された管理コントロール、高度なChatGPT機能へのアクセスを組み合わせた、組織向けの管理されたChatGPTプランです。無制限の高速GPT-5.6 Solアクセス、より長いコンテキストウィンドウ（最大32kまたは256kトークン）、高度なデータ分析、カスタマイズオプション、SSO、SCIM、利用状況分析、SOC 2準拠、24時間365日の優先サポート、SLAが含まれます。ビジネスデータはモデルトレーニングに使用されません。通常、ユーザーあたり月額約$60、最低150シート、12ヶ月契約のコミットメントが報告されています。",
                     "pricing": [],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "chatgpt-for-teachers",
                     "name": "ChatGPT for Teachers",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "billing": "無料",
@@ -950,25 +1073,25 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "chatgpt-edu",
                     "name": "ChatGPT Edu",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "billing": "カスタム",
                     "description": "大学がキャンパスコミュニティ全体でAIを展開できるようにする手頃なプラン。",
                     "pricing": [],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "chatgpt-for-academic-researchers",
                     "name": "ChatGPT for Academic Researchers",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": "2026-07-29",
                     "last_updated": null,
                     "billing": "無料",
@@ -981,7 +1104,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "pro",
@@ -1008,7 +1131,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "edu",
@@ -1022,6 +1145,414 @@
                     "billing": "大学向け（手頃な価格）",
                     "description": "大学がAIを学生、教員、研究者、キャンパス運営に責任を持って展開するために構築されたChatGPTのバージョンです。GPT-4oを搭載し、テキストとビジョン全体で推論し、データ分析、Webブラウジング、ドキュメント要約などの高度なツールを使用できます。エンタープライズレベルのセキュリティとコントロールが含まれ、教育機関にとって手頃な価格です。会話とデータはOpenAIモデルのトレーニングには使用されません。",
                     "pricing": [],
+                    "missing_count": 1
+                },
+                {
+                    "id": "free-plan",
+                    "name": "Free Plan",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-08-10",
+                    "billing": "free",
+                    "description": "For beginners and individuals to explore AI without paying. Limited access to GPT-5.6 Luna. Unlimited text chats. Limited images per day with DALL-E. File uploads with restrictions. Web browsing capabilities. No access to advanced voice mode or custom GPTs.",
+                    "pricing": [
+                        {
+                            "name": "monthly",
+                            "unit": "USD",
+                            "price": "0",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-go",
+                    "name": "ChatGPT Go",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-01-01",
+                    "last_updated": "2026-08-10",
+                    "billing": "monthly",
+                    "description": "Unlimited GPT-5.6 Luna access with ads (in US). Includes unlimited text chats.",
+                    "pricing": [
+                        {
+                            "name": "monthly",
+                            "unit": "user/month",
+                            "price": "8",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-plus",
+                    "name": "ChatGPT Plus",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "billing": "monthly",
+                    "description": "For power users. Extended limits and access during peak times. Access to GPT-5.6 Sol, Sora video, Codex, Agent Mode, Deep Research. Ad-free. Use voice mode with video and screensharing. Create custom GPTs.",
+                    "pricing": [
+                        {
+                            "name": "monthly",
+                            "unit": "user/month",
+                            "price": "20",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-pro-100",
+                    "name": "ChatGPT Pro ($100/month tier)",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-04-09",
+                    "last_updated": null,
+                    "billing": "monthly",
+                    "description": "For heavy personal use. Includes GPT-5.5 Pro and ~5x Plus limits. Access to Sol Pro.",
+                    "pricing": [
+                        {
+                            "name": "monthly",
+                            "unit": "user/month",
+                            "price": "100",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-pro-200",
+                    "name": "ChatGPT Pro ($200/month tier)",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "billing": "monthly",
+                    "description": "For power-user workflows. Includes ~20x Plus limits and 1M context window, 250 Deep Research runs. Unlimited ChatGPT Voice. Access to Sol Pro.",
+                    "pricing": [
+                        {
+                            "name": "monthly",
+                            "unit": "user/month",
+                            "price": "200",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-business",
+                    "name": "ChatGPT Business",
+                    "aliases": [
+                        "ChatGPT Team"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-04-02",
+                    "last_updated": null,
+                    "billing": "annual/monthly",
+                    "description": "For small to mid-sized teams. Includes unlimited GPT-5.5, shared workspace, admin console with SAML SSO, SOC 2 Type 2 compliance, and 60+ data connectors. Business data is not used for model training.",
+                    "pricing": [
+                        {
+                            "name": "annual",
+                            "unit": "user/month",
+                            "price": "20",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "monthly",
+                            "unit": "user/month",
+                            "price": "25",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-enterprise",
+                    "name": "ChatGPT Enterprise",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "billing": "custom",
+                    "description": "For large organizations with custom pricing. Includes advanced features and higher usage limits.",
+                    "pricing": [
+                        {
+                            "name": "custom",
+                            "unit": null,
+                            "price": "custom",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "api-token-based",
+                    "name": "API Token-Based Pricing",
+                    "aliases": [
+                        "OpenAI API"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "billing": "pay-per-token",
+                    "description": "Costs based on usage per token for various models. Pricing varies by model, input, cached input, and output tokens.",
+                    "pricing": [
+                        {
+                            "name": "GPT-5.6 Sol (Input)",
+                            "unit": "1M tokens",
+                            "price": "5.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.6 Sol (Output)",
+                            "unit": "1M tokens",
+                            "price": "30.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.6 Terra (Input)",
+                            "unit": "1M tokens",
+                            "price": "2.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.6 Terra (Output)",
+                            "unit": "1M tokens",
+                            "price": "12.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.6 Luna (Input)",
+                            "unit": "1M tokens",
+                            "price": "0.20",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.6 Luna (Output)",
+                            "unit": "1M tokens",
+                            "price": "1.20",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.6 Cyber (Input)",
+                            "unit": "1M tokens",
+                            "price": "12.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.6 Cyber (Output)",
+                            "unit": "1M tokens",
+                            "price": "75.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.5 (Input)",
+                            "unit": "1M tokens",
+                            "price": "5.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.5 (Output)",
+                            "unit": "1M tokens",
+                            "price": "30.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.5 Cyber (Input)",
+                            "unit": "1M tokens",
+                            "price": "12.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.5 Cyber (Output)",
+                            "unit": "1M tokens",
+                            "price": "75.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.5 Pro (Input)",
+                            "unit": "1M tokens",
+                            "price": "30.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.5 Pro (Output)",
+                            "unit": "1M tokens",
+                            "price": "180.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.4 (Input)",
+                            "unit": "1M tokens",
+                            "price": "2.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.4 (Output)",
+                            "unit": "1M tokens",
+                            "price": "15.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.4 Mini (Input)",
+                            "unit": "1M tokens",
+                            "price": "0.75",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.4 Mini (Output)",
+                            "unit": "1M tokens",
+                            "price": "4.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.4 Nano (Input)",
+                            "unit": "1M tokens",
+                            "price": "0.20",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-5.4 Nano (Output)",
+                            "unit": "1M tokens",
+                            "price": "1.25",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-4.1 (Input, fine-tuning training)",
+                            "unit": "1M tokens",
+                            "price": "3.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-4.1 (Input, fine-tuning inference)",
+                            "unit": "1M tokens",
+                            "price": "3.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-4.1 (Output, fine-tuning inference)",
+                            "unit": "1M tokens",
+                            "price": "12.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-4.1 Mini (Input, fine-tuning training)",
+                            "unit": "1M tokens",
+                            "price": "0.80",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-4.1 Mini (Input, fine-tuning inference)",
+                            "unit": "1M tokens",
+                            "price": "0.80",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-4.1 Mini (Output, fine-tuning inference)",
+                            "unit": "1M tokens",
+                            "price": "3.20",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-4.1 Nano (Input)",
+                            "unit": "1M tokens",
+                            "price": "0.10",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "o4-mini (Input)",
+                            "unit": "1M tokens",
+                            "price": "1.10",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "o4-mini (Output)",
+                            "unit": "1M tokens",
+                            "price": "4.40",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-Live-Transcribe",
+                            "unit": "minute",
+                            "price": "0.017",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-Transcribe",
+                            "unit": "minute",
+                            "price": "0.0045",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-Realtime-Translate",
+                            "unit": "minute",
+                            "price": "0.034",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-Image-2 (Image Input)",
+                            "unit": "1M tokens",
+                            "price": "8.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-Image-2 (Cached Image Input)",
+                            "unit": "1M tokens",
+                            "price": "2.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-Image-2 (Output)",
+                            "unit": "1M tokens",
+                            "price": "30.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-Image-2 (Text Input)",
+                            "unit": "1M tokens",
+                            "price": "5.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "GPT-Image-2 (Cached Text Input)",
+                            "unit": "1M tokens",
+                            "price": "1.25",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Web search",
+                            "unit": "1k calls",
+                            "price": "10.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Containers (1GB)",
+                            "unit": "20-minute session per container",
+                            "price": "0.03",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Containers (64GB)",
+                            "unit": "20-minute session per container",
+                            "price": "1.92",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "File search queries",
+                            "unit": "1k queries",
+                            "price": "2.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "File search storage",
+                            "unit": "GB/day",
+                            "price": "0.10",
+                            "currency": "USD"
+                        }
+                    ],
                     "missing_count": 0
                 }
             ],
@@ -1030,23 +1561,23 @@
                     "id": "conversational-ai",
                     "name": "会話型AIアシスタント",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "質問への回答、概念の説明、コンテンツの作成・書き換え・要約、創造的な提案、論理的推論による問題解決、言語翻訳など、幅広いタスクをサポートします。",
                     "category": "Core Capability",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "natural-language-understanding",
                     "name": "自然言語理解とコンテキスト追跡",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "自然言語を理解し、複雑な指示に従い、会話の前のターンを記憶し、コンテキストに合わせて応答を調整できます。",
                     "category": "Core Capability",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "web-browsing",
@@ -1059,7 +1590,7 @@
                     "last_updated": null,
                     "description": "ChatGPTがインターネット上の最新またはリアルタイムの情報を検索することを可能にします。",
                     "category": "Tool Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "deep-research",
@@ -1068,8 +1599,8 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "マルチステップの研究タスク向けに設計されており、構造化された引用付きの回答を提供します。",
-                    "category": "Tool Integration",
+                    "description": "Provides enhanced research capabilities. Limits apply based on plan.",
+                    "category": "advanced",
                     "missing_count": 0
                 },
                 {
@@ -1081,31 +1612,31 @@
                     "last_updated": null,
                     "description": "アップロードされた画像、図、スクリーンショット、チャートを分析したり、テキストプロンプトからイラスト、モックアップ、創造的なビジュアルを生成・修正したりできます。",
                     "category": "Tool Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "file-uploads",
-                    "name": "File Uploads (Documents)",
+                    "name": "File Uploads",
                     "aliases": [],
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "PDF、プレゼンテーション、プレーンテキストドキュメントなどのファイルをアップロードできます。",
-                    "category": "Tool Integration",
+                    "description": "Allows users to upload files for analysis or as context. Restrictions may apply on free plans.",
+                    "category": "utility",
                     "missing_count": 0
                 },
                 {
                     "id": "custom-gpts",
-                    "name": "カスタムGPT",
+                    "name": "Custom GPTs",
                     "aliases": [
                         "GPT Builder"
                     ],
-                    "status": "active",
+                    "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "独自のChatGPTバージョンを作成できます。",
-                    "category": "Customization",
-                    "missing_count": 1
+                    "description": "Users can create customized versions of ChatGPT for specific tasks.",
+                    "category": "customization",
+                    "missing_count": 0
                 },
                 {
                     "id": "memory",
@@ -1116,7 +1647,7 @@
                     "last_updated": null,
                     "description": "ChatGPTが以前の会話から学習し、ユーザーの好みに適応する機能です。",
                     "category": "General",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "canvas-for-coding",
@@ -1124,12 +1655,12 @@
                     "aliases": [
                         "Projects in desktop app"
                     ],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "コーディング作業をサポートする機能で、プロジェクト内で利用できます。",
                     "category": "Tool",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "voice-mode",
@@ -1140,194 +1671,196 @@
                     "last_updated": null,
                     "description": "音声でChatGPTと対話できるモードです。",
                     "category": "Tool Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "agent-mode",
                     "name": "Agent Mode",
-                    "aliases": [],
+                    "aliases": [
+                        "Operator capabilities"
+                    ],
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "description": "ChatGPTエージェントの機能で、PlusおよびProプランに含まれています。",
-                    "category": "General",
+                    "description": "Enables ChatGPT to perform multi-step tasks and actions.",
+                    "category": "advanced",
                     "missing_count": 0
                 },
                 {
                     "id": "shared-workspace",
                     "name": "共有ワークスペース",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "複数のチームメンバーが共通のChatGPTワークスペースを共有し、会話スレッドやカスタムGPTを共有できます。",
                     "category": "Collaboration",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "admin-console",
                     "name": "管理コンソール",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ビジネスおよびエンタープライズプランで利用可能な、管理設定を行うためのインターフェースです。",
                     "category": "Administration",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "sso-mfa",
                     "name": "SSO/MFA (シングルサインオン/多要素認証)",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ビジネスおよびエンタープライズプランで利用可能なセキュリティ機能。",
                     "category": "Security",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "no-data-training",
                     "name": "ビジネスデータのトレーニングなし",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ビジネスプランおよびエンタープライズプランでは、お客様のデータがモデルのトレーニングに使用されません。",
                     "category": "Privacy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "centralized-billing-administration",
                     "name": "集中請求と管理",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ビジネスおよびエンタープライズプランで利用可能な、請求と管理を一元化する機能。",
                     "category": "Administration",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "usage-analytics-budgeting-spend-controls",
                     "name": "使用状況分析、予算編成、支出管理",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ビジネスおよびエンタープライズプランで利用可能な、AI利用のコストを管理するためのツール。",
                     "category": "Administration",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "access-on-multiple-platforms",
                     "name": "Web、iOS、Androidでのアクセス",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "すべてのプランで、Web、iOS、AndroidデバイスからChatGPTにアクセスできます。",
                     "category": "Platform Accessibility",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "chatgpt-work",
                     "name": "ChatGPT Work",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "より長く複雑なタスク向けのエージェント。情報の調査・分析、接続されたアプリやファイル間での作業、完成したドキュメント・スプレッドシート・プレゼンテーション・レポート・サイトの作成が可能です。有料プランで展開中です（FreeおよびGoを除く）。",
                     "category": "Advanced Functionality",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "chatgpt-desktop-app",
                     "name": "ChatGPTデスクトップアプリ",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "macOSおよびWindows向けに提供され、チャット、Work、Codexを1つのアプリに統合しています。ローカルファイルやデスクトップアプリを使用したり、組み込みブラウザでウェブ情報を収集したりできます。",
                     "category": "Platform Accessibility",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "codex-remote",
                     "name": "Codex Remote",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ChatGPTモバイルアプリから、接続されたMacまたはWindowsホストでの作業を開始または続行し、進捗を確認し、アクションを承認できます。",
                     "category": "Tool",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "digitalocean-droplet-workspace-plugin",
                     "name": "DigitalOcean Droplet Workspaceプラグイン",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "CodexがDigitalOcean Dropletをプロビジョニングし、SSHアクセスを設定し、Codexアプリにリモートワークスペースとして接続できる機能。",
                     "category": "Integration",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "chatgpt-health",
                     "name": "ChatGPT Health",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "サポートされている健康記録やApple Healthデータを安全に接続し、健康情報のダッシュボードを表示したり、個人の健康コンテキストに基づいた質問をしたりできます（18歳以上の米国の適格なユーザー向け）。",
                     "category": "Specialized Functionality",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "temporary-chat",
                     "name": "一時チャット",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "履歴に表示されず、メモリを使用・作成せず、モデルのトレーニングにも使用されません。特定の会話で追加のプライバシーが必要な場合に利用します。",
                     "category": "Privacy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "study-mode",
                     "name": "学習モード",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "学習を支援するための特別なモード。",
                     "category": "Specialized Functionality",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "cloud-browser",
                     "name": "クラウドブラウザ",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ChatGPTがリモートブラウザでサポートされているウェブタスクを完了できるようにします。",
                     "category": "Tool",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "shopping-research",
                     "name": "ショッピングリサーチ",
                     "aliases": [],
-                    "status": "active",
+                    "status": "discontinued",
                     "effective_date": null,
                     "last_updated": null,
                     "description": "ショッピングに関する情報収集をサポートします。",
                     "category": "Specialized Functionality",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "core-capabilities",
@@ -1338,7 +1871,7 @@
                     "last_updated": null,
                     "description": "質問への回答と概念の説明、コンテンツの作成・書き換え・要約、創造的な提案、論理的推論による問題解決、言語間の翻訳。",
                     "category": "General",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "data-analysis",
@@ -1351,7 +1884,7 @@
                     "last_updated": null,
                     "description": "セキュアな環境でコードを実行し、スプレッドシート、CSV、その他の構造化形式のデータを分析・視覚化できます。トレンドの要約、データのクリーンアップ、予測などに使用します。",
                     "category": "Tool Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "canvas",
@@ -1362,7 +1895,7 @@
                     "last_updated": null,
                     "description": "ChatGPTの機能の一つです。",
                     "category": "Tool Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "projects",
@@ -1373,7 +1906,7 @@
                     "last_updated": null,
                     "description": "ChatGPTの機能の一つです。",
                     "category": "General",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "scheduled-tasks",
@@ -1384,7 +1917,7 @@
                     "last_updated": null,
                     "description": "ChatGPTにタスクのスケジュール設定を依頼できる機能です。",
                     "category": "General",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gpt-store",
@@ -1397,7 +1930,7 @@
                     "last_updated": null,
                     "description": "他のユーザーが作成したGPTsを見つけて利用できる場所、および独自のカスタムGPTsを作成できる機能です。",
                     "category": "Tool Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "admin-controls",
@@ -1408,7 +1941,7 @@
                     "last_updated": null,
                     "description": "ビジネスおよびエンタープライズプランで利用可能な、チームメンバーの管理、ドメイン認証、SSO、利用状況分析などの集中管理機能です。",
                     "category": "Administration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "sso-saml-mfa",
@@ -1423,7 +1956,7 @@
                     "last_updated": null,
                     "description": "安全なワークスペースとアクセス管理のための機能です。",
                     "category": "Security",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "usage-analytics-budgeting",
@@ -1434,7 +1967,7 @@
                     "last_updated": null,
                     "description": "チームの利用状況を把握し、コストを管理するためのツールです。",
                     "category": "Administration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "no-training-on-business-data",
@@ -1445,7 +1978,7 @@
                     "last_updated": null,
                     "description": "ビジネスおよびエンタープライズプランでは、デフォルトでビジネスデータがOpenAIモデルのトレーニングに使用されません。",
                     "category": "Privacy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "think-button-slider",
@@ -1456,7 +1989,7 @@
                     "last_updated": null,
                     "description": "無料およびGoユーザーが複雑な質問に時間をかけて推論させるための「Think」ボタン、およびPlusおよびProユーザーがモデルの推論量を調整できるスライダーです。",
                     "category": "User Experience",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "plugins",
@@ -1467,7 +2000,7 @@
                     "last_updated": null,
                     "description": "ChatGPTとCodexのワークフロー機能を検出するための主要な方法です。スキル、アプリ、アプリテンプレートを含めることができます。",
                     "category": "Tool Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "skills",
@@ -1478,7 +2011,7 @@
                     "last_updated": null,
                     "description": "ChatGPTでタスクを自動化するために作成およびアクセスできる機能です。",
                     "category": "Tool Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "apps",
@@ -1489,6 +2022,188 @@
                     "last_updated": null,
                     "description": "ChatGPTを外部ツール、情報、アクションに接続する統合機能です。",
                     "category": "Tool Integration",
+                    "missing_count": 1
+                },
+                {
+                    "id": "text-generation",
+                    "name": "Text Generation",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Generates human-like text responses based on prompts.",
+                    "category": "core",
+                    "missing_count": 0
+                },
+                {
+                    "id": "code-generation",
+                    "name": "Code Generation",
+                    "aliases": [
+                        "Code Interpreter",
+                        "Codex"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-05-14",
+                    "description": "Generates and interprets code. Codex Mobile is free on all ChatGPT plans.",
+                    "category": "development",
+                    "missing_count": 0
+                },
+                {
+                    "id": "image-generation",
+                    "name": "Image Generation",
+                    "aliases": [
+                        "DALL-E"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Generates images from text descriptions.",
+                    "category": "multimodal",
+                    "missing_count": 0
+                },
+                {
+                    "id": "video-generation",
+                    "name": "Video Generation",
+                    "aliases": [
+                        "Sora"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Generates video from text. Available with ChatGPT Plus and higher.",
+                    "category": "multimodal",
+                    "missing_count": 0
+                },
+                {
+                    "id": "speech-to-text",
+                    "name": "Speech-to-Text (Transcription)",
+                    "aliases": [
+                        "Audio transcription"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Transcribes spoken language into text, including streaming and batch modes.",
+                    "category": "multimodal",
+                    "missing_count": 0
+                },
+                {
+                    "id": "text-to-speech",
+                    "name": "Text-to-Speech (Voice Mode)",
+                    "aliases": [
+                        "Voice Mode",
+                        "Voice agents"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Allows interaction with ChatGPT using voice, including real-time voice interactions.",
+                    "category": "multimodal",
+                    "missing_count": 0
+                },
+                {
+                    "id": "realtime-web-results",
+                    "name": "Real-time Web Results",
+                    "aliases": [
+                        "Web browsing",
+                        "Web search"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Accesses real-time information from the internet.",
+                    "category": "utility",
+                    "missing_count": 0
+                },
+                {
+                    "id": "function-calling",
+                    "name": "Function Calling",
+                    "aliases": [
+                        "Tools"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Allows models to interact with external tools and APIs. Includes Web search, File search, Computer use.",
+                    "category": "development",
+                    "missing_count": 0
+                },
+                {
+                    "id": "embeddings",
+                    "name": "Embeddings",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Generates numerical representations of text for various applications.",
+                    "category": "development",
+                    "missing_count": 0
+                },
+                {
+                    "id": "moderation",
+                    "name": "Moderation",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Identifies and filters unsafe or undesirable content.",
+                    "category": "safety",
+                    "missing_count": 0
+                },
+                {
+                    "id": "fine-tuning",
+                    "name": "Fine-tuning",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Enables training OpenAI models on custom data for specialized tasks.",
+                    "category": "development",
+                    "missing_count": 0
+                },
+                {
+                    "id": "multilingual-capabilities",
+                    "name": "Multilingual Capabilities",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Supports multiple languages for input and output.",
+                    "category": "core",
+                    "missing_count": 0
+                },
+                {
+                    "id": "vision",
+                    "name": "Vision",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Enables models to process and understand image inputs.",
+                    "category": "multimodal",
+                    "missing_count": 0
+                },
+                {
+                    "id": "structured-output",
+                    "name": "Structured Output",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "Generates responses in a structured format.",
+                    "category": "utility",
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-personal-finance",
+                    "name": "ChatGPT Personal Finance",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-05-15",
+                    "last_updated": null,
+                    "description": "US-only preview for Pro subscribers via Plaid.",
+                    "category": "specialized",
                     "missing_count": 0
                 }
             ],
@@ -1496,200 +2211,200 @@
                 {
                     "id": "hallucinations",
                     "name": "ハルシネーション",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "もっともらしいが不正確または無意味な回答を生成する可能性があります。",
                     "category": "Accuracy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "biased-answers",
                     "name": "偏った回答",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "トレーニングデータに存在するバイアスを反映した回答を生成する可能性があります。",
                     "category": "Bias",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "limited-knowledge-cutoff",
                     "name": "限定的な知識のカットオフ",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "ウェブブラウジングツールを使用しない限り、インターネットに接続されておらず、2021年以降の出来事や世界に関する知識が限られています。",
                     "category": "Knowledge",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "harmful-biased-content",
                     "name": "有害または偏ったコンテンツの生成",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "時折、有害な指示や偏ったコンテンツを生成する可能性があります。",
                     "category": "Safety",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "difficulty-long-form-content",
                     "name": "長文の構造化コンテンツの困難さ",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "長文の構造化されたコンテンツを扱うのが難しい場合があります。",
                     "category": "Performance",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "difficulty-understanding-context",
                     "name": "コンテキスト理解の困難さ",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "コンテキストを完全に理解するのが難しい場合があります。",
                     "category": "Performance",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "cant-ask-clarifying-questions",
                     "name": "明確化の質問ができない",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "あいまいなクエリが与えられた場合、明確化の質問をすることが理想的ですが、常にそうとは限りません。",
                     "category": "Interaction",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "responds-in-list-forms",
                     "name": "リスト形式での応答が多い",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "しばしばリスト形式で応答することがあります。",
                     "category": "Output Format",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "long-sentences-grammatical-issues",
                     "name": "長文と文法的な問題",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "長文になったり、文法的な問題が生じたりすることがあります。",
                     "category": "Output Quality",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "accuracy-issues",
                     "name": "正確性の問題",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "応答の正確性に問題がある場合があります。",
                     "category": "Accuracy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "usage-limits-free",
                     "name": "利用制限 (Freeプラン)",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "5時間ごとに10メッセージ（GPT-5.3 Instantを使用し、制限に達するとMiniバージョンに自動的にダウングレード）。",
                     "category": "Usage",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "usage-limits-go",
                     "name": "利用制限 (Goプラン)",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "3時間ごとに160メッセージ（GPT-5.3 Instantを使用し、制限に達するとMiniバージョンに自動的にダウングレード）。",
                     "category": "Usage",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "usage-limits-plus",
                     "name": "利用制限 (Plusプラン)",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "3時間ごとに160メッセージ（GPT-5）。週あたり最大3,000メッセージ（GPT-5.5 Thinking Access）。",
                     "category": "Usage",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "usage-limits-pro-100",
                     "name": "利用制限 (Pro $100/月プラン)",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "Pro $200/月プランよりも低い利用制限があります。",
                     "category": "Usage",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "usage-limits-pro-200",
                     "name": "利用制限 (Pro $200/月プラン)",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "「ほぼ無制限」ですが、OpenAIの不正使用防止策および公正利用ポリシーの対象となります。",
                     "category": "Usage",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "usage-limits-business-enterprise",
                     "name": "利用制限 (Business/Enterpriseプラン)",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "「ほぼ無制限」ですが、OpenAIの不正使用防止策および公正利用ポリシーの対象となります。",
                     "category": "Usage",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "temporary-usage-restrictions",
                     "name": "一時的な利用制限",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "不正使用を防止するために、一時的な利用制限が適用される場合があります。",
                     "category": "Policy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "reselling-access-prohibited",
                     "name": "アクセス転売の禁止",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "アクセスの転売や、ChatGPTをサードパーティサービスに利用することは禁止されています。",
                     "category": "Policy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "account-credential-sharing-prohibited",
                     "name": "アカウント認証情報の共有禁止",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "アカウント認証情報の共有や、アカウントを他者が利用できるようにすることは禁止されています。",
                     "category": "Policy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "abusive-usage-prohibited",
                     "name": "不正使用の禁止",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "データ自動抽出などの不正使用は禁止されています。",
                     "category": "Policy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "api-no-free-credits",
                     "name": "APIでの無料クレジットなし",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "APIアクセスには、サブスクリプションに無料クレジットは含まれません。",
                     "category": "Billing",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "api-unpredictable-token-consumption",
                     "name": "APIの予測不能なトークン消費",
-                    "status": "active",
+                    "status": "discontinued",
                     "last_updated": null,
                     "description": "APIのトークン消費は、監視なしでは予測不能になる可能性があります。",
                     "category": "Billing",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "age-restrictions",
@@ -1698,7 +2413,7 @@
                     "last_updated": "2026-07-23",
                     "description": "ChatGPTサイトの利用には、13歳以上（EUでは16歳以上）である必要があります。ChatGPTエージェントの利用には18歳以上である必要があります。",
                     "category": "Usage Policy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "usage-caps-non-text",
@@ -1707,7 +2422,7 @@
                     "last_updated": "2026-08-06",
                     "description": "無料およびGoユーザーは、テキストプロンプトに無制限にアクセスできますが、ファイルアップロード、画像、画像生成、音声モードの使用には別途制限が適用されます。",
                     "category": "Usage Limit",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "prohibited-misleading-activities",
@@ -1716,7 +2431,7 @@
                     "last_updated": "2025-07-17",
                     "description": "詐欺、詐欺行為、スパム、他人を誤解させる行為（フィッシング、なりすまし、偽の店舗、虚偽のレビューや推薦文の生成を含む）のためにChatGPTエージェントを使用することは禁止されています。",
                     "category": "Usage Policy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "prohibited-illegal-activities",
@@ -1725,7 +2440,7 @@
                     "last_updated": "2025-07-17",
                     "description": "プライバシーや知的財産権の侵害、未成年者を標的とする活動を含む違法行為を促進するためにChatGPTエージェントを使用することは禁止されています。",
                     "category": "Usage Policy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "prohibited-harmful-activities",
@@ -1734,7 +2449,7 @@
                     "last_updated": "2025-07-17",
                     "description": "子供を性的に描写するコンテンツの作成・共有・促進、いじめ、ハラスメント、名誉毀損、保護された属性に基づく差別、暴力を扇動する行為に従事することは禁止されています。",
                     "category": "Usage Policy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "high-stakes-domains",
@@ -1743,7 +2458,7 @@
                     "last_updated": "2025-07-17",
                     "description": "法執行、移民、重要インフラの管理、製品の安全コンポーネント、必須サービス、信用、雇用、住宅、教育、社会スコアリング、保険などの機密領域で人間の関与なしに自動的な意思決定を行うことは禁止されています。株式取引やその他の投資取引のような行動を自動化することも禁止されています。",
                     "category": "Usage Policy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "professional-advice-disclaimer",
@@ -1752,7 +2467,7 @@
                     "last_updated": "2025-12-11",
                     "description": "ライセンスを必要とする専門的なアドバイス（法的または医学的なアドバイスなど）を、資格のある専門家の適切な関与なしに提供するためにChatGPTを使用することは禁止されています。AIが生成したコンテンツの使用に対する責任はユーザーにあり、OpenAIにはありません。",
                     "category": "Usage Policy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "circumventing-restrictions",
@@ -1761,7 +2476,7 @@
                     "last_updated": "2025-07-17",
                     "description": "制限やセーフガードを回避する行為、プロンプトインジェクション、ジェイルブレイク、モデルの動作のリバースエンジニアリングは明示的に禁止されています。",
                     "category": "Usage Policy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "reselling-access",
@@ -1770,7 +2485,7 @@
                     "last_updated": "2026-07-29",
                     "description": "Proプランでは、アカウント資格情報の共有、アカウントの他者への提供、アクセス権の再販、サードパーティサービスを強化するためのChatGPTの使用は禁止されています。",
                     "category": "Usage Policy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "data-training-plus-opt-out",
@@ -1779,7 +2494,7 @@
                     "last_updated": "2026-05-01",
                     "description": "ChatGPT Plusでは、会話データがOpenAIモデルのトレーニングに使用される場合があります。ただし、手動でオプトアウトすることが可能です。",
                     "category": "Privacy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "no-annual-plus-plan",
@@ -1788,7 +2503,7 @@
                     "last_updated": "2026-08-05",
                     "description": "ChatGPT Plusには年間プランが提供されていません。OpenAIは月単位でのみPlusを販売しており、複数月の前払いは受け付けていません。",
                     "category": "Billing",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "ads-on-free-go",
@@ -1797,7 +2512,7 @@
                     "last_updated": "2026-05-01",
                     "description": "米国では、ChatGPTの無料およびGoプランに広告が導入されています。",
                     "category": "General",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "slower-free-performance",
@@ -1806,6 +2521,132 @@
                     "last_updated": "2025-11-15",
                     "description": "無料版のChatGPTは、有料プランと比較して、パフォーマンスが遅く、使用量に制限があります。",
                     "category": "Performance",
+                    "missing_count": 1
+                },
+                {
+                    "id": "hallucination",
+                    "name": "Hallucination / Inaccurate or outdated information",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Generates text that looks correct but is unfaithful, meaningless, or factually inaccurate. May also provide outdated information.",
+                    "category": "accuracy",
+                    "missing_count": 0
+                },
+                {
+                    "id": "originality",
+                    "name": "Originality issues",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Generated text may be a copy or combination of training data.",
+                    "category": "quality",
+                    "missing_count": 0
+                },
+                {
+                    "id": "toxicity-bias",
+                    "name": "Toxicity and Bias",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "May produce harmful content, including biased, discriminatory, aggressive, insulting, or misleading speech, reflecting biases in training data.",
+                    "category": "safety",
+                    "missing_count": 0
+                },
+                {
+                    "id": "privacy-security-risks",
+                    "name": "Privacy and Security Risks",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Training on large datasets and interaction with messages may lead to privacy and security risks.",
+                    "category": "security",
+                    "missing_count": 0
+                },
+                {
+                    "id": "misuse-potential",
+                    "name": "Potential for Misuse",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Can be used for malicious purposes such as spreading misinformation, impersonating identities, creating spam, fake news, deepfake content, cyberbullying, academic dishonesty, and malicious code.",
+                    "category": "ethics",
+                    "missing_count": 0
+                },
+                {
+                    "id": "lack-of-reasoning-common-sense",
+                    "name": "Lack of Reasoning and Common Sense",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Problems with logic, reasoning, and common sense.",
+                    "category": "cognitive",
+                    "missing_count": 0
+                },
+                {
+                    "id": "lack-of-emotional-intelligence",
+                    "name": "Lack of Emotional Intelligence",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Cannot understand human emotions, leading to unemotional or insensitive responses in emotionally driven conversations. Poorly interprets sarcasm, satire, or emotions.",
+                    "category": "cognitive",
+                    "missing_count": 0
+                },
+                {
+                    "id": "limited-context-understanding",
+                    "name": "Limited Context Understanding",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Difficulty understanding context, especially sarcasm and humor. May misinterpret nuanced or multilayered questions and fail to comprehend complex or niche subjects.",
+                    "category": "cognitive",
+                    "missing_count": 0
+                },
+                {
+                    "id": "incomplete-responses",
+                    "name": "Incomplete Responses",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "May provide incomplete answers.",
+                    "category": "quality",
+                    "missing_count": 0
+                },
+                {
+                    "id": "usage-limits",
+                    "name": "Usage Limits",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Restrictions on the number of messages or interactions within a given timeframe, especially on free plans.",
+                    "category": "access",
+                    "missing_count": 0
+                },
+                {
+                    "id": "long-form-content-generation",
+                    "name": "Trouble Generating Long-Form, Structured Content",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Has difficulty generating lengthy and well-structured content.",
+                    "category": "quality",
+                    "missing_count": 0
+                },
+                {
+                    "id": "handling-multiple-tasks",
+                    "name": "Limitations in Handling Multiple Tasks",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Struggles with managing multiple tasks simultaneously.",
+                    "category": "cognitive",
+                    "missing_count": 0
+                },
+                {
+                    "id": "sensitivity-to-prompt-phrasing",
+                    "name": "Sensitivity to Prompt Phrasing",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Responses can be highly dependent on the exact wording of the prompt.",
+                    "category": "usability",
+                    "missing_count": 0
+                },
+                {
+                    "id": "ambiguous-contradictory-inputs",
+                    "name": "Challenges with Ambiguous or Contradictory Inputs",
+                    "status": "available",
+                    "last_updated": null,
+                    "description": "Difficulty processing and responding appropriately to unclear or conflicting information in prompts.",
+                    "category": "usability",
                     "missing_count": 0
                 }
             ],
@@ -1816,7 +2657,8 @@
                     "category": "Privacy",
                     "description": "個人のChatGPTサービスからのコンテンツはモデルのトレーニングに使用される場合がありますが、ユーザーはオプトアウトできます。ChatGPT BusinessまたはChatGPT Enterpriseからのコンテンツはトレーニングには使用されません。",
                     "last_updated": null,
-                    "missing_count": 1
+                    "missing_count": 2,
+                    "status": "discontinued"
                 },
                 {
                     "id": "security-measures",
@@ -1824,7 +2666,8 @@
                     "category": "Security",
                     "description": "データは転送中（TLS 1.2）および保存時（AES-256）に暗号化されます。厳格なアクセス制御が適用され、脆弱性の責任ある開示のためにバグバウンティプログラムが提供されています。",
                     "last_updated": null,
-                    "missing_count": 1
+                    "missing_count": 2,
+                    "status": "discontinued"
                 },
                 {
                     "id": "fine-tuning-from-gpt35",
@@ -1832,7 +2675,8 @@
                     "category": "Technical",
                     "description": "ChatGPTは2022年初頭にトレーニングを完了したGPT-3.5シリーズのモデルからファインチューニングされています。",
                     "last_updated": null,
-                    "missing_count": 1
+                    "missing_count": 2,
+                    "status": "discontinued"
                 },
                 {
                     "id": "model-updates-frequent",
@@ -1840,7 +2684,8 @@
                     "category": "Product Development",
                     "description": "モデルの更新と変更は頻繁に行われます。",
                     "last_updated": null,
-                    "missing_count": 1
+                    "missing_count": 2,
+                    "status": "discontinued"
                 },
                 {
                     "id": "powerpoint-charging-starts",
@@ -1848,7 +2693,8 @@
                     "category": "Billing",
                     "description": "ChatGPT for PowerPointの利用は、ビジネスおよびエンタープライズの顧客には2026年8月6日まで無料ですが、その後はChatGPT for Excel/Sheetsと同じトークンベースの課金モデルが適用されます。",
                     "last_updated": "2026-08-06",
-                    "missing_count": 1
+                    "missing_count": 2,
+                    "status": "discontinued"
                 },
                 {
                     "id": "openai-o3-retirement",
@@ -1856,7 +2702,8 @@
                     "category": "Product Lifecycle",
                     "description": "OpenAI o3は、90日間のサンセット期間を経て、2026年8月26日にChatGPTから廃止されます。",
                     "last_updated": "2026-08-26",
-                    "missing_count": 1
+                    "missing_count": 2,
+                    "status": "discontinued"
                 },
                 {
                     "id": "gpt45-retirement",
@@ -1864,7 +2711,8 @@
                     "category": "Product Lifecycle",
                     "description": "GPT-4.5は、30日間のサンセット期間を経て、2026年6月26日にChatGPTから廃止されました。",
                     "last_updated": "2026-06-26",
-                    "missing_count": 1
+                    "missing_count": 2,
+                    "status": "discontinued"
                 },
                 {
                     "id": "gpt4o-deprecation-chatgpt",
@@ -1872,7 +2720,8 @@
                     "category": "Product Lifecycle",
                     "description": "GPT-4oは2026年2月13日にChatGPTで非推奨となりましたが、APIでは引き続き利用可能です。",
                     "last_updated": "2026-02-13",
-                    "missing_count": 1
+                    "missing_count": 2,
+                    "status": "discontinued"
                 },
                 {
                     "id": "api-pricing-structure",
@@ -1881,7 +2730,7 @@
                     "status": "available",
                     "description": "OpenAI APIは従量課金制で、処理されるトークンごとに請求されます。入力トークン（送信するプロンプト）と出力トークン（モデルが生成する応答）で異なる料金が設定されており、出力トークンは通常、入力トークンよりも4〜6倍高価です。請求は100万トークン単位で行われます。APIアクセスに月額料金はありません。",
                     "last_updated": "2026-07-29",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "fine-tuning-pricing",
@@ -1890,7 +2739,7 @@
                     "status": "available",
                     "description": "OpenAIモデルを独自のデータでトレーニングするファインチューニングには別途料金がかかります。例えば、GPT-4.1のトレーニングはトークン100万あたり約$3.00で、ファインチューニング後の推論は入力トークン100万あたり約$3.00、出力トークン100万あたり約$12.00です。",
                     "last_updated": "2026-07-29",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "api-discounts",
@@ -1899,7 +2748,7 @@
                     "status": "available",
                     "description": "非緊急ワークロードの場合、Batch APIは50%の割引を提供します。キャッシュされた入力は標準料金の10%で請求されます。",
                     "last_updated": "2026-07-16",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "long-context-api-pricing",
@@ -1908,15 +2757,15 @@
                     "status": "available",
                     "description": "現在のフラッグシップティアでは、長文コンテキストのAPI料金が通常の短文コンテキスト料金よりも高くなります。例えば、GPT-5.6 Solは入力トークン100万あたり$5から$10に、出力トークン100万あたり$30から$45に上がります。",
                     "last_updated": "2026-08-05",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "regional-processing-uplift",
-                    "title": "Regional Processing Uplift",
-                    "category": "API",
+                    "title": "Regional Processing Price Uplift",
+                    "category": "api_pricing",
                     "status": "available",
-                    "description": "2026年3月5日以降にリリースされたデータレジデンシーの対象となるモデルの場合、地域処理（データレジデンシー）エンドポイントには10%の追加料金が課されます。",
-                    "last_updated": "2026-07-30",
+                    "description": "Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency.",
+                    "last_updated": "2026-03-05",
                     "missing_count": 0
                 },
                 {
@@ -1926,7 +2775,7 @@
                     "status": "available",
                     "description": "Priority Processingは2026年7月30日にFast Modeに改称されました。APIリクエストではservice_tier: \"priority\" または service_tier: \"fast\" のいずれかを使用できます。Fast Modeは標準料金の2倍の料金でより高速な処理を提供します。",
                     "last_updated": "2026-07-30",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "usage-policies-enforcement",
@@ -1935,7 +2784,7 @@
                     "status": "available",
                     "description": "OpenAIの利用規約は、ChatGPTを含むすべてのAIシステムに対する決定的なルールブックとして機能します。これらは、違法/有害なコンテンツの生成やシステム操作の試みを明確に禁止しています。OpenAIは、これらのポリシーを強制するために自動監視と人間によるレビューの両方を使用しています。違反は、APIアクセスの一時停止、アカウントの停止、またはプラットフォームからの永久追放につながる可能性が",
                     "last_updated": "2025-07-17",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "developer-obligations",
@@ -1944,7 +2793,7 @@
                     "status": "available",
                     "description": "OpenAIのプラットフォーム上で商用アプリケーションを構築する開発者は、ユーザーによる悪用を防ぐために合理的な保護策を講じ、OpenAIの基準に準拠またはそれを超える独自のコンテンツポリシーを確立し、AIがアプリケーションで使用されていることを明確に開示する必要があります。",
                     "last_updated": "2025-07-17",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "platform-availability",
@@ -1953,7 +2802,7 @@
                     "status": "available",
                     "description": "ChatGPTは、Webプラットフォーム、iOS、Android、macOS、Windows、iPadOSで利用できます。",
                     "last_updated": "2026-06-18",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "release-date",
@@ -1962,7 +2811,7 @@
                     "status": "available",
                     "description": "ChatGPTは2022年11月30日に最初にリリースされました。",
                     "last_updated": "2022-11-30",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "model-training-data",
@@ -1971,7 +2820,7 @@
                     "status": "available",
                     "description": "OpenAIは、 publicly available なインターネットコンテンツおよびサードパーティパートナーからの情報を使用してモデルをトレーニングしています。ヘイトスピーチ、アダルトコンテンツ、個人情報を集約するサイト、スパムなど、モデルに学習させたくない資料を除外するためにフィルターが適用されます。ウェブサイトの所有者は、robots.txtを使用してGPTBotを許可しないことで、コンテ",
                     "last_updated": "2026-07-29",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "personal-information-in-training",
@@ -1980,7 +2829,7 @@
                     "status": "available",
                     "description": "オンラインコンテンツの大部分には個人に関する情報が含まれるため、OpenAIのトレーニングデータに偶発的に個人情報が含まれる可能性があります。ただし、OpenAIはトレーニングプロセスにおける個人情報の処理を削減するための措置を講じています。",
                     "last_updated": "2026-07-29",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "chatgpt-sites-terms",
@@ -1989,7 +2838,7 @@
                     "status": "available",
                     "description": "ChatGPT Sites Termsは、OpenAIサービスを使用してウェブサイトまたはウェブアプリケーションを作成、公開、維持する場合に適用されます。ユーザーは、自身のChatGPTサイトとそのウェブサイトコンテンツ、およびエンドユーザーに単独で責任を負います。HIPAAプライバシー規則（45 C.F.R. Section 160.103）で定義される保護された健康情報（PHI）や、PCI D",
                     "last_updated": "2026-07-23",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "parental-controls",
@@ -1998,10 +2847,100 @@
                     "status": "available",
                     "description": "ChatGPTでは、親または保護者が13歳以上のティーンアカウントをリンクし、特定のChatGPT設定を管理し、限られた状況で安全通知を受け取ることができるペアレンタルコントロール機能が提供されています。ティーンアカウントが18歳になると、ペアレンタルコントロールは自動的に解除されます。",
                     "last_updated": "2026-08-05",
+                    "missing_count": 1
+                },
+                {
+                    "id": "gpt-5.6-general-availability",
+                    "title": "GPT-5.6 Models General Availability",
+                    "category": "model_updates",
+                    "status": "available",
+                    "description": "GPT-5.6 Sol, Terra, and Luna models have been generally available across ChatGPT, ChatGPT Work, Codex, and the API since July 9, 2026.",
+                    "last_updated": "2026-07-09",
+                    "missing_count": 0
+                },
+                {
+                    "id": "gpt-5.6-luna-default",
+                    "title": "GPT-5.6 Luna as Default for Free/Go",
+                    "category": "model_updates",
+                    "status": "available",
+                    "description": "GPT-5.6 Luna began replacing GPT-5.5 Instant as the everyday default model for Free and Go plans on August 6, 2026.",
+                    "last_updated": "2026-08-06",
+                    "missing_count": 0
+                },
+                {
+                    "id": "unlimited-chats-free-go",
+                    "title": "Unlimited Text Chats for Free and Go Tiers",
+                    "category": "plan_updates",
+                    "status": "available",
+                    "description": "Unlimited text chats for both Free and Go tiers started rolling out from the week of August 10, 2026.",
+                    "last_updated": "2026-08-10",
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-personal-finance-launch",
+                    "title": "ChatGPT Personal Finance Launch",
+                    "category": "feature_launch",
+                    "status": "available",
+                    "description": "ChatGPT Personal Finance launched on May 15, 2026, as a US-only preview for Pro subscribers via Plaid.",
+                    "last_updated": "2026-05-15",
+                    "missing_count": 0
+                },
+                {
+                    "id": "codex-mobile-rollout",
+                    "title": "Codex Mobile Rollout",
+                    "category": "feature_launch",
+                    "status": "available",
+                    "description": "Codex Mobile rolled out free on every ChatGPT plan (including Free and Go) on May 14, 2026.",
+                    "last_updated": "2026-05-14",
+                    "missing_count": 0
+                },
+                {
+                    "id": "pro-100-tier-launch",
+                    "title": "Pro $100/month Tier Launch",
+                    "category": "plan_updates",
+                    "status": "available",
+                    "description": "The ChatGPT Pro $100/month tier launched on April 9, 2026.",
+                    "last_updated": "2026-04-09",
+                    "missing_count": 0
+                },
+                {
+                    "id": "go-plan-global-launch",
+                    "title": "Go Plan Global Launch",
+                    "category": "plan_updates",
+                    "status": "available",
+                    "description": "The ChatGPT Go plan became globally available at $8/month in January 2026.",
+                    "last_updated": "2026-01-01",
+                    "missing_count": 0
+                },
+                {
+                    "id": "ads-on-free-go",
+                    "title": "Ads on Free and Go Tiers",
+                    "category": "monetization",
+                    "status": "available",
+                    "description": "Ads are appearing on Free and Go tiers in the US, now buyable through OpenAI's self-serve Ads Manager.",
+                    "last_updated": null,
+                    "missing_count": 0
+                },
+                {
+                    "id": "chatgpt-business-renaming",
+                    "title": "ChatGPT Business Renamed",
+                    "category": "plan_updates",
+                    "status": "available",
+                    "description": "ChatGPT Business was renamed from ChatGPT Team in August 2025.",
+                    "last_updated": "2025-08-01",
+                    "missing_count": 0
+                },
+                {
+                    "id": "cache-write-charges",
+                    "title": "Cache Write Charges Billing Start",
+                    "category": "api_pricing",
+                    "status": "available",
+                    "description": "Cache write charges are not yet active but billing is expected to start on or after August 21, 2026.",
+                    "last_updated": "2026-08-21",
                     "missing_count": 0
                 }
             ],
-            "last_verified": "2026-08-07T17:12:00Z",
+            "last_verified": "2026-08-14",
             "status": "available",
             "update_failed": false
         },
@@ -4222,32 +5161,32 @@
         },
         "claude": {
             "name": "Claude",
-            "updated_at": "2026-08-07T17:13:00Z",
+            "updated_at": "2026-08-14",
             "sources": [
                 {
-                    "name": "Anthropic Claude API Pricing 2026: Fable, Opus, Sonnet - AI Pricing Guru",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwA_nTNn8b90OKId2MtGj0FqxLekXU46fgmWXEADzIjwiL1M63rEtItX5Vg37H_hrAoEDE-Jui56mxdsyM21o7DnW9u3kdxPWT8X2_C8Tx2Kb4hI9iITqjZjIH4zVO2Q7j0FthVQsLvA==",
-                    "verified_at": "2026-08-07T17:13:00Z"
+                    "name": "CloudZero",
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEN2hGLgiCKYP7HoYiHDKaSiIt7A1R-7sPJ7-lKPySa-ETd7zZ2izZg0neY6fBRn9VVJ_uNlAa_H2fXlqr0-hCNNRpLguRRCQ0MT2h5WSjnnvXJA_yslo7aoVidD8dAHSID1FiwsCs3Hqc=",
+                    "verified_at": "2026-08-14"
                 },
                 {
-                    "name": "Plans & Pricing | Claude by Anthropic",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH35kej81qB3LBN0sPa-4da6TRT8UbnJOQvba2RDpF_BqmALdNH2jNjjk-zX9hvgVpGvmT9GwjAbP43AsxDnaJnMwWoGEstV9kjpfb4uICADdpgyDx7",
-                    "verified_at": "2026-08-07T17:13:00Z"
+                    "name": "Suprmind",
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHz3GailfQoNvIM3E4L3OJ6E_OFya89xJnJ6_Im8Y2E7aUnpkVS2Udq_dgTxFSS05u1YeQ39xOik2M9uxmFGOYue04SQKeIjxSv3Rihv8PETrUVGRVIfUYV5g4Lkl08ua1EuQ==",
+                    "verified_at": "2026-08-14"
                 },
                 {
-                    "name": "Claude API Pricing 2026: Opus 4.8, Sonnet 4.6, Haiku 4.5 Costs - Metacto",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH7kQx3WR4eBnlA1nWoX4o9x9crXyE0kbMj_XU1qa1kS2n5Zjds8qc5458SMRGgiWY2Om1Gy58f2YrrExaeb2MgcLG48tj2lrO2P5U2SGO7PYU1YVyfQkPR0MbPK9iHyAO8Os5XJ5P1c0vpQKSXI9LOs2XBKDxzhZYK6nhhz_9tusU90l-sU3XM95bnjMJcf7-RFmN1oZ3Iyw==",
-                    "verified_at": "2026-08-07T17:13:00Z"
+                    "name": "Usagebar",
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHsPDmeBGOvZFyObp7M3OmQxKBYhwiHr9y5xXKEWOZRzpQo3lBowOGcENC95_GhWTXAn0nzkWkVotUjt-zqibgzQJy0kHEjxKxPe1dVbQuyHMd09HVGb4JEpq8Y00O09r2I4vp2MtaI1UwMixyVHKWU7MVXRQ==",
+                    "verified_at": "2026-08-14"
                 },
                 {
-                    "name": "Claude API Pricing (August 2026): Model & Token Costs | BenchLM.ai",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTYb-Dqlxi37ToKpjPt8q-vneR4WtTNTK8Y1-Z0UOlQ6x3W4TwbkYDbBZyPYvfXUyJZ_rIeNJnLN9YICk1nKfSIreb7sDIoVBahn_UXpkHdMr7uW2YIsCkTdsyDdjJRPjKDWQ=",
-                    "verified_at": "2026-08-07T17:13:00Z"
+                    "name": "BenchLM.ai",
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE31MBmVjn7cCVkvU5UlaD4YBa1s5m3C1M6RpbL6IDbGnFrIXKAWljTKzP9cNTIp8uE68-fSOX6nCuhVj9-Oh7X5ynlrsaASksq7EtCsA0pBaJqRhQ6hgxRalOmPRfmJB-L3qA=",
+                    "verified_at": "2026-08-14"
                 },
                 {
-                    "name": "Anthropic API Pricing in 2026: Complete Guide — Models, Caching, Batch & Optimization",
-                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGtLr3YF0LB9cbvOhUXfNDrQd_3o9BWj6cL4gp1C42gI6jSMcI2DuteTc9-rwsmGheXfNF_kyYKE1I_s0BsnBWRCffnD2A5jTFdDDjQBvky3_S4uLdUIyVJl8zGpP--0M1zQYAXb8gQ-WTsJQ==",
-                    "verified_at": "2026-08-07T17:13:00Z"
+                    "name": "IntuitionLabs",
+                    "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFOCsgVEv0yNg9L8kqC6dQqzjibGAoOm31YDCJ76HdpWFj8wwizy63DY9umb-KulREuXQNkcyXVVZtO3ZeJZptq354_MWPOVc-rT7By7A9w89j6UApy8r1JpCvPWF6Ss4aVmTv7N5BuxYY_XIFJoOfcF1MW1Hlh-6kesuA=",
+                    "verified_at": "2026-08-14"
                 }
             ],
             "models": [
@@ -4260,11 +5199,9 @@
                     "status": "available",
                     "effective_date": "2026-06-09",
                     "last_updated": "2026-06-09",
-                    "description": "Anthropicの最も高性能な広くリリースされているモデル。長期間にわたるエージェント向けに次世代のインテリジェンスを提供します。",
+                    "description": "The most powerful model Anthropic offers, a version of Mythos with stricter safeguards.",
                     "modalities": [
-                        "text",
-                        "image",
-                        "audio (output via text-to-speech)"
+                        "null"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -4285,7 +5222,7 @@
                         "audio (output via text-to-speech)"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-sonnet-5",
@@ -4303,7 +5240,7 @@
                         "audio (output via text-to-speech)"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-haiku-4-5",
@@ -4321,7 +5258,7 @@
                         "audio (output via text-to-speech)"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-opus-4-8",
@@ -4339,7 +5276,7 @@
                         "audio (output via text-to-speech)"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-sonnet-4-6",
@@ -4357,7 +5294,7 @@
                         "audio (output via text-to-speech)"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-haiku-3-5",
@@ -4374,7 +5311,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-haiku-3",
@@ -4391,7 +5328,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-mythos-5",
@@ -4409,7 +5346,7 @@
                         "audio (output via text-to-speech)"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-opus-4-7",
@@ -4427,7 +5364,7 @@
                         "audio (output via text-to-speech)"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-opus-4-6",
@@ -4444,7 +5381,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-opus-4-5",
@@ -4461,7 +5398,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-sonnet-4-5",
@@ -4478,7 +5415,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude-opus-3",
@@ -4495,6 +5432,111 @@
                         "image"
                     ],
                     "api_available": true,
+                    "missing_count": 1
+                },
+                {
+                    "id": "claude-3-opus",
+                    "name": "Claude 3 Opus",
+                    "aliases": [
+                        "Opus",
+                        "Claude 3 Opus 4.8",
+                        "Opus 4.8"
+                    ],
+                    "status": "available",
+                    "effective_date": "2024-03-04",
+                    "last_updated": "2026-07-24",
+                    "description": "Anthropic's most intelligent model for highly complex tasks, exhibiting near-human levels of comprehension and fluency. It excels in analysis, forecasting, nuanced content creation, code generation, a",
+                    "modalities": [
+                        "text",
+                        "image"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-3.5-sonnet",
+                    "name": "Claude 3.5 Sonnet",
+                    "aliases": [
+                        "Claude 3.5 Sonnet"
+                    ],
+                    "status": "available",
+                    "effective_date": "2024-06-21",
+                    "last_updated": "2024-06-21",
+                    "description": "Outperforms Claude 3 Opus on various evaluations with the speed and cost of Claude 3 Sonnet. It sets new industry benchmarks for graduate-level reasoning, undergraduate-level knowledge, and coding pro",
+                    "modalities": [
+                        "text",
+                        "image"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-3-sonnet",
+                    "name": "Claude 3 Sonnet",
+                    "aliases": [
+                        "Sonnet",
+                        "Claude 3 Sonnet 4.6",
+                        "Sonnet 4.6"
+                    ],
+                    "status": "available",
+                    "effective_date": "2024-03-04",
+                    "last_updated": "2026-06-30",
+                    "description": "Strikes an ideal balance between intelligence and speed, particularly for enterprise workloads. It delivers strong performance at a lower cost compared to its peers and is engineered for high enduranc",
+                    "modalities": [
+                        "text",
+                        "image"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-3-haiku",
+                    "name": "Claude 3 Haiku",
+                    "aliases": [
+                        "Haiku",
+                        "Claude 3 Haiku 4.5",
+                        "Haiku 4.5"
+                    ],
+                    "status": "available",
+                    "effective_date": "2024-03-13",
+                    "last_updated": "2025-10-15",
+                    "description": "The fastest and most compact model for near-instant responsiveness. It answers simple queries and requests with unmatched speed and affordability. Ideal for customer interactions, content moderation, ",
+                    "modalities": [
+                        "text",
+                        "image"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-instant-v1",
+                    "name": "Claude Instant V1",
+                    "aliases": [
+                        "Claude Instant",
+                        "Claude-Instant"
+                    ],
+                    "status": "deprecated",
+                    "effective_date": "2023-03-14",
+                    "last_updated": "2023-03-14",
+                    "description": "A lighter, less expensive, and much faster option than the original Claude. Optimized for speed and efficiency, making it suitable for applications where fast interaction is crucial, such as conversat",
+                    "modalities": [
+                        "text"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-2.1",
+                    "name": "Claude 2.1",
+                    "aliases": [],
+                    "status": "deprecated",
+                    "effective_date": "2023-11-21",
+                    "last_updated": "2023-11-21",
+                    "description": "Delivers advancements in key capabilities for enterprises, including an industry-leading 200K token context window, significant reductions in rates of model hallucination (2x decrease in false stateme",
+                    "modalities": [
+                        "text"
+                    ],
+                    "api_available": true,
                     "missing_count": 0
                 }
             ],
@@ -4506,11 +5548,11 @@
                     "status": "available",
                     "effective_date": null,
                     "last_updated": null,
-                    "billing": "N/A",
-                    "description": "Web、iOS、Android、デスクトップでClaudeとチャットできます。コード生成、データ可視化、コンテンツ作成、ウェブ検索、会話間の記憶、ファイルの作成とコード実行、デスクトップ拡張機能、SlackおよびGoogle Workspaceサービスへの接続、リモートMCPを介したコネクタによるコンテキスト統合、複雑な作業のための拡張思考が含まれます。",
+                    "billing": "monthly",
+                    "description": "Basic use of Claude. Runs Claude 3.5 Sonnet with usage limits.",
                     "pricing": [
                         {
-                            "name": "Monthly",
+                            "name": "cost",
                             "unit": "month",
                             "price": "0",
                             "currency": "USD"
@@ -4523,21 +5565,21 @@
                     "name": "Pro",
                     "aliases": [],
                     "status": "available",
-                    "effective_date": "2023-09-07",
-                    "last_updated": null,
-                    "billing": "monthly or annually",
-                    "description": "日常の生産性向上向け。Freeプランのすべての機能に加え、より多くの利用制限、Claude Code、Claude Cowork、Claude Design、Claude Science、チャットやドキュメントを整理するための無制限のプロジェクトへのアクセス、研究へのアクセス、より多くのClaudeモデルの利用、Claude for Microsoft 365が含まれます。無料ティアの5倍以上の利用量を提供し、トラフィックが多い時間帯の優先アクセスと、高度なClaude機能への早期アクセスを提供します。",
+                    "effective_date": null,
+                    "last_updated": "2026-07-30",
+                    "billing": "monthly/annually",
+                    "description": "For everyday productivity. Includes more usage, Claude Code, Claude Cowork, Claude Design, Claude Science, access to unlimited projects, Research, and ability to use more Claude models. Claude for Microsoft 365. At least 5x the usage of the Free plan per five-hour session.",
                     "pricing": [
                         {
-                            "name": "Monthly",
+                            "name": "monthly_billed",
                             "unit": "month",
                             "price": "20",
                             "currency": "USD"
                         },
                         {
-                            "name": "Annually",
-                            "unit": "year",
-                            "price": "200",
+                            "name": "annually_billed",
+                            "unit": "month",
+                            "price": "17",
                             "currency": "USD"
                         }
                     ],
@@ -4563,7 +5605,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "team-enterprise",
@@ -4575,6 +5617,218 @@
                     "billing": "contact sales or consumption-based",
                     "description": "チームおよび企業向けのカスタムプラン。中央請求、管理者設定、シングルサインオン（SSO）、リモートおよびローカルコネクタの管理者コントロール、Claudeデスクトップアプリの企業展開、デフォルトでコンテンツがモデルトレーニングに使用されないなどの機能が含まれます。利用量は消費量に基づきます。",
                     "pricing": [],
+                    "missing_count": 1
+                },
+                {
+                    "id": "max-5x",
+                    "name": "Max 5x",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-08-10",
+                    "billing": "monthly",
+                    "description": "For power users hitting Pro limits most days.",
+                    "pricing": [
+                        {
+                            "name": "cost",
+                            "unit": "month",
+                            "price": "100",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "max-20x",
+                    "name": "Max 20x",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-08-10",
+                    "billing": "monthly",
+                    "description": "For heavy daily use and parallel sessions. All-day Claude Code and multi-agent work.",
+                    "pricing": [
+                        {
+                            "name": "cost",
+                            "unit": "month",
+                            "price": "200",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "team-standard",
+                    "name": "Team Standard",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-08-10",
+                    "billing": "annually/monthly per seat",
+                    "description": "For small teams needing SSO and admin controls. Includes Claude Code and Claude Cowork. Central billing and administration. Single sign-on (SSO). Admin controls for remote and local connectors. Enterprise deployment for the Claude desktop app. No model training on your content by default.",
+                    "pricing": [
+                        {
+                            "name": "annually_billed_per_seat",
+                            "unit": "seat/month",
+                            "price": "20",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "monthly_billed_per_seat",
+                            "unit": "seat/month",
+                            "price": "25",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "team-premium",
+                    "name": "Team Premium",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-08-10",
+                    "billing": "annually/monthly per seat",
+                    "description": "For heavy team users, 5x standard-seat usage. Includes Claude Code and Claude Cowork. Central billing and administration. Single sign-on (SSO). Admin controls for remote and local connectors. Enterprise deployment for the Claude desktop app. No model training on your content by default. Mix and match seat types.",
+                    "pricing": [
+                        {
+                            "name": "annually_billed_per_seat",
+                            "unit": "seat/month",
+                            "price": "100",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "monthly_billed_per_seat",
+                            "unit": "seat/month",
+                            "price": "125",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "enterprise",
+                    "name": "Enterprise",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-07-30",
+                    "billing": "annually per seat plus API usage",
+                    "description": "For regulated industries. Includes Claude Code and Claude Cowork, Claude Design, Claude Science. Connect Microsoft 365, @Claude, and more. Enterprise search across your organization. Central billing and administration. Single sign-on (SSO). Admin controls for remote and local connectors. Enterprise deployment for the Claude desktop app. No model training on your content by default. Mix and match seat types. Adds SCIM, audit logs, custom data retention, role-based access, a compliance API, and a 500K default context window.",
+                    "pricing": [
+                        {
+                            "name": "per_seat_cost",
+                            "unit": "seat/month",
+                            "price": "20",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "usage_at_api_rates",
+                            "unit": "token",
+                            "price": "variable",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "api-pay-as-you-go",
+                    "name": "API Pay-as-you-go",
+                    "aliases": [
+                        "API / Console"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-08-14",
+                    "billing": "per token",
+                    "description": "Pay per million tokens for input and output. No session or weekly caps. Ideal for CI, automation, agents, and overflow from capped plans.",
+                    "pricing": [
+                        {
+                            "name": "Claude 3.5 Sonnet_input",
+                            "unit": "million tokens",
+                            "price": "3",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude 3.5 Sonnet_output",
+                            "unit": "million tokens",
+                            "price": "15",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude 3 Opus_input",
+                            "unit": "million tokens",
+                            "price": "5",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude 3 Opus_output",
+                            "unit": "million tokens",
+                            "price": "25",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude 3 Sonnet_input",
+                            "unit": "million tokens",
+                            "price": "2",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude 3 Sonnet_output",
+                            "unit": "million tokens",
+                            "price": "10",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude 3 Haiku_input",
+                            "unit": "million tokens",
+                            "price": "1",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude 3 Haiku_output",
+                            "unit": "million tokens",
+                            "price": "5",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude Fable 5_input",
+                            "unit": "million tokens",
+                            "price": "10",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude Fable 5_output",
+                            "unit": "million tokens",
+                            "price": "50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Web search tool",
+                            "unit": "1000 searches",
+                            "price": "10",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Cache hits",
+                            "unit": "percentage of base input",
+                            "price": "10%",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Batch API discount",
+                            "unit": "input/output price",
+                            "price": "50% discount",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Claude Opus 5 Fast mode",
+                            "unit": "input/output price",
+                            "price": "2x standard rates",
+                            "currency": "USD"
+                        }
+                    ],
                     "missing_count": 0
                 }
             ],
@@ -4588,7 +5842,7 @@
                     "last_updated": null,
                     "description": "Web、iOS、Android、およびデスクトップアプリケーションを介してClaudeと対話できます。",
                     "category": "User Interface",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "code_generation_visualization",
@@ -4602,7 +5856,7 @@
                     "last_updated": null,
                     "description": "コードの生成とデータの可視化をサポートします。",
                     "category": "Development",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "content_creation_editing",
@@ -4615,7 +5869,7 @@
                     "last_updated": null,
                     "description": "執筆、編集、コンテンツ作成を支援します。トーン、構造、明瞭さを洗練させ、アイデアを磨き上げます。",
                     "category": "Writing",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "web_search",
@@ -4628,7 +5882,7 @@
                     "last_updated": "2025-01-01",
                     "description": "ウェブを検索し、引用付きで調査結果をまとめ、有用な情報を提示します。2025年に導入されました。",
                     "category": "Research",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "conversational_memory",
@@ -4641,7 +5895,7 @@
                     "last_updated": null,
                     "description": "会話間で記憶を保持し、コンテキストを維持します。",
                     "category": "Core Capability",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "file_creation_execution",
@@ -4655,7 +5909,7 @@
                     "last_updated": null,
                     "description": "ファイルを生成し、コードを実行できます。",
                     "category": "Development",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "desktop_extensions",
@@ -4666,7 +5920,7 @@
                     "last_updated": null,
                     "description": "Claudeをデスクトップアプリケーションでさらに活用するための拡張機能を提供します。",
                     "category": "Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "workspace_connectors",
@@ -4679,7 +5933,7 @@
                     "last_updated": null,
                     "description": "SlackやGoogle Workspaceサービスに接続し、リモートMCPを介して任意のコンテキストやツールを統合します。",
                     "category": "Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "extended_thinking",
@@ -4690,7 +5944,7 @@
                     "last_updated": null,
                     "description": "複雑な作業のための拡張された思考能力を提供します。",
                     "category": "Core Capability",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude_code",
@@ -4701,7 +5955,7 @@
                     "last_updated": "2025-10-20",
                     "description": "ターミナルから自然言語プロンプトを使用してコーディングタスクを委任するエージェント型コマンドラインツール。Web版とサンドボックス機能も利用可能です。初期計画から実装、デバッグ、メンテナンス、大規模なリファクタリングまで、ソフトウェア開発ライフサイクル全体で卓越したコーディングパフォーマンスを発揮します。",
                     "category": "Development",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude_cowork",
@@ -4712,7 +5966,7 @@
                     "last_updated": null,
                     "description": "協調作業を支援する機能。",
                     "category": "Collaboration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude_design",
@@ -4723,7 +5977,7 @@
                     "last_updated": null,
                     "description": "デザイン関連のタスクを支援する機能。",
                     "category": "Design",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude_science",
@@ -4734,7 +5988,7 @@
                     "last_updated": null,
                     "description": "科学関連のタスクを支援する機能。",
                     "category": "Research",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "research_access",
@@ -4745,7 +5999,7 @@
                     "last_updated": null,
                     "description": "研究関連の機能へのアクセスを提供します。",
                     "category": "Research",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude_microsoft365",
@@ -4756,7 +6010,7 @@
                     "last_updated": null,
                     "description": "Microsoft 365との連携機能。",
                     "category": "Integration",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "visual_analysis",
@@ -4770,7 +6024,7 @@
                     "last_updated": null,
                     "description": "写真、PDF、スクリーンショットをアップロードして即座に分析できます。テキストの抽出、チャートやグラフの解釈、UIレイアウトや技術図の評価、視覚情報の説明が可能です。",
                     "category": "Multimodal",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "tool_use",
@@ -4781,7 +6035,7 @@
                     "last_updated": null,
                     "description": "Claudeがウェブや環境内でアクションを実行できるようにする機能。高度なエージェントワークフローでのツール選択とエラー修正を可能にします。",
                     "category": "Agentic Capabilities",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "prompt_caching",
@@ -4792,7 +6046,7 @@
                     "last_updated": null,
                     "description": "キャッシュされた入力のコストを最大90%削減し、API使用を最適化します。",
                     "category": "Cost Optimization",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "batch_processing",
@@ -4805,7 +6059,7 @@
                     "last_updated": null,
                     "description": "メッセージAPIリクエストを大量に非同期で処理し、50%のコスト削減を実現します。",
                     "category": "Cost Optimization",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "token_counting_api",
@@ -4816,7 +6070,7 @@
                     "last_updated": null,
                     "description": "コストとレート制限を管理するために、メッセージを送信する前にトークン数をカウントします。",
                     "category": "API Utilities",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "models_api",
@@ -4827,7 +6081,7 @@
                     "last_updated": null,
                     "description": "利用可能なClaudeモデルとその詳細をリスト表示します。",
                     "category": "API Utilities",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "files_api",
@@ -4838,7 +6092,7 @@
                     "last_updated": null,
                     "description": "複数のAPI呼び出しで使用するファイルをアップロードおよび管理します。",
                     "category": "API Utilities",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "skills_api",
@@ -4849,7 +6103,7 @@
                     "last_updated": null,
                     "description": "カスタムエージェントスキルを作成および管理します。",
                     "category": "Agentic Capabilities (Beta)",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "agents_api",
@@ -4860,7 +6114,7 @@
                     "last_updated": null,
                     "description": "Claude Managed Agents用の再利用可能でバージョン管理されたエージェント構成を定義します。",
                     "category": "Agentic Capabilities (Beta)",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "sessions_api",
@@ -4871,7 +6125,7 @@
                     "last_updated": null,
                     "description": "管理されたクラウドサンドボックスでステートフルなエージェントセッションを実行します。",
                     "category": "Agentic Capabilities (Beta)",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "environments_api",
@@ -4882,7 +6136,7 @@
                     "last_updated": null,
                     "description": "エージェントセッション用のサンドボックステンプレートを設定します。",
                     "category": "Agentic Capabilities (Beta)",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "computer_use",
@@ -4895,7 +6149,7 @@
                     "last_updated": "2024-10-01",
                     "description": "画面コンテンツを解釈し、キーボードとマウス入力をシミュレートしてコンピューターをナビゲートする機能。Sonnet 5で提供されています。",
                     "category": "Agentic Capabilities",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "multilingual_capabilities",
@@ -4906,6 +6160,245 @@
                     "last_updated": null,
                     "description": "多言語での入力と出力をサポートします。",
                     "category": "Core Capability",
+                    "missing_count": 1
+                },
+                {
+                    "id": "multimodal-input",
+                    "name": "Multimodal Input (Text & Image)",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2024-03-04",
+                    "last_updated": null,
+                    "description": "All current Claude models (Claude 3 family and Claude 3.5 Sonnet) support both text and image input, enabling visual reasoning tasks like interpreting charts and graphs, and accurately transcribing te",
+                    "category": "Input/Output",
+                    "missing_count": 0
+                },
+                {
+                    "id": "long-context-window",
+                    "name": "Long Context Window",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2023-11-21",
+                    "last_updated": "2026-07-13",
+                    "description": "Claude models offer various context window sizes, with newer models supporting up to a 1 million token context window for select customers, and 200K tokens generally available. This allows Claude to r",
+                    "category": "Performance",
+                    "missing_count": 0
+                },
+                {
+                    "id": "conversational-ai",
+                    "name": "Conversational AI",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2023-03-14",
+                    "last_updated": null,
+                    "description": "Claude is a next-generation AI assistant accessible through a chat interface, capable of a wide variety of conversational tasks while maintaining reliability and predictability.",
+                    "category": "Interaction",
+                    "missing_count": 0
+                },
+                {
+                    "id": "summarization",
+                    "name": "Summarization",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2023-03-14",
+                    "last_updated": null,
+                    "description": "Claude can help with summarizing documents, articles, and research papers, and can generate clean, structured summaries from rough notes.",
+                    "category": "Text Processing",
+                    "missing_count": 0
+                },
+                {
+                    "id": "q-and-a",
+                    "name": "Q&A",
+                    "aliases": [
+                        "Question Answering"
+                    ],
+                    "status": "available",
+                    "effective_date": "2023-03-14",
+                    "last_updated": null,
+                    "description": "Claude can answer questions, explore philosophical questions, thought experiments, or hypotheticals.",
+                    "category": "Text Processing",
+                    "missing_count": 0
+                },
+                {
+                    "id": "creative-and-collaborative-writing",
+                    "name": "Creative and Collaborative Writing",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2023-03-14",
+                    "last_updated": null,
+                    "description": "Claude assists with creative and collaborative writing, generating high-quality content with a natural, relatable tone.",
+                    "category": "Content Creation",
+                    "missing_count": 0
+                },
+                {
+                    "id": "coding",
+                    "name": "Coding (Generation, Debugging, Explanation)",
+                    "aliases": [
+                        "Code Generation",
+                        "Code Debugging",
+                        "Code Explanation"
+                    ],
+                    "status": "available",
+                    "effective_date": "2023-03-14",
+                    "last_updated": "2026-08-10",
+                    "description": "Claude can write, debug, and explain code in most major programming languages. Claude Code is a command-line tool that integrates Claude into development environments, allowing it to read files, under",
+                    "category": "Development",
+                    "missing_count": 0
+                },
+                {
+                    "id": "search",
+                    "name": "Search/Information Retrieval",
+                    "aliases": [
+                        "Web Search"
+                    ],
+                    "status": "available",
+                    "effective_date": "2023-03-14",
+                    "last_updated": "2026-03-23",
+                    "description": "Claude can integrate with search engines for real-time information. It has built-in web search that activates automatically when a question needs current information.",
+                    "category": "Information Retrieval",
+                    "missing_count": 0
+                },
+                {
+                    "id": "system-prompts",
+                    "name": "System Prompts",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2023-11-21",
+                    "last_updated": null,
+                    "description": "Allows users to provide custom instructions to structure responses in a more consistent way, improve character depth and role adherence in role-playing scenarios, and ensure stricter adherence to guid",
+                    "category": "Customization",
+                    "missing_count": 0
+                },
+                {
+                    "id": "tool-use-function-calling",
+                    "name": "Tool Use / Function Calling",
+                    "aliases": [
+                        "Workflow Orchestration",
+                        "API Integration"
+                    ],
+                    "status": "available",
+                    "effective_date": "2023-11-29",
+                    "last_updated": null,
+                    "description": "Claude 2.1 and later models can integrate with existing internal processes, products, and APIs to build generative AI applications. This feature allows Claude to accurately retrieve and process data f",
+                    "category": "Integration",
+                    "missing_count": 0
+                },
+                {
+                    "id": "projects",
+                    "name": "Projects",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-04-27",
+                    "description": "Persistent workspaces that hold custom instructions, uploaded files (like READMEs and schemas), and shared conversation history. Every chat inside a Project starts with that context already loaded, el",
+                    "category": "Workflow Management",
+                    "missing_count": 0
+                },
+                {
+                    "id": "memory",
+                    "name": "Memory",
+                    "aliases": [
+                        "Conversational Recall"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-03-23",
+                    "description": "Claude can recall helpful details from past interactions—like project context or personal preferences—making future conversations feel smoother and more relevant. It holds context across a conversatio",
+                    "category": "Interaction",
+                    "missing_count": 0
+                },
+                {
+                    "id": "artifacts",
+                    "name": "Artifacts",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-03-23",
+                    "description": "Standalone, interactive outputs (code, documents, diagrams, running applications, slide decks, spreadsheets, interactive data visualizations, small web apps) that Claude renders in a panel next to the",
+                    "category": "Output Generation",
+                    "missing_count": 0
+                },
+                {
+                    "id": "deep-research-extended-thinking",
+                    "name": "Deep Research / Extended Thinking",
+                    "aliases": [
+                        "Extended Thinking",
+                        "Research",
+                        "Adaptive Thinking"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-04-27",
+                    "description": "A deeper mode where Claude spends more time working through a problem before committing to a response, showing its reasoning chain. This is useful for debugging, math, or business analysis. It can be ",
+                    "category": "Performance",
+                    "missing_count": 0
+                },
+                {
+                    "id": "file-creation",
+                    "name": "File Creation",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-03-23",
+                    "description": "Claude can create downloadable files directly in the conversation, including Word docs, spreadsheets, and slide decks.",
+                    "category": "Output Generation",
+                    "missing_count": 0
+                },
+                {
+                    "id": "custom-styles",
+                    "name": "Custom Styles",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-03-23",
+                    "description": "Allows users to customize Claude's personality, tone, and behavior to sound like them.",
+                    "category": "Customization",
+                    "missing_count": 0
+                },
+                {
+                    "id": "integrations-via-mcp",
+                    "name": "Integrations via MCP",
+                    "aliases": [
+                        "Connectors"
+                    ],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-04-15",
+                    "description": "Claude can connect to popular services and platforms like Notion, Apple Notes, Asana, Gmail, Google Drive, GitHub, and Chrome to fetch notes, documents, and tasks, or push notes from within Claude int",
+                    "category": "Integration",
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-cowork",
+                    "name": "Claude Cowork",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": "2026-03-23",
+                    "description": "Enables advanced capabilities like Computer Use API (seeing screen through screenshots, recognizing UI elements, understanding visual context for precise interactions), Autonomous Task Execution (comp",
+                    "category": "Workflow Management",
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-science",
+                    "name": "Claude Science",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "A feature included in Pro and Team plans. Supports researchers and developers in tasks like research review, brainstorming, generating hypotheses, and drug discovery.",
+                    "category": "Research & Development",
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-design",
+                    "name": "Claude Design",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": null,
+                    "last_updated": null,
+                    "description": "A feature included in Pro and Team plans. Supports design-related tasks.",
+                    "category": "Content Creation",
                     "missing_count": 0
                 }
             ],
@@ -4917,7 +6410,7 @@
                     "last_updated": "2026-07-13",
                     "description": "特定の期間内にClaudeとどれだけやり取りできるかを制御します。会話の長さと複雑さ、使用する機能、Claudeモデル、選択した努力レベルなどによって影響を受けます。プランによって異なる利用量があり、有料プランはより高い制限を提供します。ProおよびMaxプランの週次利用制限が2025年8月に導入されました。",
                     "category": "Usage",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "length_limits",
@@ -4926,7 +6419,7 @@
                     "last_updated": "2026-07-13",
                     "description": "単一のチャットでClaudeが扱える情報量であるコンテキストウィンドウに関連します。モデルによってコンテキストウィンドウのサイズが異なり、最新の有料プランモデルは最大1Mトークンをサポートし、その他は500Kまたは200Kトークンをサポートします。コンテキストウィンドウの一部はClaudeの応答のために常に予約されています。",
                     "category": "Technical",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "rate_limits_api",
@@ -4935,7 +6428,7 @@
                     "last_updated": null,
                     "description": "APIの不正利用を防ぎ、容量を管理するために、APIリクエストの最大数が組織レベルで設定されています。利用履歴に基づいて自動的に階層が上がり、より高い制限をリクエストすることも可能です。Claude Platform on AWSには、異なる請求と制限管理があります。",
                     "category": "API Usage",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "compute_shortage",
@@ -4944,7 +6437,7 @@
                     "last_updated": "2026-04-23",
                     "description": "2026年4月の時点でAnthropicは計算能力の不足に直面しており、これにより特にエージェントやClaude Codeのワークロードにおいて、より厳格な割り当てと制限が設けられています。この状況は2026年中は続くと予想されています。",
                     "category": "Infrastructure",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "us_only_inference_premium",
@@ -4953,7 +6446,7 @@
                     "last_updated": null,
                     "description": "米国のみでの推論を必要とするワークロードには、入力および出力トークンに対して1.1倍の価格が適用されます。",
                     "category": "Pricing",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "knowledge_cutoff_dates",
@@ -4962,7 +6455,7 @@
                     "last_updated": "2026-07-23",
                     "description": "各モデルには知識のカットオフ日があり、その日までの情報が最も広範かつ信頼性の高い知識ベースとなります。例えば、Sonnet 5、Fable 5、Mythos 5、Opus 4.7/4.8は2026年1月がカットオフ日です。",
                     "category": "Technical",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "data_usage_training_opt_out_default",
@@ -4971,7 +6464,7 @@
                     "last_updated": "2025-09-28",
                     "description": "Claude Free、Pro、Maxプランのユーザーについては、ユーザー生成データ（チャットやコーディングセッション）がAIモデルのトレーニングと改善に使用されることになります。2025年9月28日より、プライバシー設定のデフォルトは「オン」であり、データ使用を停止するには手動で「オフ」に切り替える必要があります。これは個人アカウントにのみ適用され、商業ユーザーやAPIユーザーには適用されません",
                     "category": "Privacy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "new_tokenizer_opus_4_7",
@@ -4980,6 +6473,46 @@
                     "last_updated": "2026-04-16",
                     "description": "Claude Opus 4.7で導入された新しいトークナイザーは、Opus 4.6と比較して同じテキストでも最大35%多くのトークンを生成する可能性があります。4.7から4.8への移行では追加のトークナイザーペナルティはありません。",
                     "category": "Technical",
+                    "missing_count": 1
+                },
+                {
+                    "id": "usage-limits-rolling-window",
+                    "name": "Usage Limits (Rolling Window)",
+                    "status": "available",
+                    "last_updated": "2026-07-21",
+                    "description": "Claude enforces usage through a rolling 5-hour window, which caps the burst activity for a user. This limits how many prompts can be sent in a session. The capacity scales with the plan (e.g., roughly",
+                    "missing_count": 0
+                },
+                {
+                    "id": "usage-limits-weekly-cap",
+                    "name": "Usage Limits (Weekly Cap)",
+                    "status": "available",
+                    "last_updated": "2026-07-21",
+                    "description": "In addition to the 5-hour rolling window, a weekly cap governs sustained compute. Hitting either limit results in throttling. This quota is shared across Claude Code, Claude.ai chat, and Cowork.",
+                    "missing_count": 0
+                },
+                {
+                    "id": "context-window-reservation",
+                    "name": "Context Window Reservation for Response",
+                    "status": "available",
+                    "last_updated": "2026-07-13",
+                    "description": "A portion of the context window is always reserved for Claude's response, meaning the longest possible conversation is slightly smaller than the full advertised context window.",
+                    "missing_count": 0
+                },
+                {
+                    "id": "model-knowledge-cutoff",
+                    "name": "Model Knowledge Cut-off",
+                    "status": "available",
+                    "last_updated": "2023-08-01",
+                    "description": "Claude Instant V1 and Claude 2.1 have knowledge up to January 2023. Claude 3 Haiku has a knowledge cut-off date of August 1, 2023. Information beyond these dates may not be available or accurate witho",
+                    "missing_count": 0
+                },
+                {
+                    "id": "api-rate-limits",
+                    "name": "API Rate Limits",
+                    "status": "available",
+                    "last_updated": "2026-08-14",
+                    "description": "API usage is subject to spend limits (maximum monthly cost) and rate limits (maximum number of API requests over a defined period). For Claude Platform on AWS, organizations are on the Start tier and ",
                     "missing_count": 0
                 }
             ],
@@ -4991,7 +6524,7 @@
                     "status": "available",
                     "description": "Claudeの能力の向上と利用法の進化を反映して、利用ポリシーが2025年8月15日に更新され、2025年9月15日に発効しました。高リスクの消費者向けユースケースには、人間による監視やAI開示などの追加の保護措置が必要です。悪意のあるコンピューター、ネットワーク、インフラストラクチャの侵害活動は禁止されています。政治コンテンツに関する広範な制限は見直され、政策研究、市民教育、政治的執筆にClau",
                     "last_updated": "2025-08-15",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "claude_constitution",
@@ -5000,7 +6533,7 @@
                     "status": "available",
                     "description": "Claudeの行動を形成し表現する基本文書。Claudeが安全で倫理的、ガイドラインに準拠し、役立つ存在であるための価値観と理由を詳細に説明しています。生物兵器攻撃に重大な影響を与えないなど、Claudeの行動に対する厳格な制約が含まれています。",
                     "last_updated": "2026-01-22",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "underage_use_prohibition",
@@ -5009,7 +6542,7 @@
                     "status": "available",
                     "description": "Claude.aiは18歳未満のユーザーには提供されず、潜在的な未成年者の利用を検出し、これらのユーザーをオフボードするための検出システムが構築されています。ClaudeのAPIを利用して未成年者にサービスを提供する開発者は、年齢確認、コンテンツモデレーション、監視、児童プライバシー法への準拠などの追加要件に拘束されます。",
                     "last_updated": "2026-07-23",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "data_retention_consumer_data",
@@ -5018,7 +6551,7 @@
                     "status": "available",
                     "description": "データ使用を許可した場合、トレーニング目的で5年間保持されます。プライバシー設定からいつでも設定を変更できます。",
                     "last_updated": "2025-09-28",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "anthropic_recommendation_model_migration",
@@ -5027,11 +6560,65 @@
                     "status": "available",
                     "description": "Anthropicは、レガシーモデル（Claude 4.xなど）を使用しているユーザーに対し、現在の世代のClaudeモデルへの移行を推奨しています。特にOpus 3はOpus 4.8よりも3倍高価であるため、Opus 4.8への移行はコスト削減に非常に効果的です。",
                     "last_updated": null,
+                    "missing_count": 1
+                },
+                {
+                    "id": "hallucination-reduction",
+                    "title": "Reduced Hallucination Rates",
+                    "category": "Accuracy",
+                    "status": "available",
+                    "description": "Claude 2.1 demonstrated a 2x decrease in false statements and a 30% reduction in incorrect answers compared to Claude 2.0. Claude increasingly knows what it doesn't know and is more likely to demur ra",
+                    "last_updated": "2023-11-21",
+                    "missing_count": 0
+                },
+                {
+                    "id": "prompt-caching",
+                    "title": "Prompt Caching for API",
+                    "category": "API Efficiency",
+                    "status": "available",
+                    "description": "Prompt caching allows marking portions of a prompt as cacheable. Subsequent API calls with the same content skip reprocessing, reducing input costs by up to 90% (cache hits cost 10% of base input).",
+                    "last_updated": "2026-07-25",
+                    "missing_count": 0
+                },
+                {
+                    "id": "batch-api-discount",
+                    "title": "Batch API Discount",
+                    "category": "API Cost Saving",
+                    "status": "available",
+                    "description": "The Batch API provides a flat 50% discount on both input and output tokens for all models for non-time-sensitive work.",
+                    "last_updated": "2026-07-25",
+                    "missing_count": 0
+                },
+                {
+                    "id": "opus-fast-mode",
+                    "title": "Claude Opus Fast Mode",
+                    "category": "Performance",
+                    "status": "available",
+                    "description": "Opus 5 offers a 'fast mode' which doubles the price ($10/$50 per MTok) for approximately 2.5x speed for latency-sensitive workloads.",
+                    "last_updated": "2026-07-25",
+                    "missing_count": 0
+                },
+                {
+                    "id": "sonnet-introductory-pricing",
+                    "title": "Claude Sonnet Introductory Pricing",
+                    "category": "Pricing",
+                    "status": "discontinued",
+                    "description": "Claude Sonnet 5 had introductory pricing of $2/$10 per MTok (input/output) through August 31, 2026. This has now become the standard price, and the scheduled increase to $3/$15 will not occur.",
+                    "last_updated": "2026-08-14",
+                    "missing_count": 0
+                },
+                {
+                    "id": "claude-3-haiku-bedrock-deprecation",
+                    "title": "Claude 3 Haiku Deprecation on Amazon Bedrock",
+                    "category": "Platform Availability",
+                    "status": "deprecated",
+                    "description": "Claude 3 Haiku is deprecated on Amazon Bedrock (Anthropic). Claude 3 Haiku model requests will be rerouted to Claude Haiku 4.5 on February 26, 2026.",
+                    "last_updated": "2026-02-26",
                     "missing_count": 0
                 }
             ],
             "status": "available",
-            "last_verified": "2026-08-07T17:13:00Z",
+            "last_verified": "2026-08-14",
             "update_failed": false
         },
         "canva": {
