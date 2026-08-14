@@ -215,6 +215,8 @@ def generate_and_send_line():
     seo_score = result["seo_score"]
     duplicate_result = result["duplicate_result"]
     latest_result = result["latest_result"]
+    image_category = result["image_category"]
+    highlight_keywords = result["highlight_keywords"]
 
     try:
         x_post, instagram_post = generate_sns_posts(
