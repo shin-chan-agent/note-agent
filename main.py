@@ -239,6 +239,14 @@ def generate_and_send_line():
         )
 
 
+    # 画像用メタデータを抽出
+    metadata = parse_image_metadata(article)
+
+    article = metadata["article"]
+    image_category = metadata["image_category"]
+    highlight_keywords = metadata["highlight_keywords"]
+
+
     status = (
         "✅ 全品質基準クリア"
         if (
@@ -266,12 +274,6 @@ def generate_and_send_line():
 
 {article}
 """
-
-
-    metadata = parse_image_metadata(article)
-
-    image_category = metadata["image_category"]
-    highlight_keywords = metadata["highlight_keywords"]
 
     evaluation = evaluation.strip()
     x_post = x_post.strip()
