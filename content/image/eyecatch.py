@@ -260,6 +260,15 @@ def create_eyecatch(
     )
 
 
+print(f"[DEBUG] title={title}")
+print(f"[DEBUG] BASE_FONT_SIZE={BASE_FONT_SIZE}")
+print(f"[DEBUG] output_path={output_path}")
+print(f"[DEBUG] background_path={background_path}")
+
+print(f"[DEBUG] lines={lines}")
+print(f"[DEBUG] font_size={font_size}")
+
+
 def split_title(
     title,
     font,
