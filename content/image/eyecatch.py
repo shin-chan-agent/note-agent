@@ -358,7 +358,7 @@ def measure_line(
 if __name__ == "__main__":
 
     create_eyecatch(
-        background_path="背景画像のパス",
+        background_path = "content/image/backgrounds/default.png",
         output_path="test_eyecatch.png",
         title="ChatGPTで業務効率化！初心者向け5選",
         highlight_keywords=[
