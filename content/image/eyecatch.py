@@ -22,9 +22,11 @@ def create_eyecatch(
     # Version 1.0 設定
     # =========================
 
-    font_size = 64
-    letter_spacing = font_size * 0.015
-    line_spacing = int(font_size * 0.15)
+    BASE_FONT_SIZE = 72
+    MIN_FONT_SIZE = 58
+
+    letter_spacing_ratio = 0.015
+    line_spacing_ratio = 0.15
 
     # 日本語対応フォント
     font_candidates = [
@@ -46,11 +48,6 @@ def create_eyecatch(
             "日本語フォントが見つかりません。"
         )
 
-    font = ImageFont.truetype(
-        font_path,
-        font_size,
-    )
-
     # =========================
     # タイトル領域
     # =========================
@@ -65,55 +62,76 @@ def create_eyecatch(
     panel_height = panel_bottom - panel_top
 
     # =========================
-    # タイトルを2〜3行にする
+    # フォントサイズを自動調整
     # =========================
 
-    lines = split_title(
-        title,
-        font,
-        draw,
-        panel_width,
-    )
+    font_size = BASE_FONT_SIZE
 
-    # =========================
-    # 強調キーワード
-    # =========================
+    while font_size >= MIN_FONT_SIZE:
 
-    parts_list = [
-        split_highlights(
-            line,
-            highlight_keywords,
+        font = ImageFont.truetype(
+            font_path,
+            font_size,
         )
-        for line in lines
-    ]
+
+        letter_spacing = (
+            font_size * letter_spacing_ratio
+        )
+
+        # =========================
+        # タイトルを2〜3行に分割
+        # =========================
+
+        lines = split_title(
+            title,
+            font,
+            draw,
+            panel_width,
+        )
+
+        parts_list = [
+            split_highlights(
+                line,
+                highlight_keywords,
+            )
+            for line in lines
+        ]
+
+        line_widths = [
+            measure_line(
+                draw,
+                parts,
+                font,
+                letter_spacing,
+            )
+            for parts in parts_list
+        ]
+
+        # 全行がパネル幅に収まれば確定
+        if max(line_widths) <= panel_width:
+            break
+
+        font_size -= 2
+
+    # =========================
+    # 行間
+    # =========================
+
+    line_spacing = int(
+        font_size * line_spacing_ratio
+    )
 
     # =========================
     # サイズ計算
     # =========================
 
-    line_height = (
-        draw.textbbox(
-            (0, 0),
-            "あ",
-            font=font,
-        )[3]
-        -
-        draw.textbbox(
-            (0, 0),
-            "あ",
-            font=font,
-        )[1]
+    bbox = draw.textbbox(
+        (0, 0),
+        "あ",
+        font=font,
     )
 
-    line_widths = [
-        measure_line(
-            draw,
-            parts,
-            font,
-            letter_spacing,
-        )
-        for parts in parts_list
-    ]
+    line_height = bbox[3] - bbox[1]
 
     total_height = (
         line_height * len(lines)
@@ -121,7 +139,10 @@ def create_eyecatch(
         line_spacing * (len(lines) - 1)
     )
 
+    # =========================
     # タイトル全体をパネル中央へ
+    # =========================
+
     start_y = (
         panel_top
         +
@@ -246,27 +267,277 @@ def split_title(
     max_width,
 ):
     """
-    タイトルを2〜3行に分割する。
+    タイトルを意味のまとまりを優先して
+    2〜3行に分割する。
     """
 
-    # 最初は手動で自然な位置を探す。
-    # 後で自動最適化する。
-    if len(title) <= 20:
+    title = title.strip()
+
+    # =========================
+    # まず1行で収まるか確認
+    # =========================
+
+    if measure_line(
+        draw,
+        [(title, False)],
+        font,
+        font.size * 0.015,
+    ) <= max_width:
+
         return [title]
 
-    if len(title) <= 30:
-        midpoint = len(title) // 2
-        return [
-            title[:midpoint],
-            title[midpoint:],
-        ]
+    # =========================
+    # 2行候補を作る
+    # =========================
 
-    midpoint = len(title) // 3
+    candidates = []
+
+    # 優先する改行位置
+    break_marks = [
+        "！",
+        "？",
+        "。",
+        "：",
+        "！",
+        "?",
+        "!",
+        "：",
+    ]
+
+    for mark in break_marks:
+
+        start = 0
+
+        while True:
+
+            index = title.find(
+                mark,
+                start,
+            )
+
+            if index == -1:
+                break
+
+            split_at = index + 1
+
+            left = title[:split_at].strip()
+            right = title[split_at:].strip()
+
+            if left and right:
+                candidates.append(
+                    (left, right)
+                )
+
+            start = split_at
+
+    # =========================
+    # 「〜向け」「〜活用」などの
+    # 意味の区切りも候補にする
+    # =========================
+
+    semantic_marks = [
+        "向け",
+        "活用",
+        "方法",
+        "コツ",
+        "比較",
+        "まとめ",
+        "ロードマップ",
+        "収益化",
+        "効率化",
+    ]
+
+    for mark in semantic_marks:
+
+        start = 0
+
+        while True:
+
+            index = title.find(
+                mark,
+                start,
+            )
+
+            if index == -1:
+                break
+
+            split_at = index + len(mark)
+
+            left = title[:split_at].strip()
+            right = title[split_at:].strip()
+
+            if left and right:
+                candidates.append(
+                    (left, right)
+                )
+
+            start = split_at
+
+    # =========================
+    # 文字数による候補も追加
+    # =========================
+
+    length = len(title)
+
+    for ratio in [0.45, 0.5, 0.55]:
+
+        split_at = int(length * ratio)
+
+        left = title[:split_at].strip()
+        right = title[split_at:].strip()
+
+        if left and right:
+            candidates.append(
+                (left, right)
+            )
+
+    # =========================
+    # 2行候補から最適なものを選ぶ
+    # =========================
+
+    valid_candidates = []
+
+    for left, right in candidates:
+
+        left_width = measure_line(
+            draw,
+            [(left, False)],
+            font,
+            font.size * 0.015,
+        )
+
+        right_width = measure_line(
+            draw,
+            [(right, False)],
+            font,
+            font.size * 0.015,
+        )
+
+        if (
+            left_width <= max_width
+            and right_width <= max_width
+        ):
+
+            # 行幅の差が小さいほど高評価
+            balance = abs(
+                left_width - right_width
+            )
+
+            # 極端に短い行を避ける
+            min_length = min(
+                len(left),
+                len(right),
+            )
+
+            if min_length >= 4:
+                valid_candidates.append(
+                    (
+                        balance,
+                        left,
+                        right,
+                    )
+                )
+
+    if valid_candidates:
+
+        valid_candidates.sort(
+            key=lambda x: x[0]
+        )
+
+        _, left, right = (
+            valid_candidates[0]
+        )
+
+        return [left, right]
+
+    # =========================
+    # 2行にできない場合は3行
+    # =========================
+
+    third_candidates = []
+
+    for first_ratio in [0.30, 0.33, 0.36]:
+
+        first_end = int(
+            length * first_ratio
+        )
+
+        first = title[:first_end].strip()
+
+        remaining = title[first_end:].strip()
+
+        if len(remaining) < 4:
+            continue
+
+        for second_ratio in [0.45, 0.5, 0.55]:
+
+            second_length = int(
+                len(remaining)
+                * second_ratio
+            )
+
+            second_end = second_length
+
+            second = (
+                remaining[:second_end]
+                .strip()
+            )
+
+            third = (
+                remaining[second_end:]
+                .strip()
+            )
+
+            if not second or not third:
+                continue
+
+            widths = [
+                measure_line(
+                    draw,
+                    [(line, False)],
+                    font,
+                    font.size * 0.015,
+                )
+                for line in [
+                    first,
+                    second,
+                    third,
+                ]
+            ]
+
+            if max(widths) <= max_width:
+
+                balance = (
+                    max(widths)
+                    - min(widths)
+                )
+
+                third_candidates.append(
+                    (
+                        balance,
+                        [
+                            first,
+                            second,
+                            third,
+                        ],
+                    )
+                )
+
+    if third_candidates:
+
+        third_candidates.sort(
+            key=lambda x: x[0]
+        )
+
+        return third_candidates[0][1]
+
+    # 最終手段
+    third = len(title) // 3
 
     return [
-        title[:midpoint],
-        title[midpoint:midpoint * 2],
-        title[midpoint * 2:],
+        title[:third],
+        title[third:third * 2],
+        title[third * 2:],
     ]
 
 
@@ -295,9 +566,11 @@ def split_highlights(
                 )
 
         if not matches:
+
             parts.append(
                 (rest, False)
             )
+
             break
 
         index, keyword = min(
@@ -306,6 +579,7 @@ def split_highlights(
         )
 
         if index > 0:
+
             parts.append(
                 (rest[:index], False)
             )
@@ -358,7 +632,7 @@ def measure_line(
 if __name__ == "__main__":
 
     create_eyecatch(
-        background_path = "content/image/backgrounds/default.png",
+        background_path="content/image/backgrounds/default.png",
         output_path="test_eyecatch.png",
         title="ChatGPTで業務効率化！初心者向け5選",
         highlight_keywords=[
