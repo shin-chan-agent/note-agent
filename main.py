@@ -11,6 +11,7 @@ from article_history import load_articles, save_article
 from content.article.prompt import get_article_prompt
 from content.article.generator import generate_article
 from content.sns.generator import generate_sns_posts
+from content.image.eyecatch import create_eyecatch
 
 from utils.knowledge_manager import (
     get_services,
@@ -30,8 +31,6 @@ from utils.logger import (
     log_error,
 )
 from utils.gemini_client import GeminiDailyQuotaExceeded
-
-from content.image.eyecatch import create_eyecatch
 
 from config import (
     MIN_SCORE,
