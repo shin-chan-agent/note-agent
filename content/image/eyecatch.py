@@ -55,8 +55,8 @@ def create_eyecatch(
     panel_left = int(width * 0.15)
     panel_right = int(width * 0.85)
 
-    panel_top = int(height * 0.24)
-    panel_bottom = int(height * 0.76)
+    panel_top = int(height * 0.25)
+    panel_bottom = int(height * 0.75)
 
     panel_width = panel_right - panel_left
     panel_height = panel_bottom - panel_top
