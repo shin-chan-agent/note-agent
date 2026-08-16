@@ -56,8 +56,6 @@ def get_target_services(theme):
 
     return THEME_SERVICES.get(theme, [])
 
-    return THEME_SERVICES.get(theme, [])
-
 
 def split_text(text, max_length=4990):
     """
