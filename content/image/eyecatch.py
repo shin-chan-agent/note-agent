@@ -277,38 +277,35 @@ def split_title(
 
     title = title.strip()
 
+    letter_spacing = font.size * 0.015
+
     # =========================
-    # まず1行で収まるか確認
+    # 1行で収まる場合
     # =========================
 
     if measure_line(
         draw,
         [(title, False)],
         font,
-        font.size * 0.015,
+        letter_spacing,
     ) <= max_width:
-
         return [title]
 
     # =========================
-    # 2行候補を作る
+    # 重要な改行位置
+    # 「！」などの記号の直後を最優先
     # =========================
 
-    candidates = []
+    priority_candidates = []
 
-    # 優先する改行位置
-    break_marks = [
+    for mark in [
         "！",
         "？",
         "。",
-        "：",
-        "！",
-        "?",
         "!",
-        "：",
-    ]
-
-    for mark in break_marks:
+        "?",
+        "。",
+    ]:
 
         start = 0
 
@@ -327,19 +324,68 @@ def split_title(
             left = title[:split_at].strip()
             right = title[split_at:].strip()
 
-            if left and right:
-                candidates.append(
-                    (left, right)
+            if not left or not right:
+                start = split_at
+                continue
+
+            left_width = measure_line(
+                draw,
+                [(left, False)],
+                font,
+                letter_spacing,
+            )
+
+            right_width = measure_line(
+                draw,
+                [(right, False)],
+                font,
+                letter_spacing,
+            )
+
+            if (
+                left_width <= max_width
+                and right_width <= max_width
+            ):
+                priority_candidates.append(
+                    (
+                        abs(
+                            left_width
+                            - right_width
+                        ),
+                        left,
+                        right,
+                    )
                 )
 
             start = split_at
 
     # =========================
-    # 「〜向け」「〜活用」などの
-    # 意味の区切りも候補にする
+    # 「！」などで自然に分割できるなら
+    # それを必ず優先
     # =========================
 
-    semantic_marks = [
+    if priority_candidates:
+
+        priority_candidates.sort(
+            key=lambda x: x[0]
+        )
+
+        _, left, right = (
+            priority_candidates[0]
+        )
+
+        return [
+            left,
+            right,
+        ]
+
+    # =========================
+    # 意味の区切り
+    # =========================
+
+    semantic_candidates = []
+
+    for mark in [
         "向け",
         "活用",
         "方法",
@@ -349,9 +395,7 @@ def split_title(
         "ロードマップ",
         "収益化",
         "効率化",
-    ]
-
-    for mark in semantic_marks:
+    ]:
 
         start = 0
 
@@ -370,51 +414,94 @@ def split_title(
             left = title[:split_at].strip()
             right = title[split_at:].strip()
 
-            if left and right:
-                candidates.append(
-                    (left, right)
+            if not left or not right:
+                start = split_at
+                continue
+
+            left_width = measure_line(
+                draw,
+                [(left, False)],
+                font,
+                letter_spacing,
+            )
+
+            right_width = measure_line(
+                draw,
+                [(right, False)],
+                font,
+                letter_spacing,
+            )
+
+            if (
+                left_width <= max_width
+                and right_width <= max_width
+            ):
+                semantic_candidates.append(
+                    (
+                        abs(
+                            left_width
+                            - right_width
+                        ),
+                        left,
+                        right,
+                    )
                 )
 
             start = split_at
 
+    if semantic_candidates:
+
+        semantic_candidates.sort(
+            key=lambda x: x[0]
+        )
+
+        _, left, right = (
+            semantic_candidates[0]
+        )
+
+        return [
+            left,
+            right,
+        ]
+
     # =========================
-    # 文字数による候補も追加
+    # 最後に文字数ベース
     # =========================
+
+    candidates = []
 
     length = len(title)
 
-    for ratio in [0.45, 0.5, 0.55]:
+    for ratio in [
+        0.4,
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+    ]:
 
-        split_at = int(length * ratio)
+        split_at = int(
+            length * ratio
+        )
 
         left = title[:split_at].strip()
         right = title[split_at:].strip()
 
-        if left and right:
-            candidates.append(
-                (left, right)
-            )
-
-    # =========================
-    # 2行候補から最適なものを選ぶ
-    # =========================
-
-    valid_candidates = []
-
-    for left, right in candidates:
+        if not left or not right:
+            continue
 
         left_width = measure_line(
             draw,
             [(left, False)],
             font,
-            font.size * 0.015,
+            letter_spacing,
         )
 
         right_width = measure_line(
             draw,
             [(right, False)],
             font,
-            font.size * 0.015,
+            letter_spacing,
         )
 
         if (
@@ -422,120 +509,34 @@ def split_title(
             and right_width <= max_width
         ):
 
-            # 行幅の差が小さいほど高評価
-            balance = abs(
-                left_width - right_width
-            )
-
-            # 極端に短い行を避ける
-            min_length = min(
-                len(left),
-                len(right),
-            )
-
-            if min_length >= 4:
-                valid_candidates.append(
-                    (
-                        balance,
-                        left,
-                        right,
-                    )
+            candidates.append(
+                (
+                    abs(
+                        left_width
+                        - right_width
+                    ),
+                    left,
+                    right,
                 )
+            )
 
-    if valid_candidates:
+    if candidates:
 
-        valid_candidates.sort(
+        candidates.sort(
             key=lambda x: x[0]
         )
 
-        _, left, right = (
-            valid_candidates[0]
-        )
+        _, left, right = candidates[0]
 
-        return [left, right]
+        return [
+            left,
+            right,
+        ]
 
     # =========================
-    # 2行にできない場合は3行
+    # 最終手段：3行
     # =========================
 
-    third_candidates = []
-
-    for first_ratio in [0.30, 0.33, 0.36]:
-
-        first_end = int(
-            length * first_ratio
-        )
-
-        first = title[:first_end].strip()
-
-        remaining = title[first_end:].strip()
-
-        if len(remaining) < 4:
-            continue
-
-        for second_ratio in [0.45, 0.5, 0.55]:
-
-            second_length = int(
-                len(remaining)
-                * second_ratio
-            )
-
-            second_end = second_length
-
-            second = (
-                remaining[:second_end]
-                .strip()
-            )
-
-            third = (
-                remaining[second_end:]
-                .strip()
-            )
-
-            if not second or not third:
-                continue
-
-            widths = [
-                measure_line(
-                    draw,
-                    [(line, False)],
-                    font,
-                    font.size * 0.015,
-                )
-                for line in [
-                    first,
-                    second,
-                    third,
-                ]
-            ]
-
-            if max(widths) <= max_width:
-
-                balance = (
-                    max(widths)
-                    - min(widths)
-                )
-
-                third_candidates.append(
-                    (
-                        balance,
-                        [
-                            first,
-                            second,
-                            third,
-                        ],
-                    )
-                )
-
-    if third_candidates:
-
-        third_candidates.sort(
-            key=lambda x: x[0]
-        )
-
-        return third_candidates[0][1]
-
-    # 最終手段
     third = len(title) // 3
 
     return [
@@ -543,7 +544,6 @@ def split_title(
         title[third:third * 2],
         title[third * 2:],
     ]
-
 
 def split_highlights(
     text,
