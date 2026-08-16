@@ -250,10 +250,21 @@ def generate_and_send_line():
         else "⚠️ 品質基準未達"
     )
 
-    create_eyecatch_background(
-        "test_eyecatch.png",
-        "AI画像・デザイン",
+    title = (
+        article.split("\n")[0]
+        .replace("タイトル：", "")
+        .replace("タイトル:", "")
+        .strip()
     )
+
+    create_eyecatch(
+        background_path="content/image/backgrounds/default.png",
+        output_path="eyecatch.png",
+        title=title,
+        highlight_keywords=highlight_keywords,
+    )
+
+    log_info(f"アイキャッチを生成しました：{title}")
     
     # 送信するメッセージの組み立て
     article_message = f"""🤖【Gemini生成のnote原稿】🤖
