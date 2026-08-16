@@ -109,6 +109,10 @@ def create_eyecatch(
 
         # 全行がパネル幅に収まれば確定
         if max(line_widths) <= panel_width:
+
+            print(f"[DEBUG] lines={lines}")
+            print(f"[DEBUG] font_size={font_size}")
+
             break
 
         font_size -= 2
@@ -258,10 +262,6 @@ def create_eyecatch(
         output_path,
         quality=95,
     )
-
-
-print(f"[DEBUG] lines={lines}")
-print(f"[DEBUG] font_size={font_size}")
 
 
 def split_title(
