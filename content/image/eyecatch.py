@@ -22,7 +22,7 @@ def create_eyecatch(
     # Version 1.0 設定
     # =========================
 
-    BASE_FONT_SIZE = 72
+    BASE_FONT_SIZE = 84
     MIN_FONT_SIZE = 58
 
     letter_spacing_ratio = 0.015
