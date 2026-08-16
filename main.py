@@ -31,7 +31,7 @@ from utils.logger import (
 )
 from utils.gemini_client import GeminiDailyQuotaExceeded
 
-from utils.eyecatch_generator import create_eyecatch_background
+from content.image.eyecatch import create_eyecatch
 
 from config import (
     MIN_SCORE,
