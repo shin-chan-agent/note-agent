@@ -260,11 +260,6 @@ def create_eyecatch(
     )
 
 
-print(f"[DEBUG] title={title}")
-print(f"[DEBUG] BASE_FONT_SIZE={BASE_FONT_SIZE}")
-print(f"[DEBUG] output_path={output_path}")
-print(f"[DEBUG] background_path={background_path}")
-
 print(f"[DEBUG] lines={lines}")
 print(f"[DEBUG] font_size={font_size}")
 
@@ -640,12 +635,36 @@ def measure_line(
 
 if __name__ == "__main__":
 
+    title = "ChatGPTで業務効率化！初心者向け5選"
+
+    highlight_keywords = [
+        "ChatGPT",
+        "5選",
+    ]
+
+    background_path = (
+        "content/image/backgrounds/default.png"
+    )
+
+    output_path = "test_eyecatch.png"
+
+    print(f"[DEBUG] title={title}")
+    print(
+        f"[DEBUG] highlight_keywords="
+        f"{highlight_keywords}"
+    )
+    print(
+        f"[DEBUG] background_path="
+        f"{background_path}"
+    )
+    print(
+        f"[DEBUG] output_path="
+        f"{output_path}"
+    )
+
     create_eyecatch(
-        background_path="content/image/backgrounds/default.png",
-        output_path="test_eyecatch.png",
-        title="ChatGPTで業務効率化！初心者向け5選",
-        highlight_keywords=[
-            "ChatGPT",
-            "5選",
-        ],
+        background_path=background_path,
+        output_path=output_path,
+        title=title,
+        highlight_keywords=highlight_keywords,
     )
