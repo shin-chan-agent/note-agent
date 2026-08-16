@@ -22,11 +22,11 @@ def create_eyecatch(
     # Version 1.0 設定
     # =========================
 
-    BASE_FONT_SIZE = 86
+    BASE_FONT_SIZE = 92
     MIN_FONT_SIZE = 58
 
     letter_spacing_ratio = 0.015
-    line_spacing_ratio = 0.2
+    line_spacing_ratio = 0.3
 
     # 日本語対応フォント
     font_candidates = [
