@@ -149,8 +149,8 @@ def create_eyecatch(
 
     start_y = (
         panel_top
-        +
-        (panel_height - total_height) / 2
+        + (panel_height - total_height) / 2
+        - 20
     )
 
     # =========================
