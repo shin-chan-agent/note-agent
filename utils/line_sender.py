@@ -56,3 +56,21 @@ def create_text_message(text):
         "type": "text",
         "text": text,
     }
+
+
+def create_image_message(
+    image_url,
+    preview_url=None,
+):
+    """
+    LINEへ画像を送信するためのメッセージを作成する。
+    """
+
+    if preview_url is None:
+        preview_url = image_url
+
+    return {
+        "type": "image",
+        "originalContentUrl": image_url,
+        "previewImageUrl": preview_url,
+    }
