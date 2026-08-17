@@ -79,7 +79,9 @@ jobs:
           git add \
             combination_history.json \
             article_history.json \
-            utils/ai_knowledge.json
+            utils/ai_knowledge.json \
+            docs/eyecatch.png
+
 
           git diff --cached --quiet || git commit -m "Update history"
 
