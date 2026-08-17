@@ -46,6 +46,12 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 
+EYECATCH_URL = (
+    "https://shin-chan-agent.github.io/"
+    "note-agent/eyecatch.png"
+)
+
+
 def get_target_services(theme):
     """
     テーマから最新情報取得対象のサービスを取得する。
