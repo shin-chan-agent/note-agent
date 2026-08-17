@@ -34,11 +34,16 @@ jobs:
         run: |
           python content/image/eyecatch.py
 
+      - name: Copy eyecatch to docs
+        run: |
+          mkdir -p docs
+          cp test_eyecatch.png docs/eyecatch.png
+
       - name: Save test eyecatch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add test_eyecatch.png
+          git add test_eyecatch.png docs/eyecatch.png
           git commit -m "Add test eyecatch" || echo "No changes to commit"
           git push
 
