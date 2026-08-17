@@ -324,7 +324,13 @@ def generate_and_send_line():
     for part in split_text(article_message):
         messages.append(create_text_message(part))
 
-    messages.append(create_text_message(summary_message))
+messages.append(create_text_message(summary_message))
+
+    messages.append(
+        create_image_message(
+            EYECATCH_URL,
+        )
+    )
 
 
     try:
