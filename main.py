@@ -336,8 +336,6 @@ messages.append(create_text_message(summary_message))
     try:
         response_line = send_line_messages(messages)
 
-        title = article.split("\n")[0].replace("タイトル：", "").replace("タイトル:", "").strip()
-
         save_article(
             title,
             theme,
