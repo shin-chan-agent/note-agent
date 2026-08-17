@@ -263,7 +263,7 @@ def generate_and_send_line():
 
     create_eyecatch(
         background_path="content/image/backgrounds/default.png",
-        output_path="eyecatch.png",
+        output_path="docs/eyecatch.png",
         title=title,
         highlight_keywords=highlight_keywords,
     )
