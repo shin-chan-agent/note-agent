@@ -29,9 +29,6 @@ def send_line_messages(messages):
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
     user_id = os.environ["LINE_USER_ID"]
 
-    token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
-    user_id = os.environ["LINE_USER_ID"]
-
     url = "https://api.line.me/v2/bot/message/push"
 
     headers = {
