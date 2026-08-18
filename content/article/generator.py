@@ -149,7 +149,7 @@ def generate_article(
                     rewrite_prompt,
                 )
 
-                # リライト時にタイトルより前へ余計な説明が入った場合、「タイトル：」から記事本文として扱う
+                # リライト時にタイトルより前へ余計な文章を除去
                 title_match = re.search(
                     r"タイトル[:：]",
                     article,
