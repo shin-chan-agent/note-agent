@@ -254,12 +254,18 @@ def generate_and_send_line():
         else "⚠️ 品質基準未達"
     )
 
-    title = (
-        article.split("\n")[0]
-        .replace("タイトル：", "")
-        .replace("タイトル:", "")
-        .strip()
+    title_match = re.search(
+        r"^タイトル[:：]\s*(.+)$",
+        article,
+        re.MULTILINE,
     )
+
+    if not title_match:
+        raise ValueError(
+            "記事内にタイトルが見つかりません。"
+        )
+
+    title = title_match.group(1).strip()
 
     create_eyecatch(
         background_path="content/image/backgrounds/default.png",
