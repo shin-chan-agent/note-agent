@@ -131,6 +131,19 @@ def generate_article(
                     rewrite_prompt,
                 )
 
+                # リライト時にタイトルより前へ余計な説明が入った場合、「タイトル：」から記事本文として扱う
+                title_match = re.search(
+                    r"タイトル[:：]",
+                    article,
+                )
+
+                if title_match:
+                    article = article[title_match.start():].strip()
+                else:
+                    raise ValueError(
+                        "リライト後の記事にタイトルが見つかりません。"
+    )
+
                 if len(article) > MAX_ARTICLE_LENGTH:
                     log_warning(
                         f"リライト後の記事が長すぎます（{len(article)}文字）。"
