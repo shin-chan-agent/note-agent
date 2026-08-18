@@ -47,8 +47,26 @@ def generate_article(
 
             article = generated_text
 
+            # 「タイトル：」より前の余計な文章を除去
+            title_match = re.search(
+                r"^タイトル[:：]",
+                article,
+                re.MULTILINE,
+            )
+
+            if title_match:
+                article = article[title_match.start():].strip()
+            else:
+                raise ValueError(
+                    "記事内にタイトルが見つかりません。"
+                )
+
             # タイトル欠落チェック
-            if not re.search(r"^タイトル[:：]", article):
+            if not re.search(
+                r"^タイトル[:：]",
+                article,
+                re.MULTILINE,
+            ):
                 log_warning("タイトル欠落。再生成します。")
                 continue
 
