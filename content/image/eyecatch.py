@@ -271,23 +271,26 @@ def split_title(
     max_width,
 ):
     """
-    タイトルを意味のまとまりを優先して
-    2〜3行に分割する。
+    日本語として自然な位置を優先して
+    タイトルを2〜3行に分割する。
 
-    優先順位：
-    1. 1行
-    2. 意味の良い2行
-    3. 意味の良い3行
-    4. 文字数ベースの2〜3行
+    優先順位
+    1. 1行で収まる
+    2. 助詞の直後
+    3. 記号の直後
+    4. 意味のまとまり
+    5. 文字数バランス
+
+    助詞が次の行の先頭に来る分割は避ける。
     """
 
     title = title.strip()
 
     letter_spacing = font.size * 0.015
 
-    # =========================
+    # ------------------------------------
     # 1行で収まる場合
-    # =========================
+    # ------------------------------------
 
     if measure_line(
         draw,
@@ -297,116 +300,44 @@ def split_title(
     ) <= max_width:
         return [title]
 
-    # =========================
-    # 改行候補
-    # =========================
+    # ------------------------------------
+    # 助詞
+    # ------------------------------------
 
-    break_positions = []
-
-    # 強い区切り
-    priority_marks = [
-        "！",
-        "？",
-        "。",
-        "!",
-        "?",
+    particles = [
+        "が",
+        "は",
+        "の",
+        "で",
+        "を",
+        "に",
+        "へ",
+        "と",
+        "も",
+        "や",
+        "から",
+        "まで",
+        "より",
+        "だけ",
+        "ほど",
+        "しか",
+        "こそ",
+        "など",
     ]
 
-    # 意味のまとまりとして使いやすい区切り
-    semantic_marks = [
-        "収益化",
-        "効率化",
-        "ロードマップ",
-        "チェックリスト",
-        "初心者向け",
-        "副業",
-        "成功",
-        "活用",
-        "方法",
-        "コツ",
-        "比較",
-        "まとめ",
-    ]
+    # ------------------------------------
+    # 改行候補を作る
+    # ------------------------------------
 
-    # -------------------------
-    # 強い区切り
-    # -------------------------
+    candidates = []
 
-    for mark in priority_marks:
+    for index in range(1, len(title)):
 
-        start = 0
+        left = title[:index]
+        right = title[index:]
 
-        while True:
-
-            index = title.find(
-                mark,
-                start,
-            )
-
-            if index == -1:
-                break
-
-            split_at = index + len(mark)
-
-            if 0 < split_at < len(title):
-                break_positions.append(
-                    (
-                        split_at,
-                        3,
-                    )
-                )
-
-            start = split_at
-
-    # -------------------------
-    # 意味区切り
-    # -------------------------
-
-    for mark in semantic_marks:
-
-        start = 0
-
-        while True:
-
-            index = title.find(
-                mark,
-                start,
-            )
-
-            if index == -1:
-                break
-
-            split_at = index + len(mark)
-
-            if 0 < split_at < len(title):
-                break_positions.append(
-                    (
-                        split_at,
-                        2,
-                    )
-                )
-
-            start = split_at
-
-    # 重複除去
-    break_positions = list(
-        {
-            position: priority
-            for position, priority
-            in break_positions
-        }.items()
-    )
-
-    # =========================
-    # 2行候補を作る
-    # =========================
-
-    candidates_2 = []
-
-    for split_at, priority in break_positions:
-
-        left = title[:split_at].strip()
-        right = title[split_at:].strip()
+        left = left.strip()
+        right = right.strip()
 
         if not left or not right:
             continue
@@ -426,193 +357,245 @@ def split_title(
         )
 
         if (
-            left_width <= max_width
-            and right_width <= max_width
+            left_width > max_width
+            or right_width > max_width
         ):
-
-            max_line_width = max(
-                left_width,
-                right_width,
-            )
-
-            balance = abs(
-                left_width - right_width
-            )
-
-            candidates_2.append(
-                (
-                    priority,
-                    max_line_width,
-                    balance,
-                    [
-                        left,
-                        right,
-                    ],
-                )
-            )
-
-    # 2行で収まるなら採用
-    if candidates_2:
-
-        candidates_2.sort(
-            key=lambda x: (
-                -x[0],
-                x[1],
-                x[2],
-            )
-        )
-
-        return candidates_2[0][3]
-
-    # =========================
-    # 3行候補を作る
-    # =========================
-
-    candidates_3 = []
-
-    positions = [
-        position
-        for position, _ in break_positions
-    ]
-
-    for first in positions:
-
-        for second in positions:
-
-            if second <= first:
-                continue
-
-            line1 = title[:first].strip()
-            line2 = title[first:second].strip()
-            line3 = title[second:].strip()
-
-            if not line1 or not line2 or not line3:
-                continue
-
-            widths = [
-                measure_line(
-                    draw,
-                    [(line1, False)],
-                    font,
-                    letter_spacing,
-                ),
-                measure_line(
-                    draw,
-                    [(line2, False)],
-                    font,
-                    letter_spacing,
-                ),
-                measure_line(
-                    draw,
-                    [(line3, False)],
-                    font,
-                    letter_spacing,
-                ),
-            ]
-
-            # 3行すべてがパネル内に収まる
-            if max(widths) <= max_width:
-
-                max_line_width = max(widths)
-
-                min_line_width = min(widths)
-
-                balance = (
-                    max_line_width
-                    - min_line_width
-                )
-
-                # 3行とも極端に短くならないようにする
-                if min_line_width < max_width * 0.25:
-                    balance += max_width
-
-                priority_score = 0
-
-                # 強い区切りを高評価
-                for position, priority in break_positions:
-
-                    if position == first:
-                        priority_score += priority * 2
-
-                    if position == second:
-                        priority_score += priority * 2
-
-                candidates_3.append(
-                    (
-                        priority_score,
-                        max_line_width,
-                        balance,
-                        [
-                            line1,
-                            line2,
-                            line3,
-                        ],
-                    )
-                )
-
-    # 3行の意味分割が見つかった場合
-    if candidates_3:
-
-        candidates_3.sort(
-            key=lambda x: (
-                -x[0],
-                x[1],
-                x[2],
-            )
-        )
-
-        return candidates_3[0][3]
-
-    # =========================
-    # 最後の手段
-    # 文字数ベース
-    # =========================
-
-    length = len(title)
-
-    # まず2行を試す
-    for ratio in [
-        0.4,
-        0.45,
-        0.5,
-        0.55,
-        0.6,
-    ]:
-
-        split_at = int(
-            length * ratio
-        )
-
-        left = title[:split_at].strip()
-        right = title[split_at:].strip()
-
-        if not left or not right:
             continue
 
-        left_width = measure_line(
-            draw,
-            [(left, False)],
-            font,
-            letter_spacing,
+        # --------------------------------
+        # 次の行が助詞から始まる場合
+        # 強く減点
+        # --------------------------------
+
+        starts_with_particle = any(
+            right.startswith(particle)
+            for particle in particles
         )
 
-        right_width = measure_line(
-            draw,
-            [(right, False)],
-            font,
-            letter_spacing,
+        if starts_with_particle:
+            continue
+
+        # --------------------------------
+        # 分割位置の評価
+        # --------------------------------
+
+        score = 0
+
+        # 左右の長さを近づける
+        score += abs(
+            left_width - right_width
         )
 
-        if (
-            left_width <= max_width
-            and right_width <= max_width
-        ):
-            return [
+        # 助詞の直後を高評価
+        for particle in particles:
+            if left.endswith(particle):
+                score -= 300
+                break
+
+        # --------------------------------
+        # 記号の直後を高評価
+        # --------------------------------
+
+        if left[-1:] in [
+            "！",
+            "？",
+            "。",
+            "！",
+            "？",
+            "、",
+            "：",
+        ]:
+            score -= 500
+
+        # --------------------------------
+        # 意味のまとまりを高評価
+        # --------------------------------
+
+        semantic_marks = [
+            "向け",
+            "活用",
+            "方法",
+            "コツ",
+            "比較",
+            "まとめ",
+            "ロードマップ",
+            "収益化",
+            "効率化",
+            "自動化",
+            "チェックリスト",
+        ]
+
+        for mark in semantic_marks:
+            if left.endswith(mark):
+                score -= 200
+                break
+
+        candidates.append(
+            (
+                score,
                 left,
                 right,
-            ]
+            )
+        )
 
-    # 最終手段：3行
+    # ------------------------------------
+    # 2行にできる場合
+    # ------------------------------------
+
+    if candidates:
+
+        candidates.sort(
+            key=lambda x: x[0]
+        )
+
+        _, left, right = candidates[0]
+
+        return [
+            left,
+            right,
+        ]
+
+    # ------------------------------------
+    # 3行に分割
+    # ------------------------------------
+
+    best = None
+
+    for i in range(1, len(title) - 1):
+
+        line1 = title[:i].strip()
+
+        if not line1:
+            continue
+
+        # 1行目が助詞で終わる場合は避ける
+        if line1[-1:] in particles:
+            continue
+
+        width1 = measure_line(
+            draw,
+            [(line1, False)],
+            font,
+            letter_spacing,
+        )
+
+        if width1 > max_width:
+            continue
+
+        for j in range(i + 1, len(title)):
+
+            line2 = title[i:j].strip()
+            line3 = title[j:].strip()
+
+            if not line2 or not line3:
+                continue
+
+            # 2行目・3行目が助詞から始まる場合は除外
+            if any(
+                line2.startswith(p)
+                for p in particles
+            ):
+                continue
+
+            if any(
+                line3.startswith(p)
+                for p in particles
+            ):
+                continue
+
+            # 2行目が助詞で終わる場合も避ける
+            if line2[-1:] in particles:
+                continue
+
+            width2 = measure_line(
+                draw,
+                [(line2, False)],
+                font,
+                letter_spacing,
+            )
+
+            width3 = measure_line(
+                draw,
+                [(line3, False)],
+                font,
+                letter_spacing,
+            )
+
+            if (
+                width2 > max_width
+                or width3 > max_width
+            ):
+                continue
+
+            # --------------------------------
+            # 3行の長さをできるだけ均等に
+            # --------------------------------
+
+            max_line = max(
+                width1,
+                width2,
+                width3,
+            )
+
+            min_line = min(
+                width1,
+                width2,
+                width3,
+            )
+
+            score = max_line - min_line
+
+            # 助詞の直後を優先
+            if line1[-1:] in particles:
+                score -= 300
+
+            if line2[-1:] in particles:
+                score -= 300
+
+            # 記号の直後を優先
+            if line1[-1:] in [
+                "！",
+                "？",
+                "。",
+                "、",
+            ]:
+                score -= 400
+
+            if line2[-1:] in [
+                "！",
+                "？",
+                "。",
+                "、",
+            ]:
+                score -= 400
+
+            # 意味のまとまりを優先
+            for mark in semantic_marks:
+                if line1.endswith(mark):
+                    score -= 150
+
+                if line2.endswith(mark):
+                    score -= 150
+
+            if best is None or score < best[0]:
+                best = (
+                    score,
+                    line1,
+                    line2,
+                    line3,
+                )
+
+    if best:
+        return [
+            best[1],
+            best[2],
+            best[3],
+        ]
+
+    # ------------------------------------
+    # 最終手段（文字数で分割）
+    # ------------------------------------
+
     third = len(title) // 3
 
     return [
