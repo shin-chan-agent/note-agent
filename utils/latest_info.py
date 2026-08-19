@@ -196,8 +196,6 @@ def fetch_service_info(client, service_id):
         ),
     )
 
-    print(response)
-
     if not response.text:
         raise Exception(
             f"Gemini response is empty: {service_id}"
@@ -258,7 +256,6 @@ def fetch_service_info(client, service_id):
 
 
     log_info(f"取得サービス: {service_id}")
-    log_info(f"取得データ: {service_data}")
 
     return service_data
 
