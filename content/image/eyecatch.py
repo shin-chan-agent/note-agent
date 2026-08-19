@@ -29,9 +29,17 @@ def create_eyecatch(
     line_spacing_ratio = 0.3
 
     # 日本語対応フォント
+    base_dir = os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))
+    )
+
     font_candidates = [
+        os.path.join(
+            base_dir,
+            "fonts",
+            "NotoSansCJKjp-Bold.min.ttf",
+        ),
         "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
-        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
     ]
 
     font_path = next(
