@@ -3710,56 +3710,69 @@
         },
         "gemini": {
             "name": "Gemini",
-            "updated_at": "2026-08-13",
+            "updated_at": "2026-08-19",
             "sources": [
                 {
-                    "name": "CloudZero",
-                    "url": "https://www.cloudzero.com/blog/google-gemini-pricing",
-                    "verified_at": "2026-08-18"
+                    "name": "Gemini API reference | Google AI for Developers",
+                    "url": "https://ai.google.dev/gemini-api/docs/reference",
+                    "verified_at": "2026-06-22"
                 },
                 {
-                    "name": "Google Blog",
-                    "url": "https://blog.google/technology/ai/gemini-next-generation-model-february-2024/",
-                    "verified_at": "2026-08-18"
+                    "name": "Quotas and limits | AI Commerce Search in Gemini Enterprise for Customer Experience",
+                    "url": "https://cloud.google.com/enterprise/commerce-search/docs/quotas",
+                    "verified_at": "2026-08-11"
                 },
                 {
-                    "name": "Google Developers Blog",
-                    "url": "https://developers.googleblog.com/2024/10/gemini-1-5-flash-8b-production-ready.html",
-                    "verified_at": "2026-08-18"
+                    "name": "REST APIs - Gemini Developer Platform",
+                    "url": "https://ai.google.dev/gemini-api/docs/reference/rest",
+                    "verified_at": "2026-08-19"
                 },
                 {
-                    "name": "Prompt Engineering Guide",
-                    "url": "https://www.promptingguide.ai/models/gemini-1-5-pro",
-                    "verified_at": "2026-08-18"
+                    "name": "Generate content with the Gemini API - Google Cloud Documentation",
+                    "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/create-content-gemini",
+                    "verified_at": "2026-08-13"
                 },
                 {
-                    "name": "Weights & Biases - Wandb",
-                    "url": "https://wandb.ai/site/articles/build-a-reliable-genai-search-system-with-gemini-grounding-and-vertex-ai",
-                    "verified_at": "2026-08-18"
+                    "name": "Gemini Interactions API - Google AI for Developers",
+                    "url": "https://ai.google.dev/gemini-api/docs/interactions",
+                    "verified_at": "2026-08-13"
                 }
             ],
             "models": [
                 {
                     "id": "gemini-2-5-flash",
                     "name": "Gemini 2.5 Flash",
-                    "status": "discontinued",
-                    "missing_count": 2
+                    "status": "available",
+                    "missing_count": 0,
+                    "aliases": [
+                        "gemini-2.5-flash"
+                    ],
+                    "effective_date": "2025-12-11",
+                    "last_updated": "2025-12-11",
+                    "description": "Hybrid reasoning model supporting a 1M token context window. Included in the free tier as of December 2025.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true
                 },
                 {
                     "id": "gemini-3-flash",
                     "name": "Gemini 3 Flash",
                     "status": "available",
-                    "aliases": [
-                        "Gemini 3.0 Flash"
-                    ],
-                    "effective_date": null,
-                    "last_updated": null,
-                    "description": "Latest generation Flash model, balanced speed.",
+                    "aliases": [],
+                    "effective_date": "2026-05-20",
+                    "last_updated": "2026-05-20",
+                    "description": "Flash model offering good performance at a lower cost.",
                     "modalities": [
                         "text",
                         "image",
+                        "audio",
                         "video",
-                        "audio"
+                        "code"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -3780,7 +3793,7 @@
                         "pdf"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-3.5-flash",
@@ -3799,7 +3812,7 @@
                         "pdf"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-3.5-flash-lite",
@@ -3819,7 +3832,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "gemini-3.5-live-translate",
@@ -3833,7 +3846,7 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "gemini-3.1-pro",
@@ -3851,7 +3864,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-3.1-flash-lite",
@@ -3869,7 +3882,7 @@
                         "pdf"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-2.5-pro",
@@ -3887,7 +3900,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-2.5-pro-tts",
@@ -3901,7 +3914,7 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "gemini-2.5-flash",
@@ -3919,7 +3932,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-2.5-flash-lite",
@@ -3937,7 +3950,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-robotics",
@@ -3953,7 +3966,7 @@
                         "action"
                     ],
                     "api_available": false,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "nano-banana-2",
@@ -3969,7 +3982,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "nano-banana-2-lite",
@@ -3983,7 +3996,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "nano-banana-pro",
@@ -3997,7 +4010,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "veo-3.1",
@@ -4011,7 +4024,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "veo-3.1-fast",
@@ -4025,7 +4038,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "imagen-4",
@@ -4039,7 +4052,7 @@
                         "image"
                     ],
                     "api_available": true,
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "gemini-1.5-pro",
@@ -4057,7 +4070,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-1.5-flash",
@@ -4075,7 +4088,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-1.5-flash-8b",
@@ -4090,7 +4103,7 @@
                         "audio"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-2.0-flash",
@@ -4107,7 +4120,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-3-pro-preview",
@@ -4125,7 +4138,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "gemini-3.7-flash",
@@ -4143,7 +4156,7 @@
                         "pdf"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-1.0-ultra",
@@ -4161,7 +4174,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-1.0-pro",
@@ -4178,7 +4191,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-nano",
@@ -4193,7 +4206,7 @@
                         "audio"
                     ],
                     "api_available": false,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemma-2",
@@ -4209,7 +4222,7 @@
                         "text"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-embedding-2",
@@ -4226,7 +4239,7 @@
                         "video"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "gemini-tts",
@@ -4242,7 +4255,7 @@
                         "text-to-audio"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "veo-3.1-lite",
@@ -4256,7 +4269,7 @@
                         "video-generation"
                     ],
                     "api_available": true,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "lyria-3",
@@ -4268,6 +4281,254 @@
                     "description": "Music generation model.",
                     "modalities": [
                         "music-generation"
+                    ],
+                    "api_available": true,
+                    "missing_count": 1
+                },
+                {
+                    "id": "gemini-3-7-flash",
+                    "name": "Gemini 3.7 Flash",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Introduced with introductory pricing, suitable for high-volume, cost-effective tasks. Can run inside Spark, requiring Google AI Pro or Ultra subscription for consumer access.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-3-6-flash",
+                    "name": "Gemini 3.6 Flash",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Workhorse model with balanced price-performance. Available in the free tier of the Gemini app and AI Mode in Google Search.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-3-5-flash",
+                    "name": "Gemini 3.5 Flash",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-05-19",
+                    "last_updated": "2026-07-16",
+                    "description": "Launched with competitive pricing, undercutting older Pro models while offering strong coding benchmarks.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-3-1-pro-preview",
+                    "name": "Gemini 3.1 Pro Preview",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-04-01",
+                    "last_updated": "2026-07-16",
+                    "description": "Frontier reasoning model with a 1M token context window, excelling at complex reasoning tasks. Removed from the free tier as of April 1, 2026.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-3-5-flash-lite",
+                    "name": "Gemini 3.5 Flash-Lite",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-05",
+                    "last_updated": "2026-08-05",
+                    "description": "Smallest and most cost-effective model, suitable for high-volume tasks like classification and routing.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-3-1-flash-lite-preview",
+                    "name": "Gemini 3.1 Flash-Lite Preview",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-05-20",
+                    "last_updated": "2026-08-15",
+                    "description": "Cheapest model in the current 3-series.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-2-5-pro",
+                    "name": "Gemini 2.5 Pro",
+                    "aliases": [
+                        "gemini-2.5-pro"
+                    ],
+                    "status": "available",
+                    "effective_date": "2025-12-11",
+                    "last_updated": "2025-12-11",
+                    "description": "State-of-the-art multipurpose model, excelling at coding and complex reasoning tasks. Included in the free tier as of December 2025.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-2-5-flash-lite",
+                    "name": "Gemini 2.5 Flash-Lite",
+                    "aliases": [
+                        "gemini-2.5-flash-lite"
+                    ],
+                    "status": "available",
+                    "effective_date": "2025-12-11",
+                    "last_updated": "2026-05-20",
+                    "description": "Our smallest and most cost-effective model. Legacy model, still the cheapest in the API lineup. Included in the free tier as of December 2025.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-2-0-flash",
+                    "name": "Gemini 2.0 Flash",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-15",
+                    "last_updated": "2026-08-15",
+                    "description": "Earlier Flash model with specific audio input pricing.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-pro-latest",
+                    "name": "Gemini Pro Latest",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Latest release of Gemini Pro.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-flash-latest",
+                    "name": "Gemini Flash Latest",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Latest release of Gemini Flash.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini-flash-lite-latest",
+                    "name": "Gemini Flash-Lite Latest",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Latest release of Gemini Flash-Lite.",
+                    "modalities": [
+                        "text",
+                        "image",
+                        "audio",
+                        "video",
+                        "code"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemma-4-26b-a4b-it",
+                    "name": "Gemma 4 26B A4B IT",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Gemma model available through the Gemini Interactions API.",
+                    "modalities": [
+                        "text"
+                    ],
+                    "api_available": true,
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemma-4-31b-it",
+                    "name": "Gemma 4 31B IT",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Gemma model available through the Gemini Interactions API.",
+                    "modalities": [
+                        "text"
                     ],
                     "api_available": true,
                     "missing_count": 0
@@ -4282,7 +4543,7 @@
                         "amount": 2900,
                         "currency": "JPY"
                     },
-                    "missing_count": 2,
+                    "missing_count": 3,
                     "status": "discontinued"
                 },
                 {
@@ -4304,7 +4565,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "google-ai-plus",
@@ -4323,7 +4584,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "google-ai-pro",
@@ -4345,7 +4606,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "google-ai-pro-10tb",
@@ -4364,7 +4625,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "google-ai-ultra",
@@ -4391,7 +4652,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "google-ai-ultra-premium",
@@ -4410,7 +4671,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-3-6-flash",
@@ -4435,7 +4696,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-3-5-flash",
@@ -4460,7 +4721,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-3-5-flash-lite",
@@ -4485,7 +4746,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-3-5-live-translate",
@@ -4504,7 +4765,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-3-1-pro",
@@ -4541,7 +4802,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-3-1-pro-batch",
@@ -4566,7 +4827,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-3-1-flash-lite",
@@ -4591,7 +4852,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-2-5-pro",
@@ -4628,7 +4889,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-2-5-pro-batch",
@@ -4653,7 +4914,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-2-5-flash",
@@ -4678,7 +4939,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-2-5-flash-lite",
@@ -4703,7 +4964,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-2-5-flash-lite-batch",
@@ -4728,7 +4989,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-1-5-pro",
@@ -4753,7 +5014,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-1-5-flash",
@@ -4778,7 +5039,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-gemini-1-5-flash-8b",
@@ -4803,7 +5064,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-grounding-google-search",
@@ -4828,7 +5089,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-image-generation-gemini-3-1-flash-image",
@@ -4855,7 +5116,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-image-generation-gemini-3-1-flash-lite-image",
@@ -4874,7 +5135,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-image-generation-gemini-3-pro-image",
@@ -4899,7 +5160,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-image-generation-imagen-4",
@@ -4930,7 +5191,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-video-generation-veo-3-1",
@@ -4955,7 +5216,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-video-generation-veo-3-1-fast",
@@ -4980,7 +5241,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-context-caching-read",
@@ -5005,7 +5266,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-context-caching-storage",
@@ -5030,7 +5291,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "consumer-free",
@@ -5038,19 +5299,19 @@
                     "aliases": [
                         "Free tier"
                     ],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2026-02-23T00:00:00Z",
                     "last_updated": "2026-07-30T00:00:00Z",
                     "billing": "free",
                     "description": "Provides essential chat and creative tools with limited access and usage. Flash models are available, Pro models are not.",
                     "pricing": [],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "consumer-ai-plus",
                     "name": "Google AI Plus",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2026-07-30T00:00:00Z",
                     "last_updated": "2026-07-31T00:00:00Z",
                     "billing": "monthly",
@@ -5063,13 +5324,13 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "consumer-ai-pro",
                     "name": "Google AI Pro",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2026-07-30T00:00:00Z",
                     "last_updated": "2026-07-31T00:00:00Z",
                     "billing": "monthly",
@@ -5082,7 +5343,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "consumer-ai-ultra",
@@ -5090,7 +5351,7 @@
                     "aliases": [
                         "Gemini Advanced"
                     ],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2026-07-30T00:00:00Z",
                     "last_updated": "2026-07-31T00:00:00Z",
                     "billing": "monthly",
@@ -5109,7 +5370,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "developer-api-free",
@@ -5117,7 +5378,7 @@
                     "aliases": [
                         "Google AI Studio Free Tier"
                     ],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2026-04-01T00:00:00Z",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "billing": "free",
@@ -5142,7 +5403,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "developer-api-paid",
@@ -5150,7 +5411,7 @@
                     "aliases": [
                         "Production Applications"
                     ],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2026-03-23T00:00:00Z",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "billing": "pay-per-token",
@@ -5247,7 +5508,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "developer-api-enterprise",
@@ -5255,19 +5516,19 @@
                     "aliases": [
                         "Gemini Enterprise Agent Platform"
                     ],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "billing": "custom",
                     "description": "For large-scale deployments with custom needs for security, support, and compliance.",
                     "pricing": [],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "workspace-business-starter",
                     "name": "Google Workspace Business Starter (with Gemini)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2025-01-01T00:00:00Z",
                     "last_updated": "2026-07-31T00:00:00Z",
                     "billing": "monthly",
@@ -5280,13 +5541,13 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "workspace-business-standard",
                     "name": "Google Workspace Business Standard (with Gemini)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2025-01-01T00:00:00Z",
                     "last_updated": "2026-07-31T00:00:00Z",
                     "billing": "monthly",
@@ -5299,13 +5560,13 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "workspace-business-plus",
                     "name": "Google Workspace Business Plus (with Gemini)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2025-01-01T00:00:00Z",
                     "last_updated": "2026-07-31T00:00:00Z",
                     "billing": "monthly",
@@ -5318,19 +5579,19 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "workspace-enterprise",
                     "name": "Google Workspace Enterprise (with Gemini)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "2025-01-01T00:00:00Z",
                     "last_updated": "2026-07-31T00:00:00Z",
                     "billing": "custom",
                     "description": "Gemini is bundled into Google Workspace plans with custom pricing.",
                     "pricing": [],
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "free-ai-studio",
@@ -5342,7 +5603,7 @@
                     "billing": "free",
                     "description": "Basic Gemini access for everyday tasks. Access to Flash and Flash-Lite models only. Data may be used to improve Google products. Limited rate limits.",
                     "pricing": [],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "api-usage",
@@ -5535,7 +5796,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "api-usage-batch-discount",
@@ -5604,7 +5865,7 @@
                             "currency": "USD"
                         }
                     ],
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "api-usage-cached-input-discount",
@@ -5635,6 +5896,274 @@
                             "currency": "USD"
                         }
                     ],
+                    "missing_count": 1
+                },
+                {
+                    "id": "google_ai_studio_free_tier",
+                    "name": "Google AI Studio Free Tier",
+                    "aliases": [
+                        "Free tier",
+                        "Gemini app free tier"
+                    ],
+                    "status": "available",
+                    "effective_date": "2025-12-11",
+                    "last_updated": "2026-05-20",
+                    "billing": "Free",
+                    "description": "Provides developers with access to Gemini Flash models (Gemini 3.6 Flash) with rate limits (5-15 RPM, 250K TPM, up to 1,000 daily requests depending on model). No credit card required. Pro models were removed from the free tier on April 1, 2026. Data may be used to improve Google products.",
+                    "pricing": [],
+                    "missing_count": 0
+                },
+                {
+                    "id": "google_ai_plus",
+                    "name": "Google AI Plus",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-06-08",
+                    "last_updated": "2026-06-08",
+                    "billing": "Monthly",
+                    "description": "Consumer subscription plan, including 400 GB of storage. Price cut from $7.99 to $4.99 per month on June 8, 2026.",
+                    "pricing": [
+                        {
+                            "name": "Monthly subscription",
+                            "unit": "month",
+                            "price": "4.99",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "google_ai_pro",
+                    "name": "Google AI Pro",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-05-20",
+                    "last_updated": "2026-05-20",
+                    "billing": "Monthly",
+                    "description": "Consumer subscription plan, includes Gemini 3.1 Pro with a 1M token context window.",
+                    "pricing": [
+                        {
+                            "name": "Monthly subscription",
+                            "unit": "month",
+                            "price": "19.99",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "google_ai_ultra",
+                    "name": "Google AI Ultra",
+                    "aliases": [
+                        "Gemini Advanced"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-05-20",
+                    "last_updated": "2026-07-16",
+                    "billing": "Monthly",
+                    "description": "Top-tier consumer subscription plan (rebranded from Gemini Advanced in 2026), with 20 TB storage and roughly 5x Google AI Pro limits. Top tier is $199.99/month with up to 20x Pro limits. Price cut from $249.99 to $99.99/month.",
+                    "pricing": [
+                        {
+                            "name": "Base monthly subscription",
+                            "unit": "month",
+                            "price": "99.99",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Top tier monthly subscription",
+                            "unit": "month",
+                            "price": "199.99",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "api_pay_as_you_go",
+                    "name": "API Pay-as-you-go",
+                    "aliases": [
+                        "API access",
+                        "Paid tier"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-03-23",
+                    "last_updated": "2026-08-15",
+                    "billing": "Usage-based",
+                    "description": "Usage-based billing for API access, replacing old pay-as-you-go model with Prepay and Postpay plans. Pricing varies by model, input/output tokens, and context length.",
+                    "pricing": [
+                        {
+                            "name": "Gemini 3.7 Flash Input",
+                            "unit": "million tokens",
+                            "price": "0.75",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.7 Flash Output",
+                            "unit": "million tokens",
+                            "price": "3.75",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.6 Flash Input",
+                            "unit": "million tokens",
+                            "price": "0.75",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.6 Flash Output",
+                            "unit": "million tokens",
+                            "price": "3.75",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.5 Flash Input",
+                            "unit": "million tokens",
+                            "price": "1.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.5 Flash Output",
+                            "unit": "million tokens",
+                            "price": "9.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.1 Pro Preview Input (<=200K tokens)",
+                            "unit": "million tokens",
+                            "price": "2.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.1 Pro Preview Output (<=200K tokens)",
+                            "unit": "million tokens",
+                            "price": "12.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.1 Pro Preview Input (>200K tokens)",
+                            "unit": "million tokens",
+                            "price": "4.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.1 Pro Preview Output (>200K tokens)",
+                            "unit": "million tokens",
+                            "price": "18.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3 Flash Input",
+                            "unit": "million tokens",
+                            "price": "0.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3 Flash Output",
+                            "unit": "million tokens",
+                            "price": "3.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.5 Flash-Lite Input",
+                            "unit": "million tokens",
+                            "price": "0.30",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.5 Flash-Lite Output",
+                            "unit": "million tokens",
+                            "price": "2.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.1 Flash-Lite Preview Input",
+                            "unit": "million tokens",
+                            "price": "0.25",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3.1 Flash-Lite Preview Output",
+                            "unit": "million tokens",
+                            "price": "1.50",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 2.5 Flash-Lite Input",
+                            "unit": "million tokens",
+                            "price": "0.10",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 2.5 Flash-Lite Output",
+                            "unit": "million tokens",
+                            "price": "0.40",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 2.0 Flash Input (Audio)",
+                            "unit": "million tokens",
+                            "price": "0.70",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 2.5 Flash Input (Audio)",
+                            "unit": "million tokens",
+                            "price": "1.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 2.5 Flash-Lite Input (Audio)",
+                            "unit": "million tokens",
+                            "price": "0.30",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Gemini 3 Flash Input (Audio)",
+                            "unit": "million tokens",
+                            "price": "1.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Google Search Grounding (Gemini 3 models after free quota)",
+                            "unit": "1000 search queries",
+                            "price": "14.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Google Search Grounding (Gemini 2.5 models after free quota)",
+                            "unit": "1000 grounded prompts",
+                            "price": "35.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Google Maps Grounding (Gemini 3 models after free quota)",
+                            "unit": "1000 prompts",
+                            "price": "14.00",
+                            "currency": "USD"
+                        },
+                        {
+                            "name": "Google Maps Grounding (Gemini 2.5 models after free quota)",
+                            "unit": "1000 prompts",
+                            "price": "25.00",
+                            "currency": "USD"
+                        }
+                    ],
+                    "missing_count": 0
+                },
+                {
+                    "id": "google_workspace_bundles",
+                    "name": "Google Workspace Bundles",
+                    "aliases": [
+                        "Gemini in Business Standard",
+                        "Gemini in Business Plus",
+                        "Gemini in Enterprise tiers"
+                    ],
+                    "status": "available",
+                    "effective_date": "2025-01-01",
+                    "last_updated": "2026-05-20",
+                    "billing": "Subscription",
+                    "description": "Gemini is now bundled into Google Workspace Business Standard, Plus, and Enterprise tiers, replacing the standalone Gemini add-on which was dropped in 2025.",
+                    "pricing": [],
                     "missing_count": 0
                 }
             ],
@@ -5648,7 +6177,7 @@
                     "last_updated": "2026-08-04",
                     "description": "Ability to interpret and respond to various types of content, including text, code, audio, images, video, and PDF documents (transcribe tables, interpret complex multi-column layouts, understand chart",
                     "category": "Core Capabilities",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "content-generation",
@@ -5659,7 +6188,7 @@
                     "last_updated": "2026-07-21",
                     "description": "Generate text, code, images, and video based on user prompts.",
                     "category": "Core Capabilities",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "summarization-classification",
@@ -5670,7 +6199,7 @@
                     "last_updated": "2026-07-21",
                     "description": "Summarize or get an overview of a topic in any format (list, table, chart), and classify information.",
                     "category": "Core Capabilities",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "conversational-agents",
@@ -5683,7 +6212,7 @@
                     "last_updated": "2026-07-21",
                     "description": "Build conversational agents and dialogue systems.",
                     "category": "Core Capabilities",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "code-assist",
@@ -5694,7 +6223,7 @@
                     "last_updated": "2026-07-30",
                     "description": "AI coding assistant for code generation, code completion, and code review.",
                     "category": "Developer Tools",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "gemini-cli",
@@ -5705,7 +6234,7 @@
                     "last_updated": "2026-07-20",
                     "description": "Terminal-based AI agent.",
                     "category": "Developer Tools",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "workspace-integration",
@@ -5716,7 +6245,7 @@
                     "last_updated": "2026-07-30",
                     "description": "AI tools built into Gmail, Docs, Drive, Sheets, and Slides for tasks like summarizing, drafting, editing content, organizing data, and creating visuals.",
                     "category": "Productivity",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "deep-research",
@@ -5727,7 +6256,7 @@
                     "last_updated": "2026-08-05",
                     "description": "Enhanced capabilities for deep research tasks.",
                     "category": "Productivity",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "gemini-live",
@@ -5738,7 +6267,7 @@
                     "last_updated": "2026-08-05",
                     "description": "Real-time chat with seamless task switching between talking and typing, and ability to use camera input.",
                     "category": "Interaction",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "canvas",
@@ -5749,7 +6278,7 @@
                     "last_updated": "2026-08-05",
                     "description": "AI creative studio for cinematic scenes and stories, including image generation.",
                     "category": "Creativity",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "gems",
@@ -5762,7 +6291,7 @@
                     "last_updated": "2026-08-05",
                     "description": "Custom AI agents for vertical tasks.",
                     "category": "Customization",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "google-flow",
@@ -5773,7 +6302,7 @@
                     "last_updated": "2026-08-05",
                     "description": "Feature related to streamlining workflows.",
                     "category": "Productivity",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "gemini-notebook",
@@ -5786,7 +6315,7 @@
                     "last_updated": "2026-08-05",
                     "description": "Research and writing assistant with AI-assisted note-taking and document organization.",
                     "category": "Productivity",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "responsible-ai",
@@ -5800,7 +6329,7 @@
                     "last_updated": "2026-07-30",
                     "description": "Safety filtering and content moderation against a comprehensive list of safety attributes to filter out harmful content, in line with Google's AI principles.",
                     "category": "Safety & Ethics",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "grounding-responses",
@@ -5813,7 +6342,7 @@
                     "last_updated": "2026-08-02",
                     "description": "Ability to ground responses with Google Search for up-to-date information and real-world knowledge.",
                     "category": "Accuracy",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "context-caching",
@@ -5824,7 +6353,7 @@
                     "last_updated": "2026-08-02",
                     "description": "Save 90% on repeated content by caching frequently used prompts, system messages, or documents.",
                     "category": "Cost Optimization",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "batch-api",
@@ -5837,7 +6366,7 @@
                     "last_updated": "2026-08-02",
                     "description": "Process non-urgent workloads asynchronously at a 50% discount.",
                     "category": "Cost Optimization",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "agentic-workflows",
@@ -5852,249 +6381,249 @@
                     "last_updated": "2026-08-05",
                     "description": "Tackle complex, development tasks with advanced reasoning at speed, execute sophisticated workflows over extended timeframes, and solve multi-step problems.",
                     "category": "Advanced Capabilities",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "f-ai-studio-access",
                     "name": "Google AI Studio Access",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Access to Google AI Studio for prototyping and development.",
                     "category": "Development Tools",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-data-privacy-paid",
                     "name": "Content not used to improve products (Paid Tiers)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "User content in paid tiers is not used to improve Google products.",
                     "category": "Data Privacy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-higher-rate-limits",
                     "name": "Higher Rate Limits",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Increased request limits for production deployments.",
                     "category": "Performance",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-context-caching",
                     "name": "Context Caching",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Feature to save up to 90% on repeated input tokens by caching context.",
                     "category": "Cost Optimization",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-batch-api",
                     "name": "Batch API",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Enables 50% cost reduction for non-urgent workloads with up to 24-hour turnaround.",
                     "category": "Cost Optimization",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-google-search-grounding",
                     "name": "Google Search Grounding",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Ability to ground Gemini queries with Google Search results.",
                     "category": "Integration",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-google-maps-grounding",
                     "name": "Google Maps Grounding",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Ability to ground Gemini queries with Google Maps data.",
                     "category": "Integration",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-dedicated-support",
                     "name": "Dedicated Support Channels (Enterprise)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Exclusive support channels for Enterprise tier customers.",
                     "category": "Support",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-advanced-security",
                     "name": "Advanced Security & Compliance (Enterprise)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Enhanced security and compliance features for enterprise needs.",
                     "category": "Security",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-provisioned-throughput",
                     "name": "Provisioned Throughput (Enterprise)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Guaranteed throughput for large-scale enterprise deployments.",
                     "category": "Performance",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-volume-discounts",
                     "name": "Volume-based Discounts (Enterprise)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Discounts based on usage volume for Enterprise tier customers.",
                     "category": "Cost Optimization",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-ml-ops-model-garden",
                     "name": "ML Ops and Model Garden (Enterprise)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Tools and resources for ML operations and model management.",
                     "category": "Development Tools",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-multimodal-generation",
                     "name": "Expanded access to image, music, and video generation models",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Enhanced capabilities for generating various media types in Gemini, Search, and Google Flow.",
                     "category": "Multimodality",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-deep-research",
                     "name": "Deep Research (Google AI Ultra)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Higher access to Deep Research features in Google AI Ultra.",
                     "category": "Productivity",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-gemini-agent",
                     "name": "Gemini Agent (Google AI Ultra, US only, English only)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Access to Gemini Agent capabilities for automating tasks. (US only, English only)",
                     "category": "Automation",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-deep-think-mode",
                     "name": "Deep Think reasoning mode (Google AI Ultra)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Advanced reasoning mode available in Gemini with Google AI Ultra.",
                     "category": "Reasoning",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-ai-powered-calling",
                     "name": "AI-powered calling for local businesses (Google AI Ultra, US only)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "AI-driven calling features for local businesses. (US only)",
                     "category": "Business Tools",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-gemini-in-google-apps",
                     "name": "Gemini in Google Apps (Gmail, Docs, Sheets)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Integration of Gemini to assist with tasks like proofreading in Gmail and working smarter in Docs and Sheets.",
                     "category": "Productivity",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-ai-overview-gmail",
                     "name": "AI Overview in Gmail (Google AI Ultra, US only)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Provides AI-generated overviews of Gmail inbox content. (US only)",
                     "category": "Productivity",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-1m-token-context-cli",
                     "name": "1 Million Token Context Window (Gemini CLI Free Tier)",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-05-31T00:00:00Z",
                     "description": "Allows processing of large amounts of code or text in a single request for free users of Gemini CLI.",
                     "category": "Context Management",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-user-friendly-interface",
                     "name": "User-friendly Interface",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-07-19T00:00:00Z",
                     "description": "Offers a clear, intuitive interface and smoother onboarding experience compared to Vertex AI.",
                     "category": "User Experience",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "f-platform-agnostic",
                     "name": "Platform-agnostic Flexibility",
                     "aliases": [],
-                    "status": "available",
+                    "status": "discontinued",
                     "effective_date": "null",
                     "last_updated": "2026-07-19T00:00:00Z",
                     "description": "Highly adaptable for deployments across various environments, including multi-cloud and on-premises setups.",
                     "category": "Deployment",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "feature-multimodality",
@@ -6107,7 +6636,7 @@
                     "last_updated": null,
                     "description": "Capable of understanding and processing various modalities including text, code, audio, images, and video in the same input sequence.",
                     "category": "core-capability",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-long-context",
@@ -6118,7 +6647,7 @@
                     "last_updated": "2024-06-27",
                     "description": "Process massive amounts of information at once. Up to 1 million tokens for many models, and up to 2 million tokens for Gemini 1.5 Pro and 3.1 Pro.",
                     "category": "performance",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-complex-reasoning",
@@ -6132,7 +6661,7 @@
                     "last_updated": null,
                     "description": "Capable of advanced problem-solving, logical reasoning, and complex analytical tasks across various domains.",
                     "category": "core-capability",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-code-gen-debug",
@@ -6145,7 +6674,7 @@
                     "last_updated": null,
                     "description": "Generate and debug code, serve as a sounding board for coding ideas, and evaluate different coding approaches. Includes code execution capabilities.",
                     "category": "developer-tooling",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-image-generation",
@@ -6158,7 +6687,7 @@
                     "last_updated": null,
                     "description": "Generate images based on textual prompts for creative projects.",
                     "category": "creative-tooling",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-data-analysis",
@@ -6171,7 +6700,7 @@
                     "last_updated": null,
                     "description": "Analyze data files to uncover insights and visualize them through charts and graphics. Process spreadsheets and long documents.",
                     "category": "productivity",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-context-caching",
@@ -6182,7 +6711,7 @@
                     "last_updated": null,
                     "description": "Reduce costs for tasks that use the same tokens across multiple prompts by caching frequently used system messages or documents.",
                     "category": "cost-optimization",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-google-search-grounding",
@@ -6195,7 +6724,7 @@
                     "last_updated": null,
                     "description": "Anchor model outputs to real-time information from Google Search or other trusted knowledge bases, enhancing accuracy and reducing hallucinations. Free for up to 5,000 prompts/month.",
                     "category": "accuracy-enhancement",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-workspace-integration",
@@ -6206,7 +6735,7 @@
                     "last_updated": null,
                     "description": "Integrates with Google apps like Gmail, Docs, Sheets, Slides, and Meet for drafting replies, rewriting paragraphs, generating drafts, writing formulas, and interpreting data.",
                     "category": "productivity",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-gemini-live",
@@ -6219,7 +6748,7 @@
                     "last_updated": null,
                     "description": "Natural, free-flowing voice conversations with Gemini on your phone for brainstorming, simplifying complex topics, and rehearsing.",
                     "category": "user-experience",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-summarization",
@@ -6230,7 +6759,7 @@
                     "last_updated": null,
                     "description": "Seamlessly analyze, classify, and summarize large amounts of content from long documents, videos, and audio.",
                     "category": "productivity",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-classification",
@@ -6241,7 +6770,7 @@
                     "last_updated": null,
                     "description": "Efficiently classify content across various categories.",
                     "category": "productivity",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-deep-research",
@@ -6254,7 +6783,7 @@
                     "last_updated": null,
                     "description": "Generate comprehensive, multi-source reports with a single prompt.",
                     "category": "productivity",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-ai-agents",
@@ -6267,7 +6796,7 @@
                     "last_updated": "2026-08-13",
                     "description": "Reason about tasks, use tools, and take actions on behalf of users. Supports lightweight to complex agentic workflows.",
                     "category": "developer-tooling",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-gems",
@@ -6280,7 +6809,7 @@
                     "last_updated": null,
                     "description": "Create custom AI assistants.",
                     "category": "user-experience",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-text-tuning",
@@ -6291,7 +6820,7 @@
                     "last_updated": null,
                     "description": "Enable new use cases, additional production robustness, and higher reliability through fine-tuning.",
                     "category": "developer-tooling",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-multimodal-embedding",
@@ -6302,7 +6831,7 @@
                     "last_updated": null,
                     "description": "Embeddings that support text, image, audio, and video inputs.",
                     "category": "developer-tooling",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-text-to-speech",
@@ -6313,7 +6842,7 @@
                     "last_updated": null,
                     "description": "Converts text input into audio output across 70+ languages.",
                     "category": "creative-tooling",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-music-generation",
@@ -6324,7 +6853,7 @@
                     "last_updated": null,
                     "description": "Generate music using the Lyria 3 model.",
                     "category": "creative-tooling",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "feature-video-generation",
@@ -6335,6 +6864,287 @@
                     "last_updated": null,
                     "description": "Generate video content using models like Veo.",
                     "category": "creative-tooling",
+                    "missing_count": 1
+                },
+                {
+                    "id": "multimodal_understanding",
+                    "name": "Multimodal Understanding",
+                    "aliases": [
+                        "Multimodal input"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-17",
+                    "description": "Ability to generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code.",
+                    "category": "Core Capability",
+                    "missing_count": 0
+                },
+                {
+                    "id": "content_generation",
+                    "name": "Content Generation",
+                    "aliases": [
+                        "Text Generation",
+                        "Image Generation",
+                        "Video Generation"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-06-22",
+                    "last_updated": "2026-08-17",
+                    "description": "Generate text, images, and high-quality video content from text or image prompts with specialized models like Imagen and Veo.",
+                    "category": "Core Capability",
+                    "missing_count": 0
+                },
+                {
+                    "id": "reasoning",
+                    "name": "Reasoning across modalities",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-17",
+                    "description": "Reasoning capabilities across text and images for complex tasks and agents.",
+                    "category": "Core Capability",
+                    "missing_count": 0
+                },
+                {
+                    "id": "conversational_agents",
+                    "name": "Conversational Agents",
+                    "aliases": [
+                        "Dialogue agents"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-17",
+                    "description": "Build conversational agents and real-time voice applications using the Live API.",
+                    "category": "Application Development",
+                    "missing_count": 0
+                },
+                {
+                    "id": "summarization_classification",
+                    "name": "Summarization and Classification",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Systems for summarization and classification.",
+                    "category": "Core Capability",
+                    "missing_count": 0
+                },
+                {
+                    "id": "api_access",
+                    "name": "API Access (REST & SDKs)",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-06-22",
+                    "last_updated": "2026-08-17",
+                    "description": "Integrate generative models into applications using REST APIs in any environment that supports HTTP requests and language-specific SDKs.",
+                    "category": "Developer Tools",
+                    "missing_count": 0
+                },
+                {
+                    "id": "interactions_api",
+                    "name": "Interactions API",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-17",
+                    "description": "Recommended standard primitive for building with Gemini, optimized for agentic workflows, server-side state management, and complex multi-modal, multi-turn conversations. Stable v1 version available, ",
+                    "category": "Developer Tools",
+                    "missing_count": 0
+                },
+                {
+                    "id": "standard_content_generation_api",
+                    "name": "Standard Content Generation API",
+                    "aliases": [
+                        "generateContent",
+                        "streamGenerateContent"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-06-22",
+                    "last_updated": "2026-08-13",
+                    "description": "REST endpoint that processes requests and returns the model's full response in a single package. Best for non-interactive tasks where waiting for the entire result is acceptable. Supports streaming te",
+                    "category": "Developer Tools",
+                    "missing_count": 0
+                },
+                {
+                    "id": "batch_content_generation",
+                    "name": "Batch Content Generation",
+                    "aliases": [
+                        "batchGenerateContent"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-06-22",
+                    "last_updated": "2026-06-22",
+                    "description": "Standard REST endpoint for submitting batches of generateContent requests, offering 50% off pricing.",
+                    "category": "Developer Tools",
+                    "missing_count": 0
+                },
+                {
+                    "id": "embeddings",
+                    "name": "Embeddings",
+                    "aliases": [
+                        "embedContent"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-06-22",
+                    "last_updated": "2026-06-22",
+                    "description": "Standard REST endpoint that generates a text embedding vector from input content.",
+                    "category": "Core Capability",
+                    "missing_count": 0
+                },
+                {
+                    "id": "platform_apis",
+                    "name": "Platform APIs",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-06-22",
+                    "last_updated": "2026-06-22",
+                    "description": "Utility endpoints that support core capabilities such as uploading files and counting tokens.",
+                    "category": "Developer Tools",
+                    "missing_count": 0
+                },
+                {
+                    "id": "google_search_grounding",
+                    "name": "Google Search Grounding",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-05",
+                    "last_updated": "2026-08-17",
+                    "description": "Lets the model access real-time web information. Connects Gemini to the world through built-in tools like Google Search.",
+                    "category": "Integration",
+                    "missing_count": 0
+                },
+                {
+                    "id": "url_context",
+                    "name": "URL Context",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-17",
+                    "last_updated": "2026-08-17",
+                    "description": "Connect Gemini to the world through built-in tools like URL Context.",
+                    "category": "Integration",
+                    "missing_count": 0
+                },
+                {
+                    "id": "google_maps_integration",
+                    "name": "Google Maps Integration",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-05",
+                    "last_updated": "2026-08-17",
+                    "description": "Grounding capabilities with Google Maps.",
+                    "category": "Integration",
+                    "missing_count": 0
+                },
+                {
+                    "id": "code_execution",
+                    "name": "Code Execution",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-17",
+                    "last_updated": "2026-08-17",
+                    "description": "Connect Gemini to the world through built-in tools like Code Execution.",
+                    "category": "Integration",
+                    "missing_count": 0
+                },
+                {
+                    "id": "computer_use",
+                    "name": "Computer Use",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-17",
+                    "last_updated": "2026-08-17",
+                    "description": "Connect Gemini to the world through built-in tools like Computer Use.",
+                    "category": "Integration",
+                    "missing_count": 0
+                },
+                {
+                    "id": "json_response_forcing",
+                    "name": "JSON Response Forcing",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-17",
+                    "description": "Enforces that the generated response is a JSON object that complies with a specified JSON schema, suitable for automated processing.",
+                    "category": "Developer Tools",
+                    "missing_count": 0
+                },
+                {
+                    "id": "tool_declarations_external_apis",
+                    "name": "Tool Declarations and External API Connection",
+                    "aliases": [
+                        "External APIs and tools"
+                    ],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-17",
+                    "description": "Ability to define a list of tool declarations the model may call during interaction and build agentic workflows by connecting Gemini to external APIs and tools.",
+                    "category": "Developer Tools",
+                    "missing_count": 0
+                },
+                {
+                    "id": "pdf_file_processing",
+                    "name": "PDF File Processing",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-17",
+                    "last_updated": "2026-08-17",
+                    "description": "Process up to 1000 pages of PDF files with full multimodal understanding or other text-based file types.",
+                    "category": "Input Handling",
+                    "missing_count": 0
+                },
+                {
+                    "id": "context_caching",
+                    "name": "Context Caching",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-07-16",
+                    "last_updated": "2026-08-05",
+                    "description": "Saves up to 90% on input tokens.",
+                    "category": "Cost Optimization",
+                    "missing_count": 0
+                },
+                {
+                    "id": "speaker_diarization",
+                    "name": "Speaker Diarization",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Configures speaker diarization in interactions, supporting 'speaker' value.",
+                    "category": "Audio Processing",
+                    "missing_count": 0
+                },
+                {
+                    "id": "custom_vocabulary_speech_recognition",
+                    "name": "Custom Vocabulary for Speech Recognition",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms.",
+                    "category": "Audio Processing",
+                    "missing_count": 0
+                },
+                {
+                    "id": "automatic_language_detection_audio",
+                    "name": "Automatic Language Detection for Audio",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.",
+                    "category": "Audio Processing",
+                    "missing_count": 0
+                },
+                {
+                    "id": "timestamp_granularity_transcription",
+                    "name": "Timestamp Granularity in Transcription Output",
+                    "aliases": [],
+                    "status": "available",
+                    "effective_date": "2026-08-13",
+                    "last_updated": "2026-08-13",
+                    "description": "Configures the granularity of timestamps to include in the transcription output, supporting 'word' value.",
+                    "category": "Audio Processing",
                     "missing_count": 0
                 }
             ],
@@ -6346,7 +7156,7 @@
                     "last_updated": "2026-07-30",
                     "description": "Gemini models might generate plausible-sounding but factually incorrect, irrelevant, inappropriate, or nonsensical outputs, including fabricating links to non-existent web pages. This stems from a pot",
                     "category": "Accuracy",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "unexpected-output",
@@ -6355,7 +7165,7 @@
                     "last_updated": "2026-07-30",
                     "description": "LLMs can generate output that is offensive, insensitive, or factually incorrect. Due to their versatility, it can be difficult to predict all unintended or unforeseen outputs.",
                     "category": "Safety",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "safety-filtering",
@@ -6364,7 +7174,7 @@
                     "last_updated": "2026-07-30",
                     "description": "Prompts and responses are checked against safety attributes. If an output is considered harmful, the response will be blocked.",
                     "category": "Safety",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "compute-based-usage-limits",
@@ -6373,7 +7183,7 @@
                     "last_updated": "2026-07-18",
                     "description": "Gemini Apps have compute-based usage limits (five-hour rolling cycle and cumulative weekly hard cap) that factor in prompt complexity, models and features used, and conversation length. These limits a",
                     "category": "Usage",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "requests-per-day-quotas",
@@ -6382,7 +7192,7 @@
                     "last_updated": "2026-07-20",
                     "description": "Quotas enforce limits on the total number of requests per day for each user in a project across various services (e.g., Gemini Code Assist, Gemini in BigQuery, chat, CLI, agent mode). Exceeding the qu",
                     "category": "Usage",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "data-store-quota",
@@ -6391,7 +7201,7 @@
                     "last_updated": "2026-07-17",
                     "description": "Maximum quota for data stores is 500 per project due to a technical limitation. Each entity in a data store counts as a data store instance.",
                     "category": "Technical",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "engine-quota",
@@ -6400,7 +7210,7 @@
                     "last_updated": "2026-07-17",
                     "description": "Maximum quota for engines is 500 per project due to a technical limitation.",
                     "category": "Technical",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "api-rate-limits",
@@ -6409,7 +7219,7 @@
                     "last_updated": "2026-07-21",
                     "description": "API enforces Requests Per Minute (RPM), Tokens Per Minute (TPM), and spend-based rate limits. Hitting a limit returns a 429 RESOURCE_EXHAUSTED error.",
                     "category": "Usage",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "batch-api-limits",
@@ -6418,7 +7228,7 @@
                     "last_updated": "2026-07-21",
                     "description": "Batch API has limits including 100 concurrent batch requests, a 2GB input file size limit, a 20GB file storage limit, and maximum enqueued tokens per model.",
                     "category": "Usage",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "free-tier-data-usage",
@@ -6427,7 +7237,7 @@
                     "last_updated": "2026-07-29",
                     "description": "Content processed in the free tier may be used to improve Google's products.",
                     "category": "Privacy",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "age-requirements",
@@ -6436,7 +7246,7 @@
                     "last_updated": "2026-05-17",
                     "description": "To use Gemini Apps with a Google AI plan, users must be 13+ (or applicable age in their country); in EEA, Switzerland, or UK, users must be 18+.",
                     "category": "Access",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "features-for-minors",
@@ -6445,79 +7255,79 @@
                     "last_updated": "2026-05-17",
                     "description": "Some features may not be available for users under the age of 18 or 13 (or the applicable age in their country).",
                     "category": "Access",
-                    "missing_count": 2
+                    "missing_count": 3
                 },
                 {
                     "id": "l-free-tier-limited-access",
                     "name": "Free Tier Limited Access",
-                    "status": "available",
+                    "status": "discontinued",
                     "last_updated": "2026-07-30T00:00:00Z",
                     "description": "Limited access to certain models (e.g., Pro models not available) and features for free tier users.",
                     "category": "Access",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "l-free-tier-rate-limits",
                     "name": "Free Tier Rate Limits",
-                    "status": "available",
+                    "status": "discontinued",
                     "last_updated": "2026-07-30T00:00:00Z",
                     "description": "Rate limits of 5-15 requests per minute and up to 1,000 daily requests for the free tier.",
                     "category": "Usage",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "l-free-tier-data-usage",
                     "name": "Free Tier Data Usage for Product Improvement",
-                    "status": "available",
+                    "status": "discontinued",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Data from the free tier may be used to improve Google's products.",
                     "category": "Data Privacy",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "l-consumer-free-context-window",
                     "name": "Consumer Free Tier Restricted Context Window",
-                    "status": "available",
+                    "status": "discontinued",
                     "last_updated": "2026-02-23T00:00:00Z",
                     "description": "The context window for the consumer free plan is sharply restricted, making it impractical for long sessions.",
                     "category": "Context Management",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "l-output-includes-thinking-tokens",
                     "name": "Output Pricing Includes Thinking Tokens",
-                    "status": "available",
+                    "status": "discontinued",
                     "last_updated": "2026-06-02T00:00:00Z",
                     "description": "The cost of output tokens includes 'thinking tokens' generated by the model, potentially increasing bill.",
                     "category": "Pricing",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "l-tiered-pricing-200k-tokens",
                     "name": "Tiered Pricing for Prompts > 200K Tokens (2.5 Pro)",
-                    "status": "available",
+                    "status": "discontinued",
                     "last_updated": "2026-06-02T00:00:00Z",
                     "description": "For Gemini 2.5 Pro, input and output rates increase once a single prompt exceeds approximately 200K tokens.",
                     "category": "Pricing",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "l-grounding-api-limits",
                     "name": "Grounding API Free Tier Limits",
-                    "status": "available",
+                    "status": "discontinued",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Google Search/Maps grounding offers 5,000 free requests per month (shared across Gemini 3.x models), then incurs charges.",
                     "category": "Usage",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "l-regional-restrictions-ultra",
                     "name": "Google AI Ultra Regional Restrictions",
-                    "status": "available",
+                    "status": "discontinued",
                     "last_updated": "2026-08-11T00:00:00Z",
                     "description": "Features like Gemini Agent, AI-powered calling, and AI Overview in Gmail are US only, English only.",
                     "category": "Geographical Availability",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "limit-free-tier-model-access",
@@ -6526,7 +7336,7 @@
                     "last_updated": "2026-04-01",
                     "description": "Pro models (e.g., Gemini 2.5 Pro, 3.1 Pro) are not available on the free tier since April 1, 2026. Free tier only offers Flash and Flash-Lite models.",
                     "category": "access",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-free-tier-rate-limits",
@@ -6535,7 +7345,7 @@
                     "last_updated": "2025-12",
                     "description": "Strict request per minute (RPM), requests per day (RPD), and tokens per minute (TPM) limits apply. For instance, Gemini 2.5 Pro is capped at 5 RPM and 50 RPD on the free tier. Rate limits are not guar",
                     "category": "usage",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-free-tier-data-usage",
@@ -6544,7 +7354,7 @@
                     "last_updated": null,
                     "description": "Inputs and outputs generated on the free tier may be used by Google to improve their models and products. This is a trade-off for free access.",
                     "category": "data-privacy",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-free-tier-context-window",
@@ -6553,7 +7363,7 @@
                     "last_updated": null,
                     "description": "The context window for free users is 32,000 tokens (around 50 pages of text), which is more limited than paid plans, making it less suitable for long research sessions or large document uploads.",
                     "category": "usage",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-free-tier-feature-throttling",
@@ -6562,7 +7372,7 @@
                     "last_updated": null,
                     "description": "File handling, image creation, and deep analytical tools are throttled at times of high demand or server load on the free tier. Deep Research capped at 5 reports/month, image generation restricted (3 ",
                     "category": "usage",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-free-tier-update-priority",
@@ -6571,7 +7381,7 @@
                     "last_updated": null,
                     "description": "Free users are last to receive model upgrades, new experimental features, or improvements to Gemini's underlying AI, as Google prioritizes rollouts for paid plans.",
                     "category": "access",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-api-thinking-tokens",
@@ -6580,7 +7390,7 @@
                     "last_updated": null,
                     "description": "Thinking tokens (internal processing tokens) count as output tokens and are billed at output rates, which can make the actual bill higher than pricing page suggests.",
                     "category": "cost",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-api-pro-context-tiers",
@@ -6589,7 +7399,7 @@
                     "last_updated": null,
                     "description": "Pro models (e.g., 2.5 Pro, 3.1 Pro) have tiered pricing, with rates doubling for input and increasing by ~50% for output on prompts above 200,000 tokens.",
                     "category": "cost",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-api-audio-input-cost",
@@ -6598,7 +7408,7 @@
                     "last_updated": null,
                     "description": "Audio input costs 2-7 times more than text input depending on the specific model used.",
                     "category": "cost",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-api-preview-models",
@@ -6607,7 +7417,7 @@
                     "last_updated": null,
                     "description": "Preview models have more restrictive quotas and lack features available on stable models, such as context caching and batch API support. Not recommended for production workloads, best for evaluation a",
                     "category": "usage",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "limit-safety-guardrails",
@@ -6616,6 +7426,105 @@
                     "last_updated": null,
                     "description": "Models come with safety guardrails that can sometimes be overly cautious with certain inputs and scenarios, potentially requiring specific phrasing to bypass.",
                     "category": "ethical-consideration",
+                    "missing_count": 1
+                },
+                {
+                    "id": "gemini_apps_usage_limits",
+                    "name": "Gemini Apps Usage Limits",
+                    "status": "available",
+                    "last_updated": "2026-05-17",
+                    "description": "Compute-based usage limits for Gemini Apps that factor in prompt complexity, models/features used, and chat length. Limits refresh every 5 hours until a weekly limit is reached. Upgrading to a Google ",
+                    "category": "Usage",
+                    "missing_count": 0
+                },
+                {
+                    "id": "api_rate_limits_free_tier",
+                    "name": "API Rate Limits (Free Tier)",
+                    "status": "available",
+                    "last_updated": "2025-12-11",
+                    "description": "Free tier has rate limits: 5-15 requests per minute (RPM), 250,000 tokens per minute (TPM), and up to 1,000 daily requests, depending on the model.",
+                    "category": "Usage",
+                    "missing_count": 0
+                },
+                {
+                    "id": "multimedia_file_size_limit",
+                    "name": "Multimedia File Size Limit",
+                    "status": "available",
+                    "last_updated": "2026-08-13",
+                    "description": "Audio files, video files, and documents cannot exceed 15 MB.",
+                    "category": "Input",
+                    "missing_count": 0
+                },
+                {
+                    "id": "multimedia_file_count_limit",
+                    "name": "Multimedia File Count Limit",
+                    "status": "available",
+                    "last_updated": "2026-08-13",
+                    "description": "You can specify one video file, one audio file, and up to 10 image files per request.",
+                    "category": "Input",
+                    "missing_count": 0
+                },
+                {
+                    "id": "pro_model_context_length_pricing",
+                    "name": "Pro Model Context Length Pricing",
+                    "status": "available",
+                    "last_updated": "2026-08-15",
+                    "description": "Pro models (Gemini 3.1 Pro Preview, 2.5 Pro) have standard pricing for prompts <=200K tokens. Above 200K, input doubles and output increases ~50%.",
+                    "category": "Pricing",
+                    "missing_count": 0
+                },
+                {
+                    "id": "data_store_max_quota",
+                    "name": "Data Store Max Quota",
+                    "status": "available",
+                    "last_updated": "2026-08-18",
+                    "description": "Due to a technical limitation, the maximum quota for data stores is 500 per project. If more data stores are needed, new projects must be used.",
+                    "category": "Resource",
+                    "missing_count": 0
+                },
+                {
+                    "id": "ai_commerce_search_model_operations",
+                    "name": "AI Commerce Search Model Operations Limit",
+                    "status": "available",
+                    "last_updated": "2026-08-11",
+                    "description": "You can start up to five model operations (creation, deletion, pause, resume) per minute in AI Commerce Search in Gemini Enterprise.",
+                    "category": "Usage",
+                    "missing_count": 0
+                },
+                {
+                    "id": "ai_commerce_search_user_event_writes",
+                    "name": "AI Commerce Search User Event Writes Limit",
+                    "status": "available",
+                    "last_updated": "2026-08-11",
+                    "description": "Your site can have up to 250,000 user event writes per visitor ID or user ID per week in AI Commerce Search.",
+                    "category": "Usage",
+                    "missing_count": 0
+                },
+                {
+                    "id": "ai_commerce_search_product_writes",
+                    "name": "AI Commerce Search Product Writes Limit",
+                    "status": "available",
+                    "last_updated": "2026-08-11",
+                    "description": "Your site can have up to 10,000 product writes per product ID per week and one product write per product ID per second in AI Commerce Search. Too frequent updates might be rejected with a RESOURCE_EXH",
+                    "category": "Usage",
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini_code_assist_github_pull_request_reviews",
+                    "name": "Gemini Code Assist on GitHub Pull Request Reviews",
+                    "status": "available",
+                    "last_updated": "2026-08-11",
+                    "description": "An installation of the Gemini Code Assist on GitHub app has a quota of at least 100 pull request reviews per day, exact number depends on codebase and model calls.",
+                    "category": "Usage",
+                    "missing_count": 0
+                },
+                {
+                    "id": "free_tier_data_usage_for_improvement",
+                    "name": "Free Tier Data Usage for Product Improvement",
+                    "status": "available",
+                    "last_updated": "2026-08-15",
+                    "description": "Free tier data may be used to improve Google products.",
+                    "category": "Data Privacy",
                     "missing_count": 0
                 }
             ],
@@ -6626,7 +7535,7 @@
                     "category": "Safety & Ethics",
                     "description": "Google is committed to advancing bold and responsible AI. Gemini is built with Google's AI Principles in mind, with comprehensive safety evaluations, including for bias and toxicity, and ongoing adver",
                     "last_updated": "2023-12-06",
-                    "missing_count": 2,
+                    "missing_count": 3,
                     "status": "discontinued"
                 },
                 {
@@ -6635,7 +7544,7 @@
                     "category": "Safety & Ethics",
                     "description": "Users are encouraged to understand the limitations of Gemini and to work safely and responsibly, promoting fairness, interpretability, privacy, and security best practices.",
                     "last_updated": "2026-07-30",
-                    "missing_count": 2,
+                    "missing_count": 3,
                     "status": "discontinued"
                 },
                 {
@@ -6644,7 +7553,7 @@
                     "category": "Privacy",
                     "description": "Web publishers can use Google-Extended control to manage whether their sites help improve Gemini and Vertex AI generative APIs. Opting out prevents content from being used for model training and groun",
                     "last_updated": "2024-07-25",
-                    "missing_count": 2,
+                    "missing_count": 3,
                     "status": "discontinued"
                 },
                 {
@@ -6653,7 +7562,7 @@
                     "category": "Billing",
                     "description": "Internal reasoning or 'thinking tokens' are included in the output token count and are billed at output rates, which may result in a higher actual bill than suggested by headline pricing.",
                     "last_updated": "2026-07-30",
-                    "missing_count": 2,
+                    "missing_count": 3,
                     "status": "discontinued"
                 },
                 {
@@ -6662,62 +7571,62 @@
                     "category": "Technical",
                     "description": "Gemini models are available in stable, preview, latest, or experimental versions. Models released prior to September 2025 may have different naming conventions.",
                     "last_updated": "2026-08-04",
-                    "missing_count": 2,
+                    "missing_count": 3,
                     "status": "discontinued"
                 },
                 {
                     "id": "n-rebranding-advanced-to-ultra",
                     "title": "Gemini Advanced rebranded to Google AI Ultra",
                     "category": "Rebranding",
-                    "status": "available",
+                    "status": "discontinued",
                     "description": "Google rebranded 'Gemini Advanced' to 'Google AI Ultra' in 2026.",
                     "last_updated": "2026-07-30T00:00:00Z",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "n-new-billing-system",
                     "title": "New Billing System (Prepay and Postpay)",
                     "category": "Billing",
-                    "status": "available",
+                    "status": "discontinued",
                     "description": "Google introduced Prepay and Postpay plans starting March 23, 2026, replacing the old pay-as-you-go model.",
                     "last_updated": "2026-07-30T00:00:00Z",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "n-pro-models-removed-from-free-tier",
                     "title": "Pro models removed from free tier",
                     "category": "Pricing Changes",
-                    "status": "available",
+                    "status": "discontinued",
                     "description": "Pro models were removed from the free tier on April 1, 2026. Only Flash and Flash-Lite models retain free access.",
                     "last_updated": "2026-07-30T00:00:00Z",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "n-confirm-current-rates",
                     "title": "Confirm Current Rates",
                     "category": "General Advice",
-                    "status": "available",
+                    "status": "discontinued",
                     "description": "Always confirm current rates on Google's official Gemini API pricing page, as models and prices change often.",
                     "last_updated": "2026-06-02T00:00:00Z",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "n-gemini-cli-free-tier-unique",
                     "title": "Gemini CLI Free Tier includes 1M token context window",
                     "category": "Unique Selling Proposition",
-                    "status": "available",
+                    "status": "discontinued",
                     "description": "Gemini CLI offers a genuinely useful free tier with a 1 million token context window, distinguishing it from competitors.",
                     "last_updated": "2026-05-31T00:00:00Z",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "n-workspace-addon-dropped",
                     "title": "Gemini Workspace Add-on Dropped, Now Bundled",
                     "category": "Product Packaging",
-                    "status": "available",
+                    "status": "discontinued",
                     "description": "Google Workspace dropped the standalone Gemini add-on in 2025; Gemini is now bundled in Business Standard, Plus and Enterprise tiers.",
                     "last_updated": "2026-07-31T00:00:00Z",
-                    "missing_count": 1
+                    "missing_count": 2
                 },
                 {
                     "id": "note-advanced-rebranding",
@@ -6726,7 +7635,7 @@
                     "status": "available",
                     "description": "Gemini Advanced has undergone rebranding. In 2026, it was rebranded to 'Google AI Ultra'. Some sources also indicate a rebranding to 'Google AI Pro' in 2025, with 'Gemini Advanced' referring to the co",
                     "last_updated": "2026-07-16",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-subscription-restructuring",
@@ -6735,7 +7644,7 @@
                     "status": "available",
                     "description": "Google restructured Gemini pricing at I/O 2026, introducing four tiers for consumer subscriptions (Free, AI Plus, AI Pro, AI Ultra) with aggressive price cuts, especially for the Ultra tier.",
                     "last_updated": "2026-07-16",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-api-billing-system-change",
@@ -6744,7 +7653,7 @@
                     "status": "available",
                     "description": "Google introduced Prepay and Postpay plans starting March 23, 2026, replacing the old pay-as-you-go model for Gemini API usage.",
                     "last_updated": "2026-03-23",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-gemini-2.0-flash-discontinuation",
@@ -6753,7 +7662,7 @@
                     "status": "discontinued",
                     "description": "Gemini 2.0 Flash is scheduled to shut down on June 1, 2026. Developers using this model should migrate immediately.",
                     "last_updated": "2026-01-12",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-introductory-flash-pricing",
@@ -6762,7 +7671,7 @@
                     "status": "available",
                     "description": "Gemini 3.6 Flash and 3.7 Flash have introductory pricing ($0.75 input / $3.75 output per 1M tokens) which is set to double on January 1, 2027.",
                     "last_updated": "2026-08-13",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-gemma-2-availability",
@@ -6771,7 +7680,7 @@
                     "status": "available",
                     "description": "Gemma 2, a smaller, free, and open-source model, is available in Google AI Studio for developers to integrate.",
                     "last_updated": "2024-06-27",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-gemini-cli-release",
@@ -6780,7 +7689,7 @@
                     "status": "available",
                     "description": "Gemini CLI, an open-source AI agent, was introduced in June 2025, bringing Gemini's capabilities directly to the terminal with generous free usage limits for individual developers.",
                     "last_updated": "2025-06",
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-pixel-integration",
@@ -6789,7 +7698,7 @@
                     "status": "available",
                     "description": "Gemini is natively integrated into Google Pixel phones (Pixel 9, Pixel 9 Pro, Pixel 9 Pro Fold), serving as a built-in AI assistant.",
                     "last_updated": null,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-gemini-enterprise-app",
@@ -6798,7 +7707,7 @@
                     "status": "available",
                     "description": "A secure platform for enterprises to discover, create, run, and govern AI agents for employees.",
                     "last_updated": null,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-vertex-ai-enterprise",
@@ -6807,7 +7716,7 @@
                     "status": "available",
                     "description": "Vertex AI provides enterprise-grade API access with features like fine-tuning, model evaluation, MLOps tooling, higher rate limits, no data-sharing clause, enterprise features (grounding, custom fine-",
                     "last_updated": null,
-                    "missing_count": 0
+                    "missing_count": 1
                 },
                 {
                     "id": "note-gemini-1.5-flash-tuning",
@@ -6816,10 +7725,100 @@
                     "status": "available",
                     "description": "Text tuning for Gemini 1.5 Flash is rolling out gradually to developers, with full access via the Gemini API and Google AI Studio expected by mid-July.",
                     "last_updated": "2024-06-27",
+                    "missing_count": 1
+                },
+                {
+                    "id": "pricing_restructuring_io_2026",
+                    "title": "Pricing Restructuring at I/O 2026",
+                    "category": "Pricing",
+                    "status": "available",
+                    "description": "Google restructured Gemini pricing at I/O 2026. If Gemini pricing was last checked in 2025, all numbers in 2026 are new.",
+                    "last_updated": "2026-07-16",
+                    "missing_count": 0
+                },
+                {
+                    "id": "thinking_tokens_billing",
+                    "title": "Thinking Tokens Billing",
+                    "category": "Pricing",
+                    "status": "available",
+                    "description": "Thinking tokens count as output tokens and are billed at output rates, which can make the actual bill higher than suggested by pricing pages.",
+                    "last_updated": "2026-07-16",
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini_advanced_rebrand",
+                    "title": "Gemini Advanced Rebranded to Google AI Ultra",
+                    "category": "Product Naming",
+                    "status": "available",
+                    "description": "Google rebranded 'Gemini Advanced' to 'Google AI Ultra' in 2026.",
+                    "last_updated": "2026-07-16",
+                    "missing_count": 0
+                },
+                {
+                    "id": "google_ai_plus_price_cut",
+                    "title": "Google AI Plus Price Cut",
+                    "category": "Pricing",
+                    "status": "available",
+                    "description": "Google AI Plus costs $4.99/month, cut from $7.99 on June 8, 2026.",
+                    "last_updated": "2026-06-08",
+                    "missing_count": 0
+                },
+                {
+                    "id": "google_workspace_gemini_integration",
+                    "title": "Google Workspace Gemini Integration",
+                    "category": "Product Availability",
+                    "status": "available",
+                    "description": "Google Workspace dropped the standalone Gemini add-on in 2025; Gemini is now bundled in Business Standard, Plus, and Enterprise tiers.",
+                    "last_updated": "2026-05-20",
+                    "missing_count": 0
+                },
+                {
+                    "id": "gemini_interactions_api_beta_stable_versions",
+                    "title": "Gemini Interactions API Beta and Stable Versions",
+                    "category": "API",
+                    "status": "available",
+                    "description": "The Gemini Interactions API has a beta version with endpoints under /v1beta/ and a stable v1 version also available.",
+                    "last_updated": "2026-08-13",
+                    "missing_count": 0
+                },
+                {
+                    "id": "pre_ga_features_limited_support",
+                    "title": "Pre-GA Features May Have Limited Support",
+                    "category": "Product Status",
+                    "status": "available",
+                    "description": "Pre-GA features (e.g., Gemini Code Assist on GitHub) are available 'as is' and might have limited support.",
+                    "last_updated": "2026-08-11",
+                    "missing_count": 0
+                },
+                {
+                    "id": "promotional_discounts_new_subscribers",
+                    "title": "Promotional Discounts for New Subscribers",
+                    "category": "Pricing",
+                    "status": "available",
+                    "description": "New subscribers often get promotional discounts of 50% off for the first few months.",
+                    "last_updated": "2026-05-20",
+                    "missing_count": 0
+                },
+                {
+                    "id": "api_key_authentication_required",
+                    "title": "API Key Authentication Required",
+                    "category": "API",
+                    "status": "available",
+                    "description": "All requests to the Gemini API must include a x-goog-api-key header with your API key.",
+                    "last_updated": "2026-06-22",
+                    "missing_count": 0
+                },
+                {
+                    "id": "introductory_pricing_gemini_3_6_3_7_flash",
+                    "title": "Introductory Pricing for Gemini 3.6 Flash and 3.7 Flash",
+                    "category": "Pricing",
+                    "status": "available",
+                    "description": "Gemini 3.6 Flash and 3.7 Flash launched with introductory pricing ($0.75/$3.75 per million tokens) which will double to $1.50/$7.50 on January 1, 2027.",
+                    "last_updated": "2026-08-13",
                     "missing_count": 0
                 }
             ],
-            "last_verified": "2026-08-18",
+            "last_verified": "2026-08-19",
             "status": "available",
             "update_failed": false
         },
