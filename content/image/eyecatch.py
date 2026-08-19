@@ -30,7 +30,11 @@ def create_eyecatch(
 
     # 日本語対応フォント
     base_dir = os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))
+        os.path.dirname(
+            os.path.dirname(
+                os.path.abspath(__file__)
+            )
+        )
     )
 
     font_candidates = [
