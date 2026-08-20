@@ -283,37 +283,26 @@ def split_title(
     max_width,
 ):
     """
-    日本語として自然な位置を優先して
-    タイトルを2〜3行に分割する。
+    タイトルを自然な位置で1〜4行に分割する。
 
-    優先順位
-    1. 1行で収まる
-    2. 助詞の直後
-    3. 記号の直後
-    4. 意味のまとまり
-    5. 文字数バランス
-
-    助詞が次の行の先頭に来る分割は避ける。
+    基本方針
+    1. 1行で収まる場合は1行
+    2. 「【○○】」がある場合は1行目に固定
+    3. 本文は2〜3行を優先
+    4. 必要な場合のみ4行を使用
+    5. 英数字の単語を途中で分割しない
+    6. 助詞や意味のまとまりを考慮する
+    7. 行幅のバランスも考慮する
     """
+
+    import re
 
     title = title.strip()
 
     letter_spacing = font.size * 0.015
 
     # ------------------------------------
-    # 1行で収まる場合
-    # ------------------------------------
-
-    if measure_line(
-        draw,
-        [(title, False)],
-        font,
-        letter_spacing,
-    ) <= max_width:
-        return [title]
-
-    # ------------------------------------
-    # 助詞
+    # 基本ルール
     # ------------------------------------
 
     particles = [
@@ -337,10 +326,6 @@ def split_title(
         "など",
     ]
 
-    # ------------------------------------
-    # 意味のまとまり
-    # ------------------------------------
-
     semantic_marks = [
         "向け",
         "活用",
@@ -353,269 +338,652 @@ def split_title(
         "効率化",
         "自動化",
         "チェックリスト",
+        "時短術",
+        "成功戦略",
+        "徹底解説",
+        "メリット・デメリット",
+        "メリット",
+        "デメリット",
+    ]
+
+    punctuation_marks = [
+        "！",
+        "？",
+        "。",
+        "、",
+        "：",
+        "：",
+        "！",
+        "？",
     ]
 
     # ------------------------------------
-    # 改行候補を作る
+    # 【○○】を分離
     # ------------------------------------
 
-    candidates = []
+    prefix_match = re.match(
+        r"^(【[^】]+】)\s*(.*)$",
+        title,
+    )
 
-    for index in range(1, len(title)):
+    prefix = None
+    body = title
 
-        left = title[:index]
-        right = title[index:]
+    if prefix_match:
+        prefix = prefix_match.group(1).strip()
+        body = prefix_match.group(2).strip()
 
-        left = left.strip()
-        right = right.strip()
+    # ------------------------------------
+    # 英数字単語の途中で分割しないための判定
+    # ------------------------------------
+
+    def is_ascii_alnum(char):
+        return bool(
+            re.match(
+                r"[A-Za-z0-9]",
+                char,
+            )
+        )
+
+    def is_inside_ascii_word(index, text):
+        """
+        indexの位置で分割すると
+        ASCII英数字の単語途中になる場合True。
+        """
+
+        if index <= 0 or index >= len(text):
+            return False
+
+        left = text[index - 1]
+        right = text[index]
+
+        return (
+            is_ascii_alnum(left)
+            and is_ascii_alnum(right)
+        )
+
+    # ------------------------------------
+    # 分割候補として適切か
+    # ------------------------------------
+
+    def is_valid_boundary(index, text):
+        if index <= 0 or index >= len(text):
+            return False
+
+        # 英数字単語の途中は禁止
+        if is_inside_ascii_word(index, text):
+            return False
+
+        left = text[:index].strip()
+        right = text[index:].strip()
 
         if not left or not right:
-            continue
+            return False
 
-        left_width = measure_line(
-            draw,
-            [(left, False)],
-            font,
-            letter_spacing,
-        )
-
-        right_width = measure_line(
-            draw,
-            [(right, False)],
-            font,
-            letter_spacing,
-        )
-
-        if (
-            left_width > max_width
-            or right_width > max_width
-        ):
-            continue
-
-        # --------------------------------
-        # 次の行が助詞から始まる場合
-        # 強く減点
-        # --------------------------------
-
-        starts_with_particle = any(
+        # 次の行が助詞から始まる場合は禁止
+        if any(
             right.startswith(particle)
             for particle in particles
-        )
+        ):
+            return False
 
-        if starts_with_particle:
-            continue
+        # 1行目が助詞だけで終わる場合は禁止
+        if left[-1:] in particles:
+            return False
 
-        # --------------------------------
-        # 分割位置の評価
-        # --------------------------------
+        return True
 
+    # ------------------------------------
+    # 分割位置の評価
+    # ------------------------------------
+
+    def boundary_score(
+        left,
+        right,
+        left_width,
+        right_width,
+    ):
         score = 0
 
-        # 左右の長さを近づける
+        # 幅のバランス
         score += abs(
             left_width - right_width
         )
 
-        # 助詞の直後を高評価
+        # 助詞の直後
         for particle in particles:
             if left.endswith(particle):
+                score -= 350
+                break
+
+        # 記号の直後
+        if left.endswith(
+            tuple(punctuation_marks)
+        ):
+            score -= 500
+
+        # 意味のまとまり
+        for mark in semantic_marks:
+            if left.endswith(mark):
                 score -= 300
                 break
 
-        # --------------------------------
-        # 記号の直後を高評価
-        # --------------------------------
-
-        if left[-1:] in [
-            "！",
-            "？",
-            "。",
-            "！",
-            "？",
-            "、",
-            "：",
-        ]:
-            score -= 500
-
-
-        for mark in semantic_marks:
-            if left.endswith(mark):
-                score -= 200
-                break
-
-        candidates.append(
+        # 文章途中での不自然な分割を軽く減点
+        if right.startswith(
             (
-                score,
-                left,
-                right,
+                "そして",
+                "また",
+                "さらに",
+                "そのため",
+                "つまり",
             )
-        )
+        ):
+            score += 150
+
+        return score
 
     # ------------------------------------
-    # 2行にできる場合
+    # 2〜4行の候補を作る
     # ------------------------------------
 
-    if candidates:
+    def make_candidates(
+        text,
+        line_count,
+    ):
+        """
+        指定行数で分割可能な候補を作る。
+        """
 
-        candidates.sort(
-            key=lambda x: x[0]
-        )
+        candidates = []
 
-        _, left, right = candidates[0]
+        if not text:
+            return candidates
 
-        return [
-            left,
-            right,
-        ]
+        length = len(text)
+
+        # --------------------------------
+        # 2行
+        # --------------------------------
+
+        if line_count == 2:
+
+            for i in range(1, length):
+
+                if not is_valid_boundary(
+                    i,
+                    text,
+                ):
+                    continue
+
+                line1 = text[:i].strip()
+                line2 = text[i:].strip()
+
+                width1 = measure_line(
+                    draw,
+                    [(line1, False)],
+                    font,
+                    letter_spacing,
+                )
+
+                width2 = measure_line(
+                    draw,
+                    [(line2, False)],
+                    font,
+                    letter_spacing,
+                )
+
+                if (
+                    width1 > max_width
+                    or width2 > max_width
+                ):
+                    continue
+
+                score = boundary_score(
+                    line1,
+                    line2,
+                    width1,
+                    width2,
+                )
+
+                candidates.append(
+                    (
+                        score,
+                        [
+                            line1,
+                            line2,
+                        ],
+                    )
+                )
+
+        # --------------------------------
+        # 3行
+        # --------------------------------
+
+        elif line_count == 3:
+
+            for i in range(1, length - 1):
+
+                if not is_valid_boundary(
+                    i,
+                    text,
+                ):
+                    continue
+
+                line1 = text[:i].strip()
+
+                width1 = measure_line(
+                    draw,
+                    [(line1, False)],
+                    font,
+                    letter_spacing,
+                )
+
+                if width1 > max_width:
+                    continue
+
+                for j in range(
+                    i + 1,
+                    length,
+                ):
+
+                    if not is_valid_boundary(
+                        j,
+                        text,
+                    ):
+                        continue
+
+                    line2 = text[i:j].strip()
+                    line3 = text[j:].strip()
+
+                    if not line2 or not line3:
+                        continue
+
+                    width2 = measure_line(
+                        draw,
+                        [(line2, False)],
+                        font,
+                        letter_spacing,
+                    )
+
+                    width3 = measure_line(
+                        draw,
+                        [(line3, False)],
+                        font,
+                        letter_spacing,
+                    )
+
+                    if (
+                        width2 > max_width
+                        or width3 > max_width
+                    ):
+                        continue
+
+                    widths = [
+                        width1,
+                        width2,
+                        width3,
+                    ]
+
+                    score = (
+                        max(widths)
+                        -
+                        min(widths)
+                    )
+
+                    # 1行目・2行目の意味のまとまり
+                    for mark in semantic_marks:
+
+                        if line1.endswith(mark):
+                            score -= 300
+
+                        if line2.endswith(mark):
+                            score -= 300
+
+                    # 記号の直後
+                    if line1.endswith(
+                        tuple(punctuation_marks)
+                    ):
+                        score -= 400
+
+                    if line2.endswith(
+                        tuple(punctuation_marks)
+                    ):
+                        score -= 400
+
+                    candidates.append(
+                        (
+                            score,
+                            [
+                                line1,
+                                line2,
+                                line3,
+                            ],
+                        )
+                    )
+
+        # --------------------------------
+        # 4行
+        # --------------------------------
+
+        elif line_count == 4:
+
+            for i in range(1, length - 2):
+
+                if not is_valid_boundary(
+                    i,
+                    text,
+                ):
+                    continue
+
+                line1 = text[:i].strip()
+
+                width1 = measure_line(
+                    draw,
+                    [(line1, False)],
+                    font,
+                    letter_spacing,
+                )
+
+                if width1 > max_width:
+                    continue
+
+                for j in range(
+                    i + 1,
+                    length - 1,
+                ):
+
+                    if not is_valid_boundary(
+                        j,
+                        text,
+                    ):
+                        continue
+
+                    line2 = text[i:j].strip()
+
+                    width2 = measure_line(
+                        draw,
+                        [(line2, False)],
+                        font,
+                        letter_spacing,
+                    )
+
+                    if width2 > max_width:
+                        continue
+
+                    for k in range(
+                        j + 1,
+                        length,
+                    ):
+
+                        if not is_valid_boundary(
+                            k,
+                            text,
+                        ):
+                            continue
+
+                        line3 = text[j:k].strip()
+                        line4 = text[k:].strip()
+
+                        if (
+                            not line3
+                            or not line4
+                        ):
+                            continue
+
+                        width3 = measure_line(
+                            draw,
+                            [(line3, False)],
+                            font,
+                            letter_spacing,
+                        )
+
+                        width4 = measure_line(
+                            draw,
+                            [(line4, False)],
+                            font,
+                            letter_spacing,
+                        )
+
+                        if (
+                            width3 > max_width
+                            or width4 > max_width
+                        ):
+                            continue
+
+                        widths = [
+                            width1,
+                            width2,
+                            width3,
+                            width4,
+                        ]
+
+                        score = (
+                            max(widths)
+                            -
+                            min(widths)
+                        )
+
+                        # 意味のまとまり
+                        lines = [
+                            line1,
+                            line2,
+                            line3,
+                        ]
+
+                        for line in lines:
+
+                            for mark in semantic_marks:
+
+                                if line.endswith(mark):
+                                    score -= 250
+                                    break
+
+                        # 記号の直後
+                        for line in lines:
+
+                            if line.endswith(
+                                tuple(
+                                    punctuation_marks
+                                )
+                            ):
+                                score -= 300
+
+                        candidates.append(
+                            (
+                                score,
+                                [
+                                    line1,
+                                    line2,
+                                    line3,
+                                    line4,
+                                ],
+                            )
+                        )
+
+        return candidates
 
     # ------------------------------------
-    # 3行に分割
+    # 1行で収まる場合
     # ------------------------------------
 
-    best = None
-
-    for i in range(1, len(title) - 1):
-
-        line1 = title[:i].strip()
-
-        if not line1:
-            continue
-
-        # 1行目が助詞で終わる場合は避ける
-        if line1[-1:] in particles:
-            continue
-
-        width1 = measure_line(
+    if (
+        not prefix
+        and
+        measure_line(
             draw,
-            [(line1, False)],
+            [(title, False)],
+            font,
+            letter_spacing,
+        ) <= max_width
+    ):
+        return [title]
+
+    # ------------------------------------
+    # 【○○】なし
+    # ------------------------------------
+
+    if not prefix:
+
+        # 2行 → 3行 → 4行
+        for line_count in [2, 3, 4]:
+
+            candidates = make_candidates(
+                body,
+                line_count,
+            )
+
+            if candidates:
+
+                candidates.sort(
+                    key=lambda x: x[0]
+                )
+
+                return candidates[0][1]
+
+    # ------------------------------------
+    # 【○○】あり
+    # ------------------------------------
+
+    else:
+
+        # prefix自体が幅を超える場合は
+        # 現在のフォントサイズでは収まらない
+        prefix_width = measure_line(
+            draw,
+            [(prefix, False)],
             font,
             letter_spacing,
         )
 
-        if width1 > max_width:
-            continue
+        if prefix_width <= max_width:
 
-        for j in range(i + 1, len(title)):
+            # 本文が空ならprefixだけ
+            if not body:
+                return [prefix]
 
-            line2 = title[i:j].strip()
-            line3 = title[j:].strip()
-
-            if not line2 or not line3:
-                continue
-
-            # 2行目・3行目が助詞から始まる場合は除外
-            if any(
-                line2.startswith(p)
-                for p in particles
-            ):
-                continue
-
-            if any(
-                line3.startswith(p)
-                for p in particles
-            ):
-                continue
-
-            # 2行目が助詞で終わる場合も避ける
-            if line2[-1:] in particles:
-                continue
-
-            width2 = measure_line(
+            # 本文1行で収まる場合
+            body_width = measure_line(
                 draw,
-                [(line2, False)],
+                [(body, False)],
                 font,
                 letter_spacing,
             )
 
-            width3 = measure_line(
-                draw,
-                [(line3, False)],
-                font,
-                letter_spacing,
+            if body_width <= max_width:
+                return [
+                    prefix,
+                    body,
+                ]
+
+            # 本文2行 → 3行
+            for line_count in [2, 3]:
+
+                candidates = make_candidates(
+                    body,
+                    line_count,
+                )
+
+                if candidates:
+
+                    candidates.sort(
+                        key=lambda x: x[0]
+                    )
+
+                    return [
+                        prefix,
+                        *candidates[0][1],
+                    ]
+
+    # ------------------------------------
+    # 最終手段
+    # ------------------------------------
+
+    # 英数字の途中で切らない単純分割
+    target_lines = 4
+
+    if prefix:
+        remaining_lines = 3
+        text = body
+    else:
+        remaining_lines = target_lines
+        text = title
+
+    if not text:
+        return [prefix] if prefix else [title]
+
+    result = []
+
+    remaining_text = text
+
+    for line_number in range(
+        remaining_lines - 1
+    ):
+
+        if not remaining_text:
+            break
+
+        target_length = (
+            len(remaining_text)
+            /
+            (
+                remaining_lines
+                -
+                line_number
+            )
+        )
+
+        best_index = None
+        best_distance = None
+
+        for i in range(
+            1,
+            len(remaining_text),
+        ):
+
+            if not is_valid_boundary(
+                i,
+                remaining_text,
+            ):
+                continue
+
+            distance = abs(
+                i - target_length
             )
 
             if (
-                width2 > max_width
-                or width3 > max_width
+                best_distance is None
+                or distance < best_distance
             ):
-                continue
+                best_distance = distance
+                best_index = i
 
-            # --------------------------------
-            # 3行の長さをできるだけ均等に
-            # --------------------------------
+        if best_index is None:
+            break
 
-            max_line = max(
-                width1,
-                width2,
-                width3,
-            )
+        result.append(
+            remaining_text[
+                :best_index
+            ].strip()
+        )
 
-            min_line = min(
-                width1,
-                width2,
-                width3,
-            )
+        remaining_text = (
+            remaining_text[
+                best_index:
+            ].strip()
+        )
 
-            score = max_line - min_line
+    if remaining_text:
+        result.append(
+            remaining_text
+        )
 
-            # 助詞の直後を優先
-            if line1[-1:] in particles:
-                score -= 300
-
-            if line2[-1:] in particles:
-                score -= 300
-
-            # 記号の直後を優先
-            if line1[-1:] in [
-                "！",
-                "？",
-                "。",
-                "、",
-            ]:
-                score -= 400
-
-            if line2[-1:] in [
-                "！",
-                "？",
-                "。",
-                "、",
-            ]:
-                score -= 400
-
-            # 意味のまとまりを優先
-            for mark in semantic_marks:
-                if line1.endswith(mark):
-                    score -= 150
-
-                if line2.endswith(mark):
-                    score -= 150
-
-            if best is None or score < best[0]:
-                best = (
-                    score,
-                    line1,
-                    line2,
-                    line3,
-                )
-
-    if best:
+    if prefix:
         return [
-            best[1],
-            best[2],
-            best[3],
+            prefix,
+            *result,
         ]
 
-    # ------------------------------------
-    # 最終手段（文字数で分割）
-    # ------------------------------------
-
-    third = len(title) // 3
-
-    return [
-        title[:third].strip(),
-        title[third:third * 2].strip(),
-        title[third * 2:].strip(),
-    ]
+    return result
 
 
 def split_highlights(
