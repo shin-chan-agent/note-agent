@@ -308,18 +308,20 @@ def split_title(
     font,
     draw,
     max_width,
+    allow_four_lines=False,
 ):
     """
-    タイトルを自然な位置で1〜4行に分割する。
+    タイトルを自然な位置で分割する。
 
-    基本方針
-    1. 1行で収まる場合は1行
-    2. 「【○○】」がある場合は1行目に固定
-    3. 本文は2〜3行を優先
-    4. 必要な場合のみ4行を使用
-    5. 英数字の単語を途中で分割しない
-    6. 助詞や意味のまとまりを考慮する
-    7. 行幅のバランスも考慮する
+    基本ルール
+    1. 1行で収まれば1行
+    2. 2行を優先
+    3. 2行が無理なら3行
+    4. それでも無理な場合のみ4行
+    5. ただし4行はallow_four_lines=Trueの場合のみ
+    6. 【○○】は1行目に固定
+    7. 英数字の単語途中では改行しない
+    8. 意味のまとまりを途中で分割しない
     """
 
     import re
@@ -328,9 +330,9 @@ def split_title(
 
     letter_spacing = font.size * 0.015
 
-    # ------------------------------------
-    # 基本ルール
-    # ------------------------------------
+    # ====================================
+    # 助詞
+    # ====================================
 
     particles = [
         "が",
@@ -353,6 +355,10 @@ def split_title(
         "など",
     ]
 
+    # ====================================
+    # 意味のまとまり
+    # ====================================
+
     semantic_marks = [
         "向け",
         "活用",
@@ -371,6 +377,36 @@ def split_title(
         "メリット・デメリット",
         "メリット",
         "デメリット",
+        "料金比較",
+        "機能比較",
+    ]
+
+    # ====================================
+    # 改行途中にしたくない語句
+    # ====================================
+
+    protected_phrases = [
+        "AI副業",
+        "AIチャット",
+        "AI画像",
+        "AIデザイン",
+        "AI自動化",
+        "AIショート動画",
+        "ショート動画",
+        "動画編集",
+        "動画制作",
+        "動画副業",
+        "時短術",
+        "収益化",
+        "効率化",
+        "自動化",
+        "成功戦略",
+        "料金比較",
+        "機能比較",
+        "メリット・デメリット",
+        "無料版",
+        "有料版",
+        "ショート動画収益化",
     ]
 
     punctuation_marks = [
@@ -379,14 +415,12 @@ def split_title(
         "。",
         "、",
         "：",
-        "：",
-        "！",
-        "？",
+        ":",
     ]
 
-    # ------------------------------------
+    # ====================================
     # 【○○】を分離
-    # ------------------------------------
+    # ====================================
 
     prefix_match = re.match(
         r"^(【[^】]+】)\s*(.*)$",
@@ -400,24 +434,34 @@ def split_title(
         prefix = prefix_match.group(1).strip()
         body = prefix_match.group(2).strip()
 
-    # ------------------------------------
-    # 英数字単語の途中で分割しないための判定
-    # ------------------------------------
+    # ====================================
+    # 1行の幅
+    # ====================================
+
+    def get_width(text):
+        return measure_line(
+            draw,
+            [(text, False)],
+            font,
+            letter_spacing,
+        )
+
+    # ====================================
+    # 英数字単語の途中か
+    # ====================================
 
     def is_ascii_alnum(char):
         return bool(
-            re.match(
+            re.fullmatch(
                 r"[A-Za-z0-9]",
                 char,
             )
         )
 
-    def is_inside_ascii_word(index, text):
-        """
-        indexの位置で分割すると
-        ASCII英数字の単語途中になる場合True。
-        """
-
+    def is_inside_ascii_word(
+        index,
+        text,
+    ):
         if index <= 0 or index >= len(text):
             return False
 
@@ -429,16 +473,67 @@ def split_title(
             and is_ascii_alnum(right)
         )
 
-    # ------------------------------------
-    # 分割候補として適切か
-    # ------------------------------------
+    # ====================================
+    # 保護語句の途中か
+    # ====================================
 
-    def is_valid_boundary(index, text):
+    def is_inside_protected_phrase(
+        index,
+        text,
+    ):
+        for phrase in protected_phrases:
+
+            start = 0
+
+            while True:
+
+                position = text.find(
+                    phrase,
+                    start,
+                )
+
+                if position == -1:
+                    break
+
+                end = (
+                    position
+                    + len(phrase)
+                )
+
+                if (
+                    position
+                    < index
+                    < end
+                ):
+                    return True
+
+                start = end
+
+        return False
+
+    # ====================================
+    # 改行可能位置か
+    # ====================================
+
+    def is_valid_boundary(
+        index,
+        text,
+    ):
         if index <= 0 or index >= len(text):
             return False
 
-        # 英数字単語の途中は禁止
-        if is_inside_ascii_word(index, text):
+        # 英数字単語の途中
+        if is_inside_ascii_word(
+            index,
+            text,
+        ):
+            return False
+
+        # 意味のまとまりの途中
+        if is_inside_protected_phrase(
+            index,
+            text,
+        ):
             return False
 
         left = text[:index].strip()
@@ -447,22 +542,18 @@ def split_title(
         if not left or not right:
             return False
 
-        # 次の行が助詞から始まる場合は禁止
+        # 次の行が助詞から始まる
         if any(
-            right.startswith(particle)
-            for particle in particles
+            right.startswith(p)
+            for p in particles
         ):
-            return False
-
-        # 1行目が助詞だけで終わる場合は禁止
-        if left[-1:] in particles:
             return False
 
         return True
 
-    # ------------------------------------
+    # ====================================
     # 分割位置の評価
-    # ------------------------------------
+    # ====================================
 
     def boundary_score(
         left,
@@ -472,105 +563,192 @@ def split_title(
     ):
         score = 0
 
-        # 幅のバランス
+        # --------------------------------
+        # 行幅のバランス
+        # --------------------------------
+
         score += abs(
-            left_width - right_width
+            left_width
+            -
+            right_width
         )
 
+        # --------------------------------
         # 助詞の直後
+        # --------------------------------
+
         for particle in particles:
-            if left.endswith(particle):
-                score -= 350
+
+            if left.endswith(
+                particle
+            ):
+                score -= 300
                 break
 
+        # --------------------------------
         # 記号の直後
+        # --------------------------------
+
         if left.endswith(
             tuple(punctuation_marks)
         ):
             score -= 500
 
+        # --------------------------------
         # 意味のまとまり
+        # --------------------------------
+
         for mark in semantic_marks:
+
             if left.endswith(mark):
                 score -= 300
                 break
 
-        # 文章途中での不自然な分割を軽く減点
-        if right.startswith(
-            (
-                "そして",
-                "また",
-                "さらに",
-                "そのため",
-                "つまり",
-            )
-        ):
-            score += 150
-
         return score
 
-    # ------------------------------------
-    # 2〜4行の候補を作る
-    # ------------------------------------
+    # ====================================
+    # 2行候補
+    # ====================================
 
-    def make_candidates(
+    def make_two_line_candidates(
         text,
-        line_count,
     ):
-        """
-        指定行数で分割可能な候補を作る。
-        """
-
         candidates = []
 
-        if not text:
-            return candidates
+        for i in range(
+            1,
+            len(text),
+        ):
+
+            if not is_valid_boundary(
+                i,
+                text,
+            ):
+                continue
+
+            line1 = text[:i].strip()
+            line2 = text[i:].strip()
+
+            width1 = get_width(line1)
+            width2 = get_width(line2)
+
+            if (
+                width1 > max_width
+                or width2 > max_width
+            ):
+                continue
+
+            score = boundary_score(
+                line1,
+                line2,
+                width1,
+                width2,
+            )
+
+            candidates.append(
+                (
+                    score,
+                    [
+                        line1,
+                        line2,
+                    ],
+                )
+            )
+
+        return candidates
+
+    # ====================================
+    # 3行候補
+    # ====================================
+
+    def make_three_line_candidates(
+        text,
+    ):
+        candidates = []
 
         length = len(text)
 
-        # --------------------------------
-        # 2行
-        # --------------------------------
+        for i in range(
+            1,
+            length - 1,
+        ):
 
-        if line_count == 2:
+            if not is_valid_boundary(
+                i,
+                text,
+            ):
+                continue
 
-            for i in range(1, length):
+            line1 = text[:i].strip()
+
+            width1 = get_width(line1)
+
+            if width1 > max_width:
+                continue
+
+            for j in range(
+                i + 1,
+                length,
+            ):
 
                 if not is_valid_boundary(
-                    i,
+                    j,
                     text,
                 ):
                     continue
 
-                line1 = text[:i].strip()
-                line2 = text[i:].strip()
-
-                width1 = measure_line(
-                    draw,
-                    [(line1, False)],
-                    font,
-                    letter_spacing,
-                )
-
-                width2 = measure_line(
-                    draw,
-                    [(line2, False)],
-                    font,
-                    letter_spacing,
-                )
+                line2 = text[i:j].strip()
+                line3 = text[j:].strip()
 
                 if (
-                    width1 > max_width
-                    or width2 > max_width
+                    not line2
+                    or not line3
                 ):
                     continue
 
-                score = boundary_score(
-                    line1,
-                    line2,
+                width2 = get_width(line2)
+                width3 = get_width(line3)
+
+                if (
+                    width2 > max_width
+                    or width3 > max_width
+                ):
+                    continue
+
+                widths = [
                     width1,
                     width2,
+                    width3,
+                ]
+
+                score = (
+                    max(widths)
+                    -
+                    min(widths)
                 )
+
+                # 意味のまとまり
+                for line in [
+                    line1,
+                    line2,
+                ]:
+                    for mark in semantic_marks:
+
+                        if line.endswith(mark):
+                            score -= 250
+                            break
+
+                # 記号の直後
+                for line in [
+                    line1,
+                    line2,
+                ]:
+                    if line.endswith(
+                        tuple(
+                            punctuation_marks
+                        )
+                    ):
+                        score -= 350
 
                 candidates.append(
                     (
@@ -578,70 +756,84 @@ def split_title(
                         [
                             line1,
                             line2,
+                            line3,
                         ],
                     )
                 )
 
-        # --------------------------------
-        # 3行
-        # --------------------------------
+        return candidates
 
-        elif line_count == 3:
+    # ====================================
+    # 4行候補
+    # ====================================
 
-            for i in range(1, length - 1):
+    def make_four_line_candidates(
+        text,
+    ):
+        candidates = []
+
+        length = len(text)
+
+        for i in range(
+            1,
+            length - 2,
+        ):
+
+            if not is_valid_boundary(
+                i,
+                text,
+            ):
+                continue
+
+            line1 = text[:i].strip()
+            width1 = get_width(line1)
+
+            if width1 > max_width:
+                continue
+
+            for j in range(
+                i + 1,
+                length - 1,
+            ):
 
                 if not is_valid_boundary(
-                    i,
+                    j,
                     text,
                 ):
                     continue
 
-                line1 = text[:i].strip()
+                line2 = text[i:j].strip()
+                width2 = get_width(line2)
 
-                width1 = measure_line(
-                    draw,
-                    [(line1, False)],
-                    font,
-                    letter_spacing,
-                )
-
-                if width1 > max_width:
+                if width2 > max_width:
                     continue
 
-                for j in range(
-                    i + 1,
+                for k in range(
+                    j + 1,
                     length,
                 ):
 
                     if not is_valid_boundary(
-                        j,
+                        k,
                         text,
                     ):
                         continue
 
-                    line2 = text[i:j].strip()
-                    line3 = text[j:].strip()
-
-                    if not line2 or not line3:
-                        continue
-
-                    width2 = measure_line(
-                        draw,
-                        [(line2, False)],
-                        font,
-                        letter_spacing,
-                    )
-
-                    width3 = measure_line(
-                        draw,
-                        [(line3, False)],
-                        font,
-                        letter_spacing,
-                    )
+                    line3 = text[j:k].strip()
+                    line4 = text[k:].strip()
 
                     if (
-                        width2 > max_width
-                        or width3 > max_width
+                        not line3
+                        or not line4
+                    ):
+                        continue
+
+                    width3 = get_width(line3)
+                    width4 = get_width(line4)
+
+                    if (
+                        width3 > max_width
+                        or width4 > max_width
                     ):
                         continue
 
@@ -649,6 +841,7 @@ def split_title(
                         width1,
                         width2,
                         width3,
+                        width4,
                     ]
 
                     score = (
@@ -657,26 +850,6 @@ def split_title(
                         min(widths)
                     )
 
-                    # 1行目・2行目の意味のまとまり
-                    for mark in semantic_marks:
-
-                        if line1.endswith(mark):
-                            score -= 300
-
-                        if line2.endswith(mark):
-                            score -= 300
-
-                    # 記号の直後
-                    if line1.endswith(
-                        tuple(punctuation_marks)
-                    ):
-                        score -= 400
-
-                    if line2.endswith(
-                        tuple(punctuation_marks)
-                    ):
-                        score -= 400
-
                     candidates.append(
                         (
                             score,
@@ -684,179 +857,95 @@ def split_title(
                                 line1,
                                 line2,
                                 line3,
+                                line4,
                             ],
                         )
                     )
 
-        # --------------------------------
-        # 4行
-        # --------------------------------
-
-        elif line_count == 4:
-
-            for i in range(1, length - 2):
-
-                if not is_valid_boundary(
-                    i,
-                    text,
-                ):
-                    continue
-
-                line1 = text[:i].strip()
-
-                width1 = measure_line(
-                    draw,
-                    [(line1, False)],
-                    font,
-                    letter_spacing,
-                )
-
-                if width1 > max_width:
-                    continue
-
-                for j in range(
-                    i + 1,
-                    length - 1,
-                ):
-
-                    if not is_valid_boundary(
-                        j,
-                        text,
-                    ):
-                        continue
-
-                    line2 = text[i:j].strip()
-
-                    width2 = measure_line(
-                        draw,
-                        [(line2, False)],
-                        font,
-                        letter_spacing,
-                    )
-
-                    if width2 > max_width:
-                        continue
-
-                    for k in range(
-                        j + 1,
-                        length,
-                    ):
-
-                        if not is_valid_boundary(
-                            k,
-                            text,
-                        ):
-                            continue
-
-                        line3 = text[j:k].strip()
-                        line4 = text[k:].strip()
-
-                        if (
-                            not line3
-                            or not line4
-                        ):
-                            continue
-
-                        width3 = measure_line(
-                            draw,
-                            [(line3, False)],
-                            font,
-                            letter_spacing,
-                        )
-
-                        width4 = measure_line(
-                            draw,
-                            [(line4, False)],
-                            font,
-                            letter_spacing,
-                        )
-
-                        if (
-                            width3 > max_width
-                            or width4 > max_width
-                        ):
-                            continue
-
-                        widths = [
-                            width1,
-                            width2,
-                            width3,
-                            width4,
-                        ]
-
-                        score = (
-                            max(widths)
-                            -
-                            min(widths)
-                        )
-
-                        # 意味のまとまり
-                        lines = [
-                            line1,
-                            line2,
-                            line3,
-                        ]
-
-                        for line in lines:
-
-                            for mark in semantic_marks:
-
-                                if line.endswith(mark):
-                                    score -= 250
-                                    break
-
-                        # 記号の直後
-                        for line in lines:
-
-                            if line.endswith(
-                                tuple(
-                                    punctuation_marks
-                                )
-                            ):
-                                score -= 300
-
-                        candidates.append(
-                            (
-                                score,
-                                [
-                                    line1,
-                                    line2,
-                                    line3,
-                                    line4,
-                                ],
-                            )
-                        )
-
         return candidates
 
-    # ------------------------------------
+    # ====================================
     # 1行で収まる場合
-    # ------------------------------------
-
-    if (
-        not prefix
-        and
-        measure_line(
-            draw,
-            [(title, False)],
-            font,
-            letter_spacing,
-        ) <= max_width
-    ):
-        return [title]
-
-    # ------------------------------------
-    # 【○○】なし
-    # ------------------------------------
+    # ====================================
 
     if not prefix:
 
-        # 2行 → 3行 → 4行
-        for line_count in [2, 3, 4]:
+        if get_width(title) <= max_width:
+            return [title]
 
-            candidates = make_candidates(
+    else:
+
+        if (
+            get_width(prefix)
+            <= max_width
+            and not body
+        ):
+            return [prefix]
+
+        if (
+            get_width(prefix)
+            <= max_width
+            and get_width(body)
+            <= max_width
+        ):
+            return [
+                prefix,
                 body,
-                line_count,
+            ]
+
+    # ====================================
+    # 【○○】なし
+    # ====================================
+
+    if not prefix:
+
+        # ------------------------------
+        # 2行を最優先
+        # ------------------------------
+
+        candidates = (
+            make_two_line_candidates(
+                body
+            )
+        )
+
+        if candidates:
+
+            candidates.sort(
+                key=lambda x: x[0]
+            )
+
+            return candidates[0][1]
+
+        # ------------------------------
+        # 3行
+        # ------------------------------
+
+        candidates = (
+            make_three_line_candidates(
+                body
+            )
+        )
+
+        if candidates:
+
+            candidates.sort(
+                key=lambda x: x[0]
+            )
+
+            return candidates[0][1]
+
+        # ------------------------------
+        # 4行
+        # 最小フォントサイズのみ
+        # ------------------------------
+
+        if allow_four_lines:
+
+            candidates = (
+                make_four_line_candidates(
+                    body
+                )
             )
 
             if candidates:
@@ -867,47 +956,69 @@ def split_title(
 
                 return candidates[0][1]
 
-    # ------------------------------------
+    # ====================================
     # 【○○】あり
-    # ------------------------------------
+    # ====================================
 
     else:
 
-        # prefix自体が幅を超える場合は
-        # 現在のフォントサイズでは収まらない
-        prefix_width = measure_line(
-            draw,
-            [(prefix, False)],
-            font,
-            letter_spacing,
-        )
+        if (
+            get_width(prefix)
+            <= max_width
+        ):
 
-        if prefix_width <= max_width:
+            # --------------------------
+            # 本文2行
+            # --------------------------
 
-            # 本文が空ならprefixだけ
-            if not body:
-                return [prefix]
-
-            # 本文1行で収まる場合
-            body_width = measure_line(
-                draw,
-                [(body, False)],
-                font,
-                letter_spacing,
+            candidates = (
+                make_two_line_candidates(
+                    body
+                )
             )
 
-            if body_width <= max_width:
+            if candidates:
+
+                candidates.sort(
+                    key=lambda x: x[0]
+                )
+
                 return [
                     prefix,
-                    body,
+                    *candidates[0][1],
                 ]
 
-            # 本文2行 → 3行
-            for line_count in [2, 3]:
+            # --------------------------
+            # 本文3行
+            # --------------------------
 
-                candidates = make_candidates(
-                    body,
-                    line_count,
+            candidates = (
+                make_three_line_candidates(
+                    body
+                )
+            )
+
+            if candidates:
+
+                candidates.sort(
+                    key=lambda x: x[0]
+                )
+
+                return [
+                    prefix,
+                    *candidates[0][1],
+                ]
+
+            # --------------------------
+            # 本文4行
+            # --------------------------
+
+            if allow_four_lines:
+
+                candidates = (
+                    make_four_line_candidates(
+                        body
+                    )
                 )
 
                 if candidates:
@@ -921,39 +1032,41 @@ def split_title(
                         *candidates[0][1],
                     ]
 
-    # ------------------------------------
+    # ====================================
     # 最終手段
-    # ------------------------------------
+    # ====================================
 
-    # 英数字の途中で切らない単純分割
-    target_lines = 4
+    # ここまで来た場合は、
+    # 自然な分割候補が見つからない。
+    #
+    # ただし英数字・保護語句の途中では
+    # 絶対に分割しない。
 
-    if prefix:
-        remaining_lines = 3
-        text = body
-    else:
-        remaining_lines = target_lines
-        text = title
+    text = body
 
     if not text:
         return [prefix] if prefix else [title]
 
+    target_lines = (
+        4 if allow_four_lines else 3
+    )
+
     result = []
 
-    remaining_text = text
+    remaining = text
 
     for line_number in range(
-        remaining_lines - 1
+        target_lines - 1
     ):
 
-        if not remaining_text:
+        if not remaining:
             break
 
         target_length = (
-            len(remaining_text)
+            len(remaining)
             /
             (
-                remaining_lines
+                target_lines
                 -
                 line_number
             )
@@ -964,12 +1077,12 @@ def split_title(
 
         for i in range(
             1,
-            len(remaining_text),
+            len(remaining),
         ):
 
             if not is_valid_boundary(
                 i,
-                remaining_text,
+                remaining,
             ):
                 continue
 
@@ -988,20 +1101,20 @@ def split_title(
             break
 
         result.append(
-            remaining_text[
+            remaining[
                 :best_index
             ].strip()
         )
 
-        remaining_text = (
-            remaining_text[
+        remaining = (
+            remaining[
                 best_index:
             ].strip()
         )
 
-    if remaining_text:
+    if remaining:
         result.append(
-            remaining_text
+            remaining
         )
 
     if prefix:
