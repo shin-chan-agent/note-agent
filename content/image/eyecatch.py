@@ -522,14 +522,20 @@ def split_title(
         if index <= 0 or index >= len(text):
             return False
 
+        # --------------------------------
         # 英数字単語の途中
+        # --------------------------------
+
         if is_inside_ascii_word(
             index,
             text,
         ):
             return False
 
+        # --------------------------------
         # 意味のまとまりの途中
+        # --------------------------------
+
         if is_inside_protected_phrase(
             index,
             text,
@@ -542,10 +548,45 @@ def split_title(
         if not left or not right:
             return False
 
-        # 次の行が助詞から始まる
+        # --------------------------------
+        # 次の行が助詞から始まる場合は禁止
+        # --------------------------------
+
         if any(
-            right.startswith(p)
-            for p in particles
+            right.startswith(particle)
+            for particle in particles
+        ):
+            return False
+
+        # --------------------------------
+        # 次の行が句読点・記号から
+        # 始まる場合は禁止
+        # --------------------------------
+
+        forbidden_line_start = [
+            "！",
+            "？",
+            "。",
+            "、",
+            "：",
+            ":",
+            "）",
+            ")",
+            "」",
+            "』",
+            "】",
+            "〉",
+            "》",
+            "〕",
+            "］",
+            "]",
+            "〉",
+            "》",
+            "・",
+        ]
+
+        if right.startswith(
+            tuple(forbidden_line_start)
         ):
             return False
 
