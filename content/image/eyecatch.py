@@ -311,17 +311,18 @@ def split_title(
     allow_four_lines=False,
 ):
     """
-    タイトルを自然な位置で分割する。
+    タイトルを自然な意味のまとまりを優先して
+    1〜4行に分割する。
 
-    基本ルール
-    1. 1行で収まれば1行
-    2. 2行を優先
-    3. 2行が無理なら3行
-    4. それでも無理な場合のみ4行
-    5. ただし4行はallow_four_lines=Trueの場合のみ
-    6. 【○○】は1行目に固定
-    7. 英数字の単語途中では改行しない
-    8. 意味のまとまりを途中で分割しない
+    優先順位
+    1. 【○○】を独立させる
+    2. 意味のまとまりを壊さない
+    3. 記号を行頭にしない
+    4. 助詞を行頭にしない
+    5. 英数字の途中で分割しない
+    6. 2〜3行を優先する
+    7. 行幅のバランスは補助的に評価する
+    8. 4行は最終手段
     """
 
     import re
@@ -334,7 +335,7 @@ def split_title(
     # 助詞
     # ====================================
 
-    particles = [
+    PARTICLES = [
         "が",
         "は",
         "の",
@@ -356,64 +357,73 @@ def split_title(
     ]
 
     # ====================================
-    # 意味のまとまり
+    # 分割したくない意味のまとまり
     # ====================================
 
-    semantic_marks = [
-        "向け",
-        "活用",
-        "方法",
-        "コツ",
-        "比較",
-        "まとめ",
-        "ロードマップ",
-        "収益化",
-        "効率化",
-        "自動化",
-        "チェックリスト",
-        "時短術",
-        "成功戦略",
-        "徹底解説",
-        "メリット・デメリット",
-        "メリット",
-        "デメリット",
-        "料金比較",
-        "機能比較",
-    ]
-
-    # ====================================
-    # 改行途中にしたくない語句
-    # ====================================
-
-    protected_phrases = [
+    PROTECTED_PHRASES = [
+        "ショート動画",
+        "AIショート動画",
+        "動画副業",
         "AI副業",
+        "AI活用",
         "AIチャット",
         "AI画像",
         "AIデザイン",
         "AI自動化",
-        "AIショート動画",
-        "ショート動画",
         "動画編集",
         "動画制作",
-        "動画副業",
         "時短術",
+        "時短テクニック",
         "収益化",
         "効率化",
         "自動化",
         "成功戦略",
-        "料金比較",
+        "実践ガイド",
+        "完全ガイド",
+        "初心者向け",
+        "徹底解説",
         "機能比較",
+        "料金比較",
         "メリット・デメリット",
+        "メリット",
+        "デメリット",
         "無料版",
         "有料版",
         "ショート動画収益化",
     ]
 
-    punctuation_marks = [
+    # ====================================
+    # 行頭に置かない記号
+    # ====================================
+
+    FORBIDDEN_LINE_START = [
         "！",
         "？",
         "。",
         "、",
+        "：",
+        ":",
+        "）",
+        ")",
+        "」",
+        "』",
+        "】",
+        "］",
+        "]",
+        "〉",
+        "》",
+        "〕",
+        "・",
+    ]
+
+    # ====================================
+    # 改行位置として避けたい記号
+    # ====================================
+
+    PREFERRED_BREAK_END = [
+        "！",
+        "？",
+        "。",
         "：",
         ":",
     ]
@@ -435,7 +445,7 @@ def split_title(
         body = prefix_match.group(2).strip()
 
     # ====================================
-    # 1行の幅
+    # 文字幅
     # ====================================
 
     def get_width(text):
@@ -447,7 +457,7 @@ def split_title(
         )
 
     # ====================================
-    # 英数字単語の途中か
+    # ASCII英数字
     # ====================================
 
     def is_ascii_alnum(char):
@@ -457,6 +467,10 @@ def split_title(
                 char,
             )
         )
+
+    # ====================================
+    # 英数字単語の途中か
+    # ====================================
 
     def is_inside_ascii_word(
         index,
@@ -474,14 +488,14 @@ def split_title(
         )
 
     # ====================================
-    # 保護語句の途中か
+    # 保護フレーズの途中か
     # ====================================
 
     def is_inside_protected_phrase(
         index,
         text,
     ):
-        for phrase in protected_phrases:
+        for phrase in PROTECTED_PHRASES:
 
             start = 0
 
@@ -512,7 +526,7 @@ def split_title(
         return False
 
     # ====================================
-    # 改行可能位置か
+    # 自然な改行位置か
     # ====================================
 
     def is_valid_boundary(
@@ -522,20 +536,14 @@ def split_title(
         if index <= 0 or index >= len(text):
             return False
 
-        # --------------------------------
-        # 英数字単語の途中
-        # --------------------------------
-
+        # 英数字単語の途中は禁止
         if is_inside_ascii_word(
             index,
             text,
         ):
             return False
 
-        # --------------------------------
-        # 意味のまとまりの途中
-        # --------------------------------
-
+        # 保護フレーズの途中は禁止
         if is_inside_protected_phrase(
             index,
             text,
@@ -548,102 +556,78 @@ def split_title(
         if not left or not right:
             return False
 
-        # --------------------------------
-        # 次の行が助詞から始まる場合は禁止
-        # --------------------------------
-
-        if any(
-            right.startswith(particle)
-            for particle in particles
+        # 行頭に記号が来る場合は禁止
+        if right.startswith(
+            tuple(FORBIDDEN_LINE_START)
         ):
             return False
 
-        # --------------------------------
-        # 次の行が句読点・記号から
-        # 始まる場合は禁止
-        # --------------------------------
-
-        forbidden_line_start = [
-            "！",
-            "？",
-            "。",
-            "、",
-            "：",
-            ":",
-            "）",
-            ")",
-            "」",
-            "』",
-            "】",
-            "〉",
-            "》",
-            "〕",
-            "］",
-            "]",
-            "〉",
-            "》",
-            "・",
-        ]
-
-        if right.startswith(
-            tuple(forbidden_line_start)
+        # 助詞だけが行頭に来る場合は禁止
+        if any(
+            right.startswith(particle)
+            for particle in PARTICLES
         ):
             return False
 
         return True
 
     # ====================================
-    # 分割位置の評価
+    # 改行位置の自然さを評価
     # ====================================
 
     def boundary_score(
         left,
         right,
-        left_width,
-        right_width,
     ):
         score = 0
-
-        # --------------------------------
-        # 行幅のバランス
-        # --------------------------------
-
-        score += abs(
-            left_width
-            -
-            right_width
-        )
-
-        # --------------------------------
-        # 助詞の直後
-        # --------------------------------
-
-        for particle in particles:
-
-            if left.endswith(
-                particle
-            ):
-                score -= 300
-                break
 
         # --------------------------------
         # 記号の直後
         # --------------------------------
 
         if left.endswith(
-            tuple(punctuation_marks)
+            tuple(PREFERRED_BREAK_END)
         ):
-            score -= 500
+            score -= 1200
 
         # --------------------------------
-        # 意味のまとまり
+        # 助詞の直後
         # --------------------------------
 
-        for mark in semantic_marks:
+        for particle in PARTICLES:
 
-            if left.endswith(mark):
-                score -= 300
+            if left.endswith(particle):
+                score -= 700
                 break
+
+        # --------------------------------
+        # 意味のまとまりの直後
+        # --------------------------------
+
+        for phrase in PROTECTED_PHRASES:
+
+            if left.endswith(phrase):
+                score -= 900
+                break
+
+        # --------------------------------
+        # 文として不自然な切れ方を抑制
+        # --------------------------------
+
+        unnatural_starts = [
+            "そして",
+            "また",
+            "さらに",
+            "そのため",
+            "つまり",
+            "ので",
+            "ため",
+        ]
+
+        if right.startswith(
+            tuple(unnatural_starts)
+        ):
+            score += 600
 
         return score
 
@@ -651,9 +635,8 @@ def split_title(
     # 2行候補
     # ====================================
 
-    def make_two_line_candidates(
-        text,
-    ):
+    def make_two_line_candidates(text):
+
         candidates = []
 
         for i in range(
@@ -682,9 +665,36 @@ def split_title(
             score = boundary_score(
                 line1,
                 line2,
+            )
+
+            # --------------------------------
+            # 2行なら大きなペナルティを与えない
+            # --------------------------------
+            #
+            # 行幅の差は補助評価だけにする
+
+            score += (
+                abs(width1 - width2)
+                * 0.25
+            )
+
+            # 極端に短い行を避ける
+
+            shortest = min(
                 width1,
                 width2,
             )
+
+            longest = max(
+                width1,
+                width2,
+            )
+
+            if (
+                shortest
+                < longest * 0.35
+            ):
+                score += 500
 
             candidates.append(
                 (
@@ -702,9 +712,8 @@ def split_title(
     # 3行候補
     # ====================================
 
-    def make_three_line_candidates(
-        text,
-    ):
+    def make_three_line_candidates(text):
+
         candidates = []
 
         length = len(text)
@@ -756,49 +765,58 @@ def split_title(
                 ):
                     continue
 
+                lines = [
+                    line1,
+                    line2,
+                    line3,
+                ]
+
                 widths = [
                     width1,
                     width2,
                     width3,
                 ]
 
-                score = (
+                score = 0
+
+                # --------------------------------
+                # 改行位置を評価
+                # --------------------------------
+
+                score += boundary_score(
+                    line1,
+                    line2,
+                )
+
+                score += boundary_score(
+                    line2,
+                    line3,
+                )
+
+                # --------------------------------
+                # 行幅は補助的に評価
+                # --------------------------------
+
+                score += (
                     max(widths)
                     -
                     min(widths)
-                )
+                ) * 0.15
 
-                # 意味のまとまり
-                for line in [
-                    line1,
-                    line2,
-                ]:
-                    for mark in semantic_marks:
+                # --------------------------------
+                # 極端に短い行を避ける
+                # --------------------------------
 
-                        if line.endswith(mark):
-                            score -= 250
-                            break
+                longest = max(widths)
+                shortest = min(widths)
 
-                # 記号の直後
-                for line in [
-                    line1,
-                    line2,
-                ]:
-                    if line.endswith(
-                        tuple(
-                            punctuation_marks
-                        )
-                    ):
-                        score -= 350
+                if shortest < longest * 0.35:
+                    score += 600
 
                 candidates.append(
                     (
                         score,
-                        [
-                            line1,
-                            line2,
-                            line3,
-                        ],
+                        lines,
                     )
                 )
 
@@ -808,9 +826,8 @@ def split_title(
     # 4行候補
     # ====================================
 
-    def make_four_line_candidates(
-        text,
-    ):
+    def make_four_line_candidates(text):
+
         candidates = []
 
         length = len(text)
@@ -827,6 +844,7 @@ def split_title(
                 continue
 
             line1 = text[:i].strip()
+
             width1 = get_width(line1)
 
             if width1 > max_width:
@@ -844,6 +862,7 @@ def split_title(
                     continue
 
                 line2 = text[i:j].strip()
+
                 width2 = get_width(line2)
 
                 if width2 > max_width:
@@ -878,6 +897,13 @@ def split_title(
                     ):
                         continue
 
+                    lines = [
+                        line1,
+                        line2,
+                        line3,
+                        line4,
+                    ]
+
                     widths = [
                         width1,
                         width2,
@@ -885,25 +911,53 @@ def split_title(
                         width4,
                     ]
 
-                    score = (
+                    score = 0
+
+                    score += boundary_score(
+                        line1,
+                        line2,
+                    )
+
+                    score += boundary_score(
+                        line2,
+                        line3,
+                    )
+
+                    score += boundary_score(
+                        line3,
+                        line4,
+                    )
+
+                    # 4行では幅のバランスを
+                    # 少し強めに評価
+                    score += (
                         max(widths)
                         -
                         min(widths)
-                    )
+                    ) * 0.2
 
                     candidates.append(
                         (
                             score,
-                            [
-                                line1,
-                                line2,
-                                line3,
-                                line4,
-                            ],
+                            lines,
                         )
                     )
 
         return candidates
+
+    # ====================================
+    # 候補を選択
+    # ====================================
+
+    def choose_best(candidates):
+        if not candidates:
+            return None
+
+        candidates.sort(
+            key=lambda x: x[0]
+        )
+
+        return candidates[0][1]
 
     # ====================================
     # 1行で収まる場合
@@ -940,9 +994,9 @@ def split_title(
 
     if not prefix:
 
-        # ------------------------------
-        # 2行を最優先
-        # ------------------------------
+        # --------------------------------
+        # 2行
+        # --------------------------------
 
         candidates = (
             make_two_line_candidates(
@@ -950,17 +1004,16 @@ def split_title(
             )
         )
 
-        if candidates:
+        best = choose_best(
+            candidates
+        )
 
-            candidates.sort(
-                key=lambda x: x[0]
-            )
+        if best:
+            return best
 
-            return candidates[0][1]
-
-        # ------------------------------
+        # --------------------------------
         # 3行
-        # ------------------------------
+        # --------------------------------
 
         candidates = (
             make_three_line_candidates(
@@ -968,18 +1021,16 @@ def split_title(
             )
         )
 
-        if candidates:
+        best = choose_best(
+            candidates
+        )
 
-            candidates.sort(
-                key=lambda x: x[0]
-            )
+        if best:
+            return best
 
-            return candidates[0][1]
-
-        # ------------------------------
+        # --------------------------------
         # 4行
-        # 最小フォントサイズのみ
-        # ------------------------------
+        # --------------------------------
 
         if allow_four_lines:
 
@@ -989,13 +1040,12 @@ def split_title(
                 )
             )
 
-            if candidates:
+            best = choose_best(
+                candidates
+            )
 
-                candidates.sort(
-                    key=lambda x: x[0]
-                )
-
-                return candidates[0][1]
+            if best:
+                return best
 
     # ====================================
     # 【○○】あり
@@ -1003,14 +1053,11 @@ def split_title(
 
     else:
 
-        if (
-            get_width(prefix)
-            <= max_width
-        ):
+        if get_width(prefix) <= max_width:
 
-            # --------------------------
+            # --------------------------------
             # 本文2行
-            # --------------------------
+            # --------------------------------
 
             candidates = (
                 make_two_line_candidates(
@@ -1018,20 +1065,19 @@ def split_title(
                 )
             )
 
-            if candidates:
+            best = choose_best(
+                candidates
+            )
 
-                candidates.sort(
-                    key=lambda x: x[0]
-                )
-
+            if best:
                 return [
                     prefix,
-                    *candidates[0][1],
+                    *best,
                 ]
 
-            # --------------------------
+            # --------------------------------
             # 本文3行
-            # --------------------------
+            # --------------------------------
 
             candidates = (
                 make_three_line_candidates(
@@ -1039,20 +1085,19 @@ def split_title(
                 )
             )
 
-            if candidates:
+            best = choose_best(
+                candidates
+            )
 
-                candidates.sort(
-                    key=lambda x: x[0]
-                )
-
+            if best:
                 return [
                     prefix,
-                    *candidates[0][1],
+                    *best,
                 ]
 
-            # --------------------------
+            # --------------------------------
             # 本文4行
-            # --------------------------
+            # --------------------------------
 
             if allow_four_lines:
 
@@ -1062,34 +1107,33 @@ def split_title(
                     )
                 )
 
-                if candidates:
+                best = choose_best(
+                    candidates
+                )
 
-                    candidates.sort(
-                        key=lambda x: x[0]
-                    )
-
+                if best:
                     return [
                         prefix,
-                        *candidates[0][1],
+                        *best,
                     ]
 
     # ====================================
     # 最終手段
     # ====================================
 
-    # ここまで来た場合は、
-    # 自然な分割候補が見つからない。
-    #
-    # ただし英数字・保護語句の途中では
-    # 絶対に分割しない。
-
     text = body
 
     if not text:
-        return [prefix] if prefix else [title]
+        return (
+            [prefix]
+            if prefix
+            else [title]
+        )
 
     target_lines = (
-        4 if allow_four_lines else 3
+        4
+        if allow_four_lines
+        else 3
     )
 
     result = []
