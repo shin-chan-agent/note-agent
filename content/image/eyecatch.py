@@ -311,18 +311,14 @@ def split_title(
     allow_four_lines=False,
 ):
     """
-    タイトルを自然な意味のまとまりを優先して
-    1〜4行に分割する。
+    日本語タイトルを自然な意味のまとまりで分割する。
 
-    優先順位
-    1. 【○○】を独立させる
-    2. 意味のまとまりを壊さない
-    3. 記号を行頭にしない
-    4. 助詞を行頭にしない
-    5. 英数字の途中で分割しない
-    6. 2〜3行を優先する
-    7. 行幅のバランスは補助的に評価する
-    8. 4行は最終手段
+    方針：
+    1. 【○○】は独立行として扱う
+    2. 絶対に切ってはいけない位置を除外する
+    3. 2行 → 3行 → 4行の順に候補を作る
+    4. 意味のまとまりを最優先する
+    5. 行幅のバランスは補助的に評価する
     """
 
     import re
@@ -331,78 +327,32 @@ def split_title(
 
     letter_spacing = font.size * 0.015
 
-    # ====================================
-    # 助詞
-    # ====================================
+    # ==================================================
+    # 1. 基本設定
+    # ==================================================
 
     PARTICLES = [
         "が",
         "は",
         "の",
-        "で",
         "を",
         "に",
         "へ",
         "と",
         "も",
         "や",
-        "から",
-        "まで",
-        "より",
-        "だけ",
-        "ほど",
-        "しか",
-        "こそ",
-        "など",
+        "で",
     ]
 
-    # ====================================
-    # 分割したくない意味のまとまり
-    # ====================================
-
-    PROTECTED_PHRASES = [
-        "ショート動画",
-        "AIショート動画",
-        "動画副業",
-        "AI副業",
-        "AI活用",
-        "AIチャット",
-        "AI画像",
-        "AIデザイン",
-        "AI自動化",
-        "動画編集",
-        "動画制作",
-        "時短術",
-        "時短テクニック",
-        "収益化",
-        "効率化",
-        "自動化",
-        "成功戦略",
-        "実践ガイド",
-        "完全ガイド",
-        "初心者向け",
-        "徹底解説",
-        "機能比較",
-        "料金比較",
-        "メリット・デメリット",
-        "メリット",
-        "デメリット",
-        "無料版",
-        "有料版",
-        "ショート動画収益化",
-    ]
-
-    # ====================================
-    # 行頭に置かない記号
-    # ====================================
-
-    FORBIDDEN_LINE_START = [
+    FORBIDDEN_LINE_START = (
         "！",
         "？",
         "。",
         "、",
         "：",
         ":",
+        "；",
+        ";",
         "）",
         ")",
         "」",
@@ -414,39 +364,75 @@ def split_title(
         "》",
         "〕",
         "・",
-    ]
-
-    # ====================================
-    # 改行位置として避けたい記号
-    # ====================================
-
-    PREFERRED_BREAK_END = [
-        "！",
-        "？",
-        "。",
-        "：",
-        ":",
-    ]
-
-    # ====================================
-    # 【○○】を分離
-    # ====================================
-
-    prefix_match = re.match(
-        r"^(【[^】]+】)\s*(.*)$",
-        title,
     )
 
-    prefix = None
-    body = title
+    # ==================================================
+    # 2. 分割したくない語・フレーズ
+    # ==================================================
 
-    if prefix_match:
-        prefix = prefix_match.group(1).strip()
-        body = prefix_match.group(2).strip()
+    PROTECTED_PHRASES = [
+        # AI・動画
+        "ショート動画",
+        "AIショート動画",
+        "動画副業",
+        "AI副業",
+        "AI活用",
+        "AIチャット",
+        "AI画像",
+        "AIデザイン",
+        "AI自動化",
+        "動画編集",
+        "動画制作",
 
-    # ====================================
-    # 文字幅
-    # ====================================
+        # マネタイズ
+        "収益化",
+        "収益化術",
+        "時短術",
+        "時短テクニック",
+        "効率化",
+        "自動化",
+
+        # 解説系
+        "実践ガイド",
+        "完全ガイド",
+        "初心者向け",
+        "徹底解説",
+        "成功戦略",
+        "チェックリスト",
+
+        # 比較系
+        "メリット・デメリット",
+        "機能比較",
+        "料金比較",
+        "無料版",
+        "有料版",
+
+        # その他
+        "ロードマップ",
+        "活用方法",
+        "使い方",
+        "始め方",
+    ]
+
+    # ==================================================
+    # 3. さらに「意味のまとまり」として扱う表現
+    # ==================================================
+
+    # 助詞＋語句を途中で切らないためのパターン
+    PROTECTED_PATTERNS = [
+        r"[^、。！？]{1,12}から",
+        r"[^、。！？]{1,12}まで",
+        r"[^、。！？]{1,12}より",
+        r"[^、。！？]{1,12}だけ",
+        r"[^、。！？]{1,12}ほど",
+        r"[^、。！？]{1,12}しか",
+        r"[^、。！？]{1,12}こそ",
+        r"[^、。！？]{1,12}など",
+    ]
+
+    # ==================================================
+    # 4. 文字幅
+    # ==================================================
 
     def get_width(text):
         return measure_line(
@@ -456,9 +442,9 @@ def split_title(
             letter_spacing,
         )
 
-    # ====================================
-    # ASCII英数字
-    # ====================================
+    # ==================================================
+    # 5. ASCII英数字の途中判定
+    # ==================================================
 
     def is_ascii_alnum(char):
         return bool(
@@ -468,28 +454,19 @@ def split_title(
             )
         )
 
-    # ====================================
-    # 英数字単語の途中か
-    # ====================================
-
-    def is_inside_ascii_word(
-        index,
-        text,
-    ):
+    def is_inside_ascii_word(index, text):
         if index <= 0 or index >= len(text):
             return False
 
-        left = text[index - 1]
-        right = text[index]
-
         return (
-            is_ascii_alnum(left)
-            and is_ascii_alnum(right)
+            is_ascii_alnum(text[index - 1])
+            and
+            is_ascii_alnum(text[index])
         )
 
-    # ====================================
-    # 保護フレーズの途中か
-    # ====================================
+    # ==================================================
+    # 6. 保護フレーズの途中判定
+    # ==================================================
 
     def is_inside_protected_phrase(
         index,
@@ -525,417 +502,342 @@ def split_title(
 
         return False
 
-    # ====================================
-    # 自然な改行位置か
-    # ====================================
+    # ==================================================
+    # 7. 「から」「まで」などの途中判定
+    # ==================================================
 
-    def is_valid_boundary(
+    def is_inside_protected_pattern(
+        index,
+        text,
+    ):
+        for pattern in PROTECTED_PATTERNS:
+
+            for match in re.finditer(
+                pattern,
+                text,
+            ):
+
+                if (
+                    match.start()
+                    <
+                    index
+                    <
+                    match.end()
+                ):
+                    return True
+
+        return False
+
+    # ==================================================
+    # 8. 絶対に切ってはいけない位置
+    # ==================================================
+
+    def is_forbidden_boundary(
         index,
         text,
     ):
         if index <= 0 or index >= len(text):
-            return False
+            return True
 
-        # 英数字単語の途中は禁止
+        left = text[index - 1]
+        right = text[index]
+
+        # ----------------------------------------------
+        # 英数字の途中
+        # ----------------------------------------------
+
         if is_inside_ascii_word(
             index,
             text,
         ):
-            return False
+            return True
 
-        # 保護フレーズの途中は禁止
+        # ----------------------------------------------
+        # 保護フレーズの途中
+        # ----------------------------------------------
+
         if is_inside_protected_phrase(
             index,
             text,
         ):
-            return False
+            return True
 
-        left = text[:index].strip()
-        right = text[index:].strip()
+        # ----------------------------------------------
+        # 「から」「まで」などのまとまり途中
+        # ----------------------------------------------
 
-        if not left or not right:
-            return False
-
-        # 行頭に記号が来る場合は禁止
-        if right.startswith(
-            tuple(FORBIDDEN_LINE_START)
+        if is_inside_protected_pattern(
+            index,
+            text,
         ):
-            return False
+            return True
 
-        # 助詞だけが行頭に来る場合は禁止
-        if any(
-            right.startswith(particle)
-            for particle in PARTICLES
-        ):
-            return False
+        # ----------------------------------------------
+        # 次の行が記号から始まる
+        # ----------------------------------------------
 
-        return True
+        if right in FORBIDDEN_LINE_START:
+            return True
 
-    # ====================================
-    # 改行位置の自然さを評価
-    # ====================================
+        # ----------------------------------------------
+        # 助詞を次の行に送る
+        # ----------------------------------------------
 
-    def boundary_score(
-        left,
-        right,
-    ):
-        score = 0
+        if right in PARTICLES:
+            return True
 
-        # --------------------------------
-        # 記号の直後
-        # --------------------------------
+        # ----------------------------------------------
+        # 括弧の中を分断する
+        # ----------------------------------------------
 
-        if left.endswith(
-            tuple(PREFERRED_BREAK_END)
-        ):
-            score -= 1200
+        left_count = text[:index].count("「")
+        right_count = text[:index].count("」")
 
-        # --------------------------------
-        # 助詞の直後
-        # --------------------------------
+        if left_count > right_count:
+            return True
 
-        for particle in PARTICLES:
+        left_count = text[:index].count("『")
+        right_count = text[:index].count("』")
 
-            if left.endswith(particle):
-                score -= 700
-                break
+        if left_count > right_count:
+            return True
 
-        # --------------------------------
-        # 意味のまとまりの直後
-        # --------------------------------
+        return False
 
-        for phrase in PROTECTED_PHRASES:
+    # ==================================================
+    # 9. 分割候補位置を作る
+    # ==================================================
 
-            if left.endswith(phrase):
-                score -= 900
-                break
+    def get_valid_boundaries(text):
 
-        # --------------------------------
-        # 文として不自然な切れ方を抑制
-        # --------------------------------
+        boundaries = []
 
-        unnatural_starts = [
-            "そして",
-            "また",
-            "さらに",
-            "そのため",
-            "つまり",
-            "ので",
-            "ため",
-        ]
-
-        if right.startswith(
-            tuple(unnatural_starts)
-        ):
-            score += 600
-
-        return score
-
-    # ====================================
-    # 2行候補
-    # ====================================
-
-    def make_two_line_candidates(text):
-
-        candidates = []
-
-        for i in range(
+        for index in range(
             1,
             len(text),
         ):
 
-            if not is_valid_boundary(
-                i,
+            if is_forbidden_boundary(
+                index,
                 text,
             ):
                 continue
 
-            line1 = text[:i].strip()
-            line2 = text[i:].strip()
+            left = text[:index].strip()
+            right = text[index:].strip()
 
-            width1 = get_width(line1)
-            width2 = get_width(line2)
-
-            if (
-                width1 > max_width
-                or width2 > max_width
-            ):
+            if not left or not right:
                 continue
 
-            score = boundary_score(
-                line1,
-                line2,
+            boundaries.append(index)
+
+        return boundaries
+
+    # ==================================================
+    # 10. 改行位置の自然さ
+    # ==================================================
+
+    def boundary_score(
+        index,
+        text,
+    ):
+        left = text[:index].strip()
+        right = text[index:].strip()
+
+        score = 0
+
+        # ----------------------------------------------
+        # 強い区切り
+        # ----------------------------------------------
+
+        if left.endswith(
+            (
+                "！",
+                "？",
+                "。",
+                "：",
+                ":",
             )
+        ):
+            score -= 2000
 
-            # --------------------------------
-            # 2行なら大きなペナルティを与えない
-            # --------------------------------
-            #
-            # 行幅の差は補助評価だけにする
+        # ----------------------------------------------
+        # 助詞の直後
+        # ----------------------------------------------
 
-            score += (
-                abs(width1 - width2)
-                * 0.25
-            )
+        for particle in PARTICLES:
 
-            # 極端に短い行を避ける
-
-            shortest = min(
-                width1,
-                width2,
-            )
-
-            longest = max(
-                width1,
-                width2,
-            )
-
-            if (
-                shortest
-                < longest * 0.35
+            if left.endswith(
+                particle
             ):
-                score += 500
+                score -= 700
+                break
 
-            candidates.append(
-                (
-                    score,
-                    [
-                        line1,
-                        line2,
-                    ],
-                )
+        # ----------------------------------------------
+        # 意味のまとまり直後
+        # ----------------------------------------------
+
+        for phrase in PROTECTED_PHRASES:
+
+            if left.endswith(
+                phrase
+            ):
+                score -= 900
+                break
+
+        # ----------------------------------------------
+        # 「から」「まで」などの直後
+        # ----------------------------------------------
+
+        for suffix in [
+            "から",
+            "まで",
+            "より",
+            "だけ",
+            "ほど",
+            "しか",
+            "こそ",
+            "など",
+        ]:
+
+            if left.endswith(
+                suffix
+            ):
+                score -= 600
+                break
+
+        # ----------------------------------------------
+        # 行頭が不自然な接続語
+        # ----------------------------------------------
+
+        for word in [
+            "ので",
+            "ため",
+            "から",
+            "まで",
+            "より",
+            "だけ",
+            "ほど",
+            "しか",
+            "こそ",
+            "など",
+        ]:
+
+            if right.startswith(word):
+                score += 1500
+
+        return score
+
+    # ==================================================
+    # 11. 候補全体の評価
+    # ==================================================
+
+    def evaluate_lines(lines):
+
+        widths = [
+            get_width(line)
+            for line in lines
+        ]
+
+        # 幅オーバーは失格
+        if any(
+            width > max_width
+            for width in widths
+        ):
+            return None
+
+        score = 0
+
+        # ----------------------------------------------
+        # 各行の改行位置を評価
+        # ----------------------------------------------
+
+        position = 0
+
+        for line in lines[:-1]:
+
+            position += len(line)
+
+            score += boundary_score(
+                position,
+                "".join(lines),
             )
 
-        return candidates
+        # ----------------------------------------------
+        # 行数
+        # ----------------------------------------------
 
-    # ====================================
-    # 3行候補
-    # ====================================
+        if len(lines) == 2:
+            score -= 500
 
-    def make_three_line_candidates(text):
+        elif len(lines) == 3:
+            score -= 300
+
+        elif len(lines) == 4:
+            score += 2000
+
+        # ----------------------------------------------
+        # 極端に短い行を避ける
+        # ----------------------------------------------
+
+        max_width_value = max(
+            widths
+        )
+
+        min_width_value = min(
+            widths
+        )
+
+        if (
+            min_width_value
+            <
+            max_width_value * 0.35
+        ):
+            score += 1000
+
+        # ----------------------------------------------
+        # 行幅の差
+        #
+        # ここは「補助評価」にする
+        # ----------------------------------------------
+
+        score += (
+            max_width_value
+            -
+            min_width_value
+        ) * 0.10
+
+        return score
+
+    # ==================================================
+    # 12. 2〜4行候補を総当たり
+    # ==================================================
+
+    def generate_candidates(
+        text,
+        line_count,
+    ):
+
+        boundaries = (
+            get_valid_boundaries(text)
+        )
 
         candidates = []
 
-        length = len(text)
+        if line_count == 2:
 
-        for i in range(
-            1,
-            length - 1,
-        ):
-
-            if not is_valid_boundary(
-                i,
-                text,
-            ):
-                continue
-
-            line1 = text[:i].strip()
-
-            width1 = get_width(line1)
-
-            if width1 > max_width:
-                continue
-
-            for j in range(
-                i + 1,
-                length,
-            ):
-
-                if not is_valid_boundary(
-                    j,
-                    text,
-                ):
-                    continue
-
-                line2 = text[i:j].strip()
-                line3 = text[j:].strip()
-
-                if (
-                    not line2
-                    or not line3
-                ):
-                    continue
-
-                width2 = get_width(line2)
-                width3 = get_width(line3)
-
-                if (
-                    width2 > max_width
-                    or width3 > max_width
-                ):
-                    continue
+            for i in boundaries:
 
                 lines = [
-                    line1,
-                    line2,
-                    line3,
+                    text[:i].strip(),
+                    text[i:].strip(),
                 ]
 
-                widths = [
-                    width1,
-                    width2,
-                    width3,
-                ]
-
-                score = 0
-
-                # --------------------------------
-                # 改行位置を評価
-                # --------------------------------
-
-                score += boundary_score(
-                    line1,
-                    line2,
+                score = evaluate_lines(
+                    lines
                 )
 
-                score += boundary_score(
-                    line2,
-                    line3,
-                )
-
-                # --------------------------------
-                # 行幅は補助的に評価
-                # --------------------------------
-
-                score += (
-                    max(widths)
-                    -
-                    min(widths)
-                ) * 0.15
-
-                # --------------------------------
-                # 極端に短い行を避ける
-                # --------------------------------
-
-                longest = max(widths)
-                shortest = min(widths)
-
-                if shortest < longest * 0.35:
-                    score += 600
-
-                candidates.append(
-                    (
-                        score,
-                        lines,
-                    )
-                )
-
-        return candidates
-
-    # ====================================
-    # 4行候補
-    # ====================================
-
-    def make_four_line_candidates(text):
-
-        candidates = []
-
-        length = len(text)
-
-        for i in range(
-            1,
-            length - 2,
-        ):
-
-            if not is_valid_boundary(
-                i,
-                text,
-            ):
-                continue
-
-            line1 = text[:i].strip()
-
-            width1 = get_width(line1)
-
-            if width1 > max_width:
-                continue
-
-            for j in range(
-                i + 1,
-                length - 1,
-            ):
-
-                if not is_valid_boundary(
-                    j,
-                    text,
-                ):
-                    continue
-
-                line2 = text[i:j].strip()
-
-                width2 = get_width(line2)
-
-                if width2 > max_width:
-                    continue
-
-                for k in range(
-                    j + 1,
-                    length,
-                ):
-
-                    if not is_valid_boundary(
-                        k,
-                        text,
-                    ):
-                        continue
-
-                    line3 = text[j:k].strip()
-                    line4 = text[k:].strip()
-
-                    if (
-                        not line3
-                        or not line4
-                    ):
-                        continue
-
-                    width3 = get_width(line3)
-                    width4 = get_width(line4)
-
-                    if (
-                        width3 > max_width
-                        or width4 > max_width
-                    ):
-                        continue
-
-                    lines = [
-                        line1,
-                        line2,
-                        line3,
-                        line4,
-                    ]
-
-                    widths = [
-                        width1,
-                        width2,
-                        width3,
-                        width4,
-                    ]
-
-                    score = 0
-
-                    score += boundary_score(
-                        line1,
-                        line2,
-                    )
-
-                    score += boundary_score(
-                        line2,
-                        line3,
-                    )
-
-                    score += boundary_score(
-                        line3,
-                        line4,
-                    )
-
-                    # 4行では幅のバランスを
-                    # 少し強めに評価
-                    score += (
-                        max(widths)
-                        -
-                        min(widths)
-                    ) * 0.2
-
+                if score is not None:
                     candidates.append(
                         (
                             score,
@@ -943,44 +845,110 @@ def split_title(
                         )
                     )
 
+        elif line_count == 3:
+
+            for i in boundaries:
+
+                for j in boundaries:
+
+                    if j <= i:
+                        continue
+
+                    lines = [
+                        text[:i].strip(),
+                        text[i:j].strip(),
+                        text[j:].strip(),
+                    ]
+
+                    if any(
+                        not line
+                        for line in lines
+                    ):
+                        continue
+
+                    score = evaluate_lines(
+                        lines
+                    )
+
+                    if score is not None:
+                        candidates.append(
+                            (
+                                score,
+                                lines,
+                            )
+                        )
+
+        elif line_count == 4:
+
+            for i in boundaries:
+
+                for j in boundaries:
+
+                    if j <= i:
+                        continue
+
+                    for k in boundaries:
+
+                        if k <= j:
+                            continue
+
+                        lines = [
+                            text[:i].strip(),
+                            text[i:j].strip(),
+                            text[j:k].strip(),
+                            text[k:].strip(),
+                        ]
+
+                        if any(
+                            not line
+                            for line in lines
+                        ):
+                            continue
+
+                        score = evaluate_lines(
+                            lines
+                        )
+
+                        if score is not None:
+                            candidates.append(
+                                (
+                                    score,
+                                    lines,
+                                )
+                            )
+
         return candidates
 
-    # ====================================
-    # 候補を選択
-    # ====================================
+    # ==================================================
+    # 13. 【○○】を分離
+    # ==================================================
 
-    def choose_best(candidates):
-        if not candidates:
-            return None
+    prefix_match = re.match(
+        r"^(【[^】]+】)\s*(.*)$",
+        title,
+    )
 
-        candidates.sort(
-            key=lambda x: x[0]
+    if prefix_match:
+
+        prefix = (
+            prefix_match
+            .group(1)
+            .strip()
         )
 
-        return candidates[0][1]
+        body = (
+            prefix_match
+            .group(2)
+            .strip()
+        )
 
-    # ====================================
-    # 1行で収まる場合
-    # ====================================
-
-    if not prefix:
-
-        if get_width(title) <= max_width:
-            return [title]
-
-    else:
-
-        if (
-            get_width(prefix)
-            <= max_width
-            and not body
-        ):
+        # 【○○】だけならそのまま
+        if not body:
             return [prefix]
 
+        # 本文1行
         if (
-            get_width(prefix)
-            <= max_width
-            and get_width(body)
+            get_width(body)
             <= max_width
         ):
             return [
@@ -988,146 +956,77 @@ def split_title(
                 body,
             ]
 
-    # ====================================
-    # 【○○】なし
-    # ====================================
-
-    if not prefix:
-
-        # --------------------------------
-        # 2行
-        # --------------------------------
-
-        candidates = (
-            make_two_line_candidates(
-                body
-            )
-        )
-
-        best = choose_best(
-            candidates
-        )
-
-        if best:
-            return best
-
-        # --------------------------------
-        # 3行
-        # --------------------------------
-
-        candidates = (
-            make_three_line_candidates(
-                body
-            )
-        )
-
-        best = choose_best(
-            candidates
-        )
-
-        if best:
-            return best
-
-        # --------------------------------
-        # 4行
-        # --------------------------------
-
-        if allow_four_lines:
-
-            candidates = (
-                make_four_line_candidates(
-                    body
-                )
-            )
-
-            best = choose_best(
-                candidates
-            )
-
-            if best:
-                return best
-
-    # ====================================
-    # 【○○】あり
-    # ====================================
-
     else:
 
-        if get_width(prefix) <= max_width:
+        prefix = None
+        body = title
 
-            # --------------------------------
-            # 本文2行
-            # --------------------------------
+        # 1行で収まる
+        if (
+            get_width(body)
+            <= max_width
+        ):
+            return [body]
 
-            candidates = (
-                make_two_line_candidates(
-                    body
-                )
+    # ==================================================
+    # 14. 2行 → 3行 → 4行
+    # ==================================================
+
+    max_lines = (
+        4
+        if allow_four_lines
+        else 3
+    )
+
+    for line_count in range(
+        2,
+        max_lines + 1,
+    ):
+
+        candidates = (
+            generate_candidates(
+                body,
+                line_count,
             )
+        )
 
-            best = choose_best(
-                candidates
-            )
+        if not candidates:
+            continue
 
-            if best:
-                return [
-                    prefix,
-                    *best,
-                ]
+        candidates.sort(
+            key=lambda item: item[0]
+        )
 
-            # --------------------------------
-            # 本文3行
-            # --------------------------------
+        best_lines = (
+            candidates[0][1]
+        )
 
-            candidates = (
-                make_three_line_candidates(
-                    body
-                )
-            )
+        if prefix:
+            return [
+                prefix,
+                *best_lines,
+            ]
 
-            best = choose_best(
-                candidates
-            )
+        return best_lines
 
-            if best:
-                return [
-                    prefix,
-                    *best,
-                ]
+    # ==================================================
+    # 15. 最終手段
+    # ==================================================
 
-            # --------------------------------
-            # 本文4行
-            # --------------------------------
+    # ここまで来た場合は、
+    # 自然な分割位置だけでは収まらない。
+    #
+    # それでも禁止位置では切らない。
 
-            if allow_four_lines:
+    boundaries = (
+        get_valid_boundaries(body)
+    )
 
-                candidates = (
-                    make_four_line_candidates(
-                        body
-                    )
-                )
-
-                best = choose_best(
-                    candidates
-                )
-
-                if best:
-                    return [
-                        prefix,
-                        *best,
-                    ]
-
-    # ====================================
-    # 最終手段
-    # ====================================
-
-    text = body
-
-    if not text:
+    if not boundaries:
         return (
-            [prefix]
+            [prefix, body]
             if prefix
-            else [title]
+            else [body]
         )
 
     target_lines = (
@@ -1138,41 +1037,39 @@ def split_title(
 
     result = []
 
-    remaining = text
+    remaining = body
 
     for line_number in range(
         target_lines - 1
     ):
 
-        if not remaining:
-            break
+        remaining_lines = (
+            target_lines
+            -
+            line_number
+        )
 
         target_length = (
             len(remaining)
             /
-            (
-                target_lines
-                -
-                line_number
-            )
+            remaining_lines
         )
 
         best_index = None
         best_distance = None
 
-        for i in range(
-            1,
-            len(remaining),
-        ):
+        current_boundaries = (
+            get_valid_boundaries(
+                remaining
+            )
+        )
 
-            if not is_valid_boundary(
-                i,
-                remaining,
-            ):
-                continue
+        for index in current_boundaries:
 
             distance = abs(
-                i - target_length
+                index
+                -
+                target_length
             )
 
             if (
@@ -1180,7 +1077,7 @@ def split_title(
                 or distance < best_distance
             ):
                 best_distance = distance
-                best_index = i
+                best_index = index
 
         if best_index is None:
             break
