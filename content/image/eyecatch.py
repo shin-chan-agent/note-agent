@@ -23,7 +23,7 @@ def create_eyecatch(
     # =========================
 
     BASE_FONT_SIZE = 92
-    MIN_FONT_SIZE = 56
+    MIN_FONT_SIZE = 64
 
     letter_spacing_ratio = 0.015
     line_spacing_ratio = 0.3
@@ -91,14 +91,20 @@ def create_eyecatch(
         )
 
         # =========================
-        # タイトルを2〜3行に分割
+        # タイトルを2〜3行優先で分割
+        # 最小フォントサイズのみ4行を許可
         # =========================
+
+        allow_four_lines = (
+            font_size == MIN_FONT_SIZE
+        )
 
         lines = split_title(
             title,
             font,
             draw,
             panel_width,
+            allow_four_lines=allow_four_lines,
         )
 
         parts_list = [
@@ -119,15 +125,36 @@ def create_eyecatch(
             for parts in parts_list
         ]
 
+        # =========================
         # 全行がパネル幅に収まれば確定
+        # =========================
+
         if max(line_widths) <= panel_width:
 
-            print(f"[DEBUG] lines={lines}")
-            print(f"[DEBUG] font_size={font_size}")
+            print(
+                f"[DEBUG] lines={lines}"
+            )
+
+            print(
+                f"[DEBUG] font_size={font_size}"
+            )
+
+            print(
+                f"[DEBUG] line_count={len(lines)}"
+            )
 
             break
 
+        # =========================
+        # 2pxずつフォントを縮小
+        # =========================
+
         font_size -= 2
+
+    else:
+        raise ValueError(
+            "タイトルを指定範囲内に収められませんでした。"
+        )
 
     # =========================
     # 行間
