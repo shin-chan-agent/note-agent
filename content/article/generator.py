@@ -14,7 +14,10 @@ from utils.logger import (
     log_warning,
     log_error,
 )
-from utils.image_metadata_parser import parse_image_metadata
+from utils.image_metadata_parser import (
+    parse_image_metadata,
+    is_valid_image_metadata,
+)
 
 from config import (
     MIN_SCORE,
