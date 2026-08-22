@@ -17,6 +17,8 @@ RETRY_ERRORS = (
     "503",
     "UNAVAILABLE",
     "Gemini returned empty response",
+    "RemoteProtocolError",
+    "Server disconnected without sending a response",
 )
 
 
