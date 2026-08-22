@@ -55,3 +55,28 @@ def parse_image_metadata(text):
         "image_category": image_category,
         "highlight_keywords": highlight_keywords,
     }
+
+
+def is_valid_image_metadata(metadata):
+    """
+    画像カテゴリと強調キーワードの取得結果が
+    正常かどうかを判定する。
+    """
+
+    image_category = metadata.get(
+        "image_category",
+        ""
+    ).strip()
+
+    highlight_keywords = metadata.get(
+        "highlight_keywords",
+        []
+    )
+
+    # 画像カテゴリが空なら異常
+    if not image_category:
+        return False
+
+    # 強調キーワードは0個でも正常
+    # 「なし」の場合も正常
+    return True
