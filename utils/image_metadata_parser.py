@@ -26,14 +26,19 @@ def parse_image_metadata(text):
     )
 
     if keyword_match:
-        highlight_keywords = [
-            keyword.strip()
-            for keyword in re.split(
-                r"[,、]",
-                keyword_match.group(1)
-            )
-            if keyword.strip()
-        ]
+        keyword_text = keyword_match.group(1).strip()
+
+        if keyword_text in ["なし", "無し", "なし。", "無し。"]:
+            highlight_keywords = []
+        else:
+            highlight_keywords = [
+                keyword.strip()
+                for keyword in re.split(
+                    r"[,、]",
+                    keyword_text
+                )
+                if keyword.strip()
+            ]
     else:
         highlight_keywords = []
 
