@@ -253,14 +253,108 @@ def generate_article(
             time.sleep(GEMINI_RETRY_WAIT)
 
 
-    metadata = parse_image_metadata(article)
+        # ========================================
+        # アイキャッチ画像用メタデータ取得
+        # ========================================
 
-    article = metadata["article"]
-    image_category = metadata["image_category"]
-    highlight_keywords = metadata["highlight_keywords"]
+        metadata = parse_image_metadata(article)
 
-    log_info(f"画像カテゴリ：{image_category}")
-    log_info(f"強調キーワード：{highlight_keywords}")
+        # ----------------------------------------
+        # メタデータが欠落している場合のみ再取得
+        # 記事本文の再生成・リライトは行わない
+        # ----------------------------------------
+
+        if not is_valid_image_metadata(metadata):
+
+            log_warning(
+                "画像メタデータが正常に取得できませんでした。"
+                "画像メタデータのみ再取得します。"
+            )
+
+            metadata_prompt = f"""
+以下の記事について、アイキャッチ画像生成に必要な
+画像メタデータだけを判定してください。
+
+記事本文：
+{article}
+
+以下の形式で必ず2行だけ出力してください。
+
+画像カテゴリ：〇〇
+強調キーワード：〇〇、〇〇
+
+画像カテゴリは以下から必ず1つだけ選択してください。
+
+・AIチャット
+・AI画像・デザイン
+・動画編集・ショート動画
+・AI副業・マネタイズ
+・AI自動化・業務効率化
+
+強調キーワードは、記事タイトルに実際に含まれている
+重要なキーワードを0〜3個選択してください。
+
+適切な強調キーワードがない場合は、
+「強調キーワード：なし」
+としてください。
+
+記事本文や説明文は出力せず、
+必ず画像カテゴリと強調キーワードの2行だけを出力してください。
+"""
+
+            try:
+
+                metadata_response = call_gemini(
+                    client,
+                    model="gemini-2.5-flash",
+                    contents=metadata_prompt,
+                )
+
+                metadata_text = metadata_response.text.strip()
+
+                # 元の記事にメタデータだけを追加して再解析
+                metadata = parse_image_metadata(
+                    article
+                    + "\n\n"
+                    + metadata_text
+                )
+
+                if is_valid_image_metadata(metadata):
+
+                    log_info(
+                        "画像メタデータの再取得に成功しました。"
+                    )
+
+                else:
+
+                    log_warning(
+                        "画像メタデータの再取得にも失敗しました。"
+                    )
+
+            except GeminiDailyQuotaExceeded:
+                raise
+
+            except Exception as e:
+
+                log_warning(
+                    f"画像メタデータ再取得エラー：{e}"
+                )
+
+        # ----------------------------------------
+        # 最終結果
+        # ----------------------------------------
+
+        article = metadata["article"]
+        image_category = metadata["image_category"]
+        highlight_keywords = metadata["highlight_keywords"]
+
+        log_info(
+            f"画像カテゴリ：{image_category}"
+        )
+
+        log_info(
+            f"強調キーワード：{highlight_keywords}"
+        )
 
 
     return {
