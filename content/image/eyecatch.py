@@ -308,6 +308,7 @@ def split_title(
     font,
     draw,
     max_width,
+    allow_four_lines=False,
 ):
     """
     日本語として自然な意味のまとまりを優先して
