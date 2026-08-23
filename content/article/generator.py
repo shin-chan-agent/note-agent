@@ -253,25 +253,25 @@ def generate_article(
             time.sleep(GEMINI_RETRY_WAIT)
 
 
-        # ========================================
-        # アイキャッチ画像用メタデータ取得
-        # ========================================
+    # ========================================
+    # アイキャッチ画像用メタデータ取得
+    # ========================================
 
-        metadata = parse_image_metadata(article)
+    metadata = parse_image_metadata(article)
 
-        # ----------------------------------------
-        # メタデータが欠落している場合のみ再取得
-        # 記事本文の再生成・リライトは行わない
-        # ----------------------------------------
+    # ----------------------------------------
+    # メタデータが欠落している場合のみ再取得
+    # 記事本文の再生成・リライトは行わない
+    # ----------------------------------------
 
-        if not is_valid_image_metadata(metadata):
+    if not is_valid_image_metadata(metadata):
 
-            log_warning(
-                "画像メタデータが正常に取得できませんでした。"
-                "画像メタデータのみ再取得します。"
-            )
+        log_warning(
+            "画像メタデータが正常に取得できませんでした。"
+            "画像メタデータのみ再取得します。"
+        )
 
-            metadata_prompt = f"""
+        metadata_prompt = f"""
 以下の記事について、アイキャッチ画像生成に必要な
 画像メタデータだけを判定してください。
 
@@ -302,59 +302,59 @@ def generate_article(
 必ず画像カテゴリと強調キーワードの2行だけを出力してください。
 """
 
-            try:
+        try:
 
-                metadata_response = call_gemini(
-                    client,
-                    model="gemini-2.5-flash",
-                    contents=metadata_prompt,
+            metadata_response = call_gemini(
+                client,
+                model="gemini-2.5-flash",
+                contents=metadata_prompt,
+            )
+
+            metadata_text = metadata_response.text.strip()
+
+            # 元の記事にメタデータだけを追加して再解析
+            metadata = parse_image_metadata(
+                article
+                + "\n\n"
+                + metadata_text
+            )
+
+            if is_valid_image_metadata(metadata):
+
+                log_info(
+                    "画像メタデータの再取得に成功しました。"
                 )
 
-                metadata_text = metadata_response.text.strip()
-
-                # 元の記事にメタデータだけを追加して再解析
-                metadata = parse_image_metadata(
-                    article
-                    + "\n\n"
-                    + metadata_text
-                )
-
-                if is_valid_image_metadata(metadata):
-
-                    log_info(
-                        "画像メタデータの再取得に成功しました。"
-                    )
-
-                else:
-
-                    log_warning(
-                        "画像メタデータの再取得にも失敗しました。"
-                    )
-
-            except GeminiDailyQuotaExceeded:
-                raise
-
-            except Exception as e:
+            else:
 
                 log_warning(
-                    f"画像メタデータ再取得エラー：{e}"
+                    "画像メタデータの再取得にも失敗しました。"
                 )
 
-        # ----------------------------------------
-        # 最終結果
-        # ----------------------------------------
+        except GeminiDailyQuotaExceeded:
+            raise
 
-        article = metadata["article"]
-        image_category = metadata["image_category"]
-        highlight_keywords = metadata["highlight_keywords"]
+        except Exception as e:
 
-        log_info(
-            f"画像カテゴリ：{image_category}"
-        )
+            log_warning(
+                f"画像メタデータ再取得エラー：{e}"
+            )
 
-        log_info(
-            f"強調キーワード：{highlight_keywords}"
-        )
+    # ----------------------------------------
+    # 最終結果
+    # ----------------------------------------
+
+    article = metadata["article"]
+    image_category = metadata["image_category"]
+    highlight_keywords = metadata["highlight_keywords"]
+
+    log_info(
+        f"画像カテゴリ：{image_category}"
+    )
+
+    log_info(
+        f"強調キーワード：{highlight_keywords}"
+    )
 
 
     return {
