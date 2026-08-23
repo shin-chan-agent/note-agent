@@ -1,3 +1,4 @@
+import re
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import os
 
