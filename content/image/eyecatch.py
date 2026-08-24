@@ -176,7 +176,7 @@ def create_eyecatch(
     base_dir = os.path.dirname(
         os.path.dirname(
             os.path.dirname(
-                os.path.abspath(__file)
+                os.path.abspath(_file_)
             )
         )
     )
