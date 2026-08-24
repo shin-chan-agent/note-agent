@@ -1,16 +1,19 @@
+import os
 import re
+import time
 
 from google import genai
 
 from theme_manager import get_theme_and_angle
 
-from article_history import load_articles
+from article_history import load_articles, save_article
 
 from content.article.prompt import get_article_prompt
 from content.article.generator import generate_article
 from content.sns.generator import generate_sns_posts
 
 from utils.knowledge_manager import (
+    get_services,
     get_article_knowledge,
     needs_update,
     needs_retry,
@@ -31,6 +34,10 @@ from utils.gemini_client import GeminiDailyQuotaExceeded
 from config import (
     MIN_SCORE,
     MIN_SEO_SCORE,
+    MAX_REWRITE,
+    MAX_RETRY,
+    GOOGLE_SEARCH_RETRY_WAIT,
+    KNOWLEDGE_UPDATE_INTERVAL_DAYS,
     THEME_SERVICES,
 )
 
@@ -44,9 +51,7 @@ def get_target_services(theme):
     """
 
     print(f"[DEBUG] theme='{theme}'")
-    print(
-        f"[DEBUG] available={list(THEME_SERVICES.keys())}"
-    )
+    print(f"[DEBUG] available={list(THEME_SERVICES.keys())}")
 
     return THEME_SERVICES.get(theme, [])
 
@@ -66,24 +71,15 @@ def split_text(text, max_length=4990):
     while len(text) > max_length:
 
         # max_length以内で最後の「。」を探す
-        split_pos = text.rfind(
-            "。",
-            0,
-            max_length,
-        )
+        split_pos = text.rfind("。", 0, max_length)
 
         # 「。」がなければ最後の改行を探す
         if split_pos == -1:
-            split_pos = text.rfind(
-                "\n",
-                0,
-                max_length,
-            )
+            split_pos = text.rfind("\n", 0, max_length)
 
         # それでもなければ文字数で強制分割
         if split_pos == -1:
             split_pos = max_length
-
         else:
             # 「。」または改行を含める
             split_pos += 1
@@ -110,42 +106,24 @@ def split_text(text, max_length=4990):
 
 def generate_and_send_line():
 
-    # ========================================
-    # 現在日付
-    # ========================================
-
+    # 現在日付を日本時間で取得
     current_date = datetime.now(
         ZoneInfo("Asia/Tokyo")
     ).strftime("%Y年%m月%d日")
 
-
-    # ========================================
     # Geminiクライアント
-    # ========================================
-
     client = genai.Client()
 
-
-    # ========================================
-    # テーマ・切り口取得
-    # ========================================
-
+    # テーマ・切り口を決定
     theme, angle = get_theme_and_angle()
 
-
-    # ========================================
-    # 対象サービス取得
-    # ========================================
-
+    # テーマから対象サービスを取得
     services = get_target_services(theme)
 
-    log_info(
-        f"対象サービス: {services}"
-    )
-
+    log_info(f"対象サービス: {services}")
 
     # ========================================
-    # AI知識DB更新対象
+    # AI知識DBの更新対象を決定
     # ========================================
 
     update_services = [
@@ -155,12 +133,9 @@ def generate_and_send_line():
         or needs_retry(service_id)
     ]
 
-
     # バックグラウンド更新対象を1件追加
-    background_service = (
-        get_background_update_service(
-            services
-        )
+    background_service = get_background_update_service(
+        services
     )
 
     if background_service:
@@ -168,20 +143,15 @@ def generate_and_send_line():
             background_service
         )
 
-
     # 重複除去
     update_services = list(
         dict.fromkeys(update_services)
     )
 
-
-    log_info(
-        f"DB更新対象: {update_services}"
-    )
-
+    log_info(f"DB更新対象: {update_services}")
 
     # ========================================
-    # 最新情報取得
+    # AI知識DBの最新情報を取得
     # ========================================
 
     if update_services:
@@ -197,18 +167,16 @@ def generate_and_send_line():
             "AI知識DBは最新のため更新スキップ"
         )
 
-
     # ========================================
-    # 記事生成用知識取得
+    # 記事生成用の知識を取得
     # ========================================
 
     knowledge = get_article_knowledge(
         services
     )
 
-
     # ========================================
-    # 過去記事取得
+    # 過去記事を取得
     # ========================================
 
     past_articles = load_articles()
@@ -222,7 +190,6 @@ def generate_and_send_line():
         for article in past_articles[-20:]
     )
 
-
     # ========================================
     # 記事生成プロンプト
     # ========================================
@@ -234,7 +201,6 @@ def generate_and_send_line():
         past_articles_text,
         current_date,
     )
-
 
     # ========================================
     # 記事生成
@@ -263,7 +229,6 @@ def generate_and_send_line():
 
         return
 
-
     # ========================================
     # 記事生成結果
     # ========================================
@@ -272,25 +237,18 @@ def generate_and_send_line():
     evaluation = result["evaluation"]
     score = result["score"]
     seo_score = result["seo_score"]
-    duplicate_result = result[
-        "duplicate_result"
-    ]
-    latest_result = result[
-        "latest_result"
-    ]
-
+    duplicate_result = result["duplicate_result"]
+    latest_result = result["latest_result"]
 
     # ========================================
-    # SNS投稿生成
+    # X・Instagram投稿生成
     # ========================================
 
     try:
 
-        x_post, instagram_post = (
-            generate_sns_posts(
-                client,
-                article,
-            )
+        x_post, instagram_post = generate_sns_posts(
+            client,
+            article,
         )
 
     except GeminiDailyQuotaExceeded:
@@ -310,7 +268,6 @@ def generate_and_send_line():
             "Instagram投稿は生成できませんでした。"
         )
 
-
     # ========================================
     # 品質ステータス
     # ========================================
@@ -325,26 +282,6 @@ def generate_and_send_line():
         )
         else "⚠️ 品質基準未達"
     )
-
-
-    # ========================================
-    # タイトル取得
-    # ========================================
-
-    title_match = re.search(
-        r"^タイトル[:：]\s*(.+)$",
-        article,
-        re.MULTILINE,
-    )
-
-    if not title_match:
-
-        raise ValueError(
-            "記事内にタイトルが見つかりません。"
-        )
-
-    title = title_match.group(1).strip()
-
 
     # ========================================
     # 記事メッセージ
@@ -361,18 +298,15 @@ def generate_and_send_line():
 {article}
 """
 
-
     evaluation = evaluation.strip()
     x_post = x_post.strip()
     instagram_post = instagram_post.strip()
 
-
     # ========================================
-    # 評価・SNSメッセージ
+    # 評価・SNS投稿メッセージ
     # ========================================
 
-    summary_message = f"""
-📊【AI評価】
+    summary_message = f"""📊【AI評価】
 
 {evaluation}
 
@@ -389,49 +323,43 @@ def generate_and_send_line():
 {instagram_post}
 """
 
-
     # ========================================
     # LINEメッセージ作成
     # ========================================
 
     messages = []
 
-
-    # 記事本文
-    for part in split_text(
-        article_message
-    ):
+    # 長い記事は分割して送信
+    for part in split_text(article_message):
 
         messages.append(
             create_text_message(part)
         )
 
-
-    # 評価・SNS
+    # 評価・SNS投稿
     messages.append(
-        create_text_message(
-            summary_message
-        )
+        create_text_message(summary_message)
     )
 
-
     # ========================================
-    # LINE送信・履歴保存
+    # LINE送信・記事履歴保存
     # ========================================
 
     try:
 
-        send_line_messages(
+        response_line = send_line_messages(
             messages
         )
 
-
         save_article(
-            title,
-            theme,
-            angle,
+            title=re.search(
+                r"^タイトル[:：]\s*(.+)$",
+                article,
+                re.MULTILINE,
+            ).group(1).strip(),
+            theme=theme,
+            angle=angle,
         )
-
 
         log_info(
             "記事履歴を保存しました。"
@@ -441,14 +369,13 @@ def generate_and_send_line():
             "LINEへ正常に送信しました。"
         )
 
-
     except Exception as e:
 
         log_error(
             f"予期しないエラー: {e}"
         )
 
-        raise
+        raise e
 
 
 if __name__ == "__main__":
