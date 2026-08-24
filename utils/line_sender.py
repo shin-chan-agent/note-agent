@@ -2,81 +2,124 @@ import os
 import requests
 
 
+LINE_PUSH_URL = "https://api.line.me/v2/bot/message/push"
+LINE_MAX_MESSAGES = 5
+LINE_MAX_TEXT_LENGTH = 5000
+
+
 def send_line_messages(messages):
+    """
+    LINE Messaging APIへメッセージを送信する。
+
+    ・テキストは1メッセージ5000文字以内
+    ・1回のPush APIにつき最大5メッセージ
+    """
 
     print(f"LINE送信メッセージ数: {len(messages)}")
 
+    # ==========================================
+    # 送信前チェック
+    # ==========================================
+
     for i, message in enumerate(messages, 1):
 
-        if message["type"] == "text":
-            text_length = len(message["text"])
+        message_type = message.get("type")
+
+        if message_type == "text":
+
+            text = message.get("text", "")
+            text_length = len(text)
 
             print(
                 f"LINE送信{i}文字数: {text_length}"
             )
 
-            if text_length > 5000:
+            if text_length > LINE_MAX_TEXT_LENGTH:
                 raise ValueError(
-                    f"LINE送信{i}が5000文字を超えています: "
+                    f"LINE送信{i}が"
+                    f"{LINE_MAX_TEXT_LENGTH}文字を超えています: "
                     f"{text_length}文字"
                 )
 
-        elif message["type"] == "image":
-            print(
-                f"LINE送信{i}: 画像メッセージ"
+        else:
+            raise ValueError(
+                f"未対応のLINEメッセージタイプです: "
+                f"{message_type}"
             )
+
+    # ==========================================
+    # 環境変数
+    # ==========================================
 
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
     user_id = os.environ["LINE_USER_ID"]
-
-    url = "https://api.line.me/v2/bot/message/push"
 
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}",
     }
 
-    for i in range(0, len(messages), 5):
+    # ==========================================
+    # 最大5メッセージずつ送信
+    # ==========================================
+
+    response = None
+
+    for i in range(
+        0,
+        len(messages),
+        LINE_MAX_MESSAGES,
+    ):
+
+        batch = messages[
+            i:i + LINE_MAX_MESSAGES
+        ]
+
         payload = {
             "to": user_id,
-            "messages": messages[i:i+5]
+            "messages": batch,
         }
 
         response = requests.post(
-            url,
+            LINE_PUSH_URL,
             headers=headers,
-            json=payload
+            json=payload,
+            timeout=30,
         )
 
         if response.status_code != 200:
             raise RuntimeError(
-                f"LINE API Error {response.status_code}\n{response.text}"
+                f"LINE API Error "
+                f"{response.status_code}\n"
+                f"{response.text}"
             )
+
+        print(
+            f"LINE送信成功: "
+            f"{i + 1}〜{i + len(batch)}件"
+        )
 
     return response
 
 
 def create_text_message(text):
+    """
+    LINE用のテキストメッセージを作成する。
+    """
+
+    if not isinstance(text, str):
+        raise TypeError(
+            "LINEテキストメッセージは文字列で指定してください。"
+        )
+
+    if len(text) > LINE_MAX_TEXT_LENGTH:
+        raise ValueError(
+            f"LINEテキストが"
+            f"{LINE_MAX_TEXT_LENGTH}文字を超えています: "
+            f"{len(text)}文字"
+        )
 
     return {
         "type": "text",
         "text": text,
-    }
-
-
-def create_image_message(
-    image_url,
-    preview_url=None,
-):
-    """
-    LINEへ画像を送信するためのメッセージを作成する。
-    """
-
-    if preview_url is None:
-        preview_url = image_url
-
-    return {
-        "type": "image",
-        "originalContentUrl": image_url,
-        "previewImageUrl": preview_url,
     }
