@@ -256,6 +256,4 @@ def generate_article(
         "seo_score": seo_score,
         "duplicate_result": duplicate_result,
         "latest_result": latest_result,
-        "image_category": image_category,
-        "highlight_keywords": highlight_keywords,
     }
