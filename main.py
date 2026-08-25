@@ -56,54 +56,6 @@ def get_target_services(theme):
     return THEME_SERVICES.get(theme, [])
 
 
-def split_text(text, max_length=4990):
-    """
-    LINE送信用に文章を分割する。
-
-    ・1メッセージ最大4990文字
-    ・4990文字以内で最後に出てくる「。」で分割
-    ・「。」がなければ改行で分割
-    ・それもなければ文字数で分割
-    """
-
-    parts = []
-
-    while len(text) > max_length:
-
-        # max_length以内で最後の「。」を探す
-        split_pos = text.rfind("。", 0, max_length)
-
-        # 「。」がなければ最後の改行を探す
-        if split_pos == -1:
-            split_pos = text.rfind("\n", 0, max_length)
-
-        # それでもなければ文字数で強制分割
-        if split_pos == -1:
-            split_pos = max_length
-        else:
-            # 「。」または改行を含める
-            split_pos += 1
-
-        part = text[:split_pos].strip()
-
-        if part:
-            parts.append(part)
-
-        text = text[split_pos:].strip()
-
-    # 最後に残った部分
-    if text:
-        parts.append(text)
-
-    # 【1/○】を付与
-    total = len(parts)
-
-    return [
-        f"【{i + 1}/{total}】\n\n{part}"
-        for i, part in enumerate(parts)
-    ]
-
-
 def generate_and_send_line():
 
     # 現在日付を日本時間で取得
