@@ -69,7 +69,7 @@ AI_SERVICES = {
 
 
 THEME_SERVICES = {
-    "AI×ショート動画の実践・検証": [
+    "AI×ショート動画": [
         "chatgpt",
         "gemini",
         "canva",
