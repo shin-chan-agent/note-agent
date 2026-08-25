@@ -7,7 +7,7 @@ def rewrite_article(
     client,
     article,
     knowledge,
-    evaluation,
+    improvements,
 ):
 
     prompt = f"""
@@ -26,7 +26,7 @@ def rewrite_article(
 {article}
 
 【改善指示】
-{evaluation}
+{improvements}
 
 上記は改善が必要な箇所だけを抜き出した指示です。
 記載された内容だけを修正してください。
