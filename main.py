@@ -183,6 +183,12 @@ def generate_and_send_line():
             article,
         )
 
+        sns_generated = True
+
+        log_info(
+            "X・Instagram投稿を生成しました。"
+        )
+
     except GeminiDailyQuotaExceeded:
 
         log_warning(
@@ -190,15 +196,19 @@ def generate_and_send_line():
             "SNS投稿生成をスキップします。"
         )
 
-        x_post = (
-            "※Gemini APIの日次クォータ超過のため、"
-            "X投稿は生成できませんでした。"
+        x_post = None
+        instagram_post = None
+        sns_generated = False
+
+    except Exception as e:
+
+        log_warning(
+            f"SNS投稿生成に失敗しました: {e}"
         )
 
-        instagram_post = (
-            "※Gemini APIの日次クォータ超過のため、"
-            "Instagram投稿は生成できませんでした。"
-        )
+        x_post = None
+        instagram_post = None
+        sns_generated = False
 
     # ========================================
     # 品質ステータス
@@ -230,18 +240,24 @@ def generate_and_send_line():
 {article}
 """
 
-    evaluation = evaluation.strip()
-    x_post = x_post.strip()
-    instagram_post = instagram_post.strip()
-
     # ========================================
     # 評価・SNS投稿メッセージ
     # ========================================
 
+    evaluation = evaluation.strip()
+
     summary_message = f"""📊【AI評価】
 
 {evaluation}
+"""
 
+    # SNS生成成功時のみX・Instagramを追加
+    if sns_generated:
+
+        x_post = x_post.strip()
+        instagram_post = instagram_post.strip()
+
+        summary_message += f"""
 --------------------
 
 🐦【X投稿】
@@ -268,7 +284,7 @@ def generate_and_send_line():
             create_text_message(part)
         )
 
-    # 評価・SNS投稿
+    # AI評価は必ず送信
     messages.append(
         create_text_message(summary_message)
     )
