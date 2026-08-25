@@ -126,16 +126,7 @@ def generate_and_send_line():
     # 過去記事を取得
     # ========================================
 
-    past_articles = load_articles()
-
-    past_articles_text = "\n\n".join(
-        (
-            f"タイトル: {article['title']}\n"
-            f"テーマ: {article['theme']}\n"
-            f"切り口: {article['angle']}"
-        )
-        for article in past_articles[-20:]
-    )
+    past_articles_text = get_past_articles_text()
 
     # ========================================
     # 記事生成プロンプト
