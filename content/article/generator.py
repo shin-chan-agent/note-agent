@@ -26,6 +26,46 @@ from config import (
 )
 
 
+def extract_title(article):
+    """
+    記事本文から「タイトル：」のタイトルを抽出する。
+
+    「タイトル:」と「タイトル：」の両方に対応する。
+    """
+
+    match = re.search(
+        r"^タイトル[:：]\s*(.+)$",
+        article,
+        re.MULTILINE,
+    )
+
+    if not match:
+        raise ValueError(
+            "記事内にタイトルが見つかりません。"
+        )
+
+    return match.group(1).strip()
+
+
+def remove_before_title(article):
+    """
+    「タイトル：」より前にある余計な文章を削除する。
+    """
+
+    title_match = re.search(
+        r"^タイトル[:：]",
+        article,
+        re.MULTILINE,
+    )
+
+    if not title_match:
+        raise ValueError(
+            "記事内にタイトルが見つかりません。"
+        )
+
+    return article[title_match.start():].strip()
+
+
 def generate_article(
     client,
     prompt,
@@ -33,9 +73,10 @@ def generate_article(
     past_articles_text,
 ):
 
-
     for attempt in range(MAX_RETRY):
+
         try:
+
             response = call_gemini(
                 client,
                 model="gemini-2.5-flash",
@@ -47,27 +88,10 @@ def generate_article(
             article = generated_text
 
             # 「タイトル：」より前の余計な文章を除去
-            title_match = re.search(
-                r"^タイトル[:：]",
-                article,
-                re.MULTILINE,
-            )
+            article = remove_before_title(article)
 
-            if title_match:
-                article = article[title_match.start():].strip()
-            else:
-                raise ValueError(
-                    "記事内にタイトルが見つかりません。"
-                )
-
-            # タイトル欠落チェック
-            if not re.search(
-                r"^タイトル[:：]",
-                article,
-                re.MULTILINE,
-            ):
-                log_warning("タイトル欠落。再生成します。")
-                continue
+            # タイトル抽出・存在チェック
+            extract_title(article)
 
             # 固定記事案内チェック
             fixed_text = (
@@ -76,22 +100,31 @@ def generate_article(
             )
 
             if fixed_text not in article:
-                log_warning("固定記事案内欠落。再生成します。")
+                log_warning(
+                    "固定記事案内欠落。再生成します。"
+                )
                 continue
 
             # 文字数チェック
             if len(article) < 2000:
-                log_warning("記事文字数不足。再生成します。")
+                log_warning(
+                    "記事文字数不足。再生成します。"
+                )
                 continue
 
             if len(article) > MAX_ARTICLE_LENGTH:
                 log_warning(
-                    f"記事文字数超過（{len(article)}文字）。再生成します。"
+                    f"記事文字数超過（{len(article)}文字）。"
+                    "再生成します。"
                 )
                 continue
 
-            # 評価だけリトライ
+            # ========================================
+            # 評価
+            # ========================================
+
             for _ in range(MAX_RETRY):
+
                 evaluation = quality_check(
                     client,
                     article,
@@ -99,7 +132,9 @@ def generate_article(
                     knowledge,
                 )
 
-                result = parse_evaluation(evaluation)
+                result = parse_evaluation(
+                    evaluation
+                )
 
                 score = result["score"]
                 seo_score = result["seo_score"]
@@ -109,15 +144,34 @@ def generate_article(
                 if score != 0:
                     break
 
-                log_warning("評価のみ再実行します...")
-                time.sleep(EVALUATION_RETRY_WAIT)
+                log_warning(
+                    "評価のみ再実行します..."
+                )
+
+                time.sleep(
+                    EVALUATION_RETRY_WAIT
+                )
 
             if score == 0:
-                raise ValueError("評価結果からスコアを取得できませんでした")
+                raise ValueError(
+                    "評価結果からスコアを取得できませんでした"
+                )
 
-            log_info(f"記事スコア：{score}\n{evaluation}")
-            log_info(f"品質スコア：{score}")
-            log_info(f"SEOスコア：{seo_score}")
+            log_info(
+                f"記事スコア：{score}\n{evaluation}"
+            )
+
+            log_info(
+                f"品質スコア：{score}"
+            )
+
+            log_info(
+                f"SEOスコア：{seo_score}"
+            )
+
+            # ========================================
+            # リライト
+            # ========================================
 
             for rewrite in range(MAX_REWRITE):
 
@@ -127,18 +181,25 @@ def generate_article(
                     and duplicate_result == "OK"
                     and latest_result == "OK"
                 ):
-                    log_info("すべての品質基準をクリアしました。")
+                    log_info(
+                        "すべての品質基準をクリアしました。"
+                    )
                     break
 
+                log_warning(
+                    f"{rewrite + 1}回目のリライトを開始します。"
+                )
 
-                log_warning(f"{rewrite + 1}回目のリライトを開始します。")
-
-                result = parse_evaluation(evaluation)
+                result = parse_evaluation(
+                    evaluation
+                )
 
                 rewrite_prompt = result["improvements"]
 
                 if not rewrite_prompt.strip():
-                    log_info("改善指示がないためリライトを終了します。")
+                    log_info(
+                        "改善指示がないためリライトを終了します。"
+                    )
                     break
 
                 article = rewrite_article(
@@ -148,31 +209,32 @@ def generate_article(
                     rewrite_prompt,
                 )
 
-                # リライト時にタイトルより前へ余計な文章を除去
-                title_match = re.search(
-                    r"タイトル[:：]",
-                    article,
+                # リライト後の記事から余計な文章を除去
+                article = remove_before_title(
+                    article
                 )
 
-                if title_match:
-                    article = article[title_match.start():].strip()
-                else:
-                    raise ValueError(
-                        "リライト後の記事にタイトルが見つかりません。"
-    )
+                # タイトル抽出・存在チェック
+                extract_title(article)
 
+                # リライト後の文字数チェック
                 if len(article) > MAX_ARTICLE_LENGTH:
                     log_warning(
                         f"リライト後の記事が長すぎます（{len(article)}文字）。"
                         "記事生成をやり直します。"
                     )
+
                     raise ValueError(
-                        f"リライト後の記事が最大文字数を超えています: {len(article)}文字"
+                        f"リライト後の記事が最大文字数を超えています: "
+                        f"{len(article)}文字"
                     )
 
+                # ====================================
+                # リライト後の再評価
+                # ====================================
 
-                # 評価だけリトライ
                 for _ in range(MAX_RETRY):
+
                     evaluation = quality_check(
                         client,
                         article,
@@ -180,7 +242,9 @@ def generate_article(
                         knowledge,
                     )
 
-                    result = parse_evaluation(evaluation)
+                    result = parse_evaluation(
+                        evaluation
+                    )
 
                     score = result["score"]
                     seo_score = result["seo_score"]
@@ -190,55 +254,86 @@ def generate_article(
                     if score != 0:
                         break
 
-                    log_warning("評価のみ再実行します...")
-                    time.sleep(EVALUATION_RETRY_WAIT)
+                    log_warning(
+                        "評価のみ再実行します..."
+                    )
+
+                    time.sleep(
+                        EVALUATION_RETRY_WAIT
+                    )
 
                 if score == 0:
-                    raise ValueError("評価結果からスコアを取得できませんでした")
+                    raise ValueError(
+                        "評価結果からスコアを取得できませんでした"
+                    )
 
-                log_info(f"リライト後スコア：{score}\n{evaluation}")
-                log_info(f"品質スコア：{score}")
-                log_info(f"SEOスコア：{seo_score}")
+                log_info(
+                    f"リライト後スコア：{score}\n{evaluation}"
+                )
 
+                log_info(
+                    f"品質スコア：{score}"
+                )
+
+                log_info(
+                    f"SEOスコア：{seo_score}"
+                )
+
+                # 改善点がない場合
                 if (
-                    re.search(r"改善点\s*[:：]?\s*なし", evaluation)
+                    re.search(
+                        r"改善点\s*[:：]?\s*なし",
+                        evaluation,
+                    )
                     and duplicate_result == "OK"
                 ):
-                    log_info("改善点がないためリライトを終了します。")
+                    log_info(
+                        "改善点がないためリライトを終了します。"
+                    )
                     break
 
+                # すべての品質基準をクリア
                 if (
                     score >= MIN_SCORE
                     and seo_score >= MIN_SEO_SCORE
                     and duplicate_result == "OK"
                     and latest_result == "OK"
                 ):
-                    log_info("すべての品質基準をクリアしました。")
+                    log_info(
+                        "すべての品質基準をクリアしました。"
+                    )
                     break
 
+            # ========================================
+            # 最終品質チェック
+            # ========================================
 
             if score < MIN_SCORE:
-                log_warning("最大回数リライトしましたが品質基準に届きませんでした。")
-
+                log_warning(
+                    "最大回数リライトしましたが品質基準に届きませんでした。"
+                )
 
             if seo_score < MIN_SEO_SCORE:
-                log_warning("最大回数リライトしましたがSEO基準に届きませんでした。")
-
+                log_warning(
+                    "最大回数リライトしましたがSEO基準に届きませんでした。"
+                )
 
             if len(article) > MAX_ARTICLE_LENGTH:
                 raise ValueError(
-                    f"最終記事が最大文字数を超えています: {len(article)}文字"
+                    f"最終記事が最大文字数を超えています: "
+                    f"{len(article)}文字"
                 )
 
-
             break
-
 
         except GeminiDailyQuotaExceeded:
             raise
 
         except Exception as e:
-            log_error(f"Geminiエラー（{attempt + 1}回目）：{e}")
+
+            log_error(
+                f"Geminiエラー（{attempt + 1}回目）：{e}"
+            )
 
             if attempt == MAX_RETRY - 1:
                 raise
@@ -246,8 +341,10 @@ def generate_article(
             log_warning(
                 f"{GEMINI_RETRY_WAIT}秒後に再試行します..."
             )
-            time.sleep(GEMINI_RETRY_WAIT)
 
+            time.sleep(
+                GEMINI_RETRY_WAIT
+            )
 
     return {
         "article": article,
