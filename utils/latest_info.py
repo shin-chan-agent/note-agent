@@ -212,8 +212,6 @@ def fetch_service_info(client, service_id):
     ) as f:
         f.write(response.text)
 
-    service_data = parse_json(response.text)
-
     try:
         service_data = parse_json(response.text)
 
