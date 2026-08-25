@@ -23,6 +23,7 @@ from utils.latest_info import fetch_latest_info
 from utils.line_sender import (
     send_line_messages,
     create_text_message,
+    split_text,
 )
 from utils.logger import (
     log_info,
