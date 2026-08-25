@@ -25,7 +25,14 @@ def parse_datetime(date_text):
     DBの日付文字列を東京時間のdatetimeへ変換する。
     """
 
-    dt = datetime.fromisoformat(date_text)
+    if not date_text:
+        return None
+
+    try:
+        dt = datetime.fromisoformat(date_text)
+
+    except (ValueError, TypeError):
+        return None
 
     if dt.tzinfo is None:
         dt = dt.replace(
