@@ -5,7 +5,7 @@ import requests
 LINE_PUSH_URL = "https://api.line.me/v2/bot/message/push"
 LINE_MAX_MESSAGES = 5
 LINE_MAX_TEXT_LENGTH = 5000
-LINE_SPLIT_LENGTH = 4990
+LINE_SPLIT_LENGTH = 4970
 
 
 def split_text(text, max_length=LINE_SPLIT_LENGTH):
