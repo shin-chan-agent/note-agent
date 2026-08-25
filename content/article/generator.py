@@ -66,6 +66,62 @@ def remove_before_title(article):
     return article[title_match.start():].strip()
 
 
+def evaluate_article(
+    client,
+    article,
+    past_articles_text,
+    knowledge,
+):
+    """
+    記事を評価し、スコアと判定結果を返す。
+
+    評価結果からスコアを取得できなかった場合は、
+    MAX_RETRY回まで評価のみ再実行する。
+    """
+
+    for _ in range(MAX_RETRY):
+
+        evaluation = quality_check(
+            client,
+            article,
+            past_articles_text,
+            knowledge,
+        )
+
+        result = parse_evaluation(
+            evaluation
+        )
+
+        score = result["score"]
+        seo_score = result["seo_score"]
+        duplicate_result = result["duplicate"]
+        latest_result = result["latest"]
+
+        if score != 0:
+            break
+
+        log_warning(
+            "評価のみ再実行します..."
+        )
+
+        time.sleep(
+            EVALUATION_RETRY_WAIT
+        )
+
+    if score == 0:
+        raise ValueError(
+            "評価結果からスコアを取得できませんでした"
+        )
+
+    return (
+        evaluation,
+        score,
+        seo_score,
+        duplicate_result,
+        latest_result,
+    )
+
+
 def generate_article(
     client,
     prompt,
@@ -120,42 +176,21 @@ def generate_article(
                 continue
 
             # ========================================
-            # 評価
+            # 初回評価
             # ========================================
 
-            for _ in range(MAX_RETRY):
-
-                evaluation = quality_check(
-                    client,
-                    article,
-                    past_articles_text,
-                    knowledge,
-                )
-
-                result = parse_evaluation(
-                    evaluation
-                )
-
-                score = result["score"]
-                seo_score = result["seo_score"]
-                duplicate_result = result["duplicate"]
-                latest_result = result["latest"]
-
-                if score != 0:
-                    break
-
-                log_warning(
-                    "評価のみ再実行します..."
-                )
-
-                time.sleep(
-                    EVALUATION_RETRY_WAIT
-                )
-
-            if score == 0:
-                raise ValueError(
-                    "評価結果からスコアを取得できませんでした"
-                )
+            (
+                evaluation,
+                score,
+                seo_score,
+                duplicate_result,
+                latest_result,
+            ) = evaluate_article(
+                client,
+                article,
+                past_articles_text,
+                knowledge,
+            )
 
             log_info(
                 f"記事スコア：{score}\n{evaluation}"
@@ -233,39 +268,18 @@ def generate_article(
                 # リライト後の再評価
                 # ====================================
 
-                for _ in range(MAX_RETRY):
-
-                    evaluation = quality_check(
-                        client,
-                        article,
-                        past_articles_text,
-                        knowledge,
-                    )
-
-                    result = parse_evaluation(
-                        evaluation
-                    )
-
-                    score = result["score"]
-                    seo_score = result["seo_score"]
-                    duplicate_result = result["duplicate"]
-                    latest_result = result["latest"]
-
-                    if score != 0:
-                        break
-
-                    log_warning(
-                        "評価のみ再実行します..."
-                    )
-
-                    time.sleep(
-                        EVALUATION_RETRY_WAIT
-                    )
-
-                if score == 0:
-                    raise ValueError(
-                        "評価結果からスコアを取得できませんでした"
-                    )
+                (
+                    evaluation,
+                    score,
+                    seo_score,
+                    duplicate_result,
+                    latest_result,
+                ) = evaluate_article(
+                    client,
+                    article,
+                    past_articles_text,
+                    knowledge,
+                )
 
                 log_info(
                     f"リライト後スコア：{score}\n{evaluation}"
