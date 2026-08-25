@@ -201,10 +201,6 @@ def fetch_service_info(client, service_id):
             f"Gemini response is empty: {service_id}"
         )
 
-    if response.text is None:
-        print(f"[ERROR] Gemini response is empty: {service_id}")
-        return None
-
     with open(
         "gemini_response.txt",
         "w",
