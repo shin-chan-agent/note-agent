@@ -201,6 +201,7 @@ def needs_update(service_id):
         updated_at
     )
 
+    # 更新日時を判定できない場合は、安全のため更新対象とする
     if updated_time is None:
         return True
 
