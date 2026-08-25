@@ -279,7 +279,7 @@ def generate_and_send_line():
 
     try:
 
-        response_line = send_line_messages(
+        send_line_messages(
             messages
         )
 
@@ -303,7 +303,7 @@ def generate_and_send_line():
             f"予期しないエラー: {e}"
         )
 
-        raise e
+        raise
 
 
 if __name__ == "__main__":
