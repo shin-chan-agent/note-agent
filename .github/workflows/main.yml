@@ -12,7 +12,6 @@ on:
 permissions:
   contents: write
 
-# 💡 「警告を消す魔法の呪文」！
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
@@ -21,19 +20,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 💡 2026年最新の v4 にアップグレード！
+
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Debug files
         run: |
+          find . -maxdepth 3 -type f | sort
 
-      # 💡 2026年最新の v5 にアップグレード！
       - name: Set up Python
         uses: actions/setup-python@v5
-
         with:
-          python-version: '3.11' # 将来のサポート終了に備えて3.11にアップグレード！
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -42,20 +40,10 @@ jobs:
 
       - name: Run Python script
         env:
-          # 💡 ここでGitHubのSecretsをPythonのプログラムに引き渡しているよ！
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         run: python main.py
-
-
-      - name: Upload eyecatch image
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-eyecatch
-          path: test_eyecatch.png
-
 
       - name: Upload Gemini response
         if: always()
@@ -64,12 +52,10 @@ jobs:
           name: gemini-response
           path: gemini_response.txt
 
-
       - name: Check knowledge file
         run: |
           ls -l utils/
           cat utils/ai_knowledge.json
-     
 
       - name: Commit history
         run: |
@@ -79,9 +65,7 @@ jobs:
           git add \
             combination_history.json \
             article_history.json \
-            utils/ai_knowledge.json \
-            docs/eyecatch.png
-
+            utils/ai_knowledge.json
 
           git diff --cached --quiet || git commit -m "Update history"
 
