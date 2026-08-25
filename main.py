@@ -1,5 +1,5 @@
-import os
-import time
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from google import genai
 
@@ -21,7 +21,6 @@ from content.article.generator import (
 from content.sns.generator import generate_sns_posts
 
 from utils.knowledge_manager import (
-    get_services,
     get_article_knowledge,
     needs_update,
     needs_retry,
@@ -43,14 +42,7 @@ from utils.gemini_client import GeminiDailyQuotaExceeded
 from config import (
     MIN_SCORE,
     MIN_SEO_SCORE,
-    MAX_REWRITE,
-    MAX_RETRY,
-    GOOGLE_SEARCH_RETRY_WAIT,
-    KNOWLEDGE_UPDATE_INTERVAL_DAYS,
 )
-
-from datetime import datetime
-from zoneinfo import ZoneInfo
 
 
 def generate_and_send_line():
