@@ -14,6 +14,7 @@ from utils.json_parser import parse_json
 from utils.knowledge_manager import (
     merge_service,
     needs_update,
+    needs_retry,
     mark_update_failed,
 )
 
@@ -220,7 +221,6 @@ def fetch_service_info(client, service_id):
         log_error(str(e))
         return None
 
-
     # ==========================
     # AI知識DBデータ軽量化
     # ==========================
@@ -228,7 +228,6 @@ def fetch_service_info(client, service_id):
     # ① sourcesを最大5件
     if "sources" in service_data:
         service_data["sources"] = service_data["sources"][:5]
-
 
     # ② descriptionを200文字まで
     for section in [
@@ -241,7 +240,6 @@ def fetch_service_info(client, service_id):
             if "description" in item:
                 item["description"] = item["description"][:200]
 
-
     # ③ aliasesを最大3件
     for section in [
         "models",
@@ -251,7 +249,6 @@ def fetch_service_info(client, service_id):
         for item in service_data.get(section, []):
             if "aliases" in item:
                 item["aliases"] = item["aliases"][:3]
-
 
     log_info(f"取得サービス: {service_id}")
 
@@ -266,11 +263,18 @@ def fetch_latest_info(client, services):
 
     for service_id in services:
 
-        if not needs_update(service_id):
-            log_info(f"{service_id} は更新不要のためスキップ")
+        if (
+            not needs_update(service_id)
+            and not needs_retry(service_id)
+        ):
+            log_info(
+                f"{service_id} は更新不要のためスキップ"
+            )
             continue
 
-        log_info(f"{service_id} の最新情報を取得します")
+        log_info(
+            f"{service_id} の最新情報を取得します"
+        )
 
         service_data = fetch_service_info(
             client,
@@ -285,5 +289,5 @@ def fetch_latest_info(client, services):
 
         merge_service(
             service_id,
-           service_data,
+            service_data,
         )
