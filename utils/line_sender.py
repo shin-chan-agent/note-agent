@@ -5,9 +5,10 @@ import requests
 LINE_PUSH_URL = "https://api.line.me/v2/bot/message/push"
 LINE_MAX_MESSAGES = 5
 LINE_MAX_TEXT_LENGTH = 5000
+LINE_SPLIT_LENGTH = 4990
 
 
-def split_text(text, max_length=4990):
+def split_text(text, max_length=LINE_SPLIT_LENGTH):
     """
     LINE送信用に文章を分割する。
 
@@ -15,6 +16,7 @@ def split_text(text, max_length=4990):
     ・4990文字以内で最後に出てくる「。」で分割
     ・「。」がなければ改行で分割
     ・それもなければ文字数で分割
+    ・分割後に【1/○】を付与
     """
 
     parts = []
