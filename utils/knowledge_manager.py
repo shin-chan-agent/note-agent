@@ -1,13 +1,13 @@
 from pathlib import Path
 import json
+
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 from config import AI_SERVICES, KNOWLEDGE_UPDATE_INTERVAL_DAYS
 
 from config import MISSING_LIMIT
 
-from datetime import datetime
-from zoneinfo import ZoneInfo
 
 KNOWLEDGE_FILE = Path(__file__).parent / "ai_knowledge.json"
 
