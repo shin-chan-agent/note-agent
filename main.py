@@ -1,5 +1,4 @@
 import os
-import re
 import time
 
 from google import genai
@@ -15,7 +14,10 @@ from article_history import (
 )
 
 from content.article.prompt import get_article_prompt
-from content.article.generator import generate_article
+from content.article.generator import (
+    generate_article,
+    extract_title,
+)
 from content.sns.generator import generate_sns_posts
 
 from utils.knowledge_manager import (
@@ -290,11 +292,7 @@ def generate_and_send_line():
         )
 
         save_article(
-            title=re.search(
-                r"^タイトル[:：]\s*(.+)$",
-                article,
-                re.MULTILINE,
-            ).group(1).strip(),
+            title=extract_title(article),
             theme=theme,
             angle=angle,
         )
