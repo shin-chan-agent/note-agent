@@ -1,6 +1,8 @@
 import json
 import random
+
 from pathlib import Path
+from config import THEME_SERVICES
 
 COMBINATION_HISTORY_FILE = Path("combination_history.json")
 
