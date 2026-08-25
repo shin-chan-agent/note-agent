@@ -1,3 +1,6 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from utils.logger import (
     log_info,
     log_error,
@@ -179,6 +182,71 @@ statusが判断できない場合は推測せず、availableを使用してく�
 """
 
 
+def validate_service_data(service_data, service_id):
+    """
+    最新情報JSONの基本構造を確認する。
+
+    不完全なデータの場合はFalseを返し、
+    AI知識DBへの保存を防ぐ。
+    """
+
+    if not isinstance(service_data, dict):
+        log_error(
+            f"最新情報JSONがdictではありません: {service_id}"
+        )
+        return False
+
+    required_fields = [
+        "name",
+        "models",
+        "plans",
+        "features",
+        "limitations",
+        "notes",
+    ]
+
+    for field in required_fields:
+
+        if field not in service_data:
+            log_error(
+                f"最新情報JSONに必須項目がありません: "
+                f"{service_id} / {field}"
+            )
+            return False
+
+    list_fields = [
+        "models",
+        "plans",
+        "features",
+        "limitations",
+        "notes",
+    ]
+
+    for field in list_fields:
+
+        if not isinstance(
+            service_data[field],
+            list,
+        ):
+            log_error(
+                f"最新情報JSONの{field}が"
+                f"リストではありません: {service_id}"
+            )
+            return False
+
+    if not isinstance(
+        service_data.get("sources", []),
+        list,
+    ):
+        log_error(
+            f"最新情報JSONのsourcesが"
+            f"リストではありません: {service_id}"
+        )
+        return False
+
+    return True
+
+
 def fetch_service_info(client, service_id):
     """
     1サービス分の最新情報を取得する。
@@ -217,8 +285,20 @@ def fetch_service_info(client, service_id):
         service_data = parse_json(response.text)
 
     except Exception as e:
-        log_error(f"JSON解析失敗: {service_id}")
+        log_error(
+            f"JSON解析失敗: {service_id}"
+        )
         log_error(str(e))
+        return None
+
+    # ==========================
+    # JSON構造チェック
+    # ==========================
+
+    if not validate_service_data(
+        service_data,
+        service_id,
+    ):
         return None
 
     # ==========================
@@ -227,7 +307,9 @@ def fetch_service_info(client, service_id):
 
     # ① sourcesを最大5件
     if "sources" in service_data:
-        service_data["sources"] = service_data["sources"][:5]
+        service_data["sources"] = (
+            service_data["sources"][:5]
+        )
 
     # ② descriptionを200文字まで
     for section in [
@@ -236,9 +318,22 @@ def fetch_service_info(client, service_id):
         "limitations",
         "notes",
     ]:
-        for item in service_data.get(section, []):
+        for item in service_data.get(
+            section,
+            [],
+        ):
             if "description" in item:
-                item["description"] = item["description"][:200]
+                description = item.get(
+                    "description"
+                )
+
+                if isinstance(
+                    description,
+                    str,
+                ):
+                    item["description"] = (
+                        description[:200]
+                    )
 
     # ③ aliasesを最大3件
     for section in [
@@ -246,11 +341,36 @@ def fetch_service_info(client, service_id):
         "plans",
         "features",
     ]:
-        for item in service_data.get(section, []):
+        for item in service_data.get(
+            section,
+            [],
+        ):
             if "aliases" in item:
-                item["aliases"] = item["aliases"][:3]
 
-    log_info(f"取得サービス: {service_id}")
+                aliases = item.get(
+                    "aliases"
+                )
+
+                if isinstance(
+                    aliases,
+                    list,
+                ):
+                    item["aliases"] = aliases[:3]
+
+    # ==========================
+    # DB更新日時
+    # ==========================
+
+    now = datetime.now(
+        ZoneInfo("Asia/Tokyo")
+    ).date().isoformat()
+
+    service_data["updated_at"] = now
+    service_data["last_verified"] = now
+
+    log_info(
+        f"取得サービス: {service_id}"
+    )
 
     return service_data
 
@@ -282,9 +402,12 @@ def fetch_latest_info(client, services):
         )
 
         if service_data is None:
-            mark_update_failed(service_id)
+            mark_update_failed(
+                service_id
+            )
             continue
 
+        # 更新成功
         service_data["update_failed"] = False
 
         merge_service(
