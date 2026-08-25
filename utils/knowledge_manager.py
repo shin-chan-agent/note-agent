@@ -4,9 +4,11 @@ import json
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-from config import AI_SERVICES, KNOWLEDGE_UPDATE_INTERVAL_DAYS
-
-from config import MISSING_LIMIT
+from config import (
+    AI_SERVICES,
+    KNOWLEDGE_UPDATE_INTERVAL_DAYS,
+    MISSING_LIMIT,
+)
 
 
 KNOWLEDGE_FILE = Path(__file__).parent / "ai_knowledge.json"
@@ -19,24 +21,31 @@ LIST_FIELDS = [
     "notes",
 ]
 
+TOKYO_TZ = ZoneInfo("Asia/Tokyo")
+
 
 def parse_datetime(date_text):
     """
-    DBの日付文字列を東京時間のdatetimeへ変換する。
+    DBの日付文字列をdatetimeへ変換する。
+
+    タイムゾーンなしの場合は東京時間として扱う。
+    不正な日付の場合はNoneを返す。
     """
 
     if not date_text:
         return None
 
     try:
-        dt = datetime.fromisoformat(date_text)
+        dt = datetime.fromisoformat(
+            str(date_text)
+        )
 
-    except (ValueError, TypeError):
+    except (TypeError, ValueError):
         return None
 
     if dt.tzinfo is None:
         dt = dt.replace(
-            tzinfo=ZoneInfo("Asia/Tokyo")
+            tzinfo=TOKYO_TZ
         )
 
     return dt
@@ -54,12 +63,13 @@ def create_default_knowledge():
                 "name": service["name"],
                 "last_verified": None,
                 "updated_at": None,
+                "update_failed": False,
                 "sources": [],
                 "models": [],
                 "plans": [],
                 "features": [],
                 "limitations": [],
-                "notes": []
+                "notes": [],
             }
             for service_id, service in AI_SERVICES.items()
         }
@@ -69,25 +79,38 @@ def create_default_knowledge():
 def load_knowledge():
     """
     AI知識DBを読み込む。
+
     存在しない場合は初期DBを作成する。
     """
 
     if not KNOWLEDGE_FILE.exists():
+
         data = create_default_knowledge()
+
         save_knowledge(data)
+
         return data
 
     with open(
         KNOWLEDGE_FILE,
         "r",
-        encoding="utf-8"
+        encoding="utf-8",
     ) as f:
-        return json.load(f)
+
+        data = json.load(f)
+
+    # servicesが存在しない場合の安全対策
+    if "services" not in data:
+        data["services"] = {}
+
+    return data
 
 
 def get_article_knowledge(service_ids):
     """
     記事生成用に必要な情報だけを返す。
+
+    deprecated / discontinued の情報は記事生成用DBから除外する。
     """
 
     data = load_knowledge()
@@ -96,7 +119,9 @@ def get_article_knowledge(service_ids):
 
     for service_id in service_ids:
 
-        service = data["services"].get(service_id)
+        service = data["services"].get(
+            service_id
+        )
 
         if not service:
             continue
@@ -110,9 +135,14 @@ def get_article_knowledge(service_ids):
                     "id": item.get("id"),
                     "name": item.get("name"),
                     "status": item.get("status"),
-                    "description": item.get("description", "")[:80],
+                    "description": item.get(
+                        "description",
+                        "",
+                    )[:80],
                 }
-                for item in service.get("models", [])
+                for item in filter_active_items(
+                    service.get("models", [])
+                )
             ],
 
             "plans": [
@@ -120,10 +150,18 @@ def get_article_knowledge(service_ids):
                     "id": item.get("id"),
                     "name": item.get("name"),
                     "status": item.get("status"),
-                    "description": item.get("description", "")[:80],
-                    "pricing": item.get("pricing", []),
+                    "description": item.get(
+                        "description",
+                        "",
+                    )[:80],
+                    "pricing": item.get(
+                        "pricing",
+                        [],
+                    ),
                 }
-                for item in service.get("plans", [])
+                for item in filter_active_items(
+                    service.get("plans", [])
+                )
             ],
 
             "features": [
@@ -131,9 +169,14 @@ def get_article_knowledge(service_ids):
                     "id": item.get("id"),
                     "name": item.get("name"),
                     "status": item.get("status"),
-                    "description": item.get("description", "")[:80],
+                    "description": item.get(
+                        "description",
+                        "",
+                    )[:80],
                 }
-                for item in service.get("features", [])
+                for item in filter_active_items(
+                    service.get("features", [])
+                )
             ],
 
             "limitations": [
@@ -141,18 +184,28 @@ def get_article_knowledge(service_ids):
                     "id": item.get("id"),
                     "name": item.get("name"),
                     "status": item.get("status"),
-                    "description": item.get("description", "")[:80],
+                    "description": item.get(
+                        "description",
+                        "",
+                    )[:80],
                 }
-                for item in service.get("limitations", [])
+                for item in filter_active_items(
+                    service.get("limitations", [])
+                )
             ],
 
             "notes": [
                 {
                     "title": item.get("title"),
                     "status": item.get("status"),
-                    "description": item.get("description", "")[:80],
+                    "description": item.get(
+                        "description",
+                        "",
+                    )[:80],
                 }
-                for item in service.get("notes", [])
+                for item in filter_active_items(
+                    service.get("notes", [])
+                )
             ],
         }
 
@@ -167,8 +220,9 @@ def save_knowledge(data):
     with open(
         KNOWLEDGE_FILE,
         "w",
-        encoding="utf-8"
+        encoding="utf-8",
     ) as f:
+
         json.dump(
             data,
             f,
@@ -177,8 +231,13 @@ def save_knowledge(data):
         )
 
     print("[INFO] AI知識DB保存")
-    print(f"[DEBUG] 保存パス: {KNOWLEDGE_FILE}")
-    print(f"[DEBUG] 更新日時: {KNOWLEDGE_FILE.stat().st_mtime}")
+    print(
+        f"[DEBUG] 保存パス: {KNOWLEDGE_FILE}"
+    )
+    print(
+        f"[DEBUG] 更新日時: "
+        f"{KNOWLEDGE_FILE.stat().st_mtime}"
+    )
 
 
 def needs_update(service_id):
@@ -194,12 +253,20 @@ def needs_update(service_id):
 
     data = load_knowledge()
 
-    service = data["services"].get(service_id)
+    service = data["services"].get(
+        service_id
+    )
 
     if not service:
         return True
 
-    updated_at = service.get("updated_at")
+    # 前回取得失敗の場合は再取得
+    if service.get("update_failed", False):
+        return True
+
+    updated_at = service.get(
+        "updated_at"
+    )
 
     if not updated_at:
         return True
@@ -208,48 +275,67 @@ def needs_update(service_id):
         updated_at
     )
 
-    # 更新日時を判定できない場合は、安全のため更新対象とする
+    # 不正な日付の場合は安全のため更新
     if updated_time is None:
         return True
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(
+        timezone.utc
+    )
+
+    elapsed_seconds = (
+        now - updated_time
+    ).total_seconds()
 
     elapsed_days = (
-        now - updated_time
-    ).days
+        elapsed_seconds / 86400
+    )
 
-    if elapsed_days >= KNOWLEDGE_UPDATE_INTERVAL_DAYS:
-        return True
-
-    return False
+    return (
+        elapsed_days
+        >= KNOWLEDGE_UPDATE_INTERVAL_DAYS
+    )
 
 
 def needs_retry(service_id):
     """
-    前回の更新が失敗したサービスは再取得する。
+    前回の更新が失敗したサービスは
+    再取得対象とする。
     """
 
     data = load_knowledge()
 
-    service = data["services"].get(service_id)
+    service = data["services"].get(
+        service_id
+    )
 
     if not service:
         return True
 
-    return service.get("update_failed", False)
+    return service.get(
+        "update_failed",
+        False,
+    )
 
 
-def get_background_update_service(exclude_services):
+def get_background_update_service(
+    exclude_services
+):
     """
     テーマ更新対象を除き、
-    最も長期間更新されていないサービスを1件返す。
+    最も長期間更新されていないサービスを
+    1件返す。
+
+    一度も取得していないサービスを最優先する。
     """
 
     data = load_knowledge()
 
     candidates = []
 
-    for service_id, service in data["services"].items():
+    for service_id, service in data[
+        "services"
+    ].items():
 
         if service_id in exclude_services:
             continue
@@ -257,16 +343,21 @@ def get_background_update_service(exclude_services):
         if not needs_update(service_id):
             continue
 
-        updated_at = service.get("updated_at")
+        updated_at = service.get(
+            "updated_at"
+        )
 
         if not updated_at:
-            # 一度も取得していないサービスを最優先
+
             return service_id
 
-        updated_time = parse_datetime(updated_at)
+        updated_time = parse_datetime(
+            updated_at
+        )
 
         if updated_time is None:
-            continue
+
+            return service_id
 
         candidates.append(
             (
@@ -278,8 +369,9 @@ def get_background_update_service(exclude_services):
     if not candidates:
         return None
 
-    # 更新日時が最も古いサービスを返す
-    candidates.sort(key=lambda x: x[0])
+    candidates.sort(
+        key=lambda x: x[0]
+    )
 
     return candidates[0][1]
 
@@ -291,7 +383,9 @@ def mark_update_failed(service_id):
 
     data = load_knowledge()
 
-    service = data["services"].get(service_id)
+    service = data["services"].get(
+        service_id
+    )
 
     if service is None:
         return
@@ -308,18 +402,24 @@ def get_service(service_id):
 
     data = load_knowledge()
 
-    return data["services"].get(service_id)
+    return data["services"].get(
+        service_id
+    )
 
 
 def get_services(service_ids):
     """
     指定したサービス情報を取得する。
+
+    deprecated / discontinued の項目は除外する。
     """
 
     data = load_knowledge()
 
     services = {
-        service_id: data["services"][service_id]
+        service_id: data["services"][
+            service_id
+        ]
         for service_id in service_ids
         if service_id in data["services"]
     }
@@ -329,8 +429,11 @@ def get_services(service_ids):
         for field in LIST_FIELDS:
 
             if field in service:
-                service[field] = filter_active_items(
-                    service[field]
+
+                service[field] = (
+                    filter_active_items(
+                        service[field]
+                    )
                 )
 
     return services
@@ -338,19 +441,22 @@ def get_services(service_ids):
 
 def filter_active_items(items):
     """
-    利用可能な情報だけ抽出する。
+    現在利用可能な情報だけ抽出する。
 
     deprecated:
-    非推奨のため除外
+        非推奨のため除外
 
     discontinued:
-    提供終了のため除外
+        提供終了のため除外
     """
 
     return [
         item
         for item in items
-        if item.get("status", "available")
+        if item.get(
+            "status",
+            "available",
+        )
         not in [
             "deprecated",
             "discontinued",
@@ -358,19 +464,27 @@ def filter_active_items(items):
     ]
 
 
-def update_service(service_id, service_data):
+def update_service(
+    service_id,
+    service_data,
+):
     """
-    指定サービスの情報を更新する。
+    指定サービスの情報を完全更新する。
     """
 
     data = load_knowledge()
 
-    data["services"][service_id] = service_data
+    data["services"][
+        service_id
+    ] = service_data
 
     save_knowledge(data)
 
 
-def merge_service(service_id, new_data):
+def merge_service(
+    service_id,
+    service_data,
+):
     """
     指定サービスの情報を差分更新する。
 
@@ -382,34 +496,64 @@ def merge_service(service_id, new_data):
 
     data = load_knowledge()
 
+    # ========================================
+    # 新規サービス
+    # ========================================
+
     if service_id not in data["services"]:
 
-        for section in [
-            "models",
-            "plans",
-            "features",
-            "limitations",
-            "notes",
-        ]:
-            for item in new_data.get(section, []):
-                item.setdefault("missing_count", 0)
+        service_data.setdefault(
+            "update_failed",
+            False,
+        )
 
-        data["services"][service_id] = new_data
+        for section in LIST_FIELDS:
+
+            for item in service_data.get(
+                section,
+                [],
+            ):
+
+                item.setdefault(
+                    "missing_count",
+                    0,
+                )
+
+        data["services"][
+            service_id
+        ] = service_data
+
         save_knowledge(data)
-        print("[INFO] 新規サービス保存")
-        return data["services"][service_id]
 
-    current = data["services"][service_id]
+        print(
+            "[INFO] 新規サービス保存"
+        )
 
-    for key, value in new_data.items():
+        return data["services"][
+            service_id
+        ]
+
+    # ========================================
+    # 既存サービス
+    # ========================================
+
+    current = data["services"][
+        service_id
+    ]
+
+    for key, value in service_data.items():
 
         if key in LIST_FIELDS:
+
             current[key] = merge_list_items(
                 current.get(key, []),
                 value,
             )
 
-        elif isinstance(value, dict):
+        elif isinstance(
+            value,
+            dict,
+        ):
 
             if key not in current:
                 current[key] = value
@@ -418,28 +562,53 @@ def merge_service(service_id, new_data):
                 current[key].update(value)
 
         else:
+
             current[key] = value
 
-    for section in [
-        "models",
-        "plans",
-        "features",
-        "limitations",
-        "notes",
-    ]:
+    # ========================================
+    # 今回取得できなかった項目を確認
+    # ========================================
+
+    for section in LIST_FIELDS:
+
         mark_missing_items(
-            current.get(section, []),
-            new_data.get(section, []),
+            current.get(
+                section,
+                [],
+            ),
+            service_data.get(
+                section,
+                [],
+            ),
         )
+
+    # ========================================
+    # 更新成功
+    # ========================================
+
+    current["update_failed"] = False
 
     save_knowledge(data)
 
     return current
 
 
-def mark_missing_items(old_items, new_items):
+def mark_missing_items(
+    old_items,
+    new_items,
+):
     """
-    取得できなかった項目を管理する。
+    今回取得できなかった項目を管理する。
+
+    1回取得できない:
+        missing_count +1
+
+    MISSING_LIMIT回連続で取得できない:
+        discontinued
+
+    再び取得できた:
+        missing_count = 0
+        statusを新しい情報に更新
     """
 
     new_map = {
@@ -450,36 +619,68 @@ def mark_missing_items(old_items, new_items):
 
     for old_item in old_items:
 
-        item_id = old_item.get("id")
+        item_id = old_item.get(
+            "id"
+        )
 
         if not item_id:
             continue
 
+        # ====================================
+        # 今回も取得できた
+        # ====================================
+
         if item_id in new_map:
 
-            # 再取得できたので復活
             old_item["missing_count"] = 0
 
-            if "status" in new_map[item_id]:
-                old_item["status"] = new_map[item_id]["status"]
+            new_item = new_map[
+                item_id
+            ]
+
+            if "status" in new_item:
+
+                old_item["status"] = (
+                    new_item["status"]
+                )
+
+        # ====================================
+        # 今回取得できなかった
+        # ====================================
 
         else:
 
-            old_item["missing_count"] = (
-                old_item.get("missing_count", 0) + 1
+            old_item[
+                "missing_count"
+            ] = (
+                old_item.get(
+                    "missing_count",
+                    0,
+                ) + 1
             )
 
-            if old_item["missing_count"] >= MISSING_LIMIT:
-                old_item["status"] = "discontinued"
+            if (
+                old_item[
+                    "missing_count"
+                ]
+                >= MISSING_LIMIT
+            ):
+
+                old_item[
+                    "status"
+                ] = "discontinued"
 
 
-def merge_list_items(current_list, new_list):
+def merge_list_items(
+    current_list,
+    new_list,
+):
     """
     リスト型データを差分更新する。
 
     ルール:
-    - 同じidがある場合 → 更新
-    - 新しいidの場合 → 追加
+    - 同じID → 新しい情報で更新
+    - 新しいID → 追加
     - 新しい情報に存在しない項目 → 維持
     """
 
@@ -494,22 +695,50 @@ def merge_list_items(current_list, new_list):
 
     for new_item in new_list:
 
-        item_id = new_item.get("id")
+        item_id = new_item.get(
+            "id"
+        )
 
         if not item_id:
             continue
 
+        # ====================================
+        # 既存項目
+        # ====================================
+
         if item_id in current_map:
-            current_map[item_id].update(new_item)
+
+            current_map[
+                item_id
+            ].update(new_item)
+
+            # 再取得できたので復活
+            current_map[
+                item_id
+            ]["missing_count"] = 0
+
+        # ====================================
+        # 新規項目
+        # ====================================
 
         else:
-            new_item.setdefault("missing_count", 0)
-            current_list.append(new_item)
+
+            new_item.setdefault(
+                "missing_count",
+                0,
+            )
+
+            current_list.append(
+                new_item
+            )
 
     return current_list
 
 
-def merge_list_by_id(old_list, new_list):
+def merge_list_by_id(
+    old_list,
+    new_list,
+):
     """
     IDをキーにリストをマージする。
 
@@ -521,9 +750,18 @@ def merge_list_by_id(old_list, new_list):
     merged = {
         item["id"]: item
         for item in old_list
+        if "id" in item
     }
 
     for item in new_list:
-        merged[item["id"]] = item
 
-    return list(merged.values())
+        if "id" not in item:
+            continue
+
+        merged[
+            item["id"]
+        ] = item
+
+    return list(
+        merged.values()
+    )
