@@ -9,7 +9,10 @@ from theme_manager import (
     get_target_services,
 )
 
-from article_history import load_articles, save_article
+from article_history import (
+    get_past_articles_text,
+    save_article,
+)
 
 from content.article.prompt import get_article_prompt
 from content.article.generator import generate_article
