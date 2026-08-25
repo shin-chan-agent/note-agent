@@ -1,5 +1,3 @@
-from utils.logger import log_info
-
 from google.genai import types
 
 from config import AI_SERVICES
@@ -11,6 +9,12 @@ from utils.json_parser import parse_json
 from utils.knowledge_manager import (
     merge_service,
     needs_update,
+    mark_update_failed,
+)
+
+from utils.logger import (
+    log_info,
+    log_error,
 )
 
 
