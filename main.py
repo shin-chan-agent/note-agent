@@ -4,7 +4,10 @@ import time
 
 from google import genai
 
-from theme_manager import get_theme_and_angle
+from theme_manager import (
+    get_theme_and_angle,
+    get_target_services,
+)
 
 from article_history import load_articles, save_article
 
@@ -39,22 +42,10 @@ from config import (
     MAX_RETRY,
     GOOGLE_SEARCH_RETRY_WAIT,
     KNOWLEDGE_UPDATE_INTERVAL_DAYS,
-    THEME_SERVICES,
 )
 
 from datetime import datetime
 from zoneinfo import ZoneInfo
-
-
-def get_target_services(theme):
-    """
-    テーマから最新情報取得対象のサービスを取得する。
-    """
-
-    print(f"[DEBUG] theme='{theme}'")
-    print(f"[DEBUG] available={list(THEME_SERVICES.keys())}")
-
-    return THEME_SERVICES.get(theme, [])
 
 
 def generate_and_send_line():
