@@ -1,8 +1,9 @@
 import json
 import random
-
 from pathlib import Path
+
 from config import THEME_SERVICES
+
 
 COMBINATION_HISTORY_FILE = Path("combination_history.json")
 
@@ -53,7 +54,7 @@ def get_theme_and_angle():
 
     print(f"組み合わせ履歴（保存前）：{len(history)}件")
 
-    # 全100通りの組み合わせを作成
+    # 全80通りの組み合わせを作成
     all_combinations = [
         {"theme": theme, "angle": angle}
         for theme in THEMES
@@ -81,3 +82,14 @@ def get_theme_and_angle():
     )
 
     return selected["theme"], selected["angle"]
+
+
+def get_target_services(theme):
+    """
+    テーマから最新情報取得対象のサービスを取得する。
+    """
+
+    print(f"[DEBUG] theme='{theme}'")
+    print(f"[DEBUG] available={list(THEME_SERVICES.keys())}")
+
+    return THEME_SERVICES.get(theme, [])
