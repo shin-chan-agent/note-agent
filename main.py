@@ -19,6 +19,7 @@ from content.article.generator import (
     extract_title,
 )
 from content.sns.generator import generate_sns_posts
+from content.video.generator import generate_video_scripts
 
 from utils.knowledge_manager import (
     get_article_knowledge,
@@ -47,21 +48,35 @@ from config import (
 
 def generate_and_send_line():
 
+    # ========================================
     # 現在日付を日本時間で取得
+    # ========================================
+
     current_date = datetime.now(
         ZoneInfo("Asia/Tokyo")
     ).strftime("%Y年%m月%d日")
 
+    # ========================================
     # Geminiクライアント
+    # ========================================
+
     client = genai.Client()
 
+    # ========================================
     # テーマ・切り口を決定
+    # ========================================
+
     theme, angle = get_theme_and_angle()
 
+    # ========================================
     # テーマから対象サービスを取得
+    # ========================================
+
     services = get_target_services(theme)
 
-    log_info(f"対象サービス: {services}")
+    log_info(
+        f"対象サービス: {services}"
+    )
 
     # ========================================
     # AI知識DBの更新対象を決定
@@ -89,7 +104,9 @@ def generate_and_send_line():
         dict.fromkeys(update_services)
     )
 
-    log_info(f"DB更新対象: {update_services}")
+    log_info(
+        f"DB更新対象: {update_services}"
+    )
 
     # ========================================
     # AI知識DBの最新情報を取得
@@ -156,7 +173,8 @@ def generate_and_send_line():
 
         log_warning(
             "記事が完成していないため、"
-            "SNS生成・LINE送信・記事履歴保存は行いません。"
+            "SNS生成・動画台本生成・LINE送信・"
+            "記事履歴保存は行いません。"
         )
 
         return
@@ -183,12 +201,6 @@ def generate_and_send_line():
             article,
         )
 
-        sns_generated = True
-
-        log_info(
-            "X・Instagram投稿を生成しました。"
-        )
-
     except GeminiDailyQuotaExceeded:
 
         log_warning(
@@ -196,19 +208,71 @@ def generate_and_send_line():
             "SNS投稿生成をスキップします。"
         )
 
-        x_post = None
-        instagram_post = None
-        sns_generated = False
+        x_post = (
+            "※Gemini APIの日次クォータ超過のため、"
+            "X投稿は生成できませんでした。"
+        )
+
+        instagram_post = (
+            "※Gemini APIの日次クォータ超過のため、"
+            "Instagram投稿は生成できませんでした。"
+        )
 
     except Exception as e:
 
-        log_warning(
-            f"SNS投稿生成に失敗しました: {e}"
+        log_error(
+            f"SNS投稿生成エラー: {e}"
         )
 
-        x_post = None
-        instagram_post = None
-        sns_generated = False
+        x_post = (
+            "※SNS投稿の生成に失敗しました。"
+        )
+
+        instagram_post = (
+            "※SNS投稿の生成に失敗しました。"
+        )
+
+    # ========================================
+    # ショート動画台本生成
+    # ========================================
+
+    try:
+
+        video_30, video_60 = generate_video_scripts(
+            client,
+            article,
+        )
+
+    except GeminiDailyQuotaExceeded:
+
+        log_warning(
+            "Gemini APIの日次クォータ超過のため、"
+            "ショート動画台本生成をスキップします。"
+        )
+
+        video_30 = (
+            "※Gemini APIの日次クォータ超過のため、"
+            "30秒動画台本は生成できませんでした。"
+        )
+
+        video_60 = (
+            "※Gemini APIの日次クォータ超過のため、"
+            "60秒動画台本は生成できませんでした。"
+        )
+
+    except Exception as e:
+
+        log_error(
+            f"ショート動画台本生成エラー: {e}"
+        )
+
+        video_30 = (
+            "※30秒動画台本の生成に失敗しました。"
+        )
+
+        video_60 = (
+            "※60秒動画台本の生成に失敗しました。"
+        )
 
     # ========================================
     # 品質ステータス
@@ -240,24 +304,20 @@ def generate_and_send_line():
 {article}
 """
 
-    # ========================================
-    # 評価・SNS投稿メッセージ
-    # ========================================
-
     evaluation = evaluation.strip()
+    x_post = x_post.strip()
+    instagram_post = instagram_post.strip()
+    video_30 = video_30.strip()
+    video_60 = video_60.strip()
+
+    # ========================================
+    # 評価・SNS・動画台本メッセージ
+    # ========================================
 
     summary_message = f"""📊【AI評価】
 
 {evaluation}
-"""
 
-    # SNS生成成功時のみX・Instagramを追加
-    if sns_generated:
-
-        x_post = x_post.strip()
-        instagram_post = instagram_post.strip()
-
-        summary_message += f"""
 --------------------
 
 🐦【X投稿】
@@ -269,6 +329,18 @@ def generate_and_send_line():
 📸【Instagram投稿】
 
 {instagram_post}
+
+--------------------
+
+🎬【30秒ショート動画台本】
+
+{video_30}
+
+--------------------
+
+🎬【60秒ショート動画台本】
+
+{video_60}
 """
 
     # ========================================
@@ -278,15 +350,19 @@ def generate_and_send_line():
     messages = []
 
     # 長い記事は分割して送信
-    for part in split_text(article_message):
+    for part in split_text(
+        article_message
+    ):
 
         messages.append(
             create_text_message(part)
         )
 
-    # AI評価は必ず送信
+    # 評価・SNS投稿・動画台本
     messages.append(
-        create_text_message(summary_message)
+        create_text_message(
+            summary_message
+        )
     )
 
     # ========================================
