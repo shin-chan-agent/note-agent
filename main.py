@@ -335,6 +335,12 @@ def generate_and_send_line():
 
 --------------------
 
+🧵【Threads投稿】
+
+{threads_post}
+
+--------------------
+
 📸【Instagram投稿】
 
 {instagram_post}
