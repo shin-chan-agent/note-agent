@@ -191,12 +191,16 @@ def generate_and_send_line():
     latest_result = result["latest_result"]
 
     # ========================================
-    # X・Instagram投稿生成
+    # X・Threads・Instagram投稿生成
     # ========================================
 
     try:
 
-        x_post, instagram_post = generate_sns_posts(
+        (
+            x_post,
+            threads_post,
+            instagram_post,
+        ) = generate_sns_posts(
             client,
             article,
         )
@@ -211,6 +215,11 @@ def generate_and_send_line():
         x_post = (
             "※Gemini APIの日次クォータ超過のため、"
             "X投稿は生成できませんでした。"
+        )
+
+        threads_post = (
+            "※Gemini APIの日次クォータ超過のため、"
+            "Threads投稿は生成できませんでした。"
         )
 
         instagram_post = (
