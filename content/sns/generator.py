@@ -4,6 +4,10 @@ from utils.gemini_client import call_gemini
 
 
 def generate_sns_posts(client, article):
+    """
+    記事をもとにX・Threads・Instagram投稿を生成する。
+    """
+
     prompt = get_sns_prompt(article)
 
     response = call_gemini(
@@ -15,12 +19,53 @@ def generate_sns_posts(client, article):
     text = response.text.strip()
 
     x_post = ""
+    threads_post = ""
     instagram_post = ""
 
+    # ========================================
+    # X
+    # ========================================
+
+    if "【X】" in text:
+
+        x_part = text.split("【X】", 1)[1]
+
+        if "【Threads】" in x_part:
+            x_post = x_part.split(
+                "【Threads】",
+                1
+            )[0].strip()
+
+    # ========================================
+    # Threads
+    # ========================================
+
+    if "【Threads】" in text:
+
+        threads_part = text.split(
+            "【Threads】",
+            1
+        )[1]
+
+        if "【Instagram】" in threads_part:
+            threads_post = threads_part.split(
+                "【Instagram】",
+                1
+            )[0].strip()
+
+    # ========================================
+    # Instagram
+    # ========================================
+
     if "【Instagram】" in text:
-        x_part, instagram_part = text.split("【Instagram】", 1)
 
-        x_post = x_part.replace("【X】", "").strip()
-        instagram_post = instagram_part.strip()
+        instagram_post = text.split(
+            "【Instagram】",
+            1
+        )[1].strip()
 
-    return x_post, instagram_post
+    return (
+        x_post,
+        threads_post,
+        instagram_post,
+    )
