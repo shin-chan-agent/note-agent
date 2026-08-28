@@ -28,22 +28,52 @@ from utils.knowledge_manager import (
     get_background_update_service,
 )
 from utils.latest_info import fetch_latest_info
+
 from utils.line_sender import (
     send_line_messages,
+    send_line_error,
     create_text_message,
     split_text,
 )
+
 from utils.logger import (
     log_info,
     log_warning,
     log_error,
 )
+
 from utils.gemini_client import GeminiDailyQuotaExceeded
 
 from config import (
     MIN_SCORE,
     MIN_SEO_SCORE,
 )
+
+
+def notify_error(error_message):
+    """
+    エラーをログへ記録し、LINEへ通知する。
+
+    LINE通知自体が失敗しても、
+    元の処理を隠さない。
+    """
+
+    log_error(
+        f"予期しないエラー: {error_message}"
+    )
+
+    try:
+
+        send_line_error(
+            error_message
+        )
+
+    except Exception as notification_error:
+
+        log_error(
+            "エラー通知のLINE送信にも失敗しました: "
+            f"{notification_error}"
+        )
 
 
 def generate_and_send_line():
@@ -95,6 +125,7 @@ def generate_and_send_line():
     )
 
     if background_service:
+
         update_services.append(
             background_service
         )
@@ -179,6 +210,14 @@ def generate_and_send_line():
 
         return
 
+    except Exception as e:
+
+        notify_error(
+            f"記事生成中にエラーが発生しました。\n\n{e}"
+        )
+
+        raise
+
     # ========================================
     # 記事生成結果
     # ========================================
@@ -229,16 +268,20 @@ def generate_and_send_line():
 
     except Exception as e:
 
-        log_error(
-            f"SNS投稿生成エラー: {e}"
+        notify_error(
+            f"SNS投稿生成中にエラーが発生しました。\n\n{e}"
         )
 
         x_post = (
             "※SNS投稿の生成に失敗しました。"
         )
 
+        threads_post = (
+            "※Threads投稿の生成に失敗しました。"
+        )
+
         instagram_post = (
-            "※SNS投稿の生成に失敗しました。"
+            "※Instagram投稿の生成に失敗しました。"
         )
 
     # ========================================
@@ -271,8 +314,9 @@ def generate_and_send_line():
 
     except Exception as e:
 
-        log_error(
-            f"ショート動画台本生成エラー: {e}"
+        notify_error(
+            "ショート動画台本生成中に"
+            f"エラーが発生しました。\n\n{e}"
         )
 
         video_30 = (
@@ -315,6 +359,7 @@ def generate_and_send_line():
 
     evaluation = evaluation.strip()
     x_post = x_post.strip()
+    threads_post = threads_post.strip()
     instagram_post = instagram_post.strip()
     video_30 = video_30.strip()
     video_60 = video_60.strip()
@@ -406,12 +451,36 @@ def generate_and_send_line():
 
     except Exception as e:
 
-        log_error(
-            f"予期しないエラー: {e}"
+        notify_error(
+            f"LINE送信または記事履歴保存中に"
+            f"エラーが発生しました。\n\n{e}"
         )
 
         raise
 
 
 if __name__ == "__main__":
-    generate_and_send_line()
+
+    try:
+
+        generate_and_send_line()
+
+    except GeminiDailyQuotaExceeded:
+
+        # 日次クォータ超過は各処理側で
+        # 既に適切に処理しているため、
+        # ここでは再通知しない。
+        raise
+
+    except Exception as e:
+
+        # generate_and_send_line() 内で既に
+        # 通知済みのエラーについても、
+        # ここでは再度LINE通知しない。
+        #
+        # GitHub Actionsには失敗として返す。
+        log_error(
+            f"GitHub Actions実行エラー: {e}"
+        )
+
+        raise
