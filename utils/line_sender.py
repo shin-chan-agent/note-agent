@@ -3,9 +3,10 @@ import requests
 
 
 LINE_PUSH_URL = "https://api.line.me/v2/bot/message/push"
+
 LINE_MAX_MESSAGES = 5
 LINE_MAX_TEXT_LENGTH = 5000
-LINE_SPLIT_LENGTH = 4970
+LINE_SPLIT_LENGTH = 4980
 
 
 def split_text(text, max_length=LINE_SPLIT_LENGTH):
@@ -23,18 +24,23 @@ def split_text(text, max_length=LINE_SPLIT_LENGTH):
 
     while len(text) > max_length:
 
-        # max_length以内で最後の「。」を探す
-        split_pos = text.rfind("。", 0, max_length)
+        split_pos = text.rfind(
+            "。",
+            0,
+            max_length,
+        )
 
-        # 「。」がなければ最後の改行を探す
         if split_pos == -1:
-            split_pos = text.rfind("\n", 0, max_length)
+            split_pos = text.rfind(
+                "\n",
+                0,
+                max_length,
+            )
 
-        # それでもなければ文字数で強制分割
         if split_pos == -1:
             split_pos = max_length
+
         else:
-            # 「。」または改行を含める
             split_pos += 1
 
         part = text[:split_pos].strip()
@@ -44,11 +50,9 @@ def split_text(text, max_length=LINE_SPLIT_LENGTH):
 
         text = text[split_pos:].strip()
 
-    # 最後に残った部分
     if text:
         parts.append(text)
 
-    # 【1/○】を付与
     total = len(parts)
 
     return [
@@ -65,7 +69,9 @@ def send_line_messages(messages):
     ・1回のPush APIにつき最大5メッセージ
     """
 
-    print(f"LINE送信メッセージ数: {len(messages)}")
+    print(
+        f"LINE送信メッセージ数: {len(messages)}"
+    )
 
     # ==========================================
     # 送信前チェック
@@ -85,13 +91,16 @@ def send_line_messages(messages):
             )
 
             if text_length > LINE_MAX_TEXT_LENGTH:
+
                 raise ValueError(
                     f"LINE送信{i}が"
-                    f"{LINE_MAX_TEXT_LENGTH}文字を超えています: "
+                    f"{LINE_MAX_TEXT_LENGTH}文字を"
+                    f"超えています: "
                     f"{text_length}文字"
                 )
 
         else:
+
             raise ValueError(
                 f"未対応のLINEメッセージタイプです: "
                 f"{message_type}"
@@ -101,8 +110,13 @@ def send_line_messages(messages):
     # 環境変数
     # ==========================================
 
-    token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
-    user_id = os.environ["LINE_USER_ID"]
+    token = os.environ[
+        "LINE_CHANNEL_ACCESS_TOKEN"
+    ]
+
+    user_id = os.environ[
+        "LINE_USER_ID"
+    ]
 
     headers = {
         "Content-Type": "application/json",
@@ -138,6 +152,7 @@ def send_line_messages(messages):
         )
 
         if response.status_code != 200:
+
             raise RuntimeError(
                 f"LINE API Error "
                 f"{response.status_code}\n"
@@ -146,10 +161,30 @@ def send_line_messages(messages):
 
         print(
             f"LINE送信成功: "
-            f"{i + 1}〜{i + len(batch)}件"
+            f"{i + 1}〜"
+            f"{i + len(batch)}件"
         )
 
     return response
+
+
+def send_line_error(error_message):
+    """
+    システムエラーをLINEへ通知する。
+    """
+
+    text = (
+        "🚨【Note AI Agent エラー】\n\n"
+        "処理中にエラーが発生しました。\n\n"
+        "--------------------\n\n"
+        f"{error_message}"
+    )
+
+    message = create_text_message(text)
+
+    # エラー通知そのものが失敗しても、
+    # 元のエラーを隠さないように例外をそのまま返す
+    send_line_messages([message])
 
 
 def create_text_message(text):
@@ -158,14 +193,18 @@ def create_text_message(text):
     """
 
     if not isinstance(text, str):
+
         raise TypeError(
-            "LINEテキストメッセージは文字列で指定してください。"
+            "LINEテキストメッセージは"
+            "文字列で指定してください。"
         )
 
     if len(text) > LINE_MAX_TEXT_LENGTH:
+
         raise ValueError(
             f"LINEテキストが"
-            f"{LINE_MAX_TEXT_LENGTH}文字を超えています: "
+            f"{LINE_MAX_TEXT_LENGTH}文字を"
+            f"超えています: "
             f"{len(text)}文字"
         )
 
