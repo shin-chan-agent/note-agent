@@ -28,20 +28,16 @@ from utils.knowledge_manager import (
     get_background_update_service,
 )
 from utils.latest_info import fetch_latest_info
-
 from utils.line_sender import (
     send_line_messages,
-    send_line_error,
     create_text_message,
     split_text,
 )
-
 from utils.logger import (
     log_info,
     log_warning,
     log_error,
 )
-
 from utils.gemini_client import GeminiDailyQuotaExceeded
 
 from config import (
@@ -50,29 +46,49 @@ from config import (
 )
 
 
-def notify_error(error_message):
+def send_error_notification(
+    error_type,
+    error_message,
+):
     """
-    エラーをログへ記録し、LINEへ通知する。
+    エラー発生時にLINEへ通知する。
 
-    LINE通知自体が失敗しても、
-    元の処理を隠さない。
+    LINE通知自体の失敗で
+    元のエラー処理を妨げないようにする。
     """
 
-    log_error(
-        f"予期しないエラー: {error_message}"
-    )
+    message = f"""🚨【Note AI Agent エラー】
+
+エラー種別：
+{error_type}
+
+内容：
+{error_message}
+
+発生日時：
+{datetime.now(
+    ZoneInfo("Asia/Tokyo")
+).strftime("%Y年%m月%d日 %H:%M:%S")}
+"""
 
     try:
 
-        send_line_error(
-            error_message
+        send_line_messages(
+            [
+                create_text_message(
+                    message
+                )
+            ]
         )
 
-    except Exception as notification_error:
+        log_info(
+            "エラー通知をLINEへ送信しました。"
+        )
+
+    except Exception as e:
 
         log_error(
-            "エラー通知のLINE送信にも失敗しました: "
-            f"{notification_error}"
+            f"エラー通知のLINE送信にも失敗しました: {e}"
         )
 
 
@@ -125,7 +141,6 @@ def generate_and_send_line():
     )
 
     if background_service:
-
         update_services.append(
             background_service
         )
@@ -145,10 +160,39 @@ def generate_and_send_line():
 
     if update_services:
 
-        fetch_latest_info(
-            client,
-            update_services,
-        )
+        try:
+
+            fetch_latest_info(
+                client,
+                update_services,
+            )
+
+        except GeminiDailyQuotaExceeded as e:
+
+            log_warning(
+                "Gemini APIの日次クォータ超過のため、"
+                "AI知識DB更新を中止します。"
+            )
+
+            send_error_notification(
+                "Gemini API日次クォータ超過",
+                str(e),
+            )
+
+            return
+
+        except Exception as e:
+
+            log_error(
+                f"AI知識DB更新エラー: {e}"
+            )
+
+            send_error_notification(
+                "AI知識DB更新エラー",
+                str(e),
+            )
+
+            return
 
     else:
 
@@ -195,11 +239,16 @@ def generate_and_send_line():
             past_articles_text,
         )
 
-    except GeminiDailyQuotaExceeded:
+    except GeminiDailyQuotaExceeded as e:
 
         log_warning(
             "Gemini APIの日次クォータ超過のため、"
             "記事生成を中止します。"
+        )
+
+        send_error_notification(
+            "Gemini API日次クォータ超過",
+            str(e),
         )
 
         log_warning(
@@ -212,11 +261,16 @@ def generate_and_send_line():
 
     except Exception as e:
 
-        notify_error(
-            f"記事生成中にエラーが発生しました。\n\n{e}"
+        log_error(
+            f"記事生成エラー: {e}"
         )
 
-        raise
+        send_error_notification(
+            "記事生成エラー",
+            str(e),
+        )
+
+        return
 
     # ========================================
     # 記事生成結果
@@ -244,11 +298,16 @@ def generate_and_send_line():
             article,
         )
 
-    except GeminiDailyQuotaExceeded:
+    except GeminiDailyQuotaExceeded as e:
 
         log_warning(
             "Gemini APIの日次クォータ超過のため、"
             "SNS投稿生成をスキップします。"
+        )
+
+        send_error_notification(
+            "Gemini API日次クォータ超過（SNS生成）",
+            str(e),
         )
 
         x_post = (
@@ -268,8 +327,13 @@ def generate_and_send_line():
 
     except Exception as e:
 
-        notify_error(
-            f"SNS投稿生成中にエラーが発生しました。\n\n{e}"
+        log_error(
+            f"SNS投稿生成エラー: {e}"
+        )
+
+        send_error_notification(
+            "SNS投稿生成エラー",
+            str(e),
         )
 
         x_post = (
@@ -277,11 +341,11 @@ def generate_and_send_line():
         )
 
         threads_post = (
-            "※Threads投稿の生成に失敗しました。"
+            "※SNS投稿の生成に失敗しました。"
         )
 
         instagram_post = (
-            "※Instagram投稿の生成に失敗しました。"
+            "※SNS投稿の生成に失敗しました。"
         )
 
     # ========================================
@@ -295,11 +359,16 @@ def generate_and_send_line():
             article,
         )
 
-    except GeminiDailyQuotaExceeded:
+    except GeminiDailyQuotaExceeded as e:
 
         log_warning(
             "Gemini APIの日次クォータ超過のため、"
             "ショート動画台本生成をスキップします。"
+        )
+
+        send_error_notification(
+            "Gemini API日次クォータ超過（動画台本生成）",
+            str(e),
         )
 
         video_30 = (
@@ -314,9 +383,13 @@ def generate_and_send_line():
 
     except Exception as e:
 
-        notify_error(
-            "ショート動画台本生成中に"
-            f"エラーが発生しました。\n\n{e}"
+        log_error(
+            f"ショート動画台本生成エラー: {e}"
+        )
+
+        send_error_notification(
+            "ショート動画台本生成エラー",
+            str(e),
         )
 
         video_30 = (
@@ -451,36 +524,17 @@ def generate_and_send_line():
 
     except Exception as e:
 
-        notify_error(
-            f"LINE送信または記事履歴保存中に"
-            f"エラーが発生しました。\n\n{e}"
+        log_error(
+            f"LINE送信または記事履歴保存エラー: {e}"
+        )
+
+        send_error_notification(
+            "LINE送信または記事履歴保存エラー",
+            str(e),
         )
 
         raise
 
 
 if __name__ == "__main__":
-
-    try:
-
-        generate_and_send_line()
-
-    except GeminiDailyQuotaExceeded:
-
-        # 日次クォータ超過は各処理側で
-        # 既に適切に処理しているため、
-        # ここでは再通知しない。
-        raise
-
-    except Exception as e:
-
-        # generate_and_send_line() 内で既に
-        # 通知済みのエラーについても、
-        # ここでは再度LINE通知しない。
-        #
-        # GitHub Actionsには失敗として返す。
-        log_error(
-            f"GitHub Actions実行エラー: {e}"
-        )
-
-        raise
+    generate_and_send_line()
