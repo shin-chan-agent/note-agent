@@ -5,7 +5,7 @@ concurrency:
   cancel-in-progress: false
 
 on:
-  workflow_dispatch: # 手動実行用
+  workflow_dispatch:
   schedule:
     - cron: '21 16 * * *'  # 日本時間 朝1:21
 
@@ -21,22 +21,34 @@ jobs:
 
     steps:
 
+      # ========================================
+      # Checkout
+      # ========================================
+
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Debug files
-        run: |
-          find . -maxdepth 3 -type f | sort
+      # ========================================
+      # Python
+      # ========================================
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      # ========================================
+      # Dependencies
+      # ========================================
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests google-genai Pillow
+
+      # ========================================
+      # Run
+      # ========================================
 
       - name: Run Python script
         env:
@@ -45,19 +57,32 @@ jobs:
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         run: python main.py
 
+      # ========================================
+      # Upload Gemini response
+      # ========================================
+
       - name: Upload Gemini response
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: gemini-response
           path: gemini_response.txt
+          if-no-files-found: ignore
+
+      # ========================================
+      # Check knowledge file
+      # ========================================
 
       - name: Check knowledge file
         run: |
           ls -l utils/
           cat utils/ai_knowledge.json
 
-      - name: Commit history
+      # ========================================
+      # Commit history and logs
+      # ========================================
+
+      - name: Commit history and logs
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -65,9 +90,10 @@ jobs:
           git add \
             combination_history.json \
             article_history.json \
-            utils/ai_knowledge.json
+            utils/ai_knowledge.json \
+            logs/
 
-          git diff --cached --quiet || git commit -m "Update history"
+          git diff --cached --quiet || git commit -m "Update history and logs"
 
           git pull --rebase origin main
 
