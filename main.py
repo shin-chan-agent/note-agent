@@ -512,6 +512,7 @@ def generate_and_send_line():
             title=extract_title(article),
             theme=theme,
             angle=angle,
+            article=article,
         )
 
         log_info(
