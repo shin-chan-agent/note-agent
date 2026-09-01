@@ -23,6 +23,7 @@ from config import (
     EVALUATION_RETRY_WAIT,
     GEMINI_RETRY_WAIT,
     MAX_ARTICLE_LENGTH,
+    GEMINI_MODEL_ARTICLE,
 )
 
 
@@ -141,7 +142,7 @@ def generate_article(
 
             response = call_gemini(
                 client,
-                model="gemini-2.5-flash",
+                model=GEMINI_MODEL_ARTICLE,
                 contents=prompt,
             )
 
