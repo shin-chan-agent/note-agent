@@ -8,7 +8,10 @@ from utils.logger import (
 
 from google.genai import types
 
-from config import AI_SERVICES
+from config import (
+    AI_SERVICES,
+    GEMINI_MODEL_LATEST,
+)
 
 from utils.gemini_client import call_gemini
 
@@ -258,7 +261,7 @@ def fetch_service_info(client, service_id):
 
     response = call_gemini(
         client,
-        model="gemini-2.5-flash",
+        model=GEMINI_MODEL_LATEST,
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[
@@ -406,11 +409,3 @@ def fetch_latest_info(client, services):
                 service_id
             )
             continue
-
-        # 更新成功
-        service_data["update_failed"] = False
-
-        merge_service(
-            service_id,
-            service_data,
-        )
