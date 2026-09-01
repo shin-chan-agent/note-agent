@@ -1,3 +1,11 @@
+# Geminiモデル設定
+GEMINI_MODEL_ARTICLE = "gemini-2.5-flash"
+GEMINI_MODEL_EVALUATION = "gemini-2.5-flash"
+GEMINI_MODEL_SNS = "gemini-2.5-flash"
+GEMINI_MODEL_VIDEO = "gemini-2.5-flash"
+GEMINI_MODEL_LATEST = "gemini-2.5-flash"
+
+
 # 品質チェック設定
 MIN_SCORE = 90
 MIN_SEO_SCORE = 90
