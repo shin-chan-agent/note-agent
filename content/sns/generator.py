@@ -2,17 +2,15 @@ from content.sns.prompt import get_sns_prompt
 
 from utils.gemini_client import call_gemini
 
+from config import GEMINI_MODEL_SNS
+
 
 def generate_sns_posts(client, article):
-    """
-    記事をもとにX・Threads・Instagram投稿を生成する。
-    """
-
     prompt = get_sns_prompt(article)
 
     response = call_gemini(
         client,
-        model="gemini-2.5-flash",
+        model=GEMINI_MODEL_SNS,
         contents=prompt,
     )
 
@@ -22,47 +20,51 @@ def generate_sns_posts(client, article):
     threads_post = ""
     instagram_post = ""
 
-    # ========================================
-    # X
-    # ========================================
-
-    if "【X】" in text:
-
-        x_part = text.split("【X】", 1)[1]
-
-        if "【Threads】" in x_part:
-            x_post = x_part.split(
-                "【Threads】",
-                1
-            )[0].strip()
-
-    # ========================================
-    # Threads
-    # ========================================
-
     if "【Threads】" in text:
 
-        threads_part = text.split(
+        before_threads, after_threads = text.split(
             "【Threads】",
-            1
-        )[1]
+            1,
+        )
 
-        if "【Instagram】" in threads_part:
-            threads_post = threads_part.split(
+        x_post = (
+            before_threads
+            .replace("【X】", "")
+            .strip()
+        )
+
+        if "【Instagram】" in after_threads:
+
+            threads_part, instagram_part = after_threads.split(
                 "【Instagram】",
-                1
-            )[0].strip()
+                1,
+            )
 
-    # ========================================
-    # Instagram
-    # ========================================
+            threads_post = threads_part.strip()
+            instagram_post = instagram_part.strip()
 
-    if "【Instagram】" in text:
+        else:
 
-        instagram_post = text.split(
+            threads_post = after_threads.strip()
+
+    elif "【Instagram】" in text:
+
+        x_part, instagram_part = text.split(
             "【Instagram】",
-            1
-        )[1].strip()
+            1,
+        )
+
+        x_post = (
+            x_part
+            .replace("【X】", "")
+            .strip()
+        )
+
+        instagram_post = instagram_part.strip()
+
+    else:
+
+        x_post = text
 
     return (
         x_post,
