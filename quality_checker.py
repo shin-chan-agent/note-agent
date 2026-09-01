@@ -2,6 +2,8 @@ from google.genai import types
 
 from utils.gemini_client import call_gemini
 
+from config import GEMINI_MODEL_EVALUATION
+
 
 def quality_check(
     client,
@@ -251,7 +253,7 @@ DUPLICATE: NGの場合は、
 
     response = call_gemini(
         client,
-        model="gemini-2.5-flash",
+        model=GEMINI_MODEL_EVALUATION,
         contents=prompt,
     )
 
