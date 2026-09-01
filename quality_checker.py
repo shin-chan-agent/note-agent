@@ -1,5 +1,3 @@
-from google.genai import types
-
 from utils.gemini_client import call_gemini
 
 from config import GEMINI_MODEL_EVALUATION
