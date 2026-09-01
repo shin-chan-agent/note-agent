@@ -2,6 +2,8 @@ from content.video.prompt import get_video_prompt
 
 from utils.gemini_client import call_gemini
 
+from config import GEMINI_MODEL_VIDEO
+
 
 def generate_video_scripts(client, article):
     """
@@ -13,7 +15,7 @@ def generate_video_scripts(client, article):
 
     response = call_gemini(
         client,
-        model="gemini-2.5-flash",
+        model=GEMINI_MODEL_VIDEO,
         contents=prompt,
     )
 
