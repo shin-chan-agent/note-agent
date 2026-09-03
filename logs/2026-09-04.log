@@ -1,0 +1,20 @@
+[2026-09-04 04:19:50] [INFO] 対象サービス: ['capcut']
+[2026-09-04 04:19:51] [INFO] DB更新対象: ['capcut', 'chatgpt']
+[2026-09-04 04:19:51] [INFO] capcut の最新情報を取得します
+[2026-09-04 04:20:43] [INFO] 取得サービス: capcut
+[2026-09-04 04:20:43] [INFO] chatgpt の最新情報を取得します
+[2026-09-04 04:22:10] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-04 04:22:10] [WARNING] 30秒待機します...
+[2026-09-04 04:25:51] [INFO] 取得サービス: chatgpt
+[2026-09-04 04:26:41] [INFO] 記事スコア：100
+SCORE:100
+SEO:100
+DUPLICATE: OK
+LATEST: OK
+
+改善点なし
+[2026-09-04 04:26:41] [INFO] 品質スコア：100
+[2026-09-04 04:26:41] [INFO] SEOスコア：100
+[2026-09-04 04:26:41] [INFO] すべての品質基準をクリアしました。
+[2026-09-04 04:27:11] [INFO] 記事履歴を保存しました。
+[2026-09-04 04:27:11] [INFO] LINEへ正常に送信しました。
