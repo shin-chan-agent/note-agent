@@ -535,14 +535,43 @@ def generate_and_send_line():
     )
 
     # ========================================
-    # LINE送信・記事履歴保存
+    # 生成コンテンツ保存
     # ========================================
 
     try:
 
-        send_line_messages(
-            messages
+        save_dir = save_generated_contents(
+            article=article,
+            x_post=x_post,
+            threads_post=threads_post,
+            instagram_post=instagram_post,
+            video_30=video_30,
+            video_60=video_60,
         )
+
+        log_info(
+            f"生成コンテンツを保存しました: {save_dir}"
+        )
+
+    except Exception as e:
+
+        log_error(
+            f"生成コンテンツ保存エラー: {e}"
+        )
+
+        send_error_notification(
+            "生成コンテンツ保存エラー",
+            str(e),
+        )
+
+        raise
+
+
+    # ========================================
+    # 記事履歴保存
+    # ========================================
+
+    try:
 
         save_article(
             title=extract_title(article),
@@ -555,6 +584,30 @@ def generate_and_send_line():
             "記事履歴を保存しました。"
         )
 
+    except Exception as e:
+
+        log_error(
+            f"記事履歴保存エラー: {e}"
+        )
+
+        send_error_notification(
+            "記事履歴保存エラー",
+            str(e),
+        )
+
+        raise
+
+
+    # ========================================
+    # LINE送信
+    # ========================================
+
+    try:
+
+        send_line_messages(
+            messages
+        )
+
         log_info(
             "LINEへ正常に送信しました。"
         )
@@ -562,11 +615,11 @@ def generate_and_send_line():
     except Exception as e:
 
         log_error(
-            f"LINE送信または記事履歴保存エラー: {e}"
+            f"LINE送信エラー: {e}"
         )
 
         send_error_notification(
-            "LINE送信または記事履歴保存エラー",
+            "LINE送信エラー",
             str(e),
         )
 
