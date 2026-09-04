@@ -9555,7 +9555,7 @@
             ],
             "last_verified": "2026-08-26",
             "status": "available",
-            "update_failed": false
+            "update_failed": true
         },
         "claude": {
             "name": "Claude",
