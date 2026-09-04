@@ -92,6 +92,7 @@ jobs:
             article_history.json \
             utils/ai_knowledge.json \
             logs/
+            generated/
 
           git diff --cached --quiet || git commit -m "Update history and logs"
 
