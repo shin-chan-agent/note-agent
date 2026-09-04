@@ -97,6 +97,40 @@ def send_error_notification(
 def generate_and_send_line():
 
     # ========================================
+    # GitHub Secrets設定チェック
+    # ========================================
+
+    required_secrets = {
+        "GEMINI_API_KEY": os.getenv("GEMINI_API_KEY"),
+        "LINE_CHANNEL_ACCESS_TOKEN": os.getenv(
+            "LINE_CHANNEL_ACCESS_TOKEN"
+        ),
+        "LINE_USER_ID": os.getenv("LINE_USER_ID"),
+    }
+
+    missing_secrets = [
+        name
+        for name, value in required_secrets.items()
+        if not value
+    ]
+
+    if missing_secrets:
+
+        message = (
+            "GitHub Secretsの設定が不足しています: "
+            + ", ".join(missing_secrets)
+        )
+
+        log_error(message)
+
+        send_error_notification(
+            "GitHub Secrets設定エラー",
+            message,
+        )
+
+        return
+
+    # ========================================
     # 現在日付を日本時間で取得
     # ========================================
 
