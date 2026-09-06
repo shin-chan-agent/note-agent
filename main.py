@@ -41,6 +41,7 @@ from utils.logger import (
     log_error,
 )
 from utils.gemini_client import GeminiDailyQuotaExceeded
+from utils.content_saver import save_generated_contents
 
 from config import (
     MIN_SCORE,
