@@ -166,50 +166,50 @@ def generate_and_send_line():
     # AI知識DBの更新対象を決定
     # ========================================
 
-    update_services = [
+    target_update_services = [
         service_id
         for service_id in services
         if needs_update(service_id)
         or needs_retry(service_id)
     ]
 
-    # バックグラウンド更新対象を1件追加
+    # バックグラウンド更新対象を1件決定
     background_service = get_background_update_service(
         services
     )
 
+    log_info(
+        f"DB更新対象: {target_update_services}"
+    )
+
     if background_service:
-        update_services.append(
-            background_service
+        log_info(
+            f"バックグラウンド更新対象: "
+            f"{background_service}"
         )
 
-    # 重複除去
-    update_services = list(
-        dict.fromkeys(update_services)
-    )
-
-    log_info(
-        f"DB更新対象: {update_services}"
-    )
-
     # ========================================
-    # AI知識DBの最新情報を取得
+    # 対象サービスの最新情報を取得
     # ========================================
 
-    if update_services:
+    if target_update_services:
 
         try:
 
             fetch_latest_info(
                 client,
-                update_services,
+                target_update_services,
+            )
+
+            log_info(
+                "対象サービスのAI知識DB更新が完了しました。"
             )
 
         except GeminiDailyQuotaExceeded as e:
 
             log_warning(
-                "Gemini APIの日次クォータ超過のため、"
-                "AI知識DB更新を中止します。"
+                "Gemini APIの日次クォータ超過により、"
+                "対象サービスのAI知識DB更新に失敗しました。"
             )
 
             send_error_notification(
@@ -217,12 +217,10 @@ def generate_and_send_line():
                 str(e),
             )
 
-            return
-
         except Exception as e:
 
             log_error(
-                f"AI知識DB更新エラー: {e}"
+                f"対象サービスのAI知識DB更新エラー: {e}"
             )
 
             send_error_notification(
@@ -230,13 +228,84 @@ def generate_and_send_line():
                 str(e),
             )
 
+        # ====================================
+        # 更新失敗時の安全チェック
+        # ====================================
+
+        expired_services = [
+            service_id
+            for service_id in target_update_services
+            if is_knowledge_too_old(service_id)
+        ]
+
+        if expired_services:
+
+            message = (
+                "AI知識DBの安全利用期限を超えたため、"
+                "記事生成を中止します。\n"
+                f"対象サービス: {expired_services}"
+            )
+
+            log_error(message)
+
+            send_error_notification(
+                "AI知識DBの情報が古すぎます",
+                message,
+            )
+
             return
+
+        log_info(
+            "AI知識DBは安全利用期限内のため、"
+            "記事生成を続行します。"
+        )
 
     else:
 
         log_info(
-            "AI知識DBは最新のため更新スキップ"
+            "対象サービスのAI知識DBは最新のため、"
+            "更新をスキップします。"
         )
+
+    # ========================================
+    # バックグラウンド更新
+    # ========================================
+
+    if background_service:
+
+        try:
+
+            fetch_latest_info(
+                client,
+                [background_service],
+            )
+
+            log_info(
+                "バックグラウンドAI知識DB更新が完了しました。"
+            )
+
+        except GeminiDailyQuotaExceeded as e:
+
+            log_warning(
+                "Gemini API日次クォータ超過のため、"
+                "バックグラウンド更新をスキップします。"
+            )
+
+            send_error_notification(
+                "Gemini API日次クォータ超過（バックグラウンド更新）",
+                str(e),
+            )
+
+        except Exception as e:
+
+            log_warning(
+                f"バックグラウンドAI知識DB更新エラー: {e}"
+            )
+
+            send_error_notification(
+                "AI知識DBバックグラウンド更新エラー",
+                str(e),
+            )
 
     # ========================================
     # 記事生成用の知識を取得
