@@ -28,6 +28,7 @@ from utils.knowledge_manager import (
     needs_update,
     needs_retry,
     get_background_update_service,
+    is_knowledge_too_old,
 )
 from utils.latest_info import fetch_latest_info
 from utils.line_sender import (
