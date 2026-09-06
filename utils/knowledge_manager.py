@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 from config import (
     AI_SERVICES,
     KNOWLEDGE_UPDATE_INTERVAL_DAYS,
+    MAX_KNOWLEDGE_AGE_DAYS,
     MISSING_LIMIT,
 )
 
