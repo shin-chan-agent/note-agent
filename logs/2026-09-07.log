@@ -1,0 +1,31 @@
+[2026-09-07 03:24:41] [INFO] 対象サービス: ['chatgpt']
+[2026-09-07 03:24:41] [INFO] DB更新対象: ['chatgpt']
+[2026-09-07 03:24:41] [INFO] バックグラウンド更新対象: gemini
+[2026-09-07 03:24:41] [INFO] chatgpt の最新情報を取得します
+[2026-09-07 03:25:50] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-07 03:25:50] [WARNING] 30秒待機します...
+[2026-09-07 03:30:59] [WARNING] Gemini APIリトライ (2/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-07 03:30:59] [WARNING] 30秒待機します...
+[2026-09-07 03:31:44] [WARNING] Gemini APIリトライ (3/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-07 03:31:44] [ERROR] 対象サービスのAI知識DB更新エラー: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-07 03:31:44] [INFO] エラー通知をLINEへ送信しました。
+[2026-09-07 03:31:44] [INFO] AI知識DBは安全利用期限内のため、記事生成を続行します。
+[2026-09-07 03:31:44] [INFO] gemini の最新情報を取得します
+[2026-09-07 03:32:59] [WARNING] バックグラウンドAI知識DB更新エラー: 500 INTERNAL. {'error': {'code': 500, 'message': 'An internal error has occurred. Please retry or report in https://developers.generativeai.google/guide/troubleshooting', 'status': 'INTERNAL'}}
+[2026-09-07 03:33:00] [INFO] エラー通知をLINEへ送信しました。
+[2026-09-07 03:33:58] [INFO] 記事スコア：100
+SCORE:100
+SEO:100
+DUPLICATE: OK
+LATEST: OK
+
+改善点なし
+[2026-09-07 03:33:58] [INFO] 品質スコア：100
+[2026-09-07 03:33:58] [INFO] SEOスコア：100
+[2026-09-07 03:33:58] [INFO] すべての品質基準をクリアしました。
+[2026-09-07 03:34:17] [WARNING] Gemini APIの日次クォータを超過しました。リトライせず処理を終了します。
+[2026-09-07 03:34:17] [WARNING] Gemini APIの日次クォータ超過のため、ショート動画台本生成をスキップします。
+[2026-09-07 03:34:18] [INFO] エラー通知をLINEへ送信しました。
+[2026-09-07 03:34:18] [INFO] 生成コンテンツを保存しました: generated/2026/09/20260907_033418
+[2026-09-07 03:34:18] [INFO] 記事履歴を保存しました。
+[2026-09-07 03:34:18] [INFO] LINEへ正常に送信しました。
