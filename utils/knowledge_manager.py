@@ -319,6 +319,65 @@ def needs_retry(service_id):
     )
 
 
+def is_knowledge_too_old(service_id):
+    """
+    指定サービスのAI知識DBが
+    安全利用期限を超えて古くなっているか判定する。
+
+    True:
+        最後の正常確認から
+        MAX_KNOWLEDGE_AGE_DAYS以上経過
+
+    False:
+        まだ安全利用期限内
+
+    日付が存在しない、または不正な場合は
+    安全のためTrueとする。
+    """
+
+    data = load_knowledge()
+
+    service = data["services"].get(
+        service_id
+    )
+
+    if not service:
+        return True
+
+    # 最後に正常確認できた日を使用
+    last_verified = service.get(
+        "last_verified"
+    )
+
+    if not last_verified:
+        return True
+
+    verified_time = parse_datetime(
+        last_verified
+    )
+
+    # 不正な日付の場合は安全のため古いと判定
+    if verified_time is None:
+        return True
+
+    now = datetime.now(
+        timezone.utc
+    )
+
+    elapsed_seconds = (
+        now - verified_time
+    ).total_seconds()
+
+    elapsed_days = (
+        elapsed_seconds / 86400
+    )
+
+    return (
+        elapsed_days
+        >= MAX_KNOWLEDGE_AGE_DAYS
+    )
+
+
 def get_background_update_service(
     exclude_services
 ):
