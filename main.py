@@ -8,6 +8,7 @@ from google import genai
 from theme_manager import (
     get_theme_and_angle,
     get_target_services,
+    mark_combination_completed,
 )
 
 from article_history import (
