@@ -392,6 +392,35 @@ def generate_and_send_line():
     latest_result = result["latest_result"]
 
     # ========================================
+    # 記事生成成功した組み合わせを履歴へ登録
+    # ========================================
+
+    try:
+
+        mark_combination_completed(
+            theme,
+            angle,
+        )
+
+        log_info(
+            "記事生成成功のため、"
+            "テーマ×切り口を履歴へ登録しました。"
+        )
+
+    except Exception as e:
+
+        log_error(
+            f"組み合わせ履歴保存エラー: {e}"
+        )
+
+        send_error_notification(
+            "組み合わせ履歴保存エラー",
+            str(e),
+        )
+
+        raise
+
+    # ========================================
     # X・Threads・Instagram投稿生成
     # ========================================
 
