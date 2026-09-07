@@ -66,6 +66,10 @@ def save_combination_history(history):
 def get_theme_and_angle():
     """
     未使用のテーマ×切り口をランダムに返す。
+
+    記事生成前には履歴へ保存しない。
+    記事生成成功後に mark_combination_completed()
+    で履歴へ登録する。
     """
 
     history = load_combination_history()
@@ -104,10 +108,6 @@ def get_theme_and_angle():
     # ランダム選択
     selected = random.choice(unused)
 
-    history.append(selected)
-
-    save_combination_history(history)
-
     print(
         f"今回：{selected['theme']} × {selected['angle']}"
     )
@@ -115,6 +115,41 @@ def get_theme_and_angle():
     return (
         selected["theme"],
         selected["angle"]
+    )
+
+
+def mark_combination_completed(
+    theme,
+    angle,
+):
+    """
+    記事生成に成功したテーマ×切り口を
+    組み合わせ履歴へ登録する。
+
+    すでに登録されている場合は
+    重複登録しない。
+    """
+
+    history = load_combination_history()
+
+    combination = {
+        "theme": theme,
+        "angle": angle
+    }
+
+    if combination in history:
+        print(
+            "組み合わせは既に履歴へ登録されています。"
+        )
+        return
+
+    history.append(combination)
+
+    save_combination_history(history)
+
+    print(
+        f"組み合わせ履歴へ登録："
+        f"{theme} × {angle}"
     )
 
 
