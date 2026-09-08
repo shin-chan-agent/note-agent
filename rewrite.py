@@ -2,6 +2,8 @@ from google import genai
 
 from utils.gemini_client import call_gemini
 
+from config import GEMINI_MODEL_REWRITE
+
 
 def rewrite_article(
     client,
@@ -54,7 +56,7 @@ def rewrite_article(
 
     response = call_gemini(
         client,
-        model="gemini-2.5-flash",
+        model=GEMINI_MODEL_REWRITE,
         contents=prompt,
     )
 
