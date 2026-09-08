@@ -1,6 +1,7 @@
 # Geminiモデル設定
 GEMINI_MODEL_ARTICLE = "gemini-2.5-flash"
 GEMINI_MODEL_EVALUATION = "gemini-2.5-flash"
+GEMINI_MODEL_REWRITE = "gemini-2.5-flash"
 GEMINI_MODEL_SNS = "gemini-2.5-flash"
 GEMINI_MODEL_VIDEO = "gemini-2.5-flash"
 GEMINI_MODEL_LATEST = "gemini-2.5-flash"
