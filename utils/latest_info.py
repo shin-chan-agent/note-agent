@@ -410,6 +410,9 @@ def fetch_latest_info(client, services):
             )
             continue
 
+        service_data["update_failed"] = False
+
+
         # ==========================
         # AI知識DBへ反映
         # ==========================
