@@ -409,3 +409,16 @@ def fetch_latest_info(client, services):
                 service_id
             )
             continue
+
+        # ==========================
+        # AI知識DBへ反映
+        # ==========================
+
+        merge_service(
+            service_id,
+            service_data,
+        )
+
+        log_info(
+            f"{service_id} のAI知識DBへの反映が完了しました"
+        )
