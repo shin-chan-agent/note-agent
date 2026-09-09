@@ -23,3 +23,23 @@
 [2026-09-10 04:31:28] [ERROR] Geminiエラー（3回目）：503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
 [2026-09-10 04:31:28] [ERROR] 記事生成エラー: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
 [2026-09-10 04:31:29] [INFO] エラー通知をLINEへ送信しました。
+[2026-09-10 07:44:37] [INFO] 対象サービス: ['chatgpt', 'gemini', 'canva', 'capcut']
+[2026-09-10 07:44:37] [INFO] DB更新対象: []
+[2026-09-10 07:44:37] [INFO] 対象サービスのAI知識DBは最新のため、更新をスキップします。
+[2026-09-10 07:45:54] [INFO] 記事スコア：96
+SCORE:96
+SEO:95
+DUPLICATE: OK
+LATEST: NG
+
+改善点
+
+【必須】
+- CanvaのAIクレジットに関する記述を修正してください。「Canva Freeプランでも、標準AI200回/月、プレミアムAI20回/月、動画AI200回/月（Proプラン）のクレジットが利用できます。」という表現は、Freeプランで動画AI200回/月が利用できると誤解される可能性があります。AI知識DBによると、動画AIの200回/月クレジットはCanva Proプランで提供されています。Freeプランで利用できるAI機能とそのクレジット回数を正確に記述し、Proプランの特典と明確に区別してください。例えば、「Canva Freeプランでは、標準AI200回/月、プレミアムAI20回/月が利用できます。動画AIの利用やより多くのAIクレジットについては、Proプラン（月額$18、動画AI200回/月）へのアップグレードをご検討ください。」のように修正してください。
+[2026-09-10 07:45:54] [INFO] 品質スコア：96
+[2026-09-10 07:45:54] [INFO] SEOスコア：95
+[2026-09-10 07:45:54] [WARNING] 1回目のリライトを開始します。
+[2026-09-10 07:46:19] [WARNING] Gemini APIの日次クォータを超過しました。リトライせず処理を終了します。
+[2026-09-10 07:46:19] [WARNING] Gemini APIの日次クォータ超過のため、記事生成を中止します。
+[2026-09-10 07:46:19] [INFO] エラー通知をLINEへ送信しました。
+[2026-09-10 07:46:19] [WARNING] 記事が完成していないため、SNS生成・動画台本生成・LINE送信・記事履歴保存は行いません。
