@@ -1,0 +1,29 @@
+[2026-09-12 04:11:47] [INFO] 対象サービス: ['chatgpt', 'gemini', 'canva', 'capcut']
+[2026-09-12 04:11:47] [INFO] DB更新対象: []
+[2026-09-12 04:11:47] [INFO] 対象サービスのAI知識DBは最新のため、更新をスキップします。
+[2026-09-12 04:13:17] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-12 04:13:17] [WARNING] 30秒待機します...
+[2026-09-12 04:14:13] [INFO] 記事スコア：96
+SCORE:96
+SEO:100
+DUPLICATE: OK
+LATEST: OK
+
+改善点
+
+【推奨】
+・CanvaのAI生成画像や動画が自動的に高解像度ではない点について、最終出力前に品質を確認し、必要に応じて手動で調整するよう促す箇所がありますが、具体的な調整方法（例：Canvaの「マジックエンハンス」機能など）に触れると、さらに読者の行動に繋がりやすくなるでしょう。（文字数制約を考慮し、簡潔な追記が望ましい）
+[2026-09-12 04:14:13] [INFO] 品質スコア：96
+[2026-09-12 04:14:13] [INFO] SEOスコア：100
+[2026-09-12 04:14:13] [INFO] すべての品質基準をクリアしました。
+[2026-09-12 04:14:13] [INFO] 記事生成成功のため、テーマ×切り口を履歴へ登録しました。
+[2026-09-12 04:14:55] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-12 04:14:55] [WARNING] 30秒待機します...
+[2026-09-12 04:15:28] [WARNING] Gemini APIリトライ (2/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-12 04:15:28] [WARNING] 30秒待機します...
+[2026-09-12 04:16:08] [WARNING] Gemini APIリトライ (3/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-12 04:16:08] [ERROR] ショート動画台本生成エラー: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-12 04:16:08] [INFO] エラー通知をLINEへ送信しました。
+[2026-09-12 04:16:08] [INFO] 生成コンテンツを保存しました: generated/2026/09/20260912_041608
+[2026-09-12 04:16:08] [INFO] 記事履歴を保存しました。
+[2026-09-12 04:16:08] [INFO] LINEへ正常に送信しました。
