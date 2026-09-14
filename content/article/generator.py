@@ -28,12 +28,6 @@ from config import (
 
 
 def extract_title(article):
-    """
-    記事本文から「タイトル：」のタイトルを抽出する。
-
-    「タイトル:」と「タイトル：」の両方に対応する。
-    """
-
     match = re.search(
         r"^タイトル[:：]\s*(.+)$",
         article,
@@ -49,10 +43,6 @@ def extract_title(article):
 
 
 def remove_before_title(article):
-    """
-    「タイトル：」より前にある余計な文章を削除する。
-    """
-
     title_match = re.search(
         r"^タイトル[:：]",
         article,
@@ -73,12 +63,7 @@ def evaluate_article(
     past_articles_text,
     knowledge,
 ):
-    """
-    記事を評価し、スコアと判定結果を返す。
-
-    評価結果からスコアを取得できなかった場合は、
-    MAX_RETRY回まで評価のみ再実行する。
-    """
+    score = 0
 
     for _ in range(MAX_RETRY):
 
@@ -97,6 +82,7 @@ def evaluate_article(
         seo_score = result["seo_score"]
         duplicate_result = result["duplicate"]
         latest_result = result["latest"]
+        paid_value_result = result["paid_value"]
 
         if score != 0:
             break
@@ -120,6 +106,23 @@ def evaluate_article(
         seo_score,
         duplicate_result,
         latest_result,
+        paid_value_result,
+    )
+
+
+def is_quality_pass(
+    score,
+    seo_score,
+    duplicate_result,
+    latest_result,
+    paid_value_result,
+):
+    return (
+        score >= MIN_SCORE
+        and seo_score >= MIN_SEO_SCORE
+        and duplicate_result == "OK"
+        and latest_result == "OK"
+        and paid_value_result == "OK"
     )
 
 
@@ -129,13 +132,6 @@ def generate_article(
     knowledge,
     past_articles_text,
 ):
-
-    # 固定記事案内
-    fixed_text = (
-        "AI×ショート動画で最速でマネタイズ（収益化）する具体的な手順と、"
-        "豪華40大特典の受け取り方を下記の固定記事で詳しく解説しています。"
-    )
-
     for attempt in range(MAX_RETRY):
 
         try:
@@ -148,38 +144,28 @@ def generate_article(
 
             generated_text = response.text
 
-            article = generated_text
+            article = remove_before_title(
+                generated_text
+            )
 
-            # 「タイトル：」より前の余計な文章を除去
-            article = remove_before_title(article)
-
-            # タイトル抽出・存在チェック
             extract_title(article)
 
-            # 固定記事案内チェック
-            if fixed_text not in article:
-                log_warning(
-                    "固定記事案内欠落。再生成します。"
-                )
-                continue
-
-            # 文字数チェック
             if len(article) < 2000:
+
                 log_warning(
                     "記事文字数不足。再生成します。"
                 )
+
                 continue
 
             if len(article) > MAX_ARTICLE_LENGTH:
+
                 log_warning(
                     f"記事文字数超過（{len(article)}文字）。"
                     "再生成します。"
                 )
-                continue
 
-            # ========================================
-            # 初回評価
-            # ========================================
+                continue
 
             (
                 evaluation,
@@ -187,6 +173,7 @@ def generate_article(
                 seo_score,
                 duplicate_result,
                 latest_result,
+                paid_value_result,
             ) = evaluate_article(
                 client,
                 article,
@@ -206,21 +193,32 @@ def generate_article(
                 f"SEOスコア：{seo_score}"
             )
 
-            # ========================================
-            # リライト
-            # ========================================
+            log_info(
+                f"重複判定：{duplicate_result}"
+            )
+
+            log_info(
+                f"最新情報判定：{latest_result}"
+            )
+
+            log_info(
+                f"有料記事価値判定：{paid_value_result}"
+            )
 
             for rewrite in range(MAX_REWRITE):
 
-                if (
-                    score >= MIN_SCORE
-                    and seo_score >= MIN_SEO_SCORE
-                    and duplicate_result == "OK"
-                    and latest_result == "OK"
+                if is_quality_pass(
+                    score,
+                    seo_score,
+                    duplicate_result,
+                    latest_result,
+                    paid_value_result,
                 ):
+
                     log_info(
                         "すべての品質基準をクリアしました。"
                     )
+
                     break
 
                 log_warning(
@@ -231,12 +229,16 @@ def generate_article(
                     evaluation
                 )
 
-                rewrite_prompt = result["improvements"]
+                rewrite_prompt = result[
+                    "improvements"
+                ]
 
                 if not rewrite_prompt.strip():
-                    log_info(
+
+                    log_warning(
                         "改善指示がないためリライトを終了します。"
                     )
+
                     break
 
                 article = rewrite_article(
@@ -246,32 +248,14 @@ def generate_article(
                     rewrite_prompt,
                 )
 
-                # リライト後の記事から余計な文章を除去
                 article = remove_before_title(
                     article
                 )
 
-                # タイトル抽出・存在チェック
                 extract_title(article)
 
-                # ====================================
-                # リライト後の固定記事案内チェック
-                # ====================================
-
-                if fixed_text not in article:
-                    log_warning(
-                        "リライト後に固定記事案内が欠落しました。"
-                    )
-
-                    raise ValueError(
-                        "リライト後の記事に固定記事案内がありません。"
-                    )
-
-                # ====================================
-                # リライト後の文字数チェック
-                # ====================================
-
                 if len(article) < 2000:
+
                     log_warning(
                         f"リライト後の記事が短すぎます（{len(article)}文字）。"
                     )
@@ -282,6 +266,7 @@ def generate_article(
                     )
 
                 if len(article) > MAX_ARTICLE_LENGTH:
+
                     log_warning(
                         f"リライト後の記事が長すぎます（{len(article)}文字）。"
                     )
@@ -291,16 +276,13 @@ def generate_article(
                         f"{len(article)}文字"
                     )
 
-                # ====================================
-                # リライト後の再評価
-                # ====================================
-
                 (
                     evaluation,
                     score,
                     seo_score,
                     duplicate_result,
                     latest_result,
+                    paid_value_result,
                 ) = evaluate_article(
                     client,
                     article,
@@ -320,77 +302,97 @@ def generate_article(
                     f"SEOスコア：{seo_score}"
                 )
 
-                # 改善点がない場合
-                if (
-                    re.search(
-                        r"改善点\s*[:：]?\s*なし",
-                        evaluation,
-                    )
-                    and duplicate_result == "OK"
-                    and latest_result == "OK"
-                ):
-                    log_info(
-                        "改善点がないためリライトを終了します。"
-                    )
-                    break
+                log_info(
+                    f"重複判定：{duplicate_result}"
+                )
 
-                # すべての品質基準をクリア
-                if (
-                    score >= MIN_SCORE
-                    and seo_score >= MIN_SEO_SCORE
-                    and duplicate_result == "OK"
-                    and latest_result == "OK"
+                log_info(
+                    f"最新情報判定：{latest_result}"
+                )
+
+                log_info(
+                    f"有料記事価値判定：{paid_value_result}"
+                )
+
+                if is_quality_pass(
+                    score,
+                    seo_score,
+                    duplicate_result,
+                    latest_result,
+                    paid_value_result,
                 ):
+
                     log_info(
                         "すべての品質基準をクリアしました。"
                     )
+
                     break
 
             # ========================================
-            # 最終品質チェック
+            # 最終品質判定
             # ========================================
 
-            if score < MIN_SCORE:
-                log_warning(
-                    "最大回数リライトしましたが品質基準に届きませんでした。"
-                )
+            if not is_quality_pass(
+                score,
+                seo_score,
+                duplicate_result,
+                latest_result,
+                paid_value_result,
+            ):
 
-            if seo_score < MIN_SEO_SCORE:
-                log_warning(
-                    "最大回数リライトしましたがSEO基準に届きませんでした。"
-                )
+                if score < MIN_SCORE:
 
-            if duplicate_result != "OK":
-                log_warning(
-                    "最終記事が過去記事との重複基準を満たしていません。"
-                )
+                    log_warning(
+                        "最終品質スコアが基準未達です。"
+                    )
 
-            if latest_result != "OK":
-                log_warning(
-                    "最終記事が最新情報基準を満たしていません。"
+                if seo_score < MIN_SEO_SCORE:
+
+                    log_warning(
+                        "最終SEOスコアが基準未達です。"
+                    )
+
+                if duplicate_result != "OK":
+
+                    log_warning(
+                        "最終記事が重複基準を満たしていません。"
+                    )
+
+                if latest_result != "OK":
+
+                    log_warning(
+                        "最終記事が最新情報基準を満たしていません。"
+                    )
+
+                if paid_value_result != "OK":
+
+                    log_warning(
+                        "最終記事が有料記事価値基準を満たしていません。"
+                    )
+
+                raise ValueError(
+                    "最大回数リライト後も"
+                    "すべての品質基準を満たせませんでした。"
                 )
 
             if len(article) < 2000:
+
                 raise ValueError(
                     f"最終記事が短すぎます: "
                     f"{len(article)}文字"
                 )
 
             if len(article) > MAX_ARTICLE_LENGTH:
+
                 raise ValueError(
                     f"最終記事が最大文字数を超えています: "
                     f"{len(article)}文字"
                 )
 
-            # 最終固定記事案内チェック
-            if fixed_text not in article:
-                raise ValueError(
-                    "最終記事に固定記事案内がありません。"
-                )
-
             break
 
         except GeminiDailyQuotaExceeded:
+
             raise
 
         except Exception as e:
@@ -400,6 +402,7 @@ def generate_article(
             )
 
             if attempt == MAX_RETRY - 1:
+
                 raise
 
             log_warning(
@@ -417,4 +420,5 @@ def generate_article(
         "seo_score": seo_score,
         "duplicate_result": duplicate_result,
         "latest_result": latest_result,
+        "paid_value_result": paid_value_result,
     }
