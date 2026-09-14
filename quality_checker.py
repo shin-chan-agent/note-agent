@@ -3,13 +3,13 @@ from utils.gemini_client import call_gemini
 from config import GEMINI_MODEL_EVALUATION
 
 def quality_check(
-client,
-article,
-past_articles,
-knowledge,
+    client,
+    article,
+    past_articles,
+    knowledge,
 ):
 
-prompt = f"""
+    prompt = f"""
 
 以下の記事を総合評価してください。
 
@@ -261,10 +261,10 @@ DUPLICATE: NGの場合は、
 前置き・解説・補足は出力しないでください。
 """
 
-response = call_gemini(  
-    client,  
-    model=GEMINI_MODEL_EVALUATION,  
-    contents=prompt,  
-)  
+    response = call_gemini(  
+        client,  
+        model=GEMINI_MODEL_EVALUATION,  
+        contents=prompt,  
+    )  
 
-return response.text
+    return response.text
