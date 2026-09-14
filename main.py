@@ -97,17 +97,17 @@ except Exception as e:
 
 def generate_and_send_line():
 
-# ========================================  
-# GitHub Secrets設定チェック  
-# ========================================  
+    # ========================================
+    # GitHub Secrets設定チェック
+    # ========================================
 
-required_secrets = {  
-    "GEMINI_API_KEY": os.getenv("GEMINI_API_KEY"),  
-    "LINE_CHANNEL_ACCESS_TOKEN": os.getenv(  
-        "LINE_CHANNEL_ACCESS_TOKEN"  
-    ),  
-    "LINE_USER_ID": os.getenv("LINE_USER_ID"),  
-}  
+    required_secrets = {
+        "GEMINI_API_KEY": os.getenv("GEMINI_API_KEY"),
+        "LINE_CHANNEL_ACCESS_TOKEN": os.getenv(
+            "LINE_CHANNEL_ACCESS_TOKEN"
+        ),
+        "LINE_USER_ID": os.getenv("LINE_USER_ID"),
+    }
 
 missing_secrets = [  
     name  
