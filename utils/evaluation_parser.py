@@ -1,47 +1,72 @@
 import re
 
+
 def extract_score(text):
-m = re.search(r"SCORE\s*:\s*(\d+)", text, re.IGNORECASE)
+    m = re.search(
+        r"SCORE\s*:\s*(\d+)",
+        text,
+        re.IGNORECASE,
+    )
 
-if m:  
-    return int(m.group(1))  
+    if m:
+        return int(m.group(1))
 
-return 0
+    return 0
+
 
 def extract_seo_score(text):
-m = re.search(r"SEO\s*:\s*(\d+)", text, re.IGNORECASE)
-return int(m.group(1)) if m else 0
+    m = re.search(
+        r"SEO\s*:\s*(\d+)",
+        text,
+        re.IGNORECASE,
+    )
+
+    return int(m.group(1)) if m else 0
+
 
 def extract_duplicate_result(text):
-m = re.search(r"DUPLICATE\s*:\s*(OK|NG)", text, re.IGNORECASE)
-return m.group(1).upper() if m else "NG"
+    m = re.search(
+        r"DUPLICATE\s*:\s*(OK|NG)",
+        text,
+        re.IGNORECASE,
+    )
+
+    return m.group(1).upper() if m else "NG"
+
 
 def extract_latest_result(text):
-m = re.search(r"LATEST\s*:\s*(OK|NG)", text, re.IGNORECASE)
-return m.group(1).upper() if m else "NG"
+    m = re.search(
+        r"LATEST\s*:\s*(OK|NG)",
+        text,
+        re.IGNORECASE,
+    )
+
+    return m.group(1).upper() if m else "NG"
+
 
 def extract_improvements(text):
-m = re.search(
-r"【必須】\s*(.*?)(?:【推奨】|$)",
-text,
-re.DOTALL,
-)
+    m = re.search(
+        r"【必須】\s*(.*?)(?:【推奨】|$)",
+        text,
+        re.DOTALL,
+    )
 
-if not m:  
-    return ""  
+    if not m:
+        return ""
 
-improvements = m.group(1).strip()  
+    improvements = m.group(1).strip()
 
-if improvements == "なし":  
-    return ""  
+    if improvements == "なし":
+        return ""
 
-return improvements
+    return improvements
+
 
 def parse_evaluation(text):
-return {
-"score": extract_score(text),
-"seo_score": extract_seo_score(text),
-"duplicate": extract_duplicate_result(text),
-"latest": extract_latest_result(text),
-"improvements": extract_improvements(text),
-}
+    return {
+        "score": extract_score(text),
+        "seo_score": extract_seo_score(text),
+        "duplicate": extract_duplicate_result(text),
+        "latest": extract_latest_result(text),
+        "improvements": extract_improvements(text),
+    }
