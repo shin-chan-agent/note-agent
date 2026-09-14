@@ -2,7 +2,11 @@ import re
 
 
 def extract_score(text):
-    m = re.search(r"SCORE\s*:\s*(\d+)", text, re.IGNORECASE)
+    m = re.search(
+        r"SCORE\s*:\s*(\d+)",
+        text,
+        re.IGNORECASE,
+    )
 
     if m:
         return int(m.group(1))
@@ -11,17 +15,42 @@ def extract_score(text):
 
 
 def extract_seo_score(text):
-    m = re.search(r"SEO\s*:\s*(\d+)", text, re.IGNORECASE)
+    m = re.search(
+        r"SEO\s*:\s*(\d+)",
+        text,
+        re.IGNORECASE,
+    )
+
     return int(m.group(1)) if m else 0
 
 
 def extract_duplicate_result(text):
-    m = re.search(r"DUPLICATE\s*:\s*(OK|NG)", text, re.IGNORECASE)
+    m = re.search(
+        r"DUPLICATE\s*:\s*(OK|NG)",
+        text,
+        re.IGNORECASE,
+    )
+
     return m.group(1).upper() if m else "NG"
 
 
 def extract_latest_result(text):
-    m = re.search(r"LATEST\s*:\s*(OK|NG)", text, re.IGNORECASE)
+    m = re.search(
+        r"LATEST\s*:\s*(OK|NG)",
+        text,
+        re.IGNORECASE,
+    )
+
+    return m.group(1).upper() if m else "NG"
+
+
+def extract_paid_value_result(text):
+    m = re.search(
+        r"PAID_VALUE\s*:\s*(OK|NG)",
+        text,
+        re.IGNORECASE,
+    )
+
     return m.group(1).upper() if m else "NG"
 
 
@@ -49,5 +78,6 @@ def parse_evaluation(text):
         "seo_score": extract_seo_score(text),
         "duplicate": extract_duplicate_result(text),
         "latest": extract_latest_result(text),
+        "paid_value": extract_paid_value_result(text),
         "improvements": extract_improvements(text),
     }
