@@ -1,20 +1,21 @@
 import json
 
+
 def get_article_prompt(
-theme,
-angle,
-knowledge,
-past_articles_text,
-current_date,
+    theme,
+    angle,
+    knowledge,
+    past_articles_text,
+    current_date,
 ):
 
-knowledge_text = json.dumps(  
-    knowledge,  
-    ensure_ascii=False,  
-    indent=2,  
-)  
+    knowledge_text = json.dumps(
+        knowledge,
+        ensure_ascii=False,
+        indent=2,
+    )
 
-return f"""
+    return f"""
 
 noteに投稿する記事を1本執筆してください。
 記事はMarkdown形式で出力してください。
@@ -175,7 +176,7 @@ AI知識DBに記載された情報を使用する場合でも、記事内で「A
 ・一目で内容が理解できるタイトルにする
 ・タイトルを途中で不自然に改行しても意味が分断されにくい、まとまりのある表現にする
 
-《ブランド》
+【ブランド】
 タイトルは「クリックされるため」だけではなく、
 note記事一覧やSNS上で表示された際にも、シンプルで読みやすいことを重視してください。
 
@@ -287,7 +288,7 @@ https://note.com/shin_chan_ai/n/n7bec364e6cd2
 □ 画像カテゴリや強調キーワードなど、画像生成用のメタデータを出力していない
 
 《ブランド》
-□ 読者が「保存したい」と思える品質になっている
+□ 読者が「保存したい」と思える品質の記事になっている
 □ 信頼感があり、煽りすぎない文章になっている
 □ note記事一覧でブランドとして統一感のある品質になっている
 □ 読者が「次に何をすればいいか」が明確になっている
