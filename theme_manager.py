@@ -103,6 +103,8 @@ def get_theme_and_angle():
         )
 
         history = []
+        save_combination_history(history)
+
         unused = all_combinations.copy()
 
     # ランダム選択
