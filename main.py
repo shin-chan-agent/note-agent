@@ -21,7 +21,6 @@ from content.article.generator import (
     generate_article,
     extract_title,
 )
-
 from content.sns.generator import generate_sns_posts
 from content.video.generator import generate_video_scripts
 
@@ -32,21 +31,17 @@ from utils.knowledge_manager import (
     get_background_update_service,
     is_knowledge_too_old,
 )
-
 from utils.latest_info import fetch_latest_info
-
 from utils.line_sender import (
     send_line_messages,
     create_text_message,
-    split_text,
 )
-
+from utils.email_sender import send_email
 from utils.logger import (
     log_info,
     log_warning,
     log_error,
 )
-
 from utils.gemini_client import GeminiDailyQuotaExceeded
 from utils.content_saver import save_generated_contents
 
@@ -112,6 +107,12 @@ def generate_and_send_line():
             "LINE_CHANNEL_ACCESS_TOKEN"
         ),
         "LINE_USER_ID": os.getenv("LINE_USER_ID"),
+        "SMTP_SERVER": os.getenv("SMTP_SERVER"),
+        "SMTP_PORT": os.getenv("SMTP_PORT"),
+        "SMTP_USER": os.getenv("SMTP_USER"),
+        "SMTP_PASSWORD": os.getenv("SMTP_PASSWORD"),
+        "SENDER_EMAIL": os.getenv("SENDER_EMAIL"),
+        "RECIPIENT_EMAIL": os.getenv("RECIPIENT_EMAIL"),
     }
 
     missing_secrets = [
