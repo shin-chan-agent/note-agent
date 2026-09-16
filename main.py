@@ -31,18 +31,23 @@ from utils.knowledge_manager import (
     get_background_update_service,
     is_knowledge_too_old,
 )
+
 from utils.latest_info import fetch_latest_info
+
 from utils.line_sender import (
     send_line_messages,
     create_text_message,
 )
 from utils.email_sender import send_email
+
 from utils.logger import (
     log_info,
     log_warning,
     log_error,
 )
+
 from utils.gemini_client import GeminiDailyQuotaExceeded
+
 from utils.content_saver import save_generated_contents
 
 from config import (
@@ -623,27 +628,56 @@ def generate_and_send_line():
 {video_60}
 """
 
-    # ========================================
-    # LINEメッセージ作成
-    # ========================================
+# ========================================
+# メール本文作成
+# ========================================
 
-    messages = []
+email_body = f"""【note記事】
 
-    # 長い記事は分割して送信
-    for part in split_text(
-        article_message
-    ):
+{article}
 
-        messages.append(
-            create_text_message(part)
-        )
 
-    # 評価・SNS投稿・動画台本
-    messages.append(
-        create_text_message(
-            summary_message
-        )
-    )
+━━━━━━━━━━━━━━━━━━━━
+
+【AI評価】
+
+{evaluation}
+
+
+━━━━━━━━━━━━━━━━━━━━
+
+【X投稿】
+
+{x_post}
+
+
+━━━━━━━━━━━━━━━━━━━━
+
+【Threads投稿】
+
+{threads_post}
+
+
+━━━━━━━━━━━━━━━━━━━━
+
+【Instagram投稿】
+
+{instagram_post}
+
+
+━━━━━━━━━━━━━━━━━━━━
+
+【30秒ショート動画台本】
+
+{video_30}
+
+
+━━━━━━━━━━━━━━━━━━━━
+
+【60秒ショート動画台本】
+
+{video_60}
+"""
 
     # ========================================
     # 生成コンテンツ保存
@@ -708,27 +742,71 @@ def generate_and_send_line():
         raise
 
     # ========================================
-    # LINE送信
+    # LINE 完成通知
     # ========================================
 
     try:
 
+        notification_message = f"""✅【Note AI Agent】
+
+記事の生成が完了しました。
+
+タイトル：
+{title}
+
+生成日時：
+{datetime.now(
+    ZoneInfo("Asia/Tokyo")
+).strftime("%Y年%m月%d日 %H:%M:%S")}
+"""
+
         send_line_messages(
-            messages
+            [
+                create_text_message(
+                    notification_message
+                )
+            ]
         )
 
         log_info(
-            "LINEへ正常に送信しました。"
+            "記事完成通知をLINEへ送信しました。"
         )
 
     except Exception as e:
 
         log_error(
-            f"LINE送信エラー: {e}"
+            f"LINE完成通知エラー: {e}"
         )
 
         send_error_notification(
-            "LINE送信エラー",
+            "LINE完成通知エラー",
+            str(e),
+        )
+
+
+    # ========================================
+    # メール送信
+    # ========================================
+
+    try:
+
+        send_email(
+            subject=f"Note AI Agent｜記事生成完了｜{title}",
+            body=email_body,
+        )
+
+        log_info(
+            "生成コンテンツをメールへ送信しました。"
+        )
+
+    except Exception as e:
+
+        log_error(
+            f"メール送信エラー: {e}"
+        )
+
+        send_error_notification(
+            "メール送信エラー",
             str(e),
         )
 
