@@ -100,7 +100,7 @@ def send_error_notification(
         )
 
 
-def generate_and_send_line():
+def generate_and_send():
 
     # ========================================
     # GitHub Secrets設定チェック
@@ -815,4 +815,4 @@ def generate_and_send_line():
 
 
 if __name__ == "__main__":
-    generate_and_send_line()
+    generate_and_send()
