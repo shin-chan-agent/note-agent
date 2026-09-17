@@ -400,6 +400,8 @@ def generate_and_send():
     duplicate_result = result["duplicate_result"]
     latest_result = result["latest_result"]
 
+    title = extract_title(article)
+
     # ========================================
     # 記事生成成功した組み合わせを履歴へ登録
     # ========================================
