@@ -563,22 +563,6 @@ def generate_and_send():
         else "⚠️ 品質基準未達"
     )
 
-    # ========================================
-    # 記事メッセージ
-    # ========================================
-
-    article_message = f"""🤖【Gemini生成のnote原稿】🤖
-
-{status}
-
-最終スコア：{score}点
-
-
----
-
-{article}
-"""
-
     evaluation = evaluation.strip()
     x_post = x_post.strip()
     threads_post = threads_post.strip()
@@ -586,49 +570,6 @@ def generate_and_send():
     video_30 = video_30.strip()
     video_60 = video_60.strip()
 
-    # ========================================
-    # 評価・SNS・動画台本メッセージ
-    # ========================================
-
-    summary_message = f"""📊【AI評価】
-
-{evaluation}
-
-
----
-
-🐦【X投稿】
-
-{x_post}
-
-
----
-
-🧵【Threads投稿】
-
-{threads_post}
-
-
----
-
-📸【Instagram投稿】
-
-{instagram_post}
-
-
----
-
-🎬【30秒ショート動画台本】
-
-{video_30}
-
-
----
-
-🎬【60秒ショート動画台本】
-
-{video_60}
-"""
 
     # ========================================
     # メール本文作成
