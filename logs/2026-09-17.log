@@ -1,2 +1,63 @@
 [2026-09-17 04:34:22] [ERROR] GitHub Secretsの設定が不足しています: SMTP_SERVER, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SENDER_EMAIL, RECIPIENT_EMAIL
 [2026-09-17 04:34:23] [INFO] エラー通知をLINEへ送信しました。
+[2026-09-17 18:21:31] [INFO] 対象サービス: ['chatgpt']
+[2026-09-17 18:21:31] [INFO] DB更新対象: ['chatgpt']
+[2026-09-17 18:21:31] [INFO] バックグラウンド更新対象: gemini
+[2026-09-17 18:21:31] [INFO] chatgpt の最新情報を取得します
+[2026-09-17 18:22:31] [INFO] 取得サービス: chatgpt
+[2026-09-17 18:22:31] [INFO] chatgpt のAI知識DBへの反映が完了しました
+[2026-09-17 18:22:31] [INFO] 対象サービスのAI知識DB更新が完了しました。
+[2026-09-17 18:22:31] [INFO] AI知識DBは安全利用期限内のため、記事生成を続行します。
+[2026-09-17 18:22:31] [INFO] gemini の最新情報を取得します
+[2026-09-17 18:24:29] [INFO] 取得サービス: gemini
+[2026-09-17 18:24:29] [INFO] gemini のAI知識DBへの反映が完了しました
+[2026-09-17 18:24:29] [INFO] バックグラウンドAI知識DB更新が完了しました。
+[2026-09-17 18:25:36] [INFO] 記事スコア：93
+SCORE:93
+SEO:97
+DUPLICATE: NG
+LATEST: OK
+
+改善点
+
+【必須】
+*   DUPLICATE: NG判定のため、以下の過去記事との重複解消が必要です。
+    *   過去記事タイトル: 「ChatGPTでAIショート動画副業を成功へ！収益化の5つのコツ」
+    *   重複箇所:
+        *   過去記事の「1. 最新モデルとプランを賢く選択し、コストと性能を最適化する」という項目は、今回の記事の「1. 企画・アイデア出しは最新AIモデルで深掘りできていますか？」「2. スクリプト・台本作成で費用対効果の高いモデルを選べていますか？」「6. コストとプランは収益性に最適化されていますか？」と、モデル選定、プラン、コスト管理の点で内容が重複しています。具体的なモデル名や料金提示も類似しています。
+        *   過去記事の「2. 多様なAI機能を連携させ、制作ワークフロー全体を効率化する」という項目は、今回の記事の「5. 複数ツール連携でワークフロー全体を「時短」できていますか？」と、ツール連携による効率化という点で内容が重複しています。
+        *   過去記事の「4. データ分析と「Memory」機能を活用し、継続的な改善サイクルを確立する」という項目は、今回の記事の「10. データ分析と改善サイクルを回せていますか？」と、データ分析とPDCAサイクルの重要性という点で内容が重複しています。
+        *   過去記事の「5. 倫理的な利用と最新情報のキャッチアップでリスクを回避する」という項目は、今回の記事の「8. 最新情報と利用規約を常にキャッチアップできていますか？」「9. 品質と倫理的なコンテンツ制作を両立できていますか？」と、最新情報把握、利用規約遵守、倫理的コンテンツ制作という点で内容が重複しています。
+    *   本記事は「チェックリスト」形式という新しい切り口を採用していますが、読者に提供されるChatGPTを活用した収益化のための具体的な「コツ」や「ポイント」が、上記の過去記事と多くの部分で実質的に同じ情報となっているため、読者にとって新たな価値が提供されているとは言えません。どちらかの記事を廃止するか、それぞれの記事で取り扱う情報の深さや視点を大幅に差別化する必要があります。
+
+【推奨】
+*   特になし。現状の文字数制約の中で、非常に具体性があり、論理的で分かりやすい良質な記事です。
+[2026-09-17 18:25:36] [INFO] 品質スコア：93
+[2026-09-17 18:25:36] [INFO] SEOスコア：97
+[2026-09-17 18:25:36] [WARNING] 1回目のリライトを開始します。
+[2026-09-17 18:26:52] [INFO] リライト後スコア：98
+SCORE:98
+SEO:100
+DUPLICATE: OK
+LATEST: OK
+
+改善点なし
+[2026-09-17 18:26:52] [INFO] 品質スコア：98
+[2026-09-17 18:26:52] [INFO] SEOスコア：100
+[2026-09-17 18:26:52] [INFO] 改善点がないためリライトを終了します。
+[2026-09-17 18:26:52] [INFO] 記事生成成功のため、テーマ×切り口を履歴へ登録しました。
+[2026-09-17 18:27:06] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-17 18:27:06] [WARNING] 30秒待機します...
+[2026-09-17 18:27:37] [WARNING] Gemini APIリトライ (2/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-17 18:27:37] [WARNING] 30秒待機します...
+[2026-09-17 18:28:24] [WARNING] Gemini APIリトライ (3/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-17 18:28:24] [ERROR] SNS投稿生成エラー: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-17 18:28:24] [INFO] エラー通知をLINEへ送信しました。
+[2026-09-17 18:28:25] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-17 18:28:25] [WARNING] 30秒待機します...
+[2026-09-17 18:29:08] [WARNING] Gemini APIリトライ (2/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-17 18:29:08] [WARNING] 30秒待機します...
+[2026-09-17 18:29:50] [INFO] 生成コンテンツを保存しました: generated/2026/09/20260917_182950
+[2026-09-17 18:29:50] [INFO] 記事履歴を保存しました。
+[2026-09-17 18:29:51] [INFO] 記事完成通知をLINEへ送信しました。
+[2026-09-17 18:29:53] [INFO] 生成コンテンツをメールへ送信しました。
