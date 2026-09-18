@@ -10,7 +10,7 @@ def send_email(
     body,
 ):
     """
-    SMTPを利用してメールを送信する。
+    SMTPを利用してHTMLメールを送信する。
     """
 
     smtp_server = os.environ["SMTP_SERVER"]
@@ -22,7 +22,7 @@ def send_email(
 
     message = MIMEText(
         body,
-        "plain",
+        "html",
         "utf-8",
     )
 
