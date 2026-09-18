@@ -1,4 +1,5 @@
 import os
+import markdown
 
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -575,52 +576,53 @@ def generate_and_send():
     # メール本文作成
     # ========================================
 
-    email_body = f"""【note記事】
+    email_markdown = f"""# note記事
 
 {article}
 
+---
 
-━━━━━━━━━━━━━━━━━━━━
-
-【AI評価】
+# AI評価
 
 {evaluation}
 
+---
 
-━━━━━━━━━━━━━━━━━━━━
-
-【X投稿】
+# X投稿
 
 {x_post}
 
+---
 
-━━━━━━━━━━━━━━━━━━━━
-
-【Threads投稿】
+# Threads投稿
 
 {threads_post}
 
+---
 
-━━━━━━━━━━━━━━━━━━━━
-
-【Instagram投稿】
+# Instagram投稿
 
 {instagram_post}
 
+---
 
-━━━━━━━━━━━━━━━━━━━━
-
-【30秒ショート動画台本】
+# 30秒ショート動画台本
 
 {video_30}
 
+---
 
-━━━━━━━━━━━━━━━━━━━━
-
-【60秒ショート動画台本】
+# 60秒ショート動画台本
 
 {video_60}
 """
+
+    email_body = markdown.markdown(
+        email_markdown,
+        extensions=[
+            "extra",
+        ],
+    )
 
 
     # ========================================
