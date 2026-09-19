@@ -624,6 +624,11 @@ def generate_and_send():
         ],
     )
 
+    email_body = email_body.replace(
+        "https://note.com/shin_chan_ai/n/n7bec364e6cd2",
+        '<a href="https://note.com/shin_chan_ai/n/n7bec364e6cd2">https://note.com/shin_chan_ai/n/n7bec364e6cd2</a>',
+    )
+
 
     # ========================================
     # 生成コンテンツ保存
