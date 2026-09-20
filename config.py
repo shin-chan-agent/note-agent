@@ -116,34 +116,43 @@ AI_SERVICES = {
 
 
 THEME_SERVICES = {
-    "ショート動画": {
-        "作業フロー": [
-            "chatgpt",
-            "gemini",
-            "canva",
-            "capcut",
-        ],
-        "品質改善": [
-            "chatgpt",
-            "gemini",
-            "canva",
-            "capcut",
-        ],
-    },
+    "ショート動画": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
 
-    "SNS運用": {
-        "作業フロー": [
-            "chatgpt",
-            "gemini",
-            "canva",
-        ],
-        "品質改善": [
-            "chatgpt",
-            "claude",
-            "gemini",
-            "canva",
-        ],
-    },
+    "SNS運用": [
+        "chatgpt",
+        "gemini",
+        "claude",
+        "canva",
+    ],
+
+    "AI×仕事効率化": [
+        "chatgpt",
+        "gemini",
+        "claude",
+        "copilot",
+    ],
+
+    "AI自動化": [
+        "chatgpt",
+        "gemini",
+        "claude",
+        "copilot",
+        "claude_code",
+    ],
+
+    "AIリサーチ・情報収集": [
+        "perplexity",
+        "chatgpt",
+        "gemini",
+        "gemini_notebook",
+        "claude",
+    ],
+}
 
     "AI×仕事効率化": {
         "作業フロー": [
