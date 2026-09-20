@@ -75,69 +75,129 @@ AI_SERVICES = {
             "support.capcut.com",
         ],
     },
+
+    "perplexity": {
+        "name": "Perplexity",
+        "enabled": True,
+        "official_domains": [
+            "perplexity.ai",
+        ],
+    },
+
+    "gemini_notebook": {
+        "name": "Gemini Notebook",
+        "enabled": True,
+        "official_domains": [
+            "notebooklm.google.com",
+            "blog.google",
+        ],
+    },
+
+    "copilot": {
+        "name": "Microsoft Copilot",
+        "enabled": True,
+        "official_domains": [
+            "microsoft.com",
+            "copilot.microsoft.com",
+            "support.microsoft.com",
+            "learn.microsoft.com",
+        ],
+    },
+
+    "claude_code": {
+        "name": "Claude Code",
+        "enabled": True,
+        "official_domains": [
+            "anthropic.com",
+            "docs.anthropic.com",
+        ],
+    },
 }
 
 
 THEME_SERVICES = {
-    "AI×ショート動画": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
+    "ショート動画": {
+        "作業フロー": [
+            "chatgpt",
+            "gemini",
+            "canva",
+            "capcut",
+        ],
+        "品質改善": [
+            "chatgpt",
+            "gemini",
+            "canva",
+            "capcut",
+        ],
+    },
 
-    "ショート動画作成に役立つAIツール": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
+    "SNS運用": {
+        "作業フロー": [
+            "chatgpt",
+            "gemini",
+            "canva",
+        ],
+        "品質改善": [
+            "chatgpt",
+            "claude",
+            "gemini",
+            "canva",
+        ],
+    },
 
-    "初心者向けAI副業": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
+    "AI×仕事効率化": {
+        "作業フロー": [
+            "chatgpt",
+            "gemini",
+            "claude",
+            "copilot",
+        ],
+        "業務改善": [
+            "chatgpt",
+            "copilot",
+            "claude",
+            "gemini",
+        ],
+    },
 
-    "ChatGPT活用術": [
-        "chatgpt",
-    ],
+    "AI自動化": {
+        "作業フロー": [
+            "chatgpt",
+            "gemini",
+            "claude",
+        ],
+        "設計・構築": [
+            "chatgpt",
+            "claude",
+            "gemini",
+            "copilot",
+            "claude_code",
+        ],
+        "失敗回避": [
+            "chatgpt",
+            "gemini",
+            "claude",
+            "copilot",
+        ],
+    },
 
-    "Gemini活用術": [
-        "gemini",
-    ],
-
-    "Claude活用術": [
-        "claude",
-    ],
-
-    "Canva活用術": [
-        "canva",
-    ],
-
-    "CapCut活用術": [
-        "capcut",
-    ],
-
-    "AI副業ロードマップ": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
-
-    "AIで収益化する方法": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
-
-    "AI活用による時間短縮術": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
+    "AIリサーチ・情報収集": {
+        "調査設計": [
+            "perplexity",
+            "chatgpt",
+            "gemini",
+        ],
+        "作業フロー": [
+            "perplexity",
+            "chatgpt",
+            "gemini",
+            "gemini_notebook",
+        ],
+        "検証・判断": [
+            "perplexity",
+            "gemini_notebook",
+            "claude",
+            "gemini",
+        ],
+    },
 }
