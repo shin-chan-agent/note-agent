@@ -167,7 +167,7 @@ def generate_and_send():
     # テーマから対象サービスを取得
     # ========================================
 
-    services = get_target_services(theme)
+    services = get_target_services(theme,angle)
 
     log_info(
         f"対象サービス: {services}"
