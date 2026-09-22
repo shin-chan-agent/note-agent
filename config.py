@@ -152,7 +152,6 @@ THEME_SERVICES = {
         "gemini_notebook",
         "claude",
     ],
-}
 
     "AI×仕事効率化": {
         "作業フロー": [
