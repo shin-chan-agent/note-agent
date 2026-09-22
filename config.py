@@ -27,6 +27,25 @@ MAX_KNOWLEDGE_AGE_DAYS = 14
 MISSING_LIMIT = 2
 
 
+# 品質チェック設定
+MIN_SCORE = 90
+MIN_SEO_SCORE = 90
+MAX_REWRITE = 3
+MAX_ARTICLE_LENGTH = 5000
+
+
+# APIリトライ設定
+MAX_RETRY = 3
+GOOGLE_SEARCH_RETRY_WAIT = 5
+GEMINI_RETRY_WAIT = 30
+EVALUATION_RETRY_WAIT = 5
+
+
+# AI知識DB更新設定
+KNOWLEDGE_UPDATE_INTERVAL_DAYS = 7
+MISSING_LIMIT = 2
+
+
 AI_SERVICES = {
     "chatgpt": {
         "name": "ChatGPT",
@@ -75,137 +94,69 @@ AI_SERVICES = {
             "support.capcut.com",
         ],
     },
-
-    "perplexity": {
-        "name": "Perplexity",
-        "enabled": True,
-        "official_domains": [
-            "perplexity.ai",
-        ],
-    },
-
-    "gemini_notebook": {
-        "name": "Gemini Notebook",
-        "enabled": True,
-        "official_domains": [
-            "notebooklm.google.com",
-            "blog.google",
-        ],
-    },
-
-    "copilot": {
-        "name": "Microsoft Copilot",
-        "enabled": True,
-        "official_domains": [
-            "microsoft.com",
-            "copilot.microsoft.com",
-            "support.microsoft.com",
-            "learn.microsoft.com",
-        ],
-    },
-
-    "claude_code": {
-        "name": "Claude Code",
-        "enabled": True,
-        "official_domains": [
-            "anthropic.com",
-            "docs.anthropic.com",
-        ],
-    },
 }
 
 
 THEME_SERVICES = {
-    "ショート動画": [
+    "AI×ショート動画": [
         "chatgpt",
         "gemini",
         "canva",
         "capcut",
     ],
 
-    "SNS運用": [
+    "ショート動画作成に役立つAIツール": [
         "chatgpt",
         "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "初心者向けAI副業": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "ChatGPT活用術": [
+        "chatgpt",
+    ],
+
+    "Gemini活用術": [
+        "gemini",
+    ],
+
+    "Claude活用術": [
         "claude",
+    ],
+
+    "Canva活用術": [
         "canva",
     ],
 
-    "AI×仕事効率化": [
-        "chatgpt",
-        "gemini",
-        "claude",
-        "copilot",
+    "CapCut活用術": [
+        "capcut",
     ],
 
-    "AI自動化": [
+    "AI副業ロードマップ": [
         "chatgpt",
         "gemini",
-        "claude",
-        "copilot",
-        "claude_code",
+        "canva",
+        "capcut",
     ],
 
-    "AIリサーチ・情報収集": [
-        "perplexity",
+    "AIで収益化する方法": [
         "chatgpt",
         "gemini",
-        "gemini_notebook",
-        "claude",
+        "canva",
+        "capcut",
     ],
 
-    "AI×仕事効率化": {
-        "作業フロー": [
-            "chatgpt",
-            "gemini",
-            "claude",
-            "copilot",
-        ],
-        "業務改善": [
-            "chatgpt",
-            "copilot",
-            "claude",
-            "gemini",
-        ],
-    },
-
-    "AI自動化": {
-        "作業フロー": [
-            "chatgpt",
-            "gemini",
-            "claude",
-        ],
-        "設計・構築": [
-            "chatgpt",
-            "claude",
-            "gemini",
-            "copilot",
-            "claude_code",
-        ],
-        "失敗回避": [
-            "chatgpt",
-            "gemini",
-            "claude",
-            "copilot",
-        ],
-    },
-
-    "AIリサーチ・情報収集": {
-        "調査設計": [
-            "perplexity",
-            "chatgpt",
-            "gemini",
-        ],
-        "作業フロー": [
-            "perplexity",
-            "chatgpt",
-            "gemini",
-            "gemini_notebook",
-        ],
-        "検証・判断": [
-            "perplexity",
-            "gemini_notebook",
-            "claude",
-            "gemini",
-        ],
-    },
+    "AI活用による時間短縮術": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
 }
