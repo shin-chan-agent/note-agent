@@ -1,0 +1,35 @@
+[2026-09-24 04:41:14] [INFO] 対象サービス: ['chatgpt', 'gemini', 'copilot']
+[2026-09-24 04:41:14] [INFO] DB更新対象: ['chatgpt', 'gemini', 'copilot']
+[2026-09-24 04:41:14] [INFO] chatgpt の最新情報を取得します
+[2026-09-24 04:44:44] [INFO] 取得サービス: chatgpt
+[2026-09-24 04:44:44] [INFO] chatgpt のAI知識DBへの反映が完了しました
+[2026-09-24 04:44:44] [INFO] gemini の最新情報を取得します
+[2026-09-24 04:45:50] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-24 04:45:50] [WARNING] 30秒待機します...
+[2026-09-24 04:48:10] [INFO] 取得サービス: gemini
+[2026-09-24 04:48:10] [INFO] gemini のAI知識DBへの反映が完了しました
+[2026-09-24 04:48:10] [INFO] copilot の最新情報を取得します
+[2026-09-24 04:48:39] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-09-24 04:48:39] [WARNING] 30秒待機します...
+[2026-09-24 04:50:41] [INFO] 取得サービス: copilot
+[2026-09-24 04:50:41] [INFO] copilot のAI知識DBへの反映が完了しました
+[2026-09-24 04:50:41] [INFO] 対象サービスのAI知識DB更新が完了しました。
+[2026-09-24 04:50:41] [INFO] AI知識DBは安全利用期限内のため、記事生成を続行します。
+[2026-09-24 04:51:41] [INFO] 記事スコア：96
+SCORE:96
+SEO:95
+DUPLICATE: OK
+LATEST: OK
+
+改善点
+
+【推奨】
+・「仕事効率化に役立つ主要AIツール：目的別選び方」の各ツール紹介において、「選び方のポイント」で提示されている具体的な機能（例：情報収集・要約、データ分析、マルチモーダル機能など）と、一般的な業務シナリオ（例：企画書作成、市場調査、顧客対応など）を結びつける、より具体的な活用例を追記すると、初心者が自身の業務に落とし込みやすくなります。例えば、ChatGPTの項目で「複雑な企画・深掘り分析」にGPT-5.6 Solを推奨しているが、「例えば、新商品の市場投入計画のSWOT分析をする際には…」といった具体的な業務例に紐付けると、さらに分かりやすさが増します。
+[2026-09-24 04:51:41] [INFO] 品質スコア：96
+[2026-09-24 04:51:41] [INFO] SEOスコア：95
+[2026-09-24 04:51:41] [INFO] すべての品質基準をクリアしました。
+[2026-09-24 04:51:41] [INFO] 記事生成成功のため、テーマ×切り口を履歴へ登録しました。
+[2026-09-24 04:52:06] [INFO] 生成コンテンツを保存しました: generated/2026/09/20260924_045206
+[2026-09-24 04:52:06] [INFO] 記事履歴を保存しました。
+[2026-09-24 04:52:07] [INFO] 記事完成通知をLINEへ送信しました。
+[2026-09-24 04:52:08] [INFO] 生成コンテンツをメールへ送信しました。
