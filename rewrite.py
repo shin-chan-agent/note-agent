@@ -1,5 +1,3 @@
-from google import genai
-
 from utils.gemini_client import call_gemini
 
 from config import GEMINI_MODEL_REWRITE
@@ -34,7 +32,7 @@ def rewrite_article(
 記載された内容だけを修正してください。
 改善指示に含まれない文章・表現・見出し・順番は変更しないでください。
 
-記事のタイトル・構成・見出し・固定記事への案内・ハッシュタグは維持してください。
+記事のタイトル・構成・見出し・ハッシュタグは維持してください。
 品質が高い部分は一切変更しないでください。
 
 現在の記事より品質が下がる書き換えは禁止です。
