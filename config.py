@@ -27,7 +27,12 @@ MAX_KNOWLEDGE_AGE_DAYS = 14
 MISSING_LIMIT = 2
 
 
+# ========================================
+# AIサービス
+# ========================================
+
 AI_SERVICES = {
+
     "chatgpt": {
         "name": "ChatGPT",
         "enabled": True,
@@ -58,6 +63,42 @@ AI_SERVICES = {
         ],
     },
 
+    "claude_code": {
+        "name": "Claude Code",
+        "enabled": True,
+        "official_domains": [
+            "anthropic.com",
+        ],
+    },
+
+    "copilot": {
+        "name": "Microsoft Copilot",
+        "enabled": True,
+        "official_domains": [
+            "copilot.microsoft.com",
+            "support.microsoft.com",
+            "microsoft.com",
+        ],
+    },
+
+    "perplexity": {
+        "name": "Perplexity",
+        "enabled": True,
+        "official_domains": [
+            "perplexity.ai",
+        ],
+    },
+
+    "gemini_notebook": {
+        "name": "Gemini Notebook",
+        "enabled": True,
+        "official_domains": [
+            "notebooklm.google.com",
+            "support.google.com",
+            "blog.google",
+        ],
+    },
+
     "canva": {
         "name": "Canva",
         "enabled": True,
@@ -75,69 +116,4 @@ AI_SERVICES = {
             "support.capcut.com",
         ],
     },
-}
-
-
-THEME_SERVICES = {
-    "AI×ショート動画": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
-
-    "ショート動画作成に役立つAIツール": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
-
-    "初心者向けAI副業": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
-
-    "ChatGPT活用術": [
-        "chatgpt",
-    ],
-
-    "Gemini活用術": [
-        "gemini",
-    ],
-
-    "Claude活用術": [
-        "claude",
-    ],
-
-    "Canva活用術": [
-        "canva",
-    ],
-
-    "CapCut活用術": [
-        "capcut",
-    ],
-
-    "AI副業ロードマップ": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
-
-    "AIで収益化する方法": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
-
-    "AI活用による時間短縮術": [
-        "chatgpt",
-        "gemini",
-        "canva",
-        "capcut",
-    ],
 }
