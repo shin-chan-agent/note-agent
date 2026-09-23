@@ -130,12 +130,6 @@ def generate_article(
     past_articles_text,
 ):
 
-    # 固定記事案内
-    fixed_text = (
-        "AI×ショート動画で最速でマネタイズ（収益化）する具体的な手順と、"
-        "豪華40大特典の受け取り方を下記の固定記事で詳しく解説しています。"
-    )
-
     for attempt in range(MAX_RETRY):
 
         try:
@@ -155,13 +149,6 @@ def generate_article(
 
             # タイトル抽出・存在チェック
             extract_title(article)
-
-            # 固定記事案内チェック
-            if fixed_text not in article:
-                log_warning(
-                    "固定記事案内欠落。再生成します。"
-                )
-                continue
 
             # 文字数チェック
             if len(article) < 2000:
@@ -253,19 +240,6 @@ def generate_article(
 
                 # タイトル抽出・存在チェック
                 extract_title(article)
-
-                # ====================================
-                # リライト後の固定記事案内チェック
-                # ====================================
-
-                if fixed_text not in article:
-                    log_warning(
-                        "リライト後に固定記事案内が欠落しました。"
-                    )
-
-                    raise ValueError(
-                        "リライト後の記事に固定記事案内がありません。"
-                    )
 
                 # ====================================
                 # リライト後の文字数チェック
@@ -380,12 +354,6 @@ def generate_article(
                 raise ValueError(
                     f"最終記事が最大文字数を超えています: "
                     f"{len(article)}文字"
-                )
-
-            # 最終固定記事案内チェック
-            if fixed_text not in article:
-                raise ValueError(
-                    "最終記事に固定記事案内がありません。"
                 )
 
             break
