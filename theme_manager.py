@@ -11,83 +11,96 @@ COMBINATION_HISTORY_FILE = Path("combination_history.json")
 # ========================================
 
 THEME_ANGLES = {
-    "ショート動画": {
-        "作業フロー": [
-            "chatgpt",
-            "gemini",
-            "canva",
-            "capcut",
-        ],
-        "品質改善": [
-            "chatgpt",
-            "gemini",
-            "canva",
-            "capcut",
-        ],
+    "AI×ショート動画": {
+        "始め方": [],
+        "ツールの選び方": [],
+        "失敗しやすいポイント": [],
+        "活用アイデア": [],
     },
 
-    "SNS運用": {
-        "作業フロー": [
-            "chatgpt",
-            "gemini",
-            "canva",
-        ],
-        "品質改善": [
-            "chatgpt",
-            "claude",
-            "canva",
-        ],
+    "AIツール活用": {
+        "できること・できないこと": [],
+        "初心者向けの使い方": [],
+        "ツールの選び方": [],
+        "比較・レビュー": [],
+    },
+
+    "AI副業": {
+        "始め方": [],
+        "必要なAIツール": [],
+        "収益化の基本": [],
+        "失敗しやすいポイント": [],
+    },
+
+    "AI×SNS": {
+        "始め方": [],
+        "投稿作成の基本": [],
+        "活用アイデア": [],
+        "ツール比較": [],
     },
 
     "AI×仕事効率化": {
-        "作業フロー": [
-            "chatgpt",
-            "gemini",
-            "copilot",
-        ],
-        "業務改善": [
-            "chatgpt",
-            "copilot",
-            "claude",
-        ],
+        "AIでできること": [],
+        "活用アイデア": [],
+        "初心者向けの使い方": [],
+        "ツールの選び方": [],
     },
 
-    "AI自動化": {
-        "作業フロー": [
-            "chatgpt",
-            "gemini",
-            "claude",
-        ],
-        "設計・構築": [
-            "chatgpt",
-            "claude",
-            "claude_code",
-            "gemini",
-        ],
-        "失敗回避": [
-            "chatgpt",
-            "claude",
-            "gemini",
-        ],
+    "AI活用の基本": {
+        "AIの得意・不得意": [],
+        "プロンプトの基本": [],
+        "情報の確認方法": [],
+        "資料・情報の整理方法": [],
     },
+}
 
-    "AIリサーチ・情報収集": {
-        "調査設計": [
-            "perplexity",
-            "chatgpt",
-            "gemini",
-        ],
-        "作業フロー": [
-            "perplexity",
-            "chatgpt",
-            "gemini_notebook",
-        ],
-        "検証・判断": [
-            "perplexity",
-            "gemini_notebook",
-            "claude",
-        ],
-    },
+
+# ========================================
+# テーマごとの対象AI
+# ========================================
+
+THEME_SERVICES = {
+    "AI×ショート動画": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "AIツール活用": [
+        "chatgpt",
+        "gemini",
+        "claude",
+        "copilot",
+        "claude_code",
+    ],
+
+    "AI副業": [
+        "chatgpt",
+        "gemini",
+        "canva",
+        "capcut",
+    ],
+
+    "AI×SNS": [
+        "chatgpt",
+        "gemini",
+        "canva",
+    ],
+
+    "AI×仕事効率化": [
+        "chatgpt",
+        "gemini",
+        "copilot",
+    ],
+
+    "AI活用の基本": [
+        "chatgpt",
+        "gemini",
+        "claude",
+        "perplexity",
+        "gemini_notebook",
+    ],
 }
 
 
@@ -96,24 +109,30 @@ THEME_ANGLES = {
 # ========================================
 
 def load_combination_history():
+
     try:
+
         with open(
             COMBINATION_HISTORY_FILE,
             "r",
             encoding="utf-8",
         ) as f:
+
             return json.load(f)
 
     except FileNotFoundError:
+
         return []
 
 
 def save_combination_history(history):
+
     with open(
         COMBINATION_HISTORY_FILE,
         "w",
         encoding="utf-8",
     ) as f:
+
         json.dump(
             history,
             f,
@@ -127,6 +146,7 @@ def save_combination_history(history):
 # ========================================
 
 def get_all_combinations():
+
     combinations = []
 
     for theme, angles in THEME_ANGLES.items():
@@ -250,22 +270,14 @@ def mark_combination_completed(
 
 
 # ========================================
-# テーマ × 切り口から対象AIを取得
+# テーマから対象AIを取得
 # ========================================
 
 def get_target_services(
     theme,
-    angle,
 ):
 
-    theme_data = THEME_ANGLES.get(
+    return THEME_SERVICES.get(
         theme,
-        {}
+        [],
     )
-
-    services = theme_data.get(
-        angle,
-        []
-    )
-
-    return services
