@@ -144,6 +144,7 @@ def get_article_knowledge(service_ids):
                 for item in filter_active_items(
                     service.get("models", [])
                 )
+                if isinstance(item, dict)
             ],
 
             "plans": [
@@ -163,6 +164,7 @@ def get_article_knowledge(service_ids):
                 for item in filter_active_items(
                     service.get("plans", [])
                 )
+                if isinstance(item, dict)
             ],
 
             "features": [
@@ -178,6 +180,7 @@ def get_article_knowledge(service_ids):
                 for item in filter_active_items(
                     service.get("features", [])
                 )
+                if isinstance(item, dict)
             ],
 
             "limitations": [
@@ -193,6 +196,7 @@ def get_article_knowledge(service_ids):
                 for item in filter_active_items(
                     service.get("limitations", [])
                 )
+                if isinstance(item, dict)
             ],
 
             "notes": [
@@ -207,6 +211,7 @@ def get_article_knowledge(service_ids):
                 for item in filter_active_items(
                     service.get("notes", [])
                 )
+                if isinstance(item, dict)
             ],
         }
 
