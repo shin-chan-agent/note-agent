@@ -5,6 +5,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from google import genai
+from google.genai import types
 
 from theme_manager import (
     get_theme_and_angle,
