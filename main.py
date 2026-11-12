@@ -155,7 +155,11 @@ def generate_and_send():
     # Geminiクライアント
     # ========================================
 
-    client = genai.Client()
+    client = genai.Client(
+        http_options=types.HttpOptions(
+            api_version="v1beta"
+        )
+    )
 
     # ========================================
     # テーマ・切り口を決定
