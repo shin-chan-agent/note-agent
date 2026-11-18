@@ -1,0 +1,55 @@
+[2026-11-19 07:56:55] [INFO] 対象サービス: ['chatgpt', 'gemini', 'claude', 'perplexity', 'gemini_notebook']
+[2026-11-19 07:56:55] [INFO] DB更新対象: []
+[2026-11-19 07:56:55] [INFO] 対象サービスのAI知識DBは最新のため、更新をスキップします。
+[2026-11-19 07:58:00] [INFO] 記事スコア：86
+SCORE:86
+SEO:95
+DUPLICATE: NG
+LATEST: OK
+
+改善点
+
+【必須】
+*   **過去記事との重複**:
+    *   **テーマと切り口が完全に重複しています。** 今回の記事「AI活用で失敗しない！情報の「確かさ」を見抜く初心者ガイド」は、テーマ「AI活用の基本」と切り口「情報の確認方法」で設定されています。これは過去記事「AI活用の新常識：情報の正確性を高める確認術」と完全に一致しており、記事全体として読者に提供する価値がほぼ同じと判断されます。
+    *   **記事の中心内容が重複しています。** 両記事ともに、AIの「ハルシネーション」や「知識の限界」といった特性を最初に説明し、その上で「複数ソースでの裏取り」「AIツール間の比較検証」「公式情報や専門機関の参照」といった具体的な確認方法を提示しています。さらに、「確認の習慣化」や「AIに対する心構え（最終責任は人間にある）」についても同様に解説されています。
+    *   **構成と見出しが強く類似しています。** 両記事は「AIの特性と確認の重要性」→「具体的な確認方法（複数の視点/ステップ）」→「実践的な心構え/習慣化」という共通した流れで構成されています。H2・H3の見出しの表現は異なるものの、各見出しの下で解説されている内容の粒度、範囲、具体例（ChatGPT、Gemini、Perplexity AI、Gemini Notebookの活用など）がほぼ同一です。
+    *   結果として、読者が両記事を読んだ際に得られる知識や行動指針に大きな差異がなく、実質的に同じ内容の記事と判断せざるを得ません。重複回避のためには、テーマは維持しつつも「情報の確認方法」という切り口をさらに具体化・細分化するか、全く異なる切り口で「AI活用の基本」を解説する必要があります。
+
+【推奨】
+*   AIツールのモデル名（GPT-6 Luna, Flash-Lite, SonnetやHaikuなど）が羅列されている箇所がありますが、初心者向け記事としては、モデル名の詳細な説明がなくても記事の主旨は伝わるため、簡潔化を検討しても良いかもしれません。あるいは、主要なモデルのみを厳選し、それぞれの特性（例：Lunaはテキスト、Flash-Liteは速度など）を簡単な括弧書きで補足すると、より理解しやすくなります。
+[2026-11-19 07:58:00] [INFO] 品質スコア：86
+[2026-11-19 07:58:00] [INFO] SEOスコア：95
+[2026-11-19 07:58:00] [WARNING] 1回目のリライトを開始します。
+[2026-11-19 07:58:45] [ERROR] Geminiエラー（1回目）：記事内にタイトルが見つかりません。
+[2026-11-19 07:58:45] [WARNING] 30秒後に再試行します...
+[2026-11-19 08:00:34] [INFO] 記事スコア：86
+SCORE:86
+SEO:95
+DUPLICATE: NG
+LATEST: OK
+
+改善点
+
+【必須】
+・過去記事「AI活用の新常識：情報の正確性を高める確認術」とテーマ、切り口、記事の中心となる内容、構成、H2・H3見出し、具体例、解説している手順、読者が得られる情報のほとんどが重複しています。
+・具体的には、AIが誤情報を生成するメカニズム（ハルシネーション、知識の鮮度と網羅性の限界）、情報の確認の必要性、情報の真偽を見極めるための思考プロセス（複数ソース、一次情報源、論理的思考）、そして具体的な実践ステップ（複数AIでの比較、ファクトチェック、AIへの追加確認）の全てにおいて、内容と構成が極めて類似しており、表現を一部変更しているに過ぎません。
+・このままでは読者が別の記事として読む価値が乏しいため、いずれかの記事を大きくリライトし、異なる価値提供を行う必要があります。
+[2026-11-19 08:00:34] [INFO] 品質スコア：86
+[2026-11-19 08:00:34] [INFO] SEOスコア：95
+[2026-11-19 08:00:34] [WARNING] 1回目のリライトを開始します。
+[2026-11-19 08:00:35] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:00:35] [WARNING] 30秒待機します...
+[2026-11-19 08:01:08] [WARNING] Gemini APIリトライ (2/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:01:08] [WARNING] 30秒待機します...
+[2026-11-19 08:01:42] [WARNING] Gemini APIリトライ (3/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:01:42] [ERROR] Geminiエラー（2回目）：503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:01:42] [WARNING] 30秒後に再試行します...
+[2026-11-19 08:02:15] [WARNING] Gemini APIリトライ (1/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:02:15] [WARNING] 30秒待機します...
+[2026-11-19 08:03:25] [WARNING] Gemini APIリトライ (2/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:03:25] [WARNING] 30秒待機します...
+[2026-11-19 08:04:10] [WARNING] Gemini APIリトライ (3/3) : 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:04:10] [ERROR] Geminiエラー（3回目）：503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:04:10] [ERROR] 記事生成エラー: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-11-19 08:04:11] [INFO] エラー通知をLINEへ送信しました。
